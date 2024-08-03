@@ -1,5 +1,5 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
-using ArtifactsMmoDotNet.Sdk.Interfaces;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 

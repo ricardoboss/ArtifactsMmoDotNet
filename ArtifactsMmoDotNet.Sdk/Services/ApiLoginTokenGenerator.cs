@@ -1,8 +1,6 @@
-﻿using System.Text;
-using ArtifactsMmoDotNet.Api.Generated;
-using ArtifactsMmoDotNet.Sdk.Exceptions;
-using ArtifactsMmoDotNet.Sdk.Interfaces;
-using Microsoft.Kiota.Abstractions.Extensions;
+﻿using ArtifactsMmoDotNet.Sdk.Exceptions;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 
 namespace ArtifactsMmoDotNet.Sdk.Services;
 

@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Sdk.Interfaces;
+﻿namespace ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
 public interface IKnownLocation
 {

@@ -1,6 +1,6 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Api.Generated.Models;
-using ArtifactsMmoDotNet.Sdk.Interfaces;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
 namespace ArtifactsMmoDotNet.Sdk.Services;
 

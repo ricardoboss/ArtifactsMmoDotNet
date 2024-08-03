@@ -1,5 +1,6 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated.Models;
-using ArtifactsMmoDotNet.Sdk.Interfaces;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using Spectre.Console;
 using Spectre.Console.Cli;
 

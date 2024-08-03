@@ -1,5 +1,8 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
-using ArtifactsMmoDotNet.Sdk.Interfaces;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using ArtifactsMmoDotNet.Sdk.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Kiota.Abstractions.Authentication;
@@ -26,14 +29,14 @@ public static class ServiceCollectionExtensions
             .AddSingleton<ILoginServiceFactory, DefaultLoginServiceFactory>()
             .AddSingletonFactory<ILoginServiceFactory, ILoginService>();
     }
-    
+
     public static IServiceCollection AddDefaultTokenStorageFactory(this IServiceCollection services)
     {
         return services
             .AddSingleton<ITokenStorageFactory, DefaultTokenStorageFactory>()
             .AddSingletonFactory<ITokenStorageFactory, ITokenStorage>();
     }
-    
+
     public static IServiceCollection AddApiLoginTokenGenerator(this IServiceCollection services)
     {
         return services.AddSingleton<ILoginTokenGenerator, ApiLoginTokenGenerator>();

@@ -1,4 +1,5 @@
-﻿using ArtifactsMmoDotNet.Sdk.Interfaces;
+﻿using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 
 namespace ArtifactsMmoDotNet.Sdk.Services;
 

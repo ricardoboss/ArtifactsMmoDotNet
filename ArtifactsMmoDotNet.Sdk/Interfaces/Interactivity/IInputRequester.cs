@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Sdk.Interfaces;
+﻿namespace ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 
 public interface IInputRequester
 {

@@ -10,8 +10,4 @@
       <ProjectReference Include="..\ArtifactsMmoDotNet.Api\ArtifactsMmoDotNet.Api.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Enums\" />
-    </ItemGroup>
-
 </Project>
