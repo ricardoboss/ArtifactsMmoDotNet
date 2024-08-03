@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMmoDotNet.Cli", "ArtifactsMmoDotNet.Cli\ArtifactsMmoDotNet.Cli.csproj", "{014E1323-4E18-4041-9EE6-E1A3632135D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMmoDotNet.Api", "ArtifactsMmoDotNet.Api\ArtifactsMmoDotNet.Api.csproj", "{AFC20572-FAE8-4B4E-AA73-B5E39D24DF7B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A0FED6E-5292-4BD0-813D-6C509DE27F25}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		nuget.config = nuget.config
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMmoDotNet.Sdk", "ArtifactsMmoDotNet.Sdk\ArtifactsMmoDotNet.Sdk.csproj", "{48A331E5-84E5-4D7E-9115-DE6D0E025ED7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{014E1323-4E18-4041-9EE6-E1A3632135D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{014E1323-4E18-4041-9EE6-E1A3632135D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{014E1323-4E18-4041-9EE6-E1A3632135D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{014E1323-4E18-4041-9EE6-E1A3632135D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFC20572-FAE8-4B4E-AA73-B5E39D24DF7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFC20572-FAE8-4B4E-AA73-B5E39D24DF7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFC20572-FAE8-4B4E-AA73-B5E39D24DF7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFC20572-FAE8-4B4E-AA73-B5E39D24DF7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48A331E5-84E5-4D7E-9115-DE6D0E025ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48A331E5-84E5-4D7E-9115-DE6D0E025ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48A331E5-84E5-4D7E-9115-DE6D0E025ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48A331E5-84E5-4D7E-9115-DE6D0E025ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

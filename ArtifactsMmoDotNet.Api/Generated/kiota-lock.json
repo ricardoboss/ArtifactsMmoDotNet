@@ -1,0 +1,25 @@
+{
+  "descriptionHash": "B3D18ECECFC330E742508809FFF3D5010070577F25DAE5A16BA00F0CF7BEB813BAD336FA0FA978285CE290AB0C9129E531A3AD7FAADE8AB12EBE78173AC26151",
+  "descriptionLocation": "../openapi-3.0.json",
+  "lockFileVersion": "1.0.0",
+  "kiotaVersion": "1.16.0",
+  "clientClassName": "ArtifactsMmoApiClient",
+  "clientNamespaceName": "ArtifactsMmoDotNet.Api.Generated",
+  "language": "CSharp",
+  "usesBackingStore": true,
+  "excludeBackwardCompatible": true,
+  "includeAdditionalData": false,
+  "disableSSLValidation": false,
+  "serializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory"
+  ],
+  "deserializers": [
+    "Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory"
+  ],
+  "structuredMimeTypes": [
+    "application/json"
+  ],
+  "includePatterns": [],
+  "excludePatterns": [],
+  "disabledValidationRules": []
+}

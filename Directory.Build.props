@@ -1,0 +1,15 @@
+﻿<Project>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <PublishAot>true</PublishAot>
+        <InvariantGlobalization>true</InvariantGlobalization>
+        <Deterministic>true</Deterministic>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <AnalysisLevel>7</AnalysisLevel>
+    </PropertyGroup>
+</Project>
