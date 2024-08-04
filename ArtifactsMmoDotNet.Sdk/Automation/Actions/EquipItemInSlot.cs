@@ -1,8 +1,8 @@
 using ArtifactsMmoDotNet.Api.Generated.Models;
+using ArtifactsMmoDotNet.Sdk.Automation.Requirements;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
-using ArtifactsMmoDotNet.Sdk.Services.Automation.Requirements;
 
-namespace ArtifactsMmoDotNet.Sdk.Services.Automation.Actions;
+namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
 public class EquipItemInSlot(EquipSchema_slot slot, string itemCode) : BaseAction
 {

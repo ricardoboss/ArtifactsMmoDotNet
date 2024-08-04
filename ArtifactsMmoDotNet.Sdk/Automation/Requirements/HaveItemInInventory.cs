@@ -1,9 +1,9 @@
 using ArtifactsMmoDotNet.Api.Generated.Maps;
 using ArtifactsMmoDotNet.Api.Generated.Models;
+using ArtifactsMmoDotNet.Sdk.Automation.Actions;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
-using ArtifactsMmoDotNet.Sdk.Services.Automation.Actions;
 
-namespace ArtifactsMmoDotNet.Sdk.Services.Automation.Requirements;
+namespace ArtifactsMmoDotNet.Sdk.Automation.Requirements;
 
 public class HaveItemInInventory(string itemCode, int quantity = 1) : IRequirement
 {

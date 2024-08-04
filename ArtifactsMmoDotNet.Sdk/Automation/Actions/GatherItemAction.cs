@@ -1,6 +1,6 @@
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
-namespace ArtifactsMmoDotNet.Sdk.Services.Automation.Actions;
+namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
 public class GatherItemAction(string itemCode, int quantity = 1) : BaseAction
 {

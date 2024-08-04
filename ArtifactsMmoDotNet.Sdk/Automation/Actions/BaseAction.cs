@@ -1,7 +1,6 @@
-using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
-namespace ArtifactsMmoDotNet.Sdk.Services.Automation.Actions;
+namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
 public abstract class BaseAction : IAction
 {

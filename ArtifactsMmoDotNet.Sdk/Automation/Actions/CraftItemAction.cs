@@ -1,7 +1,7 @@
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
-namespace ArtifactsMmoDotNet.Sdk.Services.Automation.Actions;
+namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
 public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 1) : BaseAction
 {
