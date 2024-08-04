@@ -15,7 +15,12 @@ public class Null : IBackedModel, IParsable
 
     public void Serialize(ISerializationWriter writer) => writer.WriteNullValue(null);
 
-    public static Null CreateFromDiscriminatorValue(IParseNode parseNode) => new Null();
+    public static Null CreateFromDiscriminatorValue(IParseNode parseNode)
+    {
+        _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+
+        return new Null();
+    }
 
     public IBackingStore BackingStore { get; private set; }
 }

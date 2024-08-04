@@ -7,7 +7,7 @@ namespace ArtifactsMmoDotNet.Sdk.Automation.Requirements;
 
 public class HaveItemInInventory(string itemCode, int quantity = 1) : IRequirement
 {
-    public string Name => $"Have {quantity}x{itemCode} in inventory";
+    public string Name => $"Have {quantity}x {itemCode} in inventory";
 
     public TimeSpan Cooldown => TimeSpan.FromSeconds(5);
 

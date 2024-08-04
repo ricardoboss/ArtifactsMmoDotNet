@@ -1,4 +1,7 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated.Models;
+using ArtifactsMmoDotNet.Sdk.Automation;
+using ArtifactsMmoDotNet.Sdk.Automation.Requirements;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using Spectre.Console;
@@ -23,15 +26,17 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
         var characterName = await SelectCharacter();
 
         var subCommandPrompt = new SelectionPrompt<string>
-                {
-                    Title = "What do you want to do?",
-                    SearchEnabled = true,
-                    WrapAround = true,
-                }
-                .AddChoiceGroup("Actions", "move", "fight", "gather", "unequip", "craft", "equip", "go")
-                .AddChoiceGroup("Info", "position", "inventory", "equipment")
-                .AddChoiceGroup("Other", "switch character", "quit")
-            ;
+        {
+            Title = "What do you want to do?",
+            SearchEnabled = true,
+            WrapAround = true,
+        };
+
+        subCommandPrompt.AddChoice("automation");
+        subCommandPrompt
+            .AddChoiceGroup("Actions", "move", "fight", "gather", "unequip", "craft", "equip", "go")
+            .AddChoiceGroup("Info", "position", "inventory", "equipment")
+            .AddChoiceGroup("Other", "switch character", "quit");
 
         do
         {
@@ -97,12 +102,50 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
                     await Go(characterName);
 
                     continue;
+                case "automation":
+                    await Automation(characterName);
+
+                    continue;
                 case "switch character":
                     characterName = await SelectCharacter();
 
                     continue;
             }
         } while (true);
+    }
+
+    private async Task Automation(string characterName)
+    {
+        var context = new AutomationContext(game, characterName);
+
+        // TODO: create cli prompts to build root requirement
+        var rootRequirement = new HaveItemInInventory("wooden_stick");
+
+        await FulfilRequirement(context, rootRequirement);
+    }
+
+    private static async Task FulfilRequirement(IAutomationContext context, IRequirement requirement)
+    {
+        if (await requirement.IsFulfilled(context))
+        {
+            AnsiConsole.MarkupLine($"[yellow]Requirement [green]{requirement.Name}[/] fulfilled![/]");
+
+            return;
+        }
+
+        AnsiConsole.MarkupLine($"[yellow]Fulfilling requirement [green]{requirement.Name}[/][/]");
+
+        await foreach (var action in requirement.GetFulfillingActions(context))
+        {
+            await foreach (var subRequirement in action.GetRequirements(context))
+            {
+                await FulfilRequirement(context, subRequirement);
+            }
+
+            AnsiConsole.MarkupLine($"[yellow]Executing action [green]{action.Name}[/][/]");
+
+            await action.Execute(context);
+        }
     }
 
     private async Task Go(string characterName)
