@@ -114,17 +114,19 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
             WrapAround = true,
             Converter = l => l.Location is null
                 ? "Cancel"
-                : $"{l.Location.Name} ({l.Location.Position.x}, {l.Location.Position.y})",
+                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - provides {l.Location.Content!.MapContentSchema!.Type}",
         };
 
-        prompt.AddChoices(game.KnownLocations.Select(l => new KnownLocationOrCancel(l)))
+        var locations = await game.GetMaps().Select(l => new KnownLocationOrCancel(l)).ToListAsync();
+
+        prompt.AddChoices(locations)
             .AddChoice(new KnownLocationOrCancel(null));
 
         var selection = AnsiConsole.Prompt(prompt);
         if (selection.Location is null)
             return;
 
-        await MoveTo(characterName, selection.Location.Position.x, selection.Location.Position.y);
+        await MoveTo(characterName, selection.Location.X!.Value, selection.Location.Y!.Value);
     }
 
     private async Task PrintEquipment(string characterName)
@@ -318,4 +320,4 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
     }
 }
 
-file record KnownLocationOrCancel(IKnownLocation? Location);
+file record KnownLocationOrCancel(MapSchema? Location);

@@ -1,4 +1,6 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
+using ArtifactsMmoDotNet.Api.Generated.Items;
+using ArtifactsMmoDotNet.Api.Generated.Maps;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
@@ -33,19 +35,153 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
         }
     }
 
-    public IEnumerable<IKnownLocation> KnownLocations => [
-        new Location("Cooking Workshop", (1, 1)),
-        new Location("Weaponcrafting Workshop", (2, 1)),
-        new Location("Gearcrafting Workshop", (3, 1)),
-        new Location("Bank", (4, 1)),
-        new Location("Grand Exchange", (5, 1)),
-        new Location("Tasks Master", (1, 2)),
-        new Location("Jewelerycrafting Workshop", (1, 2)),
-        new Location("Mining Workshop", (1, 5)),
-    ];
-}
+    private readonly List<MapSchema> cachedLocations = [];
 
-file record Location(string Name, (int x, int y) Position) : IKnownLocation;
+    public async Task WaitForCooldown() => await Task.Delay(RemainingCooldown);
+
+    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null,
+        GetContent_typeQueryParameterType? contentType = null)
+    {
+        var useCache = contentCode is null && contentType is null;
+
+        if (useCache && cachedLocations.Any())
+        {
+            foreach (var location in cachedLocations)
+                yield return location;
+
+            yield break;
+        }
+
+        const int size = 100;
+        var page = 1;
+        int pages;
+
+        do
+        {
+            var maps = await apiClient.Maps!.GetAsync(c =>
+            {
+                c.QueryParameters.ContentCode = contentCode;
+                c.QueryParameters.ContentType = contentType;
+                c.QueryParameters.Page = page;
+                c.QueryParameters.Size = size;
+            });
+
+            foreach (var map in maps!.Data!)
+            {
+                if (useCache)
+                    cachedLocations.Add(map);
+
+                yield return map;
+            }
+
+            page++;
+            pages = maps.Pages!.Integer!.Value;
+        } while (page <= pages);
+    }
+
+    public async Task<MapSchema> GetMap(int x, int y)
+    {
+        var map = await apiClient.Maps![x]![y]!.GetAsync();
+
+        return map!.Data!;
+    }
+
+    private readonly List<ItemSchema> cachedItems = [];
+
+    public async IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
+        GetCraft_skillQueryParameterType? craftSkill = null, int? minLevel = null, int? maxLevel = null,
+        GetTypeQueryParameterType? type = null)
+    {
+        var useCache = craftMaterial is null && craftSkill is null && minLevel is null && maxLevel is null &&
+                       type is null;
+
+        if (useCache && cachedItems.Any())
+        {
+            foreach (var item in cachedItems)
+                yield return item;
+
+            yield break;
+        }
+
+        const int size = 100;
+        var page = 1;
+        int pages;
+
+        do
+        {
+            var items = await apiClient.Items!.GetAsync(c =>
+            {
+                c.QueryParameters.CraftMaterial = craftMaterial;
+                c.QueryParameters.CraftSkill = craftSkill;
+                c.QueryParameters.MaxLevel = maxLevel;
+                c.QueryParameters.MinLevel = minLevel;
+                c.QueryParameters.Type = type;
+                c.QueryParameters.Page = page;
+                c.QueryParameters.Size = size;
+            });
+
+            foreach (var item in items!.Data!)
+            {
+                if (useCache)
+                    cachedItems.Add(item);
+
+                yield return item;
+            }
+
+            page++;
+            pages = items.Pages!.Integer!.Value;
+        } while (page <= pages);
+    }
+
+    public async Task<SingleItemSchema> GetItem(string itemCode)
+    {
+        var item = await apiClient.Items![itemCode]!.GetAsync();
+
+        return item!.Data!;
+    }
+
+    private readonly List<ResourceSchema> cachedResources = [];
+
+    public async IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null, int? maxLevel = null)
+    {
+        var useCache = drop is null && minLevel is null && maxLevel is null;
+
+        if (useCache && cachedResources.Any())
+        {
+            foreach (var resource in cachedResources)
+                yield return resource;
+
+            yield break;
+        }
+
+        const int size = 100;
+        var page = 1;
+        int pages;
+
+        do
+        {
+            var resources = await apiClient.Resources!.GetAsync(c =>
+            {
+                c.QueryParameters.Drop = drop;
+                c.QueryParameters.MinLevel = minLevel;
+                c.QueryParameters.MaxLevel = maxLevel;
+                c.QueryParameters.Page = page;
+                c.QueryParameters.Size = size;
+            });
+
+            foreach (var resource in resources!.Data!)
+            {
+                if (useCache)
+                    cachedResources.Add(resource);
+
+                yield return resource;
+            }
+
+            page++;
+            pages = resources.Pages!.Integer!.Value;
+        } while (page <= pages);
+    }
+}
 
 file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient) : IGame.IActions
 {
@@ -121,7 +257,8 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
     }
 }
 
-file class Characters(ArtifactsMmoApiGame game,string characterName, ArtifactsMmoApiClient apiClient) : IGame.ICharacters
+file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
+    : IGame.ICharacters
 {
     private async Task<CharacterSchema> GetCharacterAsync()
     {
