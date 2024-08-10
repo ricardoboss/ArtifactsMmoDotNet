@@ -27,28 +27,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("reason", value); }
         }
         /// <summary>The remaining seconds of the cooldown.</summary>
-        public int? Remaining_seconds
+        public int? RemainingSeconds
         {
             get { return BackingStore?.Get<int?>("remaining_seconds"); }
             set { BackingStore?.Set("remaining_seconds", value); }
         }
-        /// <summary>Deprecated** The remaining seconds of the cooldown.</summary>
-        public int? RemainingSeconds
+        /// <summary>The start of the cooldown.</summary>
+        public DateTimeOffset? StartedAt
         {
-            get { return BackingStore?.Get<int?>("remainingSeconds"); }
-            set { BackingStore?.Set("remainingSeconds", value); }
+            get { return BackingStore?.Get<DateTimeOffset?>("started_at"); }
+            set { BackingStore?.Set("started_at", value); }
         }
         /// <summary>The total seconds of the cooldown.</summary>
-        public int? Total_seconds
+        public int? TotalSeconds
         {
             get { return BackingStore?.Get<int?>("total_seconds"); }
             set { BackingStore?.Set("total_seconds", value); }
-        }
-        /// <summary>Deprecated** The total seconds of the cooldown.</summary>
-        public int? TotalSeconds
-        {
-            get { return BackingStore?.Get<int?>("totalSeconds"); }
-            set { BackingStore?.Set("totalSeconds", value); }
         }
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema"/> and sets the default values.
@@ -77,10 +71,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "expiration", n => { Expiration = n.GetDateTimeOffsetValue(); } },
                 { "reason", n => { Reason = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema_reason>(); } },
-                { "remainingSeconds", n => { RemainingSeconds = n.GetIntValue(); } },
-                { "totalSeconds", n => { TotalSeconds = n.GetIntValue(); } },
-                { "remaining_seconds", n => { Remaining_seconds = n.GetIntValue(); } },
-                { "total_seconds", n => { Total_seconds = n.GetIntValue(); } },
+                { "remaining_seconds", n => { RemainingSeconds = n.GetIntValue(); } },
+                { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
+                { "total_seconds", n => { TotalSeconds = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -92,10 +85,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("expiration", Expiration);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema_reason>("reason", Reason);
-            writer.WriteIntValue("remaining_seconds", Remaining_seconds);
-            writer.WriteIntValue("remainingSeconds", RemainingSeconds);
-            writer.WriteIntValue("total_seconds", Total_seconds);
-            writer.WriteIntValue("totalSeconds", TotalSeconds);
+            writer.WriteIntValue("remaining_seconds", RemainingSeconds);
+            writer.WriteDateTimeOffsetValue("started_at", StartedAt);
+            writer.WriteIntValue("total_seconds", TotalSeconds);
         }
     }
 }

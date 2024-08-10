@@ -68,6 +68,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("next_wipe", value); }
         }
 #endif
+        /// <summary>The server_time property</summary>
+        public DateTimeOffset? ServerTime
+        {
+            get { return BackingStore?.Get<DateTimeOffset?>("server_time"); }
+            set { BackingStore?.Set("server_time", value); }
+        }
         /// <summary>Server status</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -84,7 +90,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("status", value); }
         }
 #endif
-        /// <summary>Game version.</summary>
+        /// <summary>The version property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Version
@@ -129,6 +135,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "characters_online", n => { CharactersOnline = n.GetIntValue(); } },
                 { "last_wipe", n => { LastWipe = n.GetStringValue(); } },
                 { "next_wipe", n => { NextWipe = n.GetStringValue(); } },
+                { "server_time", n => { ServerTime = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
             };
@@ -144,6 +151,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("characters_online", CharactersOnline);
             writer.WriteStringValue("last_wipe", LastWipe);
             writer.WriteStringValue("next_wipe", NextWipe);
+            writer.WriteDateTimeOffsetValue("server_time", ServerTime);
             writer.WriteStringValue("status", Status);
             writer.WriteStringValue("version", Version);
         }

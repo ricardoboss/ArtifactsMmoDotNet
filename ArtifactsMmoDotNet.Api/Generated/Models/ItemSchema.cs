@@ -33,16 +33,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Craft information. If applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft? Craft
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema? Craft
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft?>("craft"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema?>("craft"); }
             set { BackingStore?.Set("craft", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft Craft
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema Craft
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft>("craft"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>("craft"); }
             set { BackingStore?.Set("craft", value); }
         }
 #endif
@@ -158,7 +158,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "craft", n => { Craft = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft>(global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft.CreateFromDiscriminatorValue); } },
+                { "craft", n => { Craft = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "effects", n => { Effects = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
@@ -175,106 +175,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft>("craft", Craft);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>("craft", Craft);
             writer.WriteStringValue("description", Description);
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>("effects", Effects);
             writer.WriteIntValue("level", Level);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("subtype", Subtype);
             writer.WriteStringValue("type", Type);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema"/>, <see cref="Null"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-        public partial class ItemSchema_craft : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema? CraftSchema
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema?>("CraftSchema"); }
-                set { BackingStore?.Set("CraftSchema", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema CraftSchema
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>("CraftSchema"); }
-                set { BackingStore?.Set("CraftSchema", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft"/> and sets the default values.
-            /// </summary>
-            public ItemSchema_craft()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.ItemSchema_craft();
-                if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
-                }
-                else {
-                    result.CraftSchema = new global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(CraftSchema != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(CraftSchema);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>(null, CraftSchema);
-                }
-            }
         }
     }
 }

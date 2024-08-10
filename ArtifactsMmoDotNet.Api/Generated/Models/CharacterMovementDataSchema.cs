@@ -49,16 +49,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Destination details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema? Destination
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? Destination
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema?>("destination"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema?>("destination"); }
             set { BackingStore?.Set("destination", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema Destination
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema Destination
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema>("destination"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("destination"); }
             set { BackingStore?.Set("destination", value); }
         }
 #endif
@@ -89,7 +89,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "character", n => { Character = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema.CreateFromDiscriminatorValue); } },
-                { "destination", n => { Destination = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema.CreateFromDiscriminatorValue); } },
+                { "destination", n => { Destination = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -101,7 +101,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationResponseSchema>("destination", Destination);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("destination", Destination);
         }
     }
 }

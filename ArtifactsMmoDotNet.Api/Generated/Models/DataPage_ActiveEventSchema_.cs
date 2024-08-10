@@ -9,7 +9,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     #pragma warning disable CS1591
-    public partial class DataPage_EventSchema_ : IBackedModel, IParsable
+    public partial class DataPage_ActiveEventSchema_ : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
@@ -17,99 +17,99 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema>? Data
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema>? Data
         {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema>?>("data"); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema>?>("data"); }
             set { BackingStore?.Set("data", value); }
         }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema> Data
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema> Data
         {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema>>("data"); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema>>("data"); }
             set { BackingStore?.Set("data", value); }
         }
 #endif
         /// <summary>The page property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page? Page
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page? Page
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page?>("page"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page?>("page"); }
             set { BackingStore?.Set("page", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page Page
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page Page
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page>("page"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page>("page"); }
             set { BackingStore?.Set("page", value); }
         }
 #endif
         /// <summary>The pages property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages? Pages
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages? Pages
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages?>("pages"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages?>("pages"); }
             set { BackingStore?.Set("pages", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages Pages
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages Pages
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages>("pages"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages>("pages"); }
             set { BackingStore?.Set("pages", value); }
         }
 #endif
         /// <summary>The size property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size? Size
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size? Size
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size?>("size"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size?>("size"); }
             set { BackingStore?.Set("size", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size Size
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size Size
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size>("size"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size>("size"); }
             set { BackingStore?.Set("size", value); }
         }
 #endif
         /// <summary>The total property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total? Total
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total? Total
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total?>("total"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total?>("total"); }
             set { BackingStore?.Set("total", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total Total
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total Total
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total>("total"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total>("total"); }
             set { BackingStore?.Set("total", value); }
         }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_"/> and sets the default values.
         /// </summary>
-        public DataPage_EventSchema_()
+        public DataPage_ActiveEventSchema_()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_ CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_ CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -119,11 +119,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "page", n => { Page = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page.CreateFromDiscriminatorValue); } },
-                { "pages", n => { Pages = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages.CreateFromDiscriminatorValue); } },
-                { "size", n => { Size = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size.CreateFromDiscriminatorValue); } },
-                { "total", n => { Total = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "page", n => { Page = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page.CreateFromDiscriminatorValue); } },
+                { "pages", n => { Pages = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages.CreateFromDiscriminatorValue); } },
+                { "size", n => { Size = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size.CreateFromDiscriminatorValue); } },
+                { "total", n => { Total = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -133,17 +133,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema>("data", Data);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page>("page", Page);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages>("pages", Pages);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size>("size", Size);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total>("total", Total);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema>("data", Data);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page>("page", Page);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages>("pages", Pages);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size>("size", Size);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total>("total", Total);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-        public partial class DataPage_EventSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
+        public partial class DataPage_ActiveEventSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
@@ -170,21 +170,21 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             }
 #endif
             /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page"/> and sets the default values.
+            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page"/> and sets the default values.
             /// </summary>
-            public DataPage_EventSchema__page()
+            public DataPage_ActiveEventSchema__page()
             {
                 BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
             }
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page"/></returns>
+            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page"/></returns>
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page CreateFromDiscriminatorValue(IParseNode parseNode)
+            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__page();
+                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__page();
                 if(parseNode.GetIntValue() is int integerValue)
                 {
                     result.Integer = integerValue;
@@ -224,7 +224,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-        public partial class DataPage_EventSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
+        public partial class DataPage_ActiveEventSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
@@ -251,21 +251,21 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             }
 #endif
             /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages"/> and sets the default values.
+            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages"/> and sets the default values.
             /// </summary>
-            public DataPage_EventSchema__pages()
+            public DataPage_ActiveEventSchema__pages()
             {
                 BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
             }
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages"/></returns>
+            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages"/></returns>
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages CreateFromDiscriminatorValue(IParseNode parseNode)
+            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__pages();
+                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__pages();
                 if(parseNode.GetIntValue() is int integerValue)
                 {
                     result.Integer = integerValue;
@@ -305,7 +305,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-        public partial class DataPage_EventSchema__size : IBackedModel, IComposedTypeWrapper, IParsable
+        public partial class DataPage_ActiveEventSchema__size : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
@@ -332,21 +332,21 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             }
 #endif
             /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size"/> and sets the default values.
+            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size"/> and sets the default values.
             /// </summary>
-            public DataPage_EventSchema__size()
+            public DataPage_ActiveEventSchema__size()
             {
                 BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
             }
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size"/></returns>
+            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size"/></returns>
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size CreateFromDiscriminatorValue(IParseNode parseNode)
+            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__size();
+                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__size();
                 if(parseNode.GetIntValue() is int integerValue)
                 {
                     result.Integer = integerValue;
@@ -386,7 +386,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-        public partial class DataPage_EventSchema__total : IBackedModel, IComposedTypeWrapper, IParsable
+        public partial class DataPage_ActiveEventSchema__total : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
@@ -413,21 +413,21 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             }
 #endif
             /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total"/> and sets the default values.
+            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total"/> and sets the default values.
             /// </summary>
-            public DataPage_EventSchema__total()
+            public DataPage_ActiveEventSchema__total()
             {
                 BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
             }
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total"/></returns>
+            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total"/></returns>
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total CreateFromDiscriminatorValue(IParseNode parseNode)
+            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_EventSchema_.DataPage_EventSchema__total();
+                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ActiveEventSchema_.DataPage_ActiveEventSchema__total();
                 if(parseNode.GetIntValue() is int integerValue)
                 {
                     result.Integer = integerValue;
