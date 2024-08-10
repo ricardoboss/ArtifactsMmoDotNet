@@ -4905,12 +4905,9 @@
             "description": "List of object effects. For equipment, it will include item stats."
           },
           "craft": {
-            "anyOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/CraftSchema"
-              },
-              {
-                "type": "null"
               }
             ],
             "description": "Craft information. If applicable."
