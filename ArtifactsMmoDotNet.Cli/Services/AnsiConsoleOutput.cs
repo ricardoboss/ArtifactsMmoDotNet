@@ -11,4 +11,11 @@ public class AnsiConsoleOutput : IOutput
 
         return Task.CompletedTask;
     }
+
+    public Task LogInfoAsync(string message)
+    {
+        AnsiConsole.MarkupLine($"[grey]{message}[/]");
+
+        return Task.CompletedTask;
+    }
 }

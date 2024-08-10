@@ -3,4 +3,6 @@
 public interface IOutput
 {
     Task ShowConfirmationAsync(string message);
+
+    Task LogInfoAsync(string message);
 }

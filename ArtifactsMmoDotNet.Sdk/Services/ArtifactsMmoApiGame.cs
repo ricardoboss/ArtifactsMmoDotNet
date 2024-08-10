@@ -276,7 +276,7 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
         return (character.X!.Value, character.Y!.Value);
     }
 
-    public async Task<IEnumerable<InventorySlot>> GetInventory()
+    public async IAsyncEnumerable<InventorySlot> GetInventory()
     {
         var character = await GetCharacterAsync();
 
@@ -284,7 +284,13 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
 
         game.UpdateCooldownEnd(cooldownEnd);
 
-        return character.Inventory!.Where(i => i.Quantity!.Value > 0);
+        foreach (var inventorySlot in character.Inventory!)
+        {
+            if (inventorySlot.Quantity!.Value <= 0)
+                continue;
+
+            yield return inventorySlot;
+        }
     }
 
     public async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment()

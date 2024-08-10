@@ -4,19 +4,27 @@ namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
 public class GatherItemAction(string itemCode, int quantity = 1) : BaseAction
 {
-    public override string Name => $"Gather {quantity}x{itemCode}";
+    public override string Name => $"Gather {quantity} {itemCode}";
 
     public override TimeSpan Cooldown => TimeSpan.FromSeconds(25);
 
     public override async Task Execute(IAutomationContext context)
     {
-        while (true)
+        for (var totalAmountGathered = 0; totalAmountGathered < quantity;)
         {
-            await context.Game.With(context.CharacterName).Gather();
+            var result = await context.Game.With(context.CharacterName).Gather();
 
-            var inventory = (await context.Game.From(context.CharacterName).GetInventory()).ToList();
-            if (inventory.Any(i => i.Code == itemCode && i.Quantity >= quantity))
-                break;
+            var amountGathered = result.Details!.Items!.First().Quantity!.Value;
+            totalAmountGathered += amountGathered;
+
+            var remaining = quantity - totalAmountGathered;
+
+            await context.Output.LogInfoAsync($"Gathered {amountGathered} {itemCode} ({remaining} remaining)");
+
+            if (context.Game.RemainingCooldown <= TimeSpan.Zero)
+                continue;
+
+            await context.Output.LogInfoAsync($"Cooldown: {context.Game.RemainingCooldown.TotalSeconds:0.0}s");
 
             await Task.Delay(context.Game.RemainingCooldown);
         }

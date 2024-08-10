@@ -27,7 +27,7 @@ public interface IGame
     {
         Task<(int x, int y)> GetPosition();
 
-        Task<IEnumerable<InventorySlot>> GetInventory();
+        IAsyncEnumerable<InventorySlot> GetInventory();
 
         Task<IDictionary<EquipSchema_slot, string?>> GetEquipment();
     }

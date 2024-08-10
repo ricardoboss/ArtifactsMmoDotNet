@@ -3,13 +3,14 @@ using ArtifactsMmoDotNet.Sdk.Automation;
 using ArtifactsMmoDotNet.Sdk.Automation.Requirements;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace ArtifactsMmoDotNet.Cli.Commands;
 
-internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
+internal sealed class InteractiveCommand(IGame game, ILoginService loginService, IOutput output)
     : AsyncCommand<InteractiveCommand.Settings>
 {
     public sealed class Settings : CommandSettings;
@@ -41,18 +42,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
         do
         {
             if (game.RemainingCooldown > TimeSpan.Zero)
-            {
-                await AnsiConsole.Status().Spinner(Spinner.Known.Clock!)
-                    .StartAsync("Waiting for cooldown...", async ctx =>
-                    {
-                        while (game.RemainingCooldown > TimeSpan.Zero)
-                        {
-                            await Task.Delay(100);
-
-                            ctx.Status($"Cooldown: [blue]{game.RemainingCooldown.TotalSeconds:0.0}s[/] left");
-                        }
-                    });
-            }
+                await GameCooldown(game);
 
             var subcommand = AnsiConsole.Prompt(subCommandPrompt);
 
@@ -114,12 +104,30 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
         } while (true);
     }
 
+    private static async Task GameCooldown(IGame game)
+    {
+        await AnsiConsole.Status().Spinner(Spinner.Known.Clock!)
+            .StartAsync("Waiting for cooldown...", async ctx =>
+            {
+                while (game.RemainingCooldown > TimeSpan.Zero)
+                {
+                    await Task.Delay(100);
+
+                    ctx.Status($"Cooldown: [blue]{game.RemainingCooldown.TotalSeconds:0.0}s[/] left");
+                }
+            });
+    }
+
     private async Task Automation(string characterName)
     {
-        var context = new AutomationContext(game, characterName);
+        var context = new AutomationContext(game, characterName, output);
 
-        // TODO: create cli prompts to build root requirement
-        var rootRequirement = new HaveItemInInventory("wooden_stick");
+        // TODO: create cli prompts to build root requirement gradually
+
+        var itemCode = AnsiConsole.Ask<string>("[yellow]What item to automate?[/]");
+        var quantity = AnsiConsole.Ask<int>("[yellow]How many of that item?[/]");
+
+        var rootRequirement = new HaveItemInInventory(itemCode, quantity);
 
         await FulfilRequirement(context, rootRequirement);
     }
@@ -145,6 +153,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
             AnsiConsole.MarkupLine($"[yellow]Executing action [green]{action.Name}[/][/]");
 
             await action.Execute(context);
+
+            await GameCooldown(context.Game);
         }
     }
 
@@ -157,7 +167,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
             WrapAround = true,
             Converter = l => l.Location is null
                 ? "Cancel"
-                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - provides {l.Location.Content!.MapContentSchema!.Type}",
+                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - provides {l.Location.Content!.Type}",
         };
 
         var locations = await game.GetMaps().Select(l => new KnownLocationOrCancel(l)).ToListAsync();
@@ -214,7 +224,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService)
     private async Task<IEnumerable<InventorySlot>> GetInventory(string characterName)
     {
         return await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Fetching inventory...", async _ => await game.From(characterName).GetInventory());
+            .StartAsync("Fetching inventory...", async _ => await game.From(characterName).GetInventory().ToListAsync());
     }
 
     private async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment(string characterName)
