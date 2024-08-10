@@ -4,11 +4,10 @@ using Microsoft.Kiota.Abstractions.Store;
 // ReSharper disable once CheckNamespace
 namespace ArtifactsMmoDotNet.Api.Generated.Models;
 
-public class Null : IBackedModel, IParsable
+public class Null : IParsable
 {
     private Null()
     {
-        BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
     }
 
     public IDictionary<string, Action<IParseNode>> GetFieldDeserializers() => new Dictionary<string, Action<IParseNode>>();
@@ -21,6 +20,4 @@ public class Null : IBackedModel, IParsable
 
         return new Null();
     }
-
-    public IBackingStore BackingStore { get; private set; }
 }
