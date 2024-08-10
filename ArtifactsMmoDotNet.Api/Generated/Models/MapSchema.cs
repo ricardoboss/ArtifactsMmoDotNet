@@ -17,16 +17,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Content of the map.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content? Content
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema? Content
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content?>("content"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema?>("content"); }
             set { BackingStore?.Set("content", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content Content
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema Content
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content>("content"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>("content"); }
             set { BackingStore?.Set("content", value); }
         }
 #endif
@@ -99,7 +99,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content.CreateFromDiscriminatorValue); } },
+                { "content", n => { Content = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "skin", n => { Skin = n.GetStringValue(); } },
                 { "x", n => { X = n.GetIntValue(); } },
@@ -113,104 +113,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content>("content", Content);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>("content", Content);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("skin", Skin);
             writer.WriteIntValue("x", X);
             writer.WriteIntValue("y", Y);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema"/>, <see cref="Null"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-        public partial class MapSchema_content : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema? MapContentSchema
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema?>("MapContentSchema"); }
-                set { BackingStore?.Set("MapContentSchema", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema MapContentSchema
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>("MapContentSchema"); }
-                set { BackingStore?.Set("MapContentSchema", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content"/> and sets the default values.
-            /// </summary>
-            public MapSchema_content()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.MapSchema_content();
-                if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
-                }
-                else {
-                    result.MapContentSchema = new global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(MapContentSchema != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MapContentSchema);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>(null, MapContentSchema);
-                }
-            }
         }
     }
 }
