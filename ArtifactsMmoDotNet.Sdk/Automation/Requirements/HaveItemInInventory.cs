@@ -21,7 +21,7 @@ public class HaveItemInInventory(string itemCode, int quantity = 1) : IRequireme
     public async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
     {
         var item = (await context.Game.GetItem(itemCode)).Item!;
-        if (item.Craft is { CraftSchema: { } craftInfo })
+        if (item.Craft is { } craftInfo)
         {
             yield return new CraftItemAction(itemCode, craftInfo, quantity);
         }
