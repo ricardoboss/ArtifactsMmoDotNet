@@ -4734,12 +4734,9 @@
             "description": "Position Y of the map."
           },
           "content": {
-            "anyOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/MapContentSchema"
-              },
-              {
-                "type": "null"
               }
             ],
             "description": "Content of the map."
