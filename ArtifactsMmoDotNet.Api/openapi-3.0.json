@@ -5574,12 +5574,9 @@
             "description": "List of object effects. For equipment, it will include item stats."
           },
           "craft": {
-            "anyOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/CraftSchema"
-              },
-              {
-                "type": "null"
               }
             ],
             "description": "Craft information. If applicable."
@@ -5715,12 +5712,9 @@
             "description": "Position Y of the map."
           },
           "content": {
-            "anyOf": [
+            "allOf": [
               {
                 "$ref": "#/components/schemas/MapContentSchema"
-              },
-              {
-                "type": "null"
               }
             ],
             "description": "Content of the map."
