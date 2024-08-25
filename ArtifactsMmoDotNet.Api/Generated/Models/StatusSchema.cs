@@ -12,7 +12,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     public partial class StatusSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The announcements property</summary>
+        /// <summary>Server announcements.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>? Announcements
@@ -30,7 +30,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 #endif
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>The characters_online property</summary>
+        /// <summary>Characters online.</summary>
         public int? CharactersOnline
         {
             get { return BackingStore?.Get<int?>("characters_online"); }
@@ -52,6 +52,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("last_wipe", value); }
         }
 #endif
+        /// <summary>Maximum level.</summary>
+        public int? MaxLevel
+        {
+            get { return BackingStore?.Get<int?>("max_level"); }
+            set { BackingStore?.Set("max_level", value); }
+        }
         /// <summary>Next server wipe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -68,7 +74,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("next_wipe", value); }
         }
 #endif
-        /// <summary>The server_time property</summary>
+        /// <summary>Server time.</summary>
         public DateTimeOffset? ServerTime
         {
             get { return BackingStore?.Get<DateTimeOffset?>("server_time"); }
@@ -134,6 +140,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "announcements", n => { Announcements = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "characters_online", n => { CharactersOnline = n.GetIntValue(); } },
                 { "last_wipe", n => { LastWipe = n.GetStringValue(); } },
+                { "max_level", n => { MaxLevel = n.GetIntValue(); } },
                 { "next_wipe", n => { NextWipe = n.GetStringValue(); } },
                 { "server_time", n => { ServerTime = n.GetDateTimeOffsetValue(); } },
                 { "status", n => { Status = n.GetStringValue(); } },
@@ -150,6 +157,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>("announcements", Announcements);
             writer.WriteIntValue("characters_online", CharactersOnline);
             writer.WriteStringValue("last_wipe", LastWipe);
+            writer.WriteIntValue("max_level", MaxLevel);
             writer.WriteStringValue("next_wipe", NextWipe);
             writer.WriteDateTimeOffsetValue("server_time", ServerTime);
             writer.WriteStringValue("status", Status);

@@ -9,39 +9,43 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     #pragma warning disable CS1591
-    public partial class UnequipSchema : IBackedModel, IParsable
+    public partial class BankGoldTransactionResponseSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Item quantity. Applicable to consumables only.</summary>
-        public int? Quantity
+        /// <summary>The data property</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema? Data
         {
-            get { return BackingStore?.Get<int?>("quantity"); }
-            set { BackingStore?.Set("quantity", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema?>("data"); }
+            set { BackingStore?.Set("data", value); }
         }
-        /// <summary>Item slot.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema_slot? Slot
+#nullable restore
+#else
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema Data
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema_slot?>("slot"); }
-            set { BackingStore?.Set("slot", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema>("data"); }
+            set { BackingStore?.Set("data", value); }
         }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema"/> and sets the default values.
         /// </summary>
-        public UnequipSchema()
+        public BankGoldTransactionResponseSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -51,8 +55,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "quantity", n => { Quantity = n.GetIntValue(); } },
-                { "slot", n => { Slot = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema_slot>(); } },
+                { "data", n => { Data = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -62,8 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("quantity", Quantity);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema_slot>("slot", Slot);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionSchema>("data", Data);
         }
     }
 }

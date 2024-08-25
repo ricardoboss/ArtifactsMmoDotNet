@@ -30,6 +30,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
+        /// <summary>Item quantity. Applicable to consumables only.</summary>
+        public int? Quantity
+        {
+            get { return BackingStore?.Get<int?>("quantity"); }
+            set { BackingStore?.Set("quantity", value); }
+        }
         /// <summary>Item slot.</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot? Slot
         {
@@ -62,6 +68,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "quantity", n => { Quantity = n.GetIntValue(); } },
                 { "slot", n => { Slot = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot>(); } },
             };
         }
@@ -73,6 +80,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
+            writer.WriteIntValue("quantity", Quantity);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot>("slot", Slot);
         }
     }

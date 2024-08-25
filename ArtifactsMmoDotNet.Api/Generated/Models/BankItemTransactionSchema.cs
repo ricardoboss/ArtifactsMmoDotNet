@@ -9,24 +9,24 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     #pragma warning disable CS1591
-    public partial class GoldTransactionSchema : IBackedModel, IParsable
+    public partial class BankItemTransactionSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Bank details.</summary>
+        /// <summary>Items in your banks.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema? Bank
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>? Bank
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema?>("bank"); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>?>("bank"); }
             set { BackingStore?.Set("bank", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema Bank
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema> Bank
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema>("bank"); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>>("bank"); }
             set { BackingStore?.Set("bank", value); }
         }
 #endif
@@ -62,22 +62,38 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("cooldown", value); }
         }
 #endif
+        /// <summary>Item details.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema? Item
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema?>("item"); }
+            set { BackingStore?.Set("item", value); }
+        }
+#nullable restore
+#else
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema Item
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>("item"); }
+            set { BackingStore?.Set("item", value); }
+        }
+#endif
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GoldTransactionSchema"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema"/> and sets the default values.
         /// </summary>
-        public GoldTransactionSchema()
+        public BankItemTransactionSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GoldTransactionSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.GoldTransactionSchema CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.GoldTransactionSchema();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -87,9 +103,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "bank", n => { Bank = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema.CreateFromDiscriminatorValue); } },
+                { "bank", n => { Bank = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "character", n => { Character = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema.CreateFromDiscriminatorValue); } },
+                { "item", n => { Item = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -99,9 +116,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema>("bank", Bank);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>("bank", Bank);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>("item", Item);
         }
     }
 }

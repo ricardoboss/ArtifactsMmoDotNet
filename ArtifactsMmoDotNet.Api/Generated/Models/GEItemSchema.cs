@@ -36,6 +36,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
+        /// <summary>The number of items you can buy or sell at the same time.</summary>
+        public int? MaxQuantity
+        {
+            get { return BackingStore?.Get<int?>("max_quantity"); }
+            set { BackingStore?.Set("max_quantity", value); }
+        }
         /// <summary>The item&apos;s selling price.</summary>
         public int? SellPrice
         {
@@ -75,6 +81,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "buy_price", n => { BuyPrice = n.GetIntValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "max_quantity", n => { MaxQuantity = n.GetIntValue(); } },
                 { "sell_price", n => { SellPrice = n.GetIntValue(); } },
                 { "stock", n => { Stock = n.GetIntValue(); } },
             };
@@ -88,6 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("buy_price", BuyPrice);
             writer.WriteStringValue("code", Code);
+            writer.WriteIntValue("max_quantity", MaxQuantity);
             writer.WriteIntValue("sell_price", SellPrice);
             writer.WriteIntValue("stock", Stock);
         }

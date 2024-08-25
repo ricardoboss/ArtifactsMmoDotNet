@@ -9,7 +9,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     #pragma warning disable CS1591
-    public partial class GoldBankResponseSchema : IBackedModel, IParsable
+    public partial class BankItemTransactionResponseSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
@@ -17,35 +17,35 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema? Data
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema? Data
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema?>("data"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema?>("data"); }
             set { BackingStore?.Set("data", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema Data
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema Data
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema>("data"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema>("data"); }
             set { BackingStore?.Set("data", value); }
         }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionResponseSchema"/> and sets the default values.
         /// </summary>
-        public GoldBankResponseSchema()
+        public BankItemTransactionResponseSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionResponseSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionResponseSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionResponseSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -55,7 +55,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -65,7 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldSchema>("data", Data);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BankItemTransactionSchema>("data", Data);
         }
     }
 }

@@ -8,50 +8,50 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Threading;
 using System;
-namespace ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold
+namespace ArtifactsMmoDotNet.Api.Generated.Achievements.Item
 {
     /// <summary>
-    /// Builds and executes requests for operations under \my\bank\gold
+    /// Builds and executes requests for operations under \achievements\{code}
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
-    public partial class GoldRequestBuilder : BaseRequestBuilder
+    public partial class WithCodeItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold.GoldRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Achievements.Item.WithCodeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GoldRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/my/bank/gold", pathParameters)
+        public WithCodeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/achievements/{code}", pathParameters)
         {
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold.GoldRequestBuilder"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Achievements.Item.WithCodeItemRequestBuilder"/> and sets the default values.
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public GoldRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/my/bank/gold", rawUrl)
+        public WithCodeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/achievements/{code}", rawUrl)
         {
         }
         /// <summary>
-        /// Fetch golds in your bank.
+        /// Retrieve the details of a achievement.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BaseachievementResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.BaseachievementResponseSchema?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.BaseachievementResponseSchema> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.GoldBankResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.BaseachievementResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.BaseachievementResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch golds in your bank.
+        /// Retrieve the details of a achievement.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -72,11 +72,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold
         /// <summary>
         /// Returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold.GoldRequestBuilder"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Achievements.Item.WithCodeItemRequestBuilder"/></returns>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
-        public global::ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold.GoldRequestBuilder WithUrl(string rawUrl)
+        public global::ArtifactsMmoDotNet.Api.Generated.Achievements.Item.WithCodeItemRequestBuilder WithUrl(string rawUrl)
         {
-            return new global::ArtifactsMmoDotNet.Api.Generated.My.Bank.Gold.GoldRequestBuilder(rawUrl, RequestAdapter);
+            return new global::ArtifactsMmoDotNet.Api.Generated.Achievements.Item.WithCodeItemRequestBuilder(rawUrl, RequestAdapter);
         }
     }
 }

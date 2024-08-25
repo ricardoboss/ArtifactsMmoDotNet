@@ -12,6 +12,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     public partial class CharacterSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>achievements points.</summary>
+        public int? AchievementsPoints
+        {
+            get { return BackingStore?.Get<int?>("achievements_points"); }
+            set { BackingStore?.Set("achievements_points", value); }
+        }
         /// <summary>Amulet slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -544,12 +550,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("task_type", value); }
         }
 #endif
-        /// <summary>Total XP of your character.</summary>
-        public int? TotalXp
-        {
-            get { return BackingStore?.Get<int?>("total_xp"); }
-            set { BackingStore?.Set("total_xp", value); }
-        }
         /// <summary>Weaponcrafting level.</summary>
         public int? WeaponcraftingLevel
         {
@@ -645,6 +645,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
                 { "amulet_slot", n => { AmuletSlot = n.GetStringValue(); } },
                 { "artifact1_slot", n => { Artifact1Slot = n.GetStringValue(); } },
                 { "artifact2_slot", n => { Artifact2Slot = n.GetStringValue(); } },
@@ -705,7 +706,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "task_progress", n => { TaskProgress = n.GetIntValue(); } },
                 { "task_total", n => { TaskTotal = n.GetIntValue(); } },
                 { "task_type", n => { TaskType = n.GetStringValue(); } },
-                { "total_xp", n => { TotalXp = n.GetIntValue(); } },
                 { "weapon_slot", n => { WeaponSlot = n.GetStringValue(); } },
                 { "weaponcrafting_level", n => { WeaponcraftingLevel = n.GetIntValue(); } },
                 { "weaponcrafting_max_xp", n => { WeaponcraftingMaxXp = n.GetIntValue(); } },
@@ -725,6 +725,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("achievements_points", AchievementsPoints);
             writer.WriteStringValue("amulet_slot", AmuletSlot);
             writer.WriteStringValue("artifact1_slot", Artifact1Slot);
             writer.WriteStringValue("artifact2_slot", Artifact2Slot);
@@ -785,7 +786,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("task_progress", TaskProgress);
             writer.WriteIntValue("task_total", TaskTotal);
             writer.WriteStringValue("task_type", TaskType);
-            writer.WriteIntValue("total_xp", TotalXp);
             writer.WriteIntValue("weaponcrafting_level", WeaponcraftingLevel);
             writer.WriteIntValue("weaponcrafting_max_xp", WeaponcraftingMaxXp);
             writer.WriteIntValue("weaponcrafting_xp", WeaponcraftingXp);
