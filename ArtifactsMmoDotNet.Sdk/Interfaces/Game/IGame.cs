@@ -38,6 +38,12 @@ public interface IGame
 
     TimeSpan RemainingCooldown { get; }
 
+    bool AutoWaitForCooldown { get; set; }
+
+    Func<DateTimeOffset, Task>? OnAwaitCooldown { get; set; }
+
+    Task WaitForCooldown();
+
     IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null,
         GetContent_typeQueryParameterType? contentType = null);
 

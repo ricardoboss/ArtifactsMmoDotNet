@@ -9,8 +9,6 @@ public class HaveItemInInventory(string itemCode, int quantity = 1) : IRequireme
 {
     public string Name => $"Have {quantity} {itemCode} in inventory";
 
-    public TimeSpan Cooldown => TimeSpan.FromSeconds(5);
-
     public async Task<bool> IsFulfilled(IAutomationContext context)
     {
         return await context.Game.From(context.CharacterName).GetInventory()

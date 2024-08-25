@@ -6,8 +6,6 @@ public class GatherItemAction(string itemCode, int quantity = 1) : BaseAction
 {
     public override string Name => $"Gather {quantity} {itemCode}";
 
-    public override TimeSpan Cooldown => TimeSpan.FromSeconds(25);
-
     public override async Task Execute(IAutomationContext context)
     {
         for (var totalAmountGathered = 0; totalAmountGathered < quantity;)
@@ -24,9 +22,7 @@ public class GatherItemAction(string itemCode, int quantity = 1) : BaseAction
             if (context.Game.RemainingCooldown <= TimeSpan.Zero)
                 continue;
 
-            await context.Output.LogInfoAsync($"Cooldown: {context.Game.RemainingCooldown.TotalSeconds:0.0}s");
-
-            await Task.Delay(context.Game.RemainingCooldown);
+            await context.Game.WaitForCooldown();
         }
     }
 }

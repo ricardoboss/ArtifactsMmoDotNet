@@ -8,8 +8,6 @@ public class EquipItemInSlot(EquipSchema_slot slot, string itemCode) : BaseActio
 {
     public override string Name { get; } = $"Equip item in slot {slot}";
 
-    public override TimeSpan Cooldown { get; } = TimeSpan.FromSeconds(2);
-
     public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
     {
         yield return new HaveItemInInventory(itemCode);

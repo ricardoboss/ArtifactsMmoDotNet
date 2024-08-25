@@ -33,6 +33,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             WrapAround = true,
         };
 
+        game.OnAwaitCooldown = WaitForCooldown;
+
         subCommandPrompt.AddChoice("automation");
         subCommandPrompt
             .AddChoiceGroup("Actions", "move", "fight", "gather", "unequip", "craft", "equip", "go")
@@ -41,8 +43,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
         do
         {
-            if (game.RemainingCooldown > TimeSpan.Zero)
-                await GameCooldown(game);
+            await game.WaitForCooldown();
 
             var subcommand = AnsiConsole.Prompt(subCommandPrompt);
 
@@ -104,22 +105,27 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         } while (true);
     }
 
-    private static async Task GameCooldown(IGame game)
+    private static async Task WaitForCooldown(DateTimeOffset cooldownEnd)
     {
         await AnsiConsole.Status().Spinner(Spinner.Known.Clock!)
             .StartAsync("Waiting for cooldown...", async ctx =>
             {
-                while (game.RemainingCooldown > TimeSpan.Zero)
+                TimeSpan remaining;
+                do
                 {
                     await Task.Delay(100);
 
-                    ctx.Status($"Cooldown: [blue]{game.RemainingCooldown.TotalSeconds:0.0}s[/] left");
-                }
+                    remaining = cooldownEnd - DateTimeOffset.UtcNow;
+
+                    ctx.Status($"[blue] Cooldown:{remaining.TotalSeconds:0.0}s[/] left");
+                } while (remaining > TimeSpan.Zero);
             });
     }
 
     private async Task Automation(string characterName)
     {
+        game.AutoWaitForCooldown = true;
+
         var context = new AutomationContext(game, characterName, output);
 
         // TODO: create cli prompts to build root requirement gradually
@@ -154,7 +160,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
             await action.Execute(context);
 
-            await GameCooldown(context.Game);
+            await context.Game.WaitForCooldown();
         }
     }
 
@@ -167,10 +173,13 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             WrapAround = true,
             Converter = l => l.Location is null
                 ? "Cancel"
-                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - provides {l.Location.Content!.Type}",
+                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - contains {l.Location.Content!.Type} ({l.Location.Content!.Code})",
         };
 
-        var locations = await game.GetMaps().Select(l => new KnownLocationOrCancel(l)).ToListAsync();
+        var locations = await game.GetMaps()
+            .Where(m => m.Content is not null)
+            .Select(l => new KnownLocationOrCancel(l))
+            .ToListAsync();
 
         prompt.AddChoices(locations)
             .AddChoice(new KnownLocationOrCancel(null));
@@ -224,7 +233,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
     private async Task<IEnumerable<InventorySlot>> GetInventory(string characterName)
     {
         return await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Fetching inventory...", async _ => await game.From(characterName).GetInventory().ToListAsync());
+            .StartAsync("Fetching inventory...",
+                async _ => await game.From(characterName).GetInventory().ToListAsync());
     }
 
     private async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment(string characterName)

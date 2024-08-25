@@ -6,8 +6,6 @@ public abstract class BaseAction : IAction
 {
     public abstract string Name { get; }
 
-    public abstract TimeSpan Cooldown { get; }
-
     public virtual async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
     {
         yield break;

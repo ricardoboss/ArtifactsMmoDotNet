@@ -9,8 +9,6 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
 {
     public override string Name => $"Craft {quantity} {itemCode}";
 
-    public override TimeSpan Cooldown => TimeSpan.FromSeconds(25);
-
     public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
     {
         // gather all items
@@ -31,8 +29,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
 
             await context.Game.With(context.CharacterName).Craft(itemCode);
 
-            await context.Output.LogInfoAsync($"Cooldown: {context.Game.RemainingCooldown.TotalSeconds:0.0}s");
-            await Task.Delay(context.Game.RemainingCooldown);
+            await context.Game.WaitForCooldown();
         }
     }
 
@@ -64,7 +61,6 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
         await context.Output.LogInfoAsync(
             $"Moved to {nearestWorkshop.Content!.Code} workshop at {nearestWorkshop.X!.Value}, {nearestWorkshop.Y!.Value}");
 
-        await context.Output.LogInfoAsync($"Cooldown: {context.Game.RemainingCooldown.TotalSeconds:0.0}s");
-        await Task.Delay(context.Game.RemainingCooldown);
+        await context.Game.WaitForCooldown();
     }
 }

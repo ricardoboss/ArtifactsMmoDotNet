@@ -19,9 +19,11 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
     private DateTimeOffset _lastCooldownEnd = DateTimeOffset.MinValue;
 
-    internal void UpdateCooldownEnd(DateTimeOffset end)
+    internal Task UpdateCooldownEnd(DateTimeOffset end)
     {
         _lastCooldownEnd = end;
+
+        return AutoWaitForCooldown ? WaitForCooldown() : Task.CompletedTask;
     }
 
     public TimeSpan RemainingCooldown
@@ -35,9 +37,14 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
         }
     }
 
+    public bool AutoWaitForCooldown { get; set; }
+
+    public Func<DateTimeOffset, Task>? OnAwaitCooldown { get; set; }
+
     private readonly List<MapSchema> cachedLocations = [];
 
-    public async Task WaitForCooldown() => await Task.Delay(RemainingCooldown);
+    public Task WaitForCooldown() =>
+        OnAwaitCooldown?.Invoke(_lastCooldownEnd) ?? Task.Delay(RemainingCooldown);
 
     public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null,
         GetContent_typeQueryParameterType? contentType = null)
@@ -142,7 +149,8 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
     private readonly List<ResourceSchema> cachedResources = [];
 
-    public async IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null, int? maxLevel = null)
+    public async IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null,
+        int? maxLevel = null)
     {
         var useCache = drop is null && minLevel is null && maxLevel is null;
 
@@ -189,7 +197,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
     {
         var result = (await apiClient.My![characterName]!.Action!.Fight!.PostAsync())!.Data!;
 
-        game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
         return result;
     }
@@ -204,7 +212,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
 
         var result = (await apiClient.My![characterName]!.Action!.Move!.PostAsync(destination))!.Data!;
 
-        game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
         return result;
     }
@@ -213,7 +221,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
     {
         var result = (await apiClient.My![characterName]!.Action!.Gathering!.PostAsync())!.Data!;
 
-        game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
         return result;
     }
@@ -225,7 +233,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
             Slot = slot,
         }))!.Data!;
 
-        game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
         return result;
     }
@@ -238,7 +246,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
             Quantity = quantity,
         }))!.Data!;
 
-        game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
         return result;
     }
@@ -251,7 +259,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
             Code = itemCode,
         }))!.Data!;
 
-        game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
         return result;
     }
@@ -271,7 +279,7 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
 
         var cooldownEnd = DateTimeOffset.UtcNow.AddSeconds(character.Cooldown!.Value);
 
-        game.UpdateCooldownEnd(cooldownEnd);
+        await game.UpdateCooldownEnd(cooldownEnd);
 
         return (character.X!.Value, character.Y!.Value);
     }
@@ -282,7 +290,7 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
 
         var cooldownEnd = DateTimeOffset.UtcNow.AddSeconds(character.Cooldown!.Value);
 
-        game.UpdateCooldownEnd(cooldownEnd);
+        await game.UpdateCooldownEnd(cooldownEnd);
 
         foreach (var inventorySlot in character.Inventory!)
         {
@@ -299,7 +307,7 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
 
         var cooldownEnd = DateTimeOffset.UtcNow.AddSeconds(character.Cooldown!.Value);
 
-        game.UpdateCooldownEnd(cooldownEnd);
+        await game.UpdateCooldownEnd(cooldownEnd);
 
         return new Dictionary<EquipSchema_slot, string?>
         {
