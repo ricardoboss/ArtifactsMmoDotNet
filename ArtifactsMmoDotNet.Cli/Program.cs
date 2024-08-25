@@ -16,6 +16,10 @@ app.Configure(config =>
 {
     config.SetApplicationName("Artifacts MMO CLI");
 
+#if DEBUG
+    config.PropagateExceptions();
+#endif
+
     config.AddCommand<LoginCommand>("login");
     config.AddCommand<MoveCommand>("move");
     config.AddCommand<InteractiveCommand>("interactive");

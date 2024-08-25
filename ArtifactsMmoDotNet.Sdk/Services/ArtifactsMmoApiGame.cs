@@ -12,9 +12,12 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
     public IGame.ICharacters From(string characterName) => new Characters(this, characterName, apiClient);
 
-    public async Task<IEnumerable<CharacterSchema>> GetCharacters()
+    public async IAsyncEnumerable<CharacterSchema> GetCharacters()
     {
-        return (await apiClient.My!.Characters!.GetAsync())!.Data!;
+        var response = await apiClient.My!.Characters!.GetAsync();
+
+        foreach (var character in response!.Data!)
+            yield return character;
     }
 
     private DateTimeOffset _lastCooldownEnd = DateTimeOffset.MinValue;
@@ -268,29 +271,25 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
 file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
     : IGame.ICharacters
 {
-    private async Task<CharacterSchema> GetCharacterAsync()
+    public async Task<CharacterSchema> GetEverything()
     {
-        return (await apiClient.Characters![characterName]!.GetAsync())!.Data!;
+        var character = await apiClient.Characters![characterName]!.GetAsync();
+
+        await game.UpdateCooldownEnd(character!.Data!.CooldownExpiration!.Value);
+
+        return character.Data!;
     }
 
     public async Task<(int x, int y)> GetPosition()
     {
-        var character = await GetCharacterAsync();
-
-        var cooldownEnd = DateTimeOffset.UtcNow.AddSeconds(character.Cooldown!.Value);
-
-        await game.UpdateCooldownEnd(cooldownEnd);
+        var character = await GetEverything();
 
         return (character.X!.Value, character.Y!.Value);
     }
 
     public async IAsyncEnumerable<InventorySlot> GetInventory()
     {
-        var character = await GetCharacterAsync();
-
-        var cooldownEnd = DateTimeOffset.UtcNow.AddSeconds(character.Cooldown!.Value);
-
-        await game.UpdateCooldownEnd(cooldownEnd);
+        var character = await GetEverything();
 
         foreach (var inventorySlot in character.Inventory!)
         {
@@ -303,11 +302,7 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
 
     public async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment()
     {
-        var character = await GetCharacterAsync();
-
-        var cooldownEnd = DateTimeOffset.UtcNow.AddSeconds(character.Cooldown!.Value);
-
-        await game.UpdateCooldownEnd(cooldownEnd);
+        var character = await GetEverything();
 
         return new Dictionary<EquipSchema_slot, string?>
         {

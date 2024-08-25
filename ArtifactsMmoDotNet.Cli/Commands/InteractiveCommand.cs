@@ -24,7 +24,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             return 1;
         }
 
-        var characterName = await SelectCharacter();
+        var character = await SelectCharacter();
+        var characterName = character.Name!;
 
         var subCommandPrompt = new SelectionPrompt<string>
         {
@@ -98,7 +99,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
                     continue;
                 case "switch character":
-                    characterName = await SelectCharacter();
+                    character = await SelectCharacter();
+                    characterName = character.Name!;
 
                     continue;
             }
@@ -128,12 +130,38 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
         var context = new AutomationContext(game, characterName, output);
 
-        // TODO: create cli prompts to build root requirement gradually
+        var requirementType = AnsiConsole.Prompt(new SelectionPrompt<string>
+        {
+            Title = "What do you want to automate?",
+            SearchEnabled = true,
+            WrapAround = true,
+        }.AddChoices("Have item in inventory", "Reach level in skill"));
 
-        var itemCode = AnsiConsole.Ask<string>("[yellow]What item to automate?[/]");
-        var quantity = AnsiConsole.Ask<int>("[yellow]How many of that item?[/]");
+        IRequirement rootRequirement;
+        switch (requirementType)
+        {
+            case "Have item in inventory":
+                var itemCode = AnsiConsole.Ask<string>("[yellow]What item to automate?[/]");
+                var quantity = AnsiConsole.Ask<int>("[yellow]How many of that item?[/]");
 
-        var rootRequirement = new HaveItemInInventory(itemCode, quantity);
+                rootRequirement = new HaveItemInInventory(itemCode, quantity);
+                break;
+            case "Reach level in skill":
+                var skill = AnsiConsole.Prompt(new SelectionPrompt<string>
+                {
+                    Title = "[yellow]What skill to automate?[/]",
+                    SearchEnabled = true,
+                    WrapAround = true,
+                }.AddChoices("mining", "woodcutting", "fishing", "weaponcrafting", "gearcrafting", "jewelrycrafting",
+                    "cooking"));
+
+                var level = AnsiConsole.Ask<int>("[yellow]Which level?[/]");
+
+                rootRequirement = new ReachLevelInSkill(skill, level);
+                break;
+            default:
+                throw new NotImplementedException($"Don't know how to automate {requirementType}");
+        }
 
         await FulfilRequirement(context, rootRequirement);
     }
@@ -363,20 +391,16 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             AnsiConsole.MarkupLine($"Arrived at [grey]{destinationName}[/]");
     }
 
-    private async Task<string> SelectCharacter()
+    private async Task<CharacterSchema> SelectCharacter()
     {
         var characters = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!).StartAsync("Fetching characters...",
-            async _ =>
-            {
-                var characters = await game.GetCharacters();
+            async _ => await game.GetCharacters().ToListAsync());
 
-                return characters.Select(c => c.Name!);
-            });
-
-        var characterSelectionPrompt = new SelectionPrompt<string>
+        var characterSelectionPrompt = new SelectionPrompt<CharacterSchema>
         {
             Title = "Select a character",
             SearchEnabled = true,
+            Converter = c => $"{c.Name} (Level {c.Level})",
         }.AddChoices(characters);
 
         return AnsiConsole.Prompt(characterSelectionPrompt);

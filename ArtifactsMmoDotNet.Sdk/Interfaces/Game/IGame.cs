@@ -25,6 +25,8 @@ public interface IGame
 
     public interface ICharacters
     {
+        Task<CharacterSchema> GetEverything();
+
         Task<(int x, int y)> GetPosition();
 
         IAsyncEnumerable<InventorySlot> GetInventory();
@@ -34,7 +36,7 @@ public interface IGame
 
     ICharacters From(string characterName);
 
-    Task<IEnumerable<CharacterSchema>> GetCharacters();
+    IAsyncEnumerable<CharacterSchema> GetCharacters();
 
     TimeSpan RemainingCooldown { get; }
 
