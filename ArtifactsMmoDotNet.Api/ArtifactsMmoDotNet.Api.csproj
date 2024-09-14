@@ -1,6 +1,65 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <PackageReference Include="Microsoft.Kiota.Abstractions" />
-    <PackageReference Include="Microsoft.Kiota.Serialization.Json" />
+    <PackageReference Include="Microsoft.Kiota.Abstractions"/>
+    <PackageReference Include="Microsoft.Kiota.Serialization.Json"/>
   </ItemGroup>
+
+  <Target Name="DownloadOpenApiSpec">
+    <DownloadFile
+      DestinationFolder="$(MSBuildProjectDirectory)"
+      DestinationFileName="openapi-3.1.json"
+      SourceUrl="https://api.artifactsmmo.com/openapi.json"
+    />
+  </Target>
+
+  <Target
+    Name="ConvertOpenApiSpecToOAS3"
+    DependsOnTargets="DownloadOpenApiSpec"
+  >
+    <Exec
+      Command="openapi-down-convert --input .\openapi-3.1.json --output .\openapi-3.0.json"
+      WorkingDirectory="$(MSBuildProjectDirectory)"
+    />
+  </Target>
+
+  <Target
+    Name="ApplyPatches"
+    DependsOnTargets="ConvertOpenApiSpecToOAS3"
+  >
+    <ItemGroup>
+      <PatchFile Include="_patches\*.patch"/>
+    </ItemGroup>
+
+    <Message Text="Applying patches..."/>
+    <Exec
+      Command="git apply %(PatchFile.Identity)"
+      WorkingDirectory="$(MSBuildProjectDirectory)"
+    />
+  </Target>
+
+  <Target
+    Name="UpdateGeneratedCode"
+    Condition="Exists('Generated')"
+    DependsOnTargets="ApplyPatches"
+    BeforeTargets="BeforeBuild"
+  >
+    <Exec
+      Command="kiota update --output Generated --clean-output"
+      WorkingDirectory="$(MSBuildProjectDirectory)"
+      EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
+    />
+  </Target>
+
+  <Target
+    Name="CreateGeneratedCode"
+    Condition="!Exists('Generated')"
+    DependsOnTargets="ApplyPatches"
+    BeforeTargets="BeforeBuild"
+  >
+    <Exec
+      Command="kiota generate --openapi openapi-3.0.json --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --backing-store --exclude-backward-compatible"
+      WorkingDirectory="$(MSBuildProjectDirectory)"
+      EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
+    />
+  </Target>
 </Project>
