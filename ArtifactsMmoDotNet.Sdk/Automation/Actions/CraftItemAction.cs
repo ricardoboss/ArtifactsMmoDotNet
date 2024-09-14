@@ -27,7 +27,31 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
         {
             await context.Output.LogInfoAsync($"Crafting {itemCode}");
 
-            await context.Game.With(context.CharacterName).Craft(itemCode);
+            var result = await context.Game.With(context.CharacterName).Craft(itemCode);
+
+            if (result.Details!.Xp is { } xp)
+                await context.Output.LogInfoAsync($"Gained {xp} xp");
+
+            switch (result.Details!.Items!.Count)
+            {
+                case > 1:
+                {
+                    await context.Output.LogInfoAsync("Crafted:");
+                    foreach (var log in result.Details!.Items!)
+                    {
+                        await context.Output.LogInfoAsync($"    - {log.Quantity} {log.Code}");
+                    }
+
+                    break;
+                }
+                case 1:
+                {
+                    var log = result.Details!.Items!.First();
+
+                    await context.Output.LogInfoAsync($"Crafted {log.Quantity} {log.Code}");
+                    break;
+                }
+            }
 
             await context.Game.WaitForCooldown();
         }

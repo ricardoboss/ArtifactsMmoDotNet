@@ -119,7 +119,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
                     remaining = cooldownEnd - DateTimeOffset.UtcNow;
 
-                    ctx.Status($"[blue] Cooldown:{remaining.TotalSeconds:0.0}s[/] left");
+                    ctx.Status($"[yellow]Cooldown:[/] [blue]{remaining.TotalSeconds:0.0}s left[/]");
                 } while (remaining > TimeSpan.Zero);
             });
     }
@@ -252,23 +252,19 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
         var itemCode = AnsiConsole.Prompt(itemCodePrompt);
 
-        var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Equipping...", async _ => await game.With(characterName).Equip(slot, itemCode));
+        var result = await game.With(characterName).Equip(slot, itemCode);
 
         AnsiConsole.MarkupLine($"[yellow]Equipped item [green]{result.Item!.Code}[/][/]");
     }
 
     private async Task<IEnumerable<InventorySlot>> GetInventory(string characterName)
     {
-        return await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Fetching inventory...",
-                async _ => await game.From(characterName).GetInventory().ToListAsync());
+        return await game.From(characterName).GetInventory().ToListAsync();
     }
 
     private async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment(string characterName)
     {
-        return await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Fetching equipment...", async _ => await game.From(characterName).GetEquipment());
+        return await game.From(characterName).GetEquipment();
     }
 
     private async Task PrintInventory(string characterName)
@@ -349,8 +345,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Fight(string characterName)
     {
-        var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Fighting...", async _ => await game.With(characterName).Attack());
+        var result = await game.With(characterName).Attack();
 
         AnsiConsole.MarkupLine("[yellow]Fight Log:[/]");
 
