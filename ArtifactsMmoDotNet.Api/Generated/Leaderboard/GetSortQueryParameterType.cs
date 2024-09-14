@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Default sort by combat total XP.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum GetSortQueryParameterType
     {
         [EnumMember(Value = "combat")]

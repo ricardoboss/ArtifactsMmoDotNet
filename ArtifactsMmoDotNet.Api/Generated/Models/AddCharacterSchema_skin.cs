@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Your desired skin.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum AddCharacterSchema_skin
     {
         [EnumMember(Value = "men1")]

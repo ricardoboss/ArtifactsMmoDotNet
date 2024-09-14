@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Maps
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Type of content on the map.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum GetContent_typeQueryParameterType
     {
         [EnumMember(Value = "monster")]

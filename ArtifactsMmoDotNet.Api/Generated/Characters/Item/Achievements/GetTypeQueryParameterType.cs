@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Characters.Item.Achievements
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Type of achievements.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum GetTypeQueryParameterType
     {
         [EnumMember(Value = "combat_kill")]

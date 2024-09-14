@@ -3,8 +3,8 @@ using System.Runtime.Serialization;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Items
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.16.0")]
     /// <summary>Type of items.</summary>
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum GetTypeQueryParameterType
     {
         [EnumMember(Value = "consumable")]
@@ -50,6 +50,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
         [EnumMember(Value = "artifact")]
         #pragma warning disable CS1591
         Artifact,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "currency")]
+        #pragma warning disable CS1591
+        Currency,
         #pragma warning restore CS1591
     }
 }
