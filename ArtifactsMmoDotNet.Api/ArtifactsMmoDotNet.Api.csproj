@@ -1,23 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <UseTestApi>false</UseTestApi>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Microsoft.Kiota.Abstractions"/>
     <PackageReference Include="Microsoft.Kiota.Serialization.Json"/>
   </ItemGroup>
 
-  <Target Name="DownloadOpenApiSpec">
+  <PropertyGroup>
+    <ApiSpecUrl>https://api.artifactsmmo.com/openapi.json</ApiSpecUrl>
+    <ApiSpecFilename>openapi-3.1.json</ApiSpecFilename>
+    <ApiSpecDownconvertedFilename>openapi-3.0.json</ApiSpecDownconvertedFilename>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(UseTestApi)' == 'true'">
+    <ApiSpecUrl>https://api-test.artifactsmmo.com/openapi.json</ApiSpecUrl>
+  </PropertyGroup>
+
+  <Target Name="DownloadOpenApiSpec" Inputs="$(ApiSpecUrl)" Outputs="$(ApiSpecFilename)">
     <DownloadFile
       DestinationFolder="$(MSBuildProjectDirectory)"
-      DestinationFileName="openapi-3.1.json"
-      SourceUrl="https://api.artifactsmmo.com/openapi.json"
+      DestinationFileName="$(ApiSpecFilename)"
+      SourceUrl="$(ApiSpecUrl)"
     />
   </Target>
 
   <Target
     Name="ConvertOpenApiSpecToOAS3"
     DependsOnTargets="DownloadOpenApiSpec"
+    Inputs="$(ApiSpecFilename)"
+    Outputs="$(ApiSpecDownconvertedFilename)"
   >
     <Exec
-      Command="openapi-down-convert --input .\openapi-3.1.json --output .\openapi-3.0.json"
+      Command="dotnet openapi-down-convert --input .\$(ApiSpecFilename) --output .\$(ApiSpecDownconvertedFilename)"
       WorkingDirectory="$(MSBuildProjectDirectory)"
     />
   </Target>
@@ -38,13 +54,20 @@
   </Target>
 
   <Target
+    Name="BeforeGenerateCode"
+    AfterTargets="ConvertOpenApiSpecToOAS3"
+  />
+
+  <Target
     Name="UpdateGeneratedCode"
     Condition="Exists('Generated')"
-    DependsOnTargets="ApplyPatches"
+    DependsOnTargets="BeforeGenerateCode"
     BeforeTargets="BeforeBuild"
+    Inputs="$(ApiSpecDownconvertedFilename)"
+    Outputs="Generated"
   >
     <Exec
-      Command="kiota update --output Generated --clean-output"
+      Command="dotnet kiota update --output Generated --clean-output"
       WorkingDirectory="$(MSBuildProjectDirectory)"
       EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
     />
@@ -53,11 +76,13 @@
   <Target
     Name="CreateGeneratedCode"
     Condition="!Exists('Generated')"
-    DependsOnTargets="ApplyPatches"
+    DependsOnTargets="BeforeGenerateCode"
     BeforeTargets="BeforeBuild"
+    Inputs="$(ApiSpecDownconvertedFilename)"
+    Outputs="Generated"
   >
     <Exec
-      Command="kiota generate --openapi openapi-3.0.json --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --backing-store --exclude-backward-compatible"
+      Command="dotnet kiota generate --openapi $(ApiSpecDownconvertedFilename) --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --backing-store --exclude-backward-compatible --deserializer Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory --serializer Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory --structured-mime-types application/json --additional-data=False"
       WorkingDirectory="$(MSBuildProjectDirectory)"
       EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
     />
