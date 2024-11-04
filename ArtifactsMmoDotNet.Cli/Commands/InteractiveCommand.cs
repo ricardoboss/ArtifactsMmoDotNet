@@ -231,13 +231,13 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Equip(string characterName)
     {
-        var slotPrompt = new SelectionPrompt<EquipSchema_slot>
+        var slotPrompt = new SelectionPrompt<ItemSlot>
         {
             Title = "Select a slot",
             SearchEnabled = true,
             WrapAround = true,
             Converter = s => s.ToString(),
-        }.AddChoices(Enum.GetValues<EquipSchema_slot>());
+        }.AddChoices(Enum.GetValues<ItemSlot>());
 
         var slot = AnsiConsole.Prompt(slotPrompt);
 
@@ -262,7 +262,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         return await game.From(characterName).GetInventory().ToListAsync();
     }
 
-    private async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment(string characterName)
+    private async Task<IDictionary<ItemSlot, string?>> GetEquipment(string characterName)
     {
         return await game.From(characterName).GetEquipment();
     }
@@ -296,13 +296,13 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Unequip(string characterName)
     {
-        var slotPrompt = new SelectionPrompt<UnequipSchema_slot>
+        var slotPrompt = new SelectionPrompt<ItemSlot>
         {
             Title = "Select a slot",
             SearchEnabled = true,
             WrapAround = true,
             Converter = s => s.ToString(),
-        }.AddChoices(Enum.GetValues<UnequipSchema_slot>());
+        }.AddChoices(Enum.GetValues<ItemSlot>());
 
         var slot = AnsiConsole.Prompt(slotPrompt);
 

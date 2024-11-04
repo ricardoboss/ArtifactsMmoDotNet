@@ -14,11 +14,11 @@ public interface IGame
 
         Task<SkillDataSchema> Gather();
 
-        Task<EquipRequestSchema> Unequip(UnequipSchema_slot slot);
+        Task<EquipRequestSchema> Unequip(ItemSlot slot);
 
         Task<SkillDataSchema> Craft(string itemCode, int quantity = 1);
 
-        Task<EquipRequestSchema> Equip(EquipSchema_slot slot, string itemCode);
+        Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode);
     }
 
     IActions With(string characterName);
@@ -31,7 +31,7 @@ public interface IGame
 
         IAsyncEnumerable<InventorySlot> GetInventory();
 
-        Task<IDictionary<EquipSchema_slot, string?>> GetEquipment();
+        Task<IDictionary<ItemSlot, string?>> GetEquipment();
     }
 
     ICharacters From(string characterName);
@@ -46,8 +46,7 @@ public interface IGame
 
     Task WaitForCooldown();
 
-    IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null,
-        GetContent_typeQueryParameterType? contentType = null);
+    IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, string? contentType = null);
 
     Task<MapSchema> GetMap(int x, int y);
 
@@ -55,7 +54,7 @@ public interface IGame
         GetCraft_skillQueryParameterType? craftSkill = null, int? minLevel = null, int? maxLevel = null,
         GetTypeQueryParameterType? type = null);
 
-    Task<SingleItemSchema> GetItem(string itemCode);
+    Task<ItemSchema> GetItem(string itemCode);
 
     IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null, int? maxLevel = null);
 }

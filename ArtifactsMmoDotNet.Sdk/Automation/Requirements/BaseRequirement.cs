@@ -15,7 +15,7 @@ public abstract class BaseRequirement : IRequirement
     protected static async Task<MapSchema?> GetNearestLocationForResource(IAutomationContext context, string itemCode, int x, int y)
     {
         var maps = await context.Game.GetResources(drop: itemCode).SelectMany(r =>
-                context.Game.GetMaps(contentCode: r.Code!, contentType: GetContent_typeQueryParameterType.Resource))
+                context.Game.GetMaps(contentCode: r.Code!, contentType: "resource"))
             .ToListAsync();
 
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));

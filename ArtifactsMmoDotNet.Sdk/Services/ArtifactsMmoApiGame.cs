@@ -49,8 +49,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     public Task WaitForCooldown() =>
         OnAwaitCooldown?.Invoke(_lastCooldownEnd) ?? Task.Delay(RemainingCooldown);
 
-    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null,
-        GetContent_typeQueryParameterType? contentType = null)
+    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, string? contentType = null)
     {
         var useCache = contentCode is null && contentType is null;
 
@@ -143,7 +142,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
         } while (page <= pages);
     }
 
-    public async Task<SingleItemSchema> GetItem(string itemCode)
+    public async Task<ItemSchema> GetItem(string itemCode)
     {
         var item = await apiClient.Items![itemCode]!.GetAsync();
 
@@ -229,7 +228,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
         return result;
     }
 
-    public async Task<EquipRequestSchema> Unequip(UnequipSchema_slot slot)
+    public async Task<EquipRequestSchema> Unequip(ItemSlot slot)
     {
         var result = (await apiClient.My![characterName]!.Action!.Unequip!.PostAsync(new UnequipSchema
         {
@@ -254,7 +253,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
         return result;
     }
 
-    public async Task<EquipRequestSchema> Equip(EquipSchema_slot slot, string itemCode)
+    public async Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode)
     {
         var result = (await apiClient.My![characterName]!.Action!.Equip!.PostAsync(new EquipSchema
         {
@@ -300,26 +299,26 @@ file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsM
         }
     }
 
-    public async Task<IDictionary<EquipSchema_slot, string?>> GetEquipment()
+    public async Task<IDictionary<ItemSlot, string?>> GetEquipment()
     {
         var character = await GetEverything();
 
-        return new Dictionary<EquipSchema_slot, string?>
+        return new Dictionary<ItemSlot, string?>
         {
-            { EquipSchema_slot.Weapon, character.WeaponSlot },
-            { EquipSchema_slot.Shield, character.ShieldSlot },
-            { EquipSchema_slot.Helmet, character.HelmetSlot },
-            { EquipSchema_slot.Body_armor, character.BodyArmorSlot },
-            { EquipSchema_slot.Leg_armor, character.LegArmorSlot },
-            { EquipSchema_slot.Boots, character.BootsSlot },
-            { EquipSchema_slot.Ring1, character.Ring1Slot },
-            { EquipSchema_slot.Ring2, character.Ring2Slot },
-            { EquipSchema_slot.Amulet, character.AmuletSlot },
-            { EquipSchema_slot.Artifact1, character.Artifact1Slot },
-            { EquipSchema_slot.Artifact2, character.Artifact2Slot },
-            { EquipSchema_slot.Artifact3, character.Artifact3Slot },
-            { EquipSchema_slot.Consumable1, character.Consumable1Slot },
-            { EquipSchema_slot.Consumable2, character.Consumable2Slot },
+            { ItemSlot.Weapon, character.WeaponSlot },
+            { ItemSlot.Shield, character.ShieldSlot },
+            { ItemSlot.Helmet, character.HelmetSlot },
+            { ItemSlot.Body_armor, character.BodyArmorSlot },
+            { ItemSlot.Leg_armor, character.LegArmorSlot },
+            { ItemSlot.Boots, character.BootsSlot },
+            { ItemSlot.Ring1, character.Ring1Slot },
+            { ItemSlot.Ring2, character.Ring2Slot },
+            { ItemSlot.Amulet, character.AmuletSlot },
+            { ItemSlot.Artifact1, character.Artifact1Slot },
+            { ItemSlot.Artifact2, character.Artifact2Slot },
+            { ItemSlot.Artifact3, character.Artifact3Slot },
+            { ItemSlot.Utility1, character.Utility1Slot },
+            { ItemSlot.Utility2, character.Utility2Slot },
         };
     }
 }

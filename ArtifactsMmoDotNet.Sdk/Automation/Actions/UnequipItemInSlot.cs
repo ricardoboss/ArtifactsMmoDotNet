@@ -3,7 +3,7 @@ using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
 namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
-public class UnequipItemInSlot(UnequipSchema_slot slot) : BaseAction
+public class UnequipItemInSlot(ItemSlot slot) : BaseAction
 {
     public override string Name => $"Unequip item in slot {slot}";
 

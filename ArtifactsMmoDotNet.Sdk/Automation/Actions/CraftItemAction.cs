@@ -61,7 +61,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
     {
         var requiredSkill = craft.Skill!.Value.ToString();
         var workshopLocations = await context.Game
-            .GetMaps(contentType: GetContent_typeQueryParameterType.Workshop)
+            .GetMaps(contentType: "workshop")
             .Where(m => string.Equals(m.Content!.Code, requiredSkill, StringComparison.InvariantCultureIgnoreCase))
             .ToListAsync();
 

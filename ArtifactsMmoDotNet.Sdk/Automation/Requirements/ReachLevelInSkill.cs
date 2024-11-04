@@ -43,9 +43,9 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
     {
         return skill switch
         {
-            "mining" => GatherItems(context, ResourceSchema_skill.Mining),
-            "woodcutting" => GatherItems(context, ResourceSchema_skill.Woodcutting),
-            "fishing" => GatherItems(context, ResourceSchema_skill.Fishing),
+            "mining" => GatherItems(context, GatheringSkill.Mining),
+            "woodcutting" => GatherItems(context, GatheringSkill.Woodcutting),
+            "fishing" => GatherItems(context, GatheringSkill.Fishing),
             "weaponcrafting" => GetWeaponcraftingActions(context),
             "gearcrafting" => GetGearcraftingActions(context),
             "jewelrycrafting" => GetJewelrycraftingActions(context),
@@ -55,7 +55,7 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
     }
 
     private async IAsyncEnumerable<IAction> GatherItems(IAutomationContext context,
-        ResourceSchema_skill gatherSkill)
+        GatheringSkill gatherSkill)
     {
         var currentInfo = await GetCurrentSkillInfo(context);
         var lastInfo = currentInfo;
@@ -92,7 +92,7 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
     }
 
     private static async Task<(DropRateSchema item, MapSchema? location)> GetNearestSkillLevellingInfo(
-        IAutomationContext context, ResourceSchema_skill gatherSkill,
+        IAutomationContext context, GatheringSkill gatherSkill,
         SkillInfo currentInfo, (int x, int y) position)
     {
         var resourcesForSkill = await context.Game

@@ -24,7 +24,7 @@ public class HaveItemInInventory(string itemCode, int quantity = 1) : BaseRequir
 
         await context.Output.LogInfoAsync($"Need {missing} more {itemCode}");
 
-        var item = (await context.Game.GetItem(itemCode)).Item!;
+        var item = await context.Game.GetItem(itemCode);
         if (item.Craft is { } craftInfo)
         {
             yield return new CraftItemAction(itemCode, craftInfo, missing);

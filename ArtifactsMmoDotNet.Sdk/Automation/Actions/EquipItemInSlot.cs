@@ -4,7 +4,7 @@ using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
 namespace ArtifactsMmoDotNet.Sdk.Automation.Actions;
 
-public class EquipItemInSlot(EquipSchema_slot slot, string itemCode) : BaseAction
+public class EquipItemInSlot(ItemSlot slot, string itemCode) : BaseAction
 {
     public override string Name { get; } = $"Equip item in slot {slot}";
 
