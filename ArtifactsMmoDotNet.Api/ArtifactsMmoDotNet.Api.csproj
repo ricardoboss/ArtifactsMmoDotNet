@@ -33,7 +33,7 @@
     Outputs="$(ApiSpecDownconvertedFilename)"
   >
     <Exec
-      Command="dotnet openapi-down-convert --input .\$(ApiSpecFilename) --output .\$(ApiSpecDownconvertedFilename)"
+      Command="openapi-down-convert --input .\$(ApiSpecFilename) --output .\$(ApiSpecDownconvertedFilename)"
       WorkingDirectory="$(MSBuildProjectDirectory)"
     />
   </Target>
@@ -54,14 +54,9 @@
   </Target>
 
   <Target
-    Name="BeforeGenerateCode"
-    AfterTargets="ConvertOpenApiSpecToOAS3"
-  />
-
-  <Target
     Name="UpdateGeneratedCode"
     Condition="Exists('Generated')"
-    DependsOnTargets="BeforeGenerateCode"
+    DependsOnTargets="ApplyPatches"
     BeforeTargets="BeforeBuild"
     Inputs="$(ApiSpecDownconvertedFilename)"
     Outputs="Generated"
@@ -76,7 +71,7 @@
   <Target
     Name="CreateGeneratedCode"
     Condition="!Exists('Generated')"
-    DependsOnTargets="BeforeGenerateCode"
+    DependsOnTargets="ApplyPatches"
     BeforeTargets="BeforeBuild"
     Inputs="$(ApiSpecDownconvertedFilename)"
     Outputs="Generated"
