@@ -86,9 +86,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>The result of the fight.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.FightSchema_result? Result
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult? Result
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.FightSchema_result?>("result"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult?>("result"); }
             set { BackingStore?.Set("result", value); }
         }
         /// <summary>Numbers of the turns of the combat.</summary>
@@ -133,7 +133,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "logs", n => { Logs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "monster_blocked_hits", n => { MonsterBlockedHits = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema.CreateFromDiscriminatorValue); } },
                 { "player_blocked_hits", n => { PlayerBlockedHits = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema.CreateFromDiscriminatorValue); } },
-                { "result", n => { Result = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.FightSchema_result>(); } },
+                { "result", n => { Result = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult>(); } },
                 { "turns", n => { Turns = n.GetIntValue(); } },
                 { "xp", n => { Xp = n.GetIntValue(); } },
             };
@@ -150,7 +150,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfPrimitiveValues<string>("logs", Logs);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>("monster_blocked_hits", MonsterBlockedHits);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>("player_blocked_hits", PlayerBlockedHits);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.FightSchema_result>("result", Result);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult>("result", Result);
             writer.WriteIntValue("turns", Turns);
             writer.WriteIntValue("xp", Xp);
         }

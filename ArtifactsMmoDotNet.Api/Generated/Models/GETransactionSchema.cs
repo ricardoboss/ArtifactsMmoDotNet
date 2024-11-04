@@ -31,6 +31,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
+        /// <summary>Order id.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Id
+        {
+            get { return BackingStore?.Get<string?>("id"); }
+            set { BackingStore?.Set("id", value); }
+        }
+#nullable restore
+#else
+        public string Id
+        {
+            get { return BackingStore?.Get<string>("id"); }
+            set { BackingStore?.Set("id", value); }
+        }
+#endif
         /// <summary>Item price.</summary>
         public int? Price
         {
@@ -75,6 +91,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "id", n => { Id = n.GetStringValue(); } },
                 { "price", n => { Price = n.GetIntValue(); } },
                 { "quantity", n => { Quantity = n.GetIntValue(); } },
                 { "total_price", n => { TotalPrice = n.GetIntValue(); } },
@@ -88,6 +105,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("id", Id);
             writer.WriteIntValue("price", Price);
             writer.WriteIntValue("quantity", Quantity);
             writer.WriteIntValue("total_price", TotalPrice);

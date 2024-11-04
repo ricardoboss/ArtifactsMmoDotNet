@@ -22,9 +22,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("expiration", value); }
         }
         /// <summary>The reason of the cooldown.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema_reason? Reason
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType? Reason
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema_reason?>("reason"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType?>("reason"); }
             set { BackingStore?.Set("reason", value); }
         }
         /// <summary>The remaining seconds of the cooldown.</summary>
@@ -71,7 +71,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "expiration", n => { Expiration = n.GetDateTimeOffsetValue(); } },
-                { "reason", n => { Reason = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema_reason>(); } },
+                { "reason", n => { Reason = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType>(); } },
                 { "remaining_seconds", n => { RemainingSeconds = n.GetIntValue(); } },
                 { "started_at", n => { StartedAt = n.GetDateTimeOffsetValue(); } },
                 { "total_seconds", n => { TotalSeconds = n.GetIntValue(); } },
@@ -85,7 +85,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("expiration", Expiration);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema_reason>("reason", Reason);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType>("reason", Reason);
             writer.WriteIntValue("remaining_seconds", RemainingSeconds);
             writer.WriteDateTimeOffsetValue("started_at", StartedAt);
             writer.WriteIntValue("total_seconds", TotalSeconds);

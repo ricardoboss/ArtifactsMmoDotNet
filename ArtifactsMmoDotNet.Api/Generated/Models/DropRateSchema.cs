@@ -43,7 +43,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("min_quantity"); }
             set { BackingStore?.Set("min_quantity", value); }
         }
-        /// <summary>Chance rate.</summary>
+        /// <summary>Chance rate. (1/rate)</summary>
         public int? Rate
         {
             get { return BackingStore?.Get<int?>("rate"); }

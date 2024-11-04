@@ -70,9 +70,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>The skill required to gather this resource.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.ResourceSchema_skill? Skill
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill? Skill
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ResourceSchema_skill?>("skill"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill?>("skill"); }
             set { BackingStore?.Set("skill", value); }
         }
         /// <summary>
@@ -104,7 +104,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "drops", n => { Drops = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "skill", n => { Skill = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ResourceSchema_skill>(); } },
+                { "skill", n => { Skill = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill>(); } },
             };
         }
         /// <summary>
@@ -118,7 +118,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>("drops", Drops);
             writer.WriteIntValue("level", Level);
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ResourceSchema_skill>("skill", Skill);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill>("skill", Skill);
         }
     }
 }

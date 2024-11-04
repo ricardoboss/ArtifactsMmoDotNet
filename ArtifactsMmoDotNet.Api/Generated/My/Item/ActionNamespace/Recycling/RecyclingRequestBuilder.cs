@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Recycling
         {
         }
         /// <summary>
-        /// Recyling an item. The character must be on a map with a workshop (only for equipments and weapons).
+        /// Recycling an item. The character must be on a map with a workshop (only for equipments and weapons).
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.RecyclingResponseSchema"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Recycling
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.RecyclingResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.RecyclingResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Recyling an item. The character must be on a map with a workshop (only for equipments and weapons).
+        /// Recycling an item. The character must be on a map with a workshop (only for equipments and weapons).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

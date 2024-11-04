@@ -13,11 +13,45 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     public partial class CharacterSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>achievements points.</summary>
+        /// <summary>Account name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Account
+        {
+            get { return BackingStore?.Get<string?>("account"); }
+            set { BackingStore?.Set("account", value); }
+        }
+#nullable restore
+#else
+        public string Account
+        {
+            get { return BackingStore?.Get<string>("account"); }
+            set { BackingStore?.Set("account", value); }
+        }
+#endif
+        /// <summary>Account achievements points.</summary>
         public int? AchievementsPoints
         {
             get { return BackingStore?.Get<int?>("achievements_points"); }
             set { BackingStore?.Set("achievements_points", value); }
+        }
+        /// <summary>Alchemy level.</summary>
+        public int? AlchemyLevel
+        {
+            get { return BackingStore?.Get<int?>("alchemy_level"); }
+            set { BackingStore?.Set("alchemy_level", value); }
+        }
+        /// <summary>Alchemy XP required to level up the skill.</summary>
+        public int? AlchemyMaxXp
+        {
+            get { return BackingStore?.Get<int?>("alchemy_max_xp"); }
+            set { BackingStore?.Set("alchemy_max_xp", value); }
+        }
+        /// <summary>Alchemy XP.</summary>
+        public int? AlchemyXp
+        {
+            get { return BackingStore?.Get<int?>("alchemy_xp"); }
+            set { BackingStore?.Set("alchemy_xp", value); }
         }
         /// <summary>Amulet slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -141,50 +175,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("boots_slot", value); }
         }
 #endif
-        /// <summary>Consumable 1 slot.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Consumable1Slot
-        {
-            get { return BackingStore?.Get<string?>("consumable1_slot"); }
-            set { BackingStore?.Set("consumable1_slot", value); }
-        }
-#nullable restore
-#else
-        public string Consumable1Slot
-        {
-            get { return BackingStore?.Get<string>("consumable1_slot"); }
-            set { BackingStore?.Set("consumable1_slot", value); }
-        }
-#endif
-        /// <summary>Consumable 1 quantity.</summary>
-        public int? Consumable1SlotQuantity
-        {
-            get { return BackingStore?.Get<int?>("consumable1_slot_quantity"); }
-            set { BackingStore?.Set("consumable1_slot_quantity", value); }
-        }
-        /// <summary>Consumable 2 slot.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Consumable2Slot
-        {
-            get { return BackingStore?.Get<string?>("consumable2_slot"); }
-            set { BackingStore?.Set("consumable2_slot", value); }
-        }
-#nullable restore
-#else
-        public string Consumable2Slot
-        {
-            get { return BackingStore?.Get<string>("consumable2_slot"); }
-            set { BackingStore?.Set("consumable2_slot", value); }
-        }
-#endif
-        /// <summary>Consumable 2 quantity.</summary>
-        public int? Consumable2SlotQuantity
-        {
-            get { return BackingStore?.Get<int?>("consumable2_slot_quantity"); }
-            set { BackingStore?.Set("consumable2_slot_quantity", value); }
-        }
         /// <summary>The current xp level of the Cooking skill.</summary>
         public int? CookingLevel
         {
@@ -281,7 +271,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("gearcrafting_xp"); }
             set { BackingStore?.Set("gearcrafting_xp", value); }
         }
-        /// <summary>The numbers of golds on this character.</summary>
+        /// <summary>The numbers of gold on this character.</summary>
         public int? Gold
         {
             get { return BackingStore?.Get<int?>("gold"); }
@@ -309,7 +299,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("helmet_slot", value); }
         }
 #endif
-        /// <summary>Character HP.</summary>
+        /// <summary>Character actual HP.</summary>
         public int? Hp
         {
             get { return BackingStore?.Get<int?>("hp"); }
@@ -376,6 +366,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             get { return BackingStore?.Get<int?>("level"); }
             set { BackingStore?.Set("level", value); }
+        }
+        /// <summary>Character max HP.</summary>
+        public int? MaxHp
+        {
+            get { return BackingStore?.Get<int?>("max_hp"); }
+            set { BackingStore?.Set("max_hp", value); }
         }
         /// <summary>XP required to level up the character.</summary>
         public int? MaxXp
@@ -490,9 +486,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>Character skin code.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema_skin? Skin
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin? Skin
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema_skin?>("skin"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin?>("skin"); }
             set { BackingStore?.Set("skin", value); }
         }
         /// <summary>*Not available, on the roadmap. Character movement speed.</summary>
@@ -551,6 +547,50 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("task_type", value); }
         }
 #endif
+        /// <summary>Utility 1 slot.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Utility1Slot
+        {
+            get { return BackingStore?.Get<string?>("utility1_slot"); }
+            set { BackingStore?.Set("utility1_slot", value); }
+        }
+#nullable restore
+#else
+        public string Utility1Slot
+        {
+            get { return BackingStore?.Get<string>("utility1_slot"); }
+            set { BackingStore?.Set("utility1_slot", value); }
+        }
+#endif
+        /// <summary>Utility 1 quantity.</summary>
+        public int? Utility1SlotQuantity
+        {
+            get { return BackingStore?.Get<int?>("utility1_slot_quantity"); }
+            set { BackingStore?.Set("utility1_slot_quantity", value); }
+        }
+        /// <summary>Utility 2 slot.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Utility2Slot
+        {
+            get { return BackingStore?.Get<string?>("utility2_slot"); }
+            set { BackingStore?.Set("utility2_slot", value); }
+        }
+#nullable restore
+#else
+        public string Utility2Slot
+        {
+            get { return BackingStore?.Get<string>("utility2_slot"); }
+            set { BackingStore?.Set("utility2_slot", value); }
+        }
+#endif
+        /// <summary>Utility 2 quantity.</summary>
+        public int? Utility2SlotQuantity
+        {
+            get { return BackingStore?.Get<int?>("utility2_slot_quantity"); }
+            set { BackingStore?.Set("utility2_slot_quantity", value); }
+        }
         /// <summary>Weaponcrafting level.</summary>
         public int? WeaponcraftingLevel
         {
@@ -646,7 +686,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "account", n => { Account = n.GetStringValue(); } },
                 { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
+                { "alchemy_level", n => { AlchemyLevel = n.GetIntValue(); } },
+                { "alchemy_max_xp", n => { AlchemyMaxXp = n.GetIntValue(); } },
+                { "alchemy_xp", n => { AlchemyXp = n.GetIntValue(); } },
                 { "amulet_slot", n => { AmuletSlot = n.GetStringValue(); } },
                 { "artifact1_slot", n => { Artifact1Slot = n.GetStringValue(); } },
                 { "artifact2_slot", n => { Artifact2Slot = n.GetStringValue(); } },
@@ -657,10 +701,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "attack_water", n => { AttackWater = n.GetIntValue(); } },
                 { "body_armor_slot", n => { BodyArmorSlot = n.GetStringValue(); } },
                 { "boots_slot", n => { BootsSlot = n.GetStringValue(); } },
-                { "consumable1_slot", n => { Consumable1Slot = n.GetStringValue(); } },
-                { "consumable1_slot_quantity", n => { Consumable1SlotQuantity = n.GetIntValue(); } },
-                { "consumable2_slot", n => { Consumable2Slot = n.GetStringValue(); } },
-                { "consumable2_slot_quantity", n => { Consumable2SlotQuantity = n.GetIntValue(); } },
                 { "cooking_level", n => { CookingLevel = n.GetIntValue(); } },
                 { "cooking_max_xp", n => { CookingMaxXp = n.GetIntValue(); } },
                 { "cooking_xp", n => { CookingXp = n.GetIntValue(); } },
@@ -688,6 +728,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "jewelrycrafting_xp", n => { JewelrycraftingXp = n.GetIntValue(); } },
                 { "leg_armor_slot", n => { LegArmorSlot = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
+                { "max_hp", n => { MaxHp = n.GetIntValue(); } },
                 { "max_xp", n => { MaxXp = n.GetIntValue(); } },
                 { "mining_level", n => { MiningLevel = n.GetIntValue(); } },
                 { "mining_max_xp", n => { MiningMaxXp = n.GetIntValue(); } },
@@ -700,13 +741,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "ring1_slot", n => { Ring1Slot = n.GetStringValue(); } },
                 { "ring2_slot", n => { Ring2Slot = n.GetStringValue(); } },
                 { "shield_slot", n => { ShieldSlot = n.GetStringValue(); } },
-                { "skin", n => { Skin = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema_skin>(); } },
+                { "skin", n => { Skin = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin>(); } },
                 { "speed", n => { Speed = n.GetIntValue(); } },
                 { "stamina", n => { Stamina = n.GetIntValue(); } },
                 { "task", n => { Task = n.GetStringValue(); } },
                 { "task_progress", n => { TaskProgress = n.GetIntValue(); } },
                 { "task_total", n => { TaskTotal = n.GetIntValue(); } },
                 { "task_type", n => { TaskType = n.GetStringValue(); } },
+                { "utility1_slot", n => { Utility1Slot = n.GetStringValue(); } },
+                { "utility1_slot_quantity", n => { Utility1SlotQuantity = n.GetIntValue(); } },
+                { "utility2_slot", n => { Utility2Slot = n.GetStringValue(); } },
+                { "utility2_slot_quantity", n => { Utility2SlotQuantity = n.GetIntValue(); } },
                 { "weapon_slot", n => { WeaponSlot = n.GetStringValue(); } },
                 { "weaponcrafting_level", n => { WeaponcraftingLevel = n.GetIntValue(); } },
                 { "weaponcrafting_max_xp", n => { WeaponcraftingMaxXp = n.GetIntValue(); } },
@@ -726,7 +771,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("account", Account);
             writer.WriteIntValue("achievements_points", AchievementsPoints);
+            writer.WriteIntValue("alchemy_level", AlchemyLevel);
+            writer.WriteIntValue("alchemy_max_xp", AlchemyMaxXp);
+            writer.WriteIntValue("alchemy_xp", AlchemyXp);
             writer.WriteStringValue("amulet_slot", AmuletSlot);
             writer.WriteStringValue("artifact1_slot", Artifact1Slot);
             writer.WriteStringValue("artifact2_slot", Artifact2Slot);
@@ -737,10 +786,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("attack_water", AttackWater);
             writer.WriteStringValue("body_armor_slot", BodyArmorSlot);
             writer.WriteStringValue("boots_slot", BootsSlot);
-            writer.WriteStringValue("consumable1_slot", Consumable1Slot);
-            writer.WriteIntValue("consumable1_slot_quantity", Consumable1SlotQuantity);
-            writer.WriteStringValue("consumable2_slot", Consumable2Slot);
-            writer.WriteIntValue("consumable2_slot_quantity", Consumable2SlotQuantity);
             writer.WriteIntValue("cooking_level", CookingLevel);
             writer.WriteIntValue("cooking_max_xp", CookingMaxXp);
             writer.WriteIntValue("cooking_xp", CookingXp);
@@ -768,6 +813,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("jewelrycrafting_xp", JewelrycraftingXp);
             writer.WriteStringValue("leg_armor_slot", LegArmorSlot);
             writer.WriteIntValue("level", Level);
+            writer.WriteIntValue("max_hp", MaxHp);
             writer.WriteIntValue("max_xp", MaxXp);
             writer.WriteIntValue("mining_level", MiningLevel);
             writer.WriteIntValue("mining_max_xp", MiningMaxXp);
@@ -780,13 +826,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteStringValue("ring1_slot", Ring1Slot);
             writer.WriteStringValue("ring2_slot", Ring2Slot);
             writer.WriteStringValue("shield_slot", ShieldSlot);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema_skin>("skin", Skin);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin>("skin", Skin);
             writer.WriteIntValue("speed", Speed);
             writer.WriteIntValue("stamina", Stamina);
             writer.WriteStringValue("task", Task);
             writer.WriteIntValue("task_progress", TaskProgress);
             writer.WriteIntValue("task_total", TaskTotal);
             writer.WriteStringValue("task_type", TaskType);
+            writer.WriteStringValue("utility1_slot", Utility1Slot);
+            writer.WriteIntValue("utility1_slot_quantity", Utility1SlotQuantity);
+            writer.WriteStringValue("utility2_slot", Utility2Slot);
+            writer.WriteIntValue("utility2_slot_quantity", Utility2SlotQuantity);
             writer.WriteIntValue("weaponcrafting_level", WeaponcraftingLevel);
             writer.WriteIntValue("weaponcrafting_max_xp", WeaponcraftingMaxXp);
             writer.WriteIntValue("weaponcrafting_xp", WeaponcraftingXp);

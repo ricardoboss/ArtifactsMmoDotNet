@@ -108,21 +108,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>Type of action.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.LogType? Type
         {
-            get { return BackingStore?.Get<string?>("type"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType?>("type"); }
             set { BackingStore?.Set("type", value); }
         }
-#nullable restore
-#else
-        public string Type
-        {
-            get { return BackingStore?.Get<string>("type"); }
-            set { BackingStore?.Set("type", value); }
-        }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema"/> and sets the default values.
         /// </summary>
@@ -155,7 +145,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "cooldown_expiration", n => { CooldownExpiration = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration>(global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration.CreateFromDiscriminatorValue); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType>(); } },
             };
         }
         /// <summary>
@@ -172,7 +162,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration>("cooldown_expiration", CooldownExpiration);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType>("type", Type);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="Null"/>

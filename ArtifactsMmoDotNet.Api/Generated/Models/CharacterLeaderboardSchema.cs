@@ -13,11 +13,33 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     public partial class CharacterLeaderboardSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Achievements points.</summary>
-        public int? AchievementsPoints
+        /// <summary>Account name.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Account
         {
-            get { return BackingStore?.Get<int?>("achievements_points"); }
-            set { BackingStore?.Set("achievements_points", value); }
+            get { return BackingStore?.Get<string?>("account"); }
+            set { BackingStore?.Set("account", value); }
+        }
+#nullable restore
+#else
+        public string Account
+        {
+            get { return BackingStore?.Get<string>("account"); }
+            set { BackingStore?.Set("account", value); }
+        }
+#endif
+        /// <summary>Alchemy level.</summary>
+        public int? AlchemyLevel
+        {
+            get { return BackingStore?.Get<int?>("alchemy_level"); }
+            set { BackingStore?.Set("alchemy_level", value); }
+        }
+        /// <summary>Alchemy total xp.</summary>
+        public int? AlchemyTotalXp
+        {
+            get { return BackingStore?.Get<int?>("alchemy_total_xp"); }
+            set { BackingStore?.Set("alchemy_total_xp", value); }
         }
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
@@ -57,7 +79,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("gearcrafting_total_xp"); }
             set { BackingStore?.Set("gearcrafting_total_xp", value); }
         }
-        /// <summary>The numbers of golds on this character.</summary>
+        /// <summary>The numbers of gold on this character.</summary>
         public int? Gold
         {
             get { return BackingStore?.Get<int?>("gold"); }
@@ -180,7 +202,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
+                { "account", n => { Account = n.GetStringValue(); } },
+                { "alchemy_level", n => { AlchemyLevel = n.GetIntValue(); } },
+                { "alchemy_total_xp", n => { AlchemyTotalXp = n.GetIntValue(); } },
                 { "cooking_level", n => { CookingLevel = n.GetIntValue(); } },
                 { "cooking_total_xp", n => { CookingTotalXp = n.GetIntValue(); } },
                 { "fishing_level", n => { FishingLevel = n.GetIntValue(); } },
@@ -209,7 +233,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("achievements_points", AchievementsPoints);
+            writer.WriteStringValue("account", Account);
+            writer.WriteIntValue("alchemy_level", AlchemyLevel);
+            writer.WriteIntValue("alchemy_total_xp", AlchemyTotalXp);
             writer.WriteIntValue("cooking_level", CookingLevel);
             writer.WriteIntValue("cooking_total_xp", CookingTotalXp);
             writer.WriteIntValue("fishing_level", FishingLevel);

@@ -15,6 +15,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
+        /// <summary>Code of the event. This is the event&apos;s unique identifier (ID).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Code
+        {
+            get { return BackingStore?.Get<string?>("code"); }
+            set { BackingStore?.Set("code", value); }
+        }
+#nullable restore
+#else
+        public string Code
+        {
+            get { return BackingStore?.Get<string>("code"); }
+            set { BackingStore?.Set("code", value); }
+        }
+#endif
         /// <summary>Start datetime.</summary>
         public DateTimeOffset? CreatedAt
         {
@@ -106,6 +122,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "code", n => { Code = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "duration", n => { Duration = n.GetIntValue(); } },
                 { "expiration", n => { Expiration = n.GetDateTimeOffsetValue(); } },
@@ -121,6 +138,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("code", Code);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteIntValue("duration", Duration);
             writer.WriteDateTimeOffsetValue("expiration", Expiration);

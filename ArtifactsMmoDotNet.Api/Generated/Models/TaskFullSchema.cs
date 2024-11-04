@@ -82,9 +82,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>The type of task.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_type? Type
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType? Type
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_type?>("type"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType?>("type"); }
             set { BackingStore?.Set("type", value); }
         }
         /// <summary>
@@ -118,7 +118,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "min_quantity", n => { MinQuantity = n.GetIntValue(); } },
                 { "rewards", n => { Rewards = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema.CreateFromDiscriminatorValue); } },
                 { "skill", n => { Skill = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill.CreateFromDiscriminatorValue); } },
-                { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_type>(); } },
+                { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType>(); } },
             };
         }
         /// <summary>
@@ -134,7 +134,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("min_quantity", MinQuantity);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>("rewards", Rewards);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill>("skill", Skill);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_type>("type", Type);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType>("type", Type);
         }
         /// <summary>
         /// Composed type wrapper for classes <see cref="Null"/>, <see cref="string"/>

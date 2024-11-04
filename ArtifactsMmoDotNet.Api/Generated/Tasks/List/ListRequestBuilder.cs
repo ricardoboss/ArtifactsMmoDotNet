@@ -111,11 +111,25 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.List
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>The code of the skill.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("skill")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Tasks.List.GetSkillQueryParameterType? Skill { get; set; }
+            public string? Skill { get; set; }
+#nullable restore
+#else
+            [QueryParameter("skill")]
+            public string Skill { get; set; }
+#endif
             /// <summary>The type of tasks.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Tasks.List.GetTypeQueryParameterType? Type { get; set; }
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

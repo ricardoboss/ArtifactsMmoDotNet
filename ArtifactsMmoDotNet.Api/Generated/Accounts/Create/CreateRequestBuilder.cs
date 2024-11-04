@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Create
         {
         }
         /// <summary>
-        /// Create an account.
+        /// Create Account
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ResponseSchema"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Create
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.ResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.ResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create an account.
+        /// Create Account
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

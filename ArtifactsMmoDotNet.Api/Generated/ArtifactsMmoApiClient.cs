@@ -4,7 +4,7 @@ using ArtifactsMmoDotNet.Api.Generated.Accounts;
 using ArtifactsMmoDotNet.Api.Generated.Achievements;
 using ArtifactsMmoDotNet.Api.Generated.Characters;
 using ArtifactsMmoDotNet.Api.Generated.Events;
-using ArtifactsMmoDotNet.Api.Generated.Ge;
+using ArtifactsMmoDotNet.Api.Generated.Grandexchange;
 using ArtifactsMmoDotNet.Api.Generated.Items;
 using ArtifactsMmoDotNet.Api.Generated.Leaderboard;
 using ArtifactsMmoDotNet.Api.Generated.Maps;
@@ -52,10 +52,10 @@ namespace ArtifactsMmoDotNet.Api.Generated
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.Events.EventsRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The ge property</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Ge.GeRequestBuilder Ge
+        /// <summary>The grandexchange property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Grandexchange.GrandexchangeRequestBuilder Grandexchange
         {
-            get => new global::ArtifactsMmoDotNet.Api.Generated.Ge.GeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::ArtifactsMmoDotNet.Api.Generated.Grandexchange.GrandexchangeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The items property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Items.ItemsRequestBuilder Items

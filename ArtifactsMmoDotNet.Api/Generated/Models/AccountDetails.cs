@@ -13,6 +13,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     public partial class AccountDetails : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
+        /// <summary>Achievement points.</summary>
+        public int? AchievementsPoints
+        {
+            get { return BackingStore?.Get<int?>("achievements_points"); }
+            set { BackingStore?.Set("achievements_points", value); }
+        }
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
         /// <summary>Account badges.</summary>
@@ -69,29 +75,23 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("email", value); }
         }
 #endif
-        /// <summary>Founder.</summary>
-        public bool? Founder
-        {
-            get { return BackingStore?.Get<bool?>("founder"); }
-            set { BackingStore?.Set("founder", value); }
-        }
         /// <summary>Gems.</summary>
         public int? Gems
         {
             get { return BackingStore?.Get<int?>("gems"); }
             set { BackingStore?.Set("gems", value); }
         }
+        /// <summary>Member status.</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
+            set { BackingStore?.Set("status", value); }
+        }
         /// <summary>Subscribed for the current season.</summary>
         public bool? Subscribed
         {
             get { return BackingStore?.Get<bool?>("subscribed"); }
             set { BackingStore?.Set("subscribed", value); }
-        }
-        /// <summary>Subscribed until (in season numbers).</summary>
-        public int? SubscribedUntil
-        {
-            get { return BackingStore?.Get<int?>("subscribed_until"); }
-            set { BackingStore?.Set("subscribed_until", value); }
         }
         /// <summary>Username.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -134,14 +134,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
                 { "badges", n => { Badges = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails.AccountDetails_badges>(global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails.AccountDetails_badges.CreateFromDiscriminatorValue); } },
                 { "ban_reason", n => { BanReason = n.GetStringValue(); } },
                 { "banned", n => { Banned = n.GetBoolValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
-                { "founder", n => { Founder = n.GetBoolValue(); } },
                 { "gems", n => { Gems = n.GetIntValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
-                { "subscribed_until", n => { SubscribedUntil = n.GetIntValue(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
             };
         }
@@ -152,14 +152,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("achievements_points", AchievementsPoints);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails.AccountDetails_badges>("badges", Badges);
             writer.WriteBoolValue("banned", Banned);
             writer.WriteStringValue("ban_reason", BanReason);
             writer.WriteStringValue("email", Email);
-            writer.WriteBoolValue("founder", Founder);
             writer.WriteIntValue("gems", Gems);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
             writer.WriteBoolValue("subscribed", Subscribed);
-            writer.WriteIntValue("subscribed_until", SubscribedUntil);
             writer.WriteStringValue("username", Username);
         }
         /// <summary>

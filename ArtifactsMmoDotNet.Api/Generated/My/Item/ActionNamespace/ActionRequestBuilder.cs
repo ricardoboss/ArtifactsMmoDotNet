@@ -6,11 +6,13 @@ using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Delete;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Equip;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Fight;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Gathering;
-using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Ge;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Move;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Recycling;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Unequip;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Use;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
@@ -55,10 +57,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Gathering.GatheringRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The ge property</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Ge.GeRequestBuilder Ge
+        /// <summary>The grandexchange property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.GrandexchangeRequestBuilder Grandexchange
         {
-            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Ge.GeRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.GrandexchangeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The move property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Move.MoveRequestBuilder Move
@@ -70,6 +72,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Recycling.RecyclingRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The rest property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest.RestRequestBuilder Rest
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest.RestRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The task property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.TaskRequestBuilder Task
         {
@@ -79,6 +86,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Unequip.UnequipRequestBuilder Unequip
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Unequip.UnequipRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The use property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Use.UseRequestBuilder Use
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Use.UseRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.ActionRequestBuilder"/> and sets the default values.

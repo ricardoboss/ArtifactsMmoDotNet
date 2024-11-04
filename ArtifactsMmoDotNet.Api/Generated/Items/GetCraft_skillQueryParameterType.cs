@@ -31,5 +31,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
         #pragma warning disable CS1591
         Mining,
         #pragma warning restore CS1591
+        [EnumMember(Value = "alchemy")]
+        #pragma warning disable CS1591
+        Alchemy,
+        #pragma warning restore CS1591
     }
 }

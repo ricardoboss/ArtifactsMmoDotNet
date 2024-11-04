@@ -31,16 +31,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
-        /// <summary>Item quantity. Applicable to consumables only.</summary>
+        /// <summary>Item quantity. Applicable to utilitys only.</summary>
         public int? Quantity
         {
             get { return BackingStore?.Get<int?>("quantity"); }
             set { BackingStore?.Set("quantity", value); }
         }
         /// <summary>Item slot.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot? Slot
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot? Slot
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot?>("slot"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot?>("slot"); }
             set { BackingStore?.Set("slot", value); }
         }
         /// <summary>
@@ -70,7 +70,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "code", n => { Code = n.GetStringValue(); } },
                 { "quantity", n => { Quantity = n.GetIntValue(); } },
-                { "slot", n => { Slot = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot>(); } },
+                { "slot", n => { Slot = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot>(); } },
             };
         }
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteIntValue("quantity", Quantity);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipSchema_slot>("slot", Slot);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot>("slot", Slot);
         }
     }
 }

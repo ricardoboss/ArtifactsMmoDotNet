@@ -64,9 +64,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>Item slot.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.EquipRequestSchema_slot? Slot
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot? Slot
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipRequestSchema_slot?>("slot"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot?>("slot"); }
             set { BackingStore?.Set("slot", value); }
         }
         /// <summary>
@@ -97,7 +97,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "character", n => { Character = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema.CreateFromDiscriminatorValue); } },
                 { "item", n => { Item = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.CreateFromDiscriminatorValue); } },
-                { "slot", n => { Slot = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipRequestSchema_slot>(); } },
+                { "slot", n => { Slot = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot>(); } },
             };
         }
         /// <summary>
@@ -110,7 +110,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>("item", Item);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.EquipRequestSchema_slot>("slot", Slot);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot>("slot", Slot);
         }
     }
 }

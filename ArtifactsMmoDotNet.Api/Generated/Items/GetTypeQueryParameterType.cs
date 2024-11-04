@@ -7,9 +7,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     public enum GetTypeQueryParameterType
     {
-        [EnumMember(Value = "consumable")]
+        [EnumMember(Value = "utility")]
         #pragma warning disable CS1591
-        Consumable,
+        Utility,
         #pragma warning restore CS1591
         [EnumMember(Value = "body_armor")]
         #pragma warning disable CS1591

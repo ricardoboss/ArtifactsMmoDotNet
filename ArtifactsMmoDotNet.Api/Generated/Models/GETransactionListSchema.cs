@@ -50,17 +50,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Transaction details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema? Transaction
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema? Order
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema?>("transaction"); }
-            set { BackingStore?.Set("transaction", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema?>("order"); }
+            set { BackingStore?.Set("order", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema Transaction
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema Order
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema>("transaction"); }
-            set { BackingStore?.Set("transaction", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema>("order"); }
+            set { BackingStore?.Set("order", value); }
         }
 #endif
         /// <summary>
@@ -90,7 +90,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "character", n => { Character = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema.CreateFromDiscriminatorValue); } },
-                { "transaction", n => { Transaction = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema.CreateFromDiscriminatorValue); } },
+                { "order", n => { Order = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,7 +102,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema>("transaction", Transaction);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.GETransactionSchema>("order", Order);
         }
     }
 }

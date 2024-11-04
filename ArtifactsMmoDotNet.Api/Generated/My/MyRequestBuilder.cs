@@ -4,6 +4,7 @@ using ArtifactsMmoDotNet.Api.Generated.My.Bank;
 using ArtifactsMmoDotNet.Api.Generated.My.Change_password;
 using ArtifactsMmoDotNet.Api.Generated.My.Characters;
 using ArtifactsMmoDotNet.Api.Generated.My.Details;
+using ArtifactsMmoDotNet.Api.Generated.My.Grandexchange;
 using ArtifactsMmoDotNet.Api.Generated.My.Item;
 using ArtifactsMmoDotNet.Api.Generated.My.Logs;
 using Microsoft.Kiota.Abstractions.Extensions;
@@ -39,6 +40,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My
         public global::ArtifactsMmoDotNet.Api.Generated.My.Details.DetailsRequestBuilder Details
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Details.DetailsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The grandexchange property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.GrandexchangeRequestBuilder Grandexchange
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.GrandexchangeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logs property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.My.Logs.LogsRequestBuilder Logs

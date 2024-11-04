@@ -44,9 +44,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("quantity", value); }
         }
         /// <summary>Skill required to craft the item.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema_skill? Skill
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill? Skill
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema_skill?>("skill"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill?>("skill"); }
             set { BackingStore?.Set("skill", value); }
         }
         /// <summary>
@@ -77,7 +77,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "quantity", n => { Quantity = n.GetIntValue(); } },
-                { "skill", n => { Skill = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema_skill>(); } },
+                { "skill", n => { Skill = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill>(); } },
             };
         }
         /// <summary>
@@ -90,7 +90,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>("items", Items);
             writer.WriteIntValue("level", Level);
             writer.WriteIntValue("quantity", Quantity);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema_skill>("skill", Skill);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill>("skill", Skill);
         }
     }
 }

@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Deposit.
         {
         }
         /// <summary>
-        /// Deposit golds in a bank on the character&apos;s map.
+        /// Deposit gold in a bank on the character&apos;s map.
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Deposit.
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Deposit golds in a bank on the character&apos;s map.
+        /// Deposit gold in a bank on the character&apos;s map.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

@@ -15,6 +15,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
+        /// <summary>Gold rewards.</summary>
+        public int? Gold
+        {
+            get { return BackingStore?.Get<int?>("gold"); }
+            set { BackingStore?.Set("gold", value); }
+        }
         /// <summary>Items rewards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -56,6 +62,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "gold", n => { Gold = n.GetIntValue(); } },
                 { "items", n => { Items = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
@@ -66,6 +73,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("gold", Gold);
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>("items", Items);
         }
     }

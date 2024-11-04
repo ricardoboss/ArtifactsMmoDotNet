@@ -32,9 +32,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>Your desired skin.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AddCharacterSchema_skin? Skin
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin? Skin
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AddCharacterSchema_skin?>("skin"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin?>("skin"); }
             set { BackingStore?.Set("skin", value); }
         }
         /// <summary>
@@ -63,7 +63,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "skin", n => { Skin = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AddCharacterSchema_skin>(); } },
+                { "skin", n => { Skin = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin>(); } },
             };
         }
         /// <summary>
@@ -74,7 +74,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("name", Name);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AddCharacterSchema_skin>("skin", Skin);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin>("skin", Skin);
         }
     }
 }

@@ -97,7 +97,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("status", value); }
         }
 #endif
-        /// <summary>The version property</summary>
+        /// <summary>Game version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Version

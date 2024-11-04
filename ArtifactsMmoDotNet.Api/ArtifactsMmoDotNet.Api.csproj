@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <UseTestApi>false</UseTestApi>
+    <UseTestApi>true</UseTestApi>
   </PropertyGroup>
 
   <ItemGroup>
@@ -66,6 +66,10 @@
       WorkingDirectory="$(MSBuildProjectDirectory)"
       EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
     />
+
+    <ItemGroup>
+      <Compile Include="Generated\**\*.cs" KeepDuplicates="false" />
+    </ItemGroup>
   </Target>
 
   <Target
@@ -81,5 +85,18 @@
       WorkingDirectory="$(MSBuildProjectDirectory)"
       EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
     />
+
+    <ItemGroup>
+      <Compile Include="Generated\**\*.cs" KeepDuplicates="false" />
+    </ItemGroup>
+  </Target>
+
+  <Target
+    Name="RemoveGeneratedFiles"
+    Condition="Exists('Generated')"
+    BeforeTargets="Clean"
+  >
+    <RemoveDir Directories="Generated" />
+    <Delete Files="$(ApiSpecDownconvertedFilename)" />
   </Target>
 </Project>

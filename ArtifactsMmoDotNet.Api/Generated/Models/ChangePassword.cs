@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Current password.</summary>
+        /// <summary>Your password.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? CurrentPassword

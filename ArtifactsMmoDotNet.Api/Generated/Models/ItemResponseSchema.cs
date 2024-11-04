@@ -18,16 +18,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema? Data
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema? Data
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema?>("data"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema?>("data"); }
             set { BackingStore?.Set("data", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema Data
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema Data
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema>("data"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>("data"); }
             set { BackingStore?.Set("data", value); }
         }
 #endif
@@ -56,7 +56,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "data", n => { Data = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema.CreateFromDiscriminatorValue); } },
+                { "data", n => { Data = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -66,7 +66,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.SingleItemSchema>("data", Data);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema>("data", Data);
         }
     }
 }
