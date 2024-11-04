@@ -3,6 +3,7 @@
 using ArtifactsMmoDotNet.Api.Generated.My.Bank;
 using ArtifactsMmoDotNet.Api.Generated.My.Change_password;
 using ArtifactsMmoDotNet.Api.Generated.My.Characters;
+using ArtifactsMmoDotNet.Api.Generated.My.Details;
 using ArtifactsMmoDotNet.Api.Generated.My.Item;
 using ArtifactsMmoDotNet.Api.Generated.My.Logs;
 using Microsoft.Kiota.Abstractions.Extensions;
@@ -33,6 +34,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My
         public global::ArtifactsMmoDotNet.Api.Generated.My.Characters.CharactersRequestBuilder Characters
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Characters.CharactersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The details property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Details.DetailsRequestBuilder Details
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Details.DetailsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The logs property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.My.Logs.LogsRequestBuilder Logs

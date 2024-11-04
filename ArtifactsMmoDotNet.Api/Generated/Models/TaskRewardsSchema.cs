@@ -10,59 +10,43 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     #pragma warning disable CS1591
-    public partial class ChangePassword : IBackedModel, IParsable
+    public partial class TaskRewardsSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Current password.</summary>
+        /// <summary>Items rewards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentPassword
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>? Items
         {
-            get { return BackingStore?.Get<string?>("current_password"); }
-            set { BackingStore?.Set("current_password", value); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>?>("items"); }
+            set { BackingStore?.Set("items", value); }
         }
 #nullable restore
 #else
-        public string CurrentPassword
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema> Items
         {
-            get { return BackingStore?.Get<string>("current_password"); }
-            set { BackingStore?.Set("current_password", value); }
-        }
-#endif
-        /// <summary>New password.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? NewPassword
-        {
-            get { return BackingStore?.Get<string?>("new_password"); }
-            set { BackingStore?.Set("new_password", value); }
-        }
-#nullable restore
-#else
-        public string NewPassword
-        {
-            get { return BackingStore?.Get<string>("new_password"); }
-            set { BackingStore?.Set("new_password", value); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>>("items"); }
+            set { BackingStore?.Set("items", value); }
         }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ChangePassword"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema"/> and sets the default values.
         /// </summary>
-        public ChangePassword()
+        public TaskRewardsSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ChangePassword"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.ChangePassword CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.ChangePassword();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -72,8 +56,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "current_password", n => { CurrentPassword = n.GetStringValue(); } },
-                { "new_password", n => { NewPassword = n.GetStringValue(); } },
+                { "items", n => { Items = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }
         /// <summary>
@@ -83,8 +66,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("current_password", CurrentPassword);
-            writer.WriteStringValue("new_password", NewPassword);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleItemSchema>("items", Items);
         }
     }
 }

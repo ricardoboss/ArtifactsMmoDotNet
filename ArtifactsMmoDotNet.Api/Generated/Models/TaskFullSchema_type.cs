@@ -5,7 +5,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     /// <summary>The type of task.</summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
-    public enum TaskSchema_type
+    public enum TaskFullSchema_type
     {
         [EnumMember(Value = "monsters")]
         #pragma warning disable CS1591

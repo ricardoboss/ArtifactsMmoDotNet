@@ -10,7 +10,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     #pragma warning disable CS1591
-    public partial class TaskRewardDataSchema : IBackedModel, IParsable
+    public partial class TasksRewardDataSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
@@ -50,35 +50,35 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Reward details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema? Reward
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema? Reward
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema?>("reward"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema?>("reward"); }
             set { BackingStore?.Set("reward", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema Reward
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema Reward
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema>("reward"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema>("reward"); }
             set { BackingStore?.Set("reward", value); }
         }
 #endif
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardDataSchema"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardDataSchema"/> and sets the default values.
         /// </summary>
-        public TaskRewardDataSchema()
+        public TasksRewardDataSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardDataSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardDataSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardDataSchema CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardDataSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardDataSchema();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardDataSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -90,7 +90,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "character", n => { Character = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema.CreateFromDiscriminatorValue); } },
-                { "reward", n => { Reward = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema.CreateFromDiscriminatorValue); } },
+                { "reward", n => { Reward = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -102,7 +102,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema>("reward", Reward);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TasksRewardSchema>("reward", Reward);
         }
     }
 }

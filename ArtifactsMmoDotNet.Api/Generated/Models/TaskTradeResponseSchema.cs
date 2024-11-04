@@ -10,49 +10,43 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
     #pragma warning disable CS1591
-    public partial class TaskRewardSchema : IBackedModel, IParsable
+    public partial class TaskTradeResponseSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Item code.</summary>
+        /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema? Data
         {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema?>("data"); }
+            set { BackingStore?.Set("data", value); }
         }
 #nullable restore
 #else
-        public string Code
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema Data
         {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema>("data"); }
+            set { BackingStore?.Set("data", value); }
         }
 #endif
-        /// <summary>Item quantity.</summary>
-        public int? Quantity
-        {
-            get { return BackingStore?.Get<int?>("quantity"); }
-            set { BackingStore?.Set("quantity", value); }
-        }
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeResponseSchema"/> and sets the default values.
         /// </summary>
-        public TaskRewardSchema()
+        public TaskTradeResponseSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeResponseSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeResponseSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardSchema();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeResponseSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -62,8 +56,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "code", n => { Code = n.GetStringValue(); } },
-                { "quantity", n => { Quantity = n.GetIntValue(); } },
+                { "data", n => { Data = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -73,8 +66,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteStringValue("code", Code);
-            writer.WriteIntValue("quantity", Quantity);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskTradeDataSchema>("data", Data);
         }
     }
 }

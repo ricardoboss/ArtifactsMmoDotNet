@@ -12,6 +12,7 @@ using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Api.Generated.Monsters;
 using ArtifactsMmoDotNet.Api.Generated.My;
 using ArtifactsMmoDotNet.Api.Generated.Resources;
+using ArtifactsMmoDotNet.Api.Generated.Tasks;
 using ArtifactsMmoDotNet.Api.Generated.Token;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
@@ -85,6 +86,11 @@ namespace ArtifactsMmoDotNet.Api.Generated
         public global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder Resources
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The tasks property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Tasks.TasksRequestBuilder Tasks
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.Tasks.TasksRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The token property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Token.TokenRequestBuilder Token

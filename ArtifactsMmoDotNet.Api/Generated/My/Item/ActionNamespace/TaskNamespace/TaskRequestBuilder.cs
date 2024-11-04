@@ -4,6 +4,7 @@ using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.Can
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.Complete;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.Exchange;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.New;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.Trade;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
@@ -37,6 +38,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.New.NewRequestBuilder New
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.New.NewRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The trade property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.Trade.TradeRequestBuilder Trade
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.Trade.TradeRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.TaskRequestBuilder"/> and sets the default values.
