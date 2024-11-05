@@ -1,11 +1,16 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
+using Microsoft.Extensions.Options;
 using Microsoft.Kiota.Abstractions.Authentication;
 using Microsoft.Kiota.Http.HttpClientLibrary;
 
 namespace ArtifactsMmoDotNet.Sdk.Services;
 
-public class DefaultArtifactsMmoApiClientFactory(IHttpClientFactory httpClientFactory, IAccessTokenProvider accessTokenProvider) : IArtifactsMmoApiClientFactory
+public class DefaultArtifactsMmoApiClientFactory(
+    IHttpClientFactory httpClientFactory,
+    IAccessTokenProvider accessTokenProvider,
+    IOptions<ArtifactsMmoApiClientOptions> options
+) : IArtifactsMmoApiClientFactory
 {
     public ArtifactsMmoApiClient Create()
     {
@@ -33,9 +38,10 @@ public class DefaultArtifactsMmoApiClientFactory(IHttpClientFactory httpClientFa
     {
         var client = httpClientFactory.CreateClient();
 
-        client.BaseAddress = new Uri("https://api.artifactsmmo.com/");
-        client.DefaultRequestHeaders.Add("User-Agent", "ArtifactsMmoDotNet/1.0.0 (+https://github.com/ricardoboss/ArtifactsMmoDotNet)");
-        client.Timeout = TimeSpan.FromSeconds(5);
+        client.BaseAddress = new Uri(options.Value.BaseAddress ?? "https://api.artifactsmmo.com/");
+        client.DefaultRequestHeaders.Add("User-Agent",
+            "ArtifactsMmoDotNet/1.0.0 (+https://github.com/ricardoboss/ArtifactsMmoDotNet)");
+        client.Timeout = options.Value.Timeout ?? TimeSpan.FromSeconds(5);
 
         return client;
     }
