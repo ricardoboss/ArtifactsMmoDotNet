@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.History
         {
         }
         /// <summary>
-        /// Fetch your sales history.
+        /// Fetch your sales history of the last 7 days.
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.History
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch your sales history.
+        /// Fetch your sales history of the last 7 days.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.History
             return new global::ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.History.HistoryRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch your sales history.
+        /// Fetch your sales history of the last 7 days.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
         public partial class HistoryRequestBuilderGetQueryParameters 

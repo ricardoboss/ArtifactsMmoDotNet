@@ -117,6 +117,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("subtype", value); }
         }
 #endif
+        /// <summary>Item tradeable status. A non-tradeable item cannot be exchanged or sold.</summary>
+        public bool? Tradeable
+        {
+            get { return BackingStore?.Get<bool?>("tradeable"); }
+            set { BackingStore?.Set("tradeable", value); }
+        }
         /// <summary>Item type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -165,6 +171,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "subtype", n => { Subtype = n.GetStringValue(); } },
+                { "tradeable", n => { Tradeable = n.GetBoolValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };
         }
@@ -182,6 +189,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("level", Level);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("subtype", Subtype);
+            writer.WriteBoolValue("tradeable", Tradeable);
             writer.WriteStringValue("type", Type);
         }
     }

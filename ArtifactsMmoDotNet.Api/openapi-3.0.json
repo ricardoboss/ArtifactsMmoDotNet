@@ -1094,6 +1094,9 @@
           "433": {
             "description": "You can't create more than 100 orders at the same time."
           },
+          "437": {
+            "description": "This item cannot be sold."
+          },
           "478": {
             "description": "Missing item or insufficient quantity."
           },
@@ -1816,7 +1819,7 @@
           "My account"
         ],
         "summary": "Get Ge Sell History",
-        "description": "Fetch your sales history.",
+        "description": "Fetch your sales history of the last 7 days.",
         "operationId": "get_ge_sell_history_my_grandexchange_history_get",
         "security": [
           {
@@ -1904,7 +1907,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/AccountDetailsSchema"
+                  "$ref": "#/components/schemas/MyAccountDetailsSchema"
                 }
               }
             }
@@ -2038,57 +2041,6 @@
             "JWTBearer": []
           }
         ]
-      }
-    },
-    "/characters": {
-      "get": {
-        "tags": [
-          "Characters"
-        ],
-        "summary": "Get All Characters",
-        "description": "Fetch characters details.",
-        "operationId": "get_all_characters_characters_get",
-        "parameters": [
-          {
-            "name": "page",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "minimum": 1,
-              "description": "Page number",
-              "default": 1,
-              "title": "Page"
-            },
-            "description": "Page number"
-          },
-          {
-            "name": "size",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "integer",
-              "maximum": 100,
-              "minimum": 1,
-              "description": "Page size",
-              "default": 50,
-              "title": "Size"
-            },
-            "description": "Page size"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Successfully fetched characters details.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DataPage_CharacterSchema_"
-                }
-              }
-            }
-          }
-        }
       }
     },
     "/characters/{name}": {
@@ -2817,7 +2769,7 @@
           "Grand Exchange"
         ],
         "summary": "Get Ge Sell History",
-        "description": "Fetch the sales history of the item.",
+        "description": "Fetch the sales history of the item for the last 7 days.",
         "operationId": "get_ge_sell_history_grandexchange_history__code__get",
         "parameters": [
           {
@@ -3615,6 +3567,45 @@
         }
       }
     },
+    "/accounts/{account}": {
+      "get": {
+        "tags": [
+          "Accounts"
+        ],
+        "summary": "Get Account",
+        "description": "Retrieve the details of a character.",
+        "operationId": "get_account_accounts__account__get",
+        "parameters": [
+          {
+            "name": "account",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-zA-Z0-9_-]+$",
+              "title": "Account name",
+              "description": "The account name."
+            },
+            "description": "The account name."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched account.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AccountDetailsSchema"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Account not found."
+          }
+        }
+      }
+    },
     "/token": {
       "post": {
         "tags": [
@@ -3763,12 +3754,6 @@
             "title": "Username",
             "description": "Username."
           },
-          "email": {
-            "type": "string",
-            "format": "email",
-            "title": "Email",
-            "description": "Email."
-          },
           "subscribed": {
             "type": "boolean",
             "title": "Subscribed",
@@ -3795,11 +3780,6 @@
             "title": "Badges",
             "description": "Account badges."
           },
-          "gems": {
-            "type": "integer",
-            "title": "Gems",
-            "description": "Gems."
-          },
           "achievements_points": {
             "type": "integer",
             "title": "Achievements Points",
@@ -3819,10 +3799,8 @@
         "type": "object",
         "required": [
           "username",
-          "email",
           "subscribed",
           "status",
-          "gems",
           "achievements_points",
           "banned"
         ],
@@ -3842,10 +3820,23 @@
       },
       "AccountLeaderboardSchema": {
         "properties": {
+          "position": {
+            "type": "integer",
+            "title": "Position",
+            "description": "Position in the leaderboard."
+          },
           "account": {
             "type": "string",
             "title": "Account",
             "description": "Account name."
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountStatus"
+              }
+            ],
+            "description": "Member status."
           },
           "achievements_points": {
             "type": "integer",
@@ -3855,7 +3846,9 @@
         },
         "type": "object",
         "required": [
+          "position",
           "account",
+          "status",
           "achievements_points"
         ],
         "title": "AccountLeaderboardSchema"
@@ -4477,6 +4470,11 @@
       },
       "CharacterLeaderboardSchema": {
         "properties": {
+          "position": {
+            "type": "integer",
+            "title": "Position",
+            "description": "Position in the leaderboard."
+          },
           "name": {
             "type": "string",
             "title": "Name",
@@ -4590,6 +4588,7 @@
         },
         "type": "object",
         "required": [
+          "position",
           "name",
           "account",
           "skin",
@@ -4771,11 +4770,6 @@
             "type": "integer",
             "title": "Max Xp",
             "description": "XP required to level up the character."
-          },
-          "achievements_points": {
-            "type": "integer",
-            "title": "Achievements Points",
-            "description": "Account achievements points."
           },
           "gold": {
             "type": "integer",
@@ -5137,7 +5131,6 @@
           "level",
           "xp",
           "max_xp",
-          "achievements_points",
           "gold",
           "speed",
           "mining_level",
@@ -5665,73 +5658,6 @@
           "size"
         ],
         "title": "DataPage[CharacterLeaderboardSchema]"
-      },
-      "DataPage_CharacterSchema_": {
-        "properties": {
-          "data": {
-            "items": {
-              "$ref": "#/components/schemas/CharacterSchema"
-            },
-            "type": "array",
-            "title": "Data"
-          },
-          "total": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": 0
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Total"
-          },
-          "page": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": 1
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Page"
-          },
-          "size": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": 1
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Size"
-          },
-          "pages": {
-            "anyOf": [
-              {
-                "type": "integer",
-                "minimum": 0
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Pages"
-          }
-        },
-        "type": "object",
-        "required": [
-          "data",
-          "total",
-          "page",
-          "size"
-        ],
-        "title": "DataPage[CharacterSchema]"
       },
       "DataPage_DropRateSchema_": {
         "properties": {
@@ -7405,6 +7331,11 @@
               }
             ],
             "description": "Craft information. If applicable."
+          },
+          "tradeable": {
+            "type": "boolean",
+            "title": "Tradeable",
+            "description": "Item tradeable status. A non-tradeable item cannot be exchanged or sold."
           }
         },
         "type": "object",
@@ -7414,7 +7345,8 @@
           "level",
           "type",
           "subtype",
-          "description"
+          "description",
+          "tradeable"
         ],
         "title": "ItemSchema"
       },
@@ -7527,6 +7459,7 @@
           "task_exchange",
           "task_cancelled",
           "task_completed",
+          "task_trade",
           "recycling",
           "rest",
           "use",
@@ -7735,6 +7668,90 @@
           "drops"
         ],
         "title": "MonsterSchema"
+      },
+      "MyAccountDetails": {
+        "properties": {
+          "username": {
+            "type": "string",
+            "title": "Username",
+            "description": "Username."
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "title": "Email",
+            "description": "Email."
+          },
+          "subscribed": {
+            "type": "boolean",
+            "title": "Subscribed",
+            "description": "Subscribed for the current season."
+          },
+          "status": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/AccountStatus"
+              }
+            ],
+            "description": "Member status."
+          },
+          "badges": {
+            "anyOf": [
+              {
+                "items": {},
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Badges",
+            "description": "Account badges."
+          },
+          "gems": {
+            "type": "integer",
+            "title": "Gems",
+            "description": "Gems."
+          },
+          "achievements_points": {
+            "type": "integer",
+            "title": "Achievements Points",
+            "description": "Achievement points."
+          },
+          "banned": {
+            "type": "boolean",
+            "title": "Banned",
+            "description": "Banned."
+          },
+          "ban_reason": {
+            "type": "string",
+            "title": "Ban Reason",
+            "description": "Ban reason."
+          }
+        },
+        "type": "object",
+        "required": [
+          "username",
+          "email",
+          "subscribed",
+          "status",
+          "gems",
+          "achievements_points",
+          "banned"
+        ],
+        "title": "MyAccountDetails"
+      },
+      "MyAccountDetailsSchema": {
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/MyAccountDetails"
+          }
+        },
+        "type": "object",
+        "required": [
+          "data"
+        ],
+        "title": "MyAccountDetailsSchema"
       },
       "MyCharactersListSchema": {
         "properties": {

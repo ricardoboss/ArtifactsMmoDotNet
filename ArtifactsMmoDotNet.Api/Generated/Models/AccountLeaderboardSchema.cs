@@ -37,6 +37,18 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
+        /// <summary>Position in the leaderboard.</summary>
+        public int? Position
+        {
+            get { return BackingStore?.Get<int?>("position"); }
+            set { BackingStore?.Set("position", value); }
+        }
+        /// <summary>Member status.</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
+            set { BackingStore?.Set("status", value); }
+        }
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountLeaderboardSchema"/> and sets the default values.
         /// </summary>
@@ -64,6 +76,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "account", n => { Account = n.GetStringValue(); } },
                 { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
+                { "position", n => { Position = n.GetIntValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
             };
         }
         /// <summary>
@@ -75,6 +89,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteIntValue("achievements_points", AchievementsPoints);
+            writer.WriteIntValue("position", Position);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
         }
     }
 }

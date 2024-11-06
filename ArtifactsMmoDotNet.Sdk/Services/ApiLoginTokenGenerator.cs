@@ -1,4 +1,5 @@
-﻿using ArtifactsMmoDotNet.Sdk.Exceptions;
+﻿using ArtifactsMmoDotNet.Api.Exceptions.Account;
+using ArtifactsMmoDotNet.Sdk.Exceptions;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 
@@ -10,11 +11,18 @@ public class ApiLoginTokenGenerator(IArtifactsMmoApiClientFactory apiClientFacto
     {
         var apiClient = apiClientFactory.CreateWithBasicAuth(username, password);
 
-        var response = await apiClient.Token!.PostAsync();
+        try
+        {
+            var response = await apiClient.Token!.PostAsync();
 
-        if (response is not { Token: { } token})
-            throw new LoginFailureException("Invalid response from Artifacts MMO API");
+            if (response is not { Token: { } token})
+                throw new LoginFailureException("Invalid response from Artifacts MMO API");
 
-        return token;
+            return token;
+        }
+        catch (TokenGenerationFailException e)
+        {
+            throw new LoginFailureException("Failed to generate token. Verify your credentials.", e);
+        }
     }
 }

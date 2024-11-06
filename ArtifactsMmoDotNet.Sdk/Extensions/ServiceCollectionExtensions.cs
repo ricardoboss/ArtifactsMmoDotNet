@@ -87,8 +87,9 @@ public static class ServiceCollectionExtensions
 
         optionsBuilder.ValidateOnStart();
 
+        services.AddHttpClient(DefaultArtifactsMmoApiClientFactory.ArtifactsMmoApiClientName);
+
         return services
-            .AddHttpClient()
             .AddSingleton<IAccessTokenProvider, TokenStorageAccessTokenProvider>()
             .AddSingleton<IArtifactsMmoApiClientFactory, DefaultArtifactsMmoApiClientFactory>()
             .AddSingletonFactory<IArtifactsMmoApiClientFactory, ArtifactsMmoApiClient>();

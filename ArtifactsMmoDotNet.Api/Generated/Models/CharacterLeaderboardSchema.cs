@@ -131,6 +131,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("name", value); }
         }
 #endif
+        /// <summary>Position in the leaderboard.</summary>
+        public int? Position
+        {
+            get { return BackingStore?.Get<int?>("position"); }
+            set { BackingStore?.Set("position", value); }
+        }
         /// <summary>Character skin code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -218,6 +224,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "mining_level", n => { MiningLevel = n.GetIntValue(); } },
                 { "mining_total_xp", n => { MiningTotalXp = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "position", n => { Position = n.GetIntValue(); } },
                 { "skin", n => { Skin = n.GetStringValue(); } },
                 { "total_xp", n => { TotalXp = n.GetIntValue(); } },
                 { "weaponcrafting_level", n => { WeaponcraftingLevel = n.GetIntValue(); } },
@@ -249,6 +256,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("mining_level", MiningLevel);
             writer.WriteIntValue("mining_total_xp", MiningTotalXp);
             writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("position", Position);
             writer.WriteStringValue("skin", Skin);
             writer.WriteIntValue("total_xp", TotalXp);
             writer.WriteIntValue("weaponcrafting_level", WeaponcraftingLevel);

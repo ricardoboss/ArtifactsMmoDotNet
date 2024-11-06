@@ -22,7 +22,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts
             get => new global::ArtifactsMmoDotNet.Api.Generated.Accounts.Create.CreateRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.accounts.item collection</summary>
-        /// <param name="position">The character name.</param>
+        /// <param name="position">The account name.</param>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Accounts.Item.WithAccountItemRequestBuilder"/></returns>
         public global::ArtifactsMmoDotNet.Api.Generated.Accounts.Item.WithAccountItemRequestBuilder this[string position]
         {

@@ -59,28 +59,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("ban_reason", value); }
         }
 #endif
-        /// <summary>Email.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Email
-        {
-            get { return BackingStore?.Get<string?>("email"); }
-            set { BackingStore?.Set("email", value); }
-        }
-#nullable restore
-#else
-        public string Email
-        {
-            get { return BackingStore?.Get<string>("email"); }
-            set { BackingStore?.Set("email", value); }
-        }
-#endif
-        /// <summary>Gems.</summary>
-        public int? Gems
-        {
-            get { return BackingStore?.Get<int?>("gems"); }
-            set { BackingStore?.Set("gems", value); }
-        }
         /// <summary>Member status.</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
         {
@@ -138,8 +116,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "badges", n => { Badges = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails.AccountDetails_badges>(global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails.AccountDetails_badges.CreateFromDiscriminatorValue); } },
                 { "ban_reason", n => { BanReason = n.GetStringValue(); } },
                 { "banned", n => { Banned = n.GetBoolValue(); } },
-                { "email", n => { Email = n.GetStringValue(); } },
-                { "gems", n => { Gems = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
                 { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
@@ -156,8 +132,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails.AccountDetails_badges>("badges", Badges);
             writer.WriteBoolValue("banned", Banned);
             writer.WriteStringValue("ban_reason", BanReason);
-            writer.WriteStringValue("email", Email);
-            writer.WriteIntValue("gems", Gems);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
             writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("username", Username);

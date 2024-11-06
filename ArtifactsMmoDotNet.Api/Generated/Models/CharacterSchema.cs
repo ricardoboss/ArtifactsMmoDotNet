@@ -29,12 +29,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("account", value); }
         }
 #endif
-        /// <summary>Account achievements points.</summary>
-        public int? AchievementsPoints
-        {
-            get { return BackingStore?.Get<int?>("achievements_points"); }
-            set { BackingStore?.Set("achievements_points", value); }
-        }
         /// <summary>Alchemy level.</summary>
         public int? AlchemyLevel
         {
@@ -687,7 +681,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "account", n => { Account = n.GetStringValue(); } },
-                { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
                 { "alchemy_level", n => { AlchemyLevel = n.GetIntValue(); } },
                 { "alchemy_max_xp", n => { AlchemyMaxXp = n.GetIntValue(); } },
                 { "alchemy_xp", n => { AlchemyXp = n.GetIntValue(); } },
@@ -772,7 +765,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
-            writer.WriteIntValue("achievements_points", AchievementsPoints);
             writer.WriteIntValue("alchemy_level", AlchemyLevel);
             writer.WriteIntValue("alchemy_max_xp", AlchemyMaxXp);
             writer.WriteIntValue("alchemy_xp", AlchemyXp);

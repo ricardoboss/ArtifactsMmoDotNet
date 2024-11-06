@@ -84,6 +84,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Task_completed,
         #pragma warning restore CS1591
+        [EnumMember(Value = "task_trade")]
+        #pragma warning disable CS1591
+        Task_trade,
+        #pragma warning restore CS1591
         [EnumMember(Value = "recycling")]
         #pragma warning disable CS1591
         Recycling,
