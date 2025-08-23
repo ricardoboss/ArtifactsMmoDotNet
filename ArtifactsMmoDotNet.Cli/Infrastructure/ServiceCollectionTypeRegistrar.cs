@@ -27,7 +27,7 @@ internal sealed class ServiceCollectionTypeRegistrar(IServiceCollection builder)
     {
         ArgumentNullException.ThrowIfNull(factory);
 
-        builder.AddSingleton(service, factory);
+        builder.AddSingleton(service, implementationFactory: _ => factory());
     }
 
     public ITypeResolver Build() => new ServiceProviderTypeResolver(builder.BuildServiceProvider());
