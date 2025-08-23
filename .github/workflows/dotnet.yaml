@@ -15,5 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-dotnet@v4
-      - run: dotnet format --verify-no-changes
-      - run: dotnet build
+      - run: dotnet restore
+      - run: dotnet format --verify-no-changes --no-restore
+      - run: dotnet build --no-restore
