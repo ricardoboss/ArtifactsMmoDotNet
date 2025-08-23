@@ -18,6 +18,19 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             yield return character;
     }
 
+    public async Task<CharacterSchema> CreateCharacter(string name, CharacterSkin? skin = null)
+    {
+        var body = new AddCharacterSchema
+        {
+            Name = name,
+            Skin = skin,
+        };
+
+        var response = await apiClient.Characters.Create.PostAsync(body);
+
+        return response!.Data!;
+    }
+
     private DateTimeOffset _lastCooldownEnd = DateTimeOffset.MinValue;
 
     internal Task UpdateCooldownEnd(DateTimeOffset end)

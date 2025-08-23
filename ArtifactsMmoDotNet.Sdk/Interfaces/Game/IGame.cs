@@ -1,6 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Generated.Items;
-using ArtifactsMmoDotNet.Api.Generated.Maps;
-using ArtifactsMmoDotNet.Api.Generated.Models;
+﻿using ArtifactsMmoDotNet.Api.Generated.Models;
 
 namespace ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
@@ -37,6 +35,8 @@ public interface IGame
     ICharacters From(string characterName);
 
     IAsyncEnumerable<CharacterSchema> GetCharacters();
+
+    Task<CharacterSchema> CreateCharacter(string name, CharacterSkin? skin = null);
 
     TimeSpan RemainingCooldown { get; }
 

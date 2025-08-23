@@ -399,6 +399,13 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         var characters = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!).StartAsync("Fetching characters...",
             async _ => await game.GetCharacters().ToListAsync());
 
+        if (characters.Count == 0)
+        {
+            AnsiConsole.MarkupLine("[yellow]No characters found![/] Creating a new one...");
+
+            return await CreateCharacter();
+        }
+
         var characterSelectionPrompt = new SelectionPrompt<CharacterSchema>
         {
             Title = "Select a character",
@@ -407,6 +414,24 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         }.AddChoices(characters);
 
         return AnsiConsole.Prompt(characterSelectionPrompt);
+    }
+
+    private async Task<CharacterSchema> CreateCharacter()
+    {
+        var name = AnsiConsole.Ask<string>("Character name:");
+
+        CharacterSkin? skin = null;
+        var wantsSkin = AnsiConsole.Confirm("Choose a skin?");
+        if (wantsSkin)
+        {
+            skin = AnsiConsole.Prompt(new SelectionPrompt<CharacterSkin>
+            {
+                Title = "Available skins:",
+                WrapAround = true,
+            }.AddChoices(Enum.GetValues<CharacterSkin>()));
+        }
+
+        return await game.CreateCharacter(name, skin);
     }
 }
 
