@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Generated;
+using ArtifactsMmoDotNet.Api.Generated;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Abstractions.Store;
 

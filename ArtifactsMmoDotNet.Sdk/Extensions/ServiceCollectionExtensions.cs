@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;

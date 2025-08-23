@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Exceptions.Account;
+using ArtifactsMmoDotNet.Api.Exceptions.Account;
 using ArtifactsMmoDotNet.Cli.Commands;
 using ArtifactsMmoDotNet.Cli.Extensions;
 using ArtifactsMmoDotNet.Cli.Infrastructure;

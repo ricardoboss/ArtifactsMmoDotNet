@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Cli.Services;
+using ArtifactsMmoDotNet.Cli.Services;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using Microsoft.Extensions.DependencyInjection;
 

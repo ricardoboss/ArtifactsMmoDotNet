@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Api.Exceptions;
+namespace ArtifactsMmoDotNet.Api.Exceptions;
 
 public enum CustomApiStatusCode
 {

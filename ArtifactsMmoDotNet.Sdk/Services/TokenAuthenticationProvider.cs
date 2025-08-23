@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using Microsoft.Kiota.Abstractions.Authentication;
 
 namespace ArtifactsMmoDotNet.Sdk.Services;

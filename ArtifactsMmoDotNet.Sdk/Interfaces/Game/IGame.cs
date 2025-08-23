@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Generated.Models;
+using ArtifactsMmoDotNet.Api.Generated.Models;
 
 namespace ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 

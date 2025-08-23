@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
+using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using JetBrains.Annotations;
 using Spectre.Console.Cli;
 

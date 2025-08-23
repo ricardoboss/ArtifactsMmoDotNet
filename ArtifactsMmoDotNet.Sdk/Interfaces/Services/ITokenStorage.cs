@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Sdk.Interfaces.Services;
+namespace ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 
 public interface ITokenStorage
 {

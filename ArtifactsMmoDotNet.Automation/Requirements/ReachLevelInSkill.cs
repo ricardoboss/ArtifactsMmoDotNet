@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Generated.Models;
+using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
 using ArtifactsMmoDotNet.Automation.Exceptions;
 using ArtifactsMmoDotNet.Automation.Interfaces;

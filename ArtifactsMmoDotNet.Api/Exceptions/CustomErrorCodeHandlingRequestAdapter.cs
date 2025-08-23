@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using ArtifactsMmoDotNet.Api.Exceptions.Account;
 using ArtifactsMmoDotNet.Api.Exceptions.Bank;
 using ArtifactsMmoDotNet.Api.Exceptions.Character;
@@ -32,7 +32,7 @@ public sealed class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerH
 
     public async Task<TModelType?> SendPrimitiveAsync<
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
-        TModelType>(
+    TModelType>(
         RequestInformation requestInfo,
         Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
         CancellationToken cancellationToken = default)
@@ -41,7 +41,7 @@ public sealed class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerH
 
     public async Task<IEnumerable<TModelType>?> SendPrimitiveCollectionAsync<
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
-        TModelType>(
+    TModelType>(
         RequestInformation requestInfo,
         Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
         CancellationToken cancellationToken = default)

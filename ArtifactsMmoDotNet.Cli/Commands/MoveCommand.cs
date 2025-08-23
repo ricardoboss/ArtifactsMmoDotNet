@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Generated;
+using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using JetBrains.Annotations;

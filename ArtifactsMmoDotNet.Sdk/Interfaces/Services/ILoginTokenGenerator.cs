@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Sdk.Exceptions;
+using ArtifactsMmoDotNet.Sdk.Exceptions;
 
 namespace ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 

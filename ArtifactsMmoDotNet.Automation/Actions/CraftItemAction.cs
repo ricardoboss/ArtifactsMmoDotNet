@@ -34,22 +34,22 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
             switch (result.Details!.Items!.Count)
             {
                 case > 1:
-                {
-                    await context.Output.LogInfoAsync("Crafted:");
-                    foreach (var log in result.Details!.Items!)
                     {
-                        await context.Output.LogInfoAsync($"    - {log.Quantity} {log.Code}");
+                        await context.Output.LogInfoAsync("Crafted:");
+                        foreach (var log in result.Details!.Items!)
+                        {
+                            await context.Output.LogInfoAsync($"    - {log.Quantity} {log.Code}");
+                        }
+
+                        break;
                     }
-
-                    break;
-                }
                 case 1:
-                {
-                    var log = result.Details!.Items!.First();
+                    {
+                        var log = result.Details!.Items!.First();
 
-                    await context.Output.LogInfoAsync($"Crafted {log.Quantity} {log.Code}");
-                    break;
-                }
+                        await context.Output.LogInfoAsync($"Crafted {log.Quantity} {log.Code}");
+                        break;
+                    }
             }
 
             await context.Game.WaitForCooldown();

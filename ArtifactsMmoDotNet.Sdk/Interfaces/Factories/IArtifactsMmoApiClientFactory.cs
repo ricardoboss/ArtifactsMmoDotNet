@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api.Generated;
+using ArtifactsMmoDotNet.Api.Generated;
 
 namespace ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
 

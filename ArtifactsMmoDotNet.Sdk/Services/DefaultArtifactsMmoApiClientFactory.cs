@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Api;
+using ArtifactsMmoDotNet.Api;
 using ArtifactsMmoDotNet.Api.Exceptions;
 using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;

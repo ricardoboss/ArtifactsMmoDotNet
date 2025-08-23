@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Sdk.Services;
+namespace ArtifactsMmoDotNet.Sdk.Services;
 
 public class ArtifactsMmoApiClientOptions
 {

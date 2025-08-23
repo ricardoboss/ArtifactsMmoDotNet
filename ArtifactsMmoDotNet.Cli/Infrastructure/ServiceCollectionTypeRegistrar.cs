@@ -1,4 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
 using Spectre.Console.Cli;
 
@@ -34,7 +34,7 @@ internal sealed class ServiceCollectionTypeRegistrar(IServiceCollection builder)
 
     public void Register<TService,
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
-        TImplementation>()
+    TImplementation>()
         where TImplementation : TService =>
         Register(typeof(TService), typeof(TImplementation));
 
