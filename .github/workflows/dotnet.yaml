@@ -1,0 +1,19 @@
+﻿name: .NET
+
+on:
+  push:
+    branches: [ main ]
+    paths: [ .github/workflows/dotnet.yaml ]
+  pull_request:
+    branches: [ main ]
+    paths: [ .github/workflows/dotnet.yaml ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v4
+      - run: dotnet format --verify-no-changes
+      - run: dotnet build
