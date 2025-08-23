@@ -1,4 +1,5 @@
-﻿using ArtifactsMmoDotNet.Api.Generated.Models;
+﻿using ArtifactsMmoDotNet.Api.Exceptions.Map;
+using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Automation;
 using ArtifactsMmoDotNet.Sdk.Automation.Requirements;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
@@ -314,10 +315,17 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Gather(string characterName)
     {
-        var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Gathering...", async _ => await game.With(characterName).Gather());
+        try
+        {
+            var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
+                .StartAsync("Gathering...", async _ => await game.With(characterName).Gather());
 
-        PrintSkillDataResult(result);
+            PrintSkillDataResult(result);
+        }
+        catch (MapContentNotFoundException)
+        {
+            AnsiConsole.MarkupLine("[red]Cannot gather here![/]");
+        }
     }
 
     private void PrintSkillDataResult(SkillDataSchema result)
