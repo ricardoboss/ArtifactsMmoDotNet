@@ -223,6 +223,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
                 AnsiConsole.MarkupLine("[grey]Retrying...[/]");
 
                 retryCount++;
+
+                break;
             }
         }
 
