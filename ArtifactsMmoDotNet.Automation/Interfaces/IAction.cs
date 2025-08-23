@@ -1,4 +1,4 @@
-namespace ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
+namespace ArtifactsMmoDotNet.Automation.Interfaces;
 
 public interface IAction
 {

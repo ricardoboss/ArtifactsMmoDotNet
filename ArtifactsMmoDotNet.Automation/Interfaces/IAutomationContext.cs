@@ -1,7 +1,7 @@
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 
-namespace ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
+namespace ArtifactsMmoDotNet.Automation.Interfaces;
 
 public interface IAutomationContext
 {

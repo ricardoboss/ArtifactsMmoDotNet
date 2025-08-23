@@ -1,10 +1,11 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
-using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
+using ArtifactsMmoDotNet.Automation.Interfaces;
+using ArtifactsMmoDotNet.Automation.Models;
 
 namespace ArtifactsMmoDotNet.Automation.Requirements;
 
-public class ReachLevelInSkill(string skill, int level) : BaseRequirement
+public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequirement
 {
     public override string Name => $"Reach level {level} in {skill}";
 
@@ -21,20 +22,25 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
 
         return skill switch
         {
-            "mining" => new SkillInfo(character.MiningLevel!.Value, character.MiningXp!.Value,
+            LevelableSkill.Mining => new SkillInfo(character.MiningLevel!.Value, character.MiningXp!.Value,
                 character.MiningMaxXp!.Value),
-            "woodcutting" => new SkillInfo(character.WoodcuttingLevel!.Value, character.WoodcuttingXp!.Value,
+            LevelableSkill.Woodcutting => new SkillInfo(character.WoodcuttingLevel!.Value,
+                character.WoodcuttingXp!.Value,
                 character.WoodcuttingMaxXp!.Value),
-            "fishing" => new SkillInfo(character.FishingLevel!.Value, character.FishingXp!.Value,
+            LevelableSkill.Fishing => new SkillInfo(character.FishingLevel!.Value, character.FishingXp!.Value,
                 character.FishingMaxXp!.Value),
-            "weaponcrafting" => new SkillInfo(character.WeaponcraftingLevel!.Value, character.WeaponcraftingXp!.Value,
+            LevelableSkill.Weaponcrafting => new SkillInfo(character.WeaponcraftingLevel!.Value,
+                character.WeaponcraftingXp!.Value,
                 character.WeaponcraftingMaxXp!.Value),
-            "gearcrafting" => new SkillInfo(character.GearcraftingLevel!.Value, character.GearcraftingXp!.Value,
+            LevelableSkill.Gearcrafting => new SkillInfo(character.GearcraftingLevel!.Value,
+                character.GearcraftingXp!.Value,
                 character.GearcraftingMaxXp!.Value),
-            "jewelrycrafting" => new SkillInfo(character.JewelrycraftingLevel!.Value,
+            LevelableSkill.Jewelrycrafting => new SkillInfo(character.JewelrycraftingLevel!.Value,
                 character.JewelrycraftingXp!.Value, character.JewelrycraftingMaxXp!.Value),
-            "cooking" => new SkillInfo(character.CookingLevel!.Value, character.CookingXp!.Value,
+            LevelableSkill.Cooking => new SkillInfo(character.CookingLevel!.Value, character.CookingXp!.Value,
                 character.CookingMaxXp!.Value),
+            LevelableSkill.Alchemy => new SkillInfo(character.AlchemyLevel!.Value, character.AlchemyXp!.Value,
+                character.AlchemyMaxXp!.Value),
             _ => throw new NotImplementedException($"Unknown skill: {skill}"),
         };
     }
@@ -43,13 +49,14 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
     {
         return skill switch
         {
-            "mining" => GatherItems(context, GatheringSkill.Mining),
-            "woodcutting" => GatherItems(context, GatheringSkill.Woodcutting),
-            "fishing" => GatherItems(context, GatheringSkill.Fishing),
-            "weaponcrafting" => GetWeaponcraftingActions(context),
-            "gearcrafting" => GetGearcraftingActions(context),
-            "jewelrycrafting" => GetJewelrycraftingActions(context),
-            "cooking" => GetCookingActions(context),
+            LevelableSkill.Mining => GatherItems(context, GatheringSkill.Mining),
+            LevelableSkill.Woodcutting => GatherItems(context, GatheringSkill.Woodcutting),
+            LevelableSkill.Fishing => GatherItems(context, GatheringSkill.Fishing),
+            LevelableSkill.Weaponcrafting => GetWeaponcraftingActions(context),
+            LevelableSkill.Gearcrafting => GetGearcraftingActions(context),
+            LevelableSkill.Jewelrycrafting => GetJewelrycraftingActions(context),
+            LevelableSkill.Cooking => GetCookingActions(context),
+            LevelableSkill.Alchemy => GatherItems(context, GatheringSkill.Alchemy),
             _ => throw new NotImplementedException($"Don't know how to gain levels in {skill}"),
         };
     }
@@ -60,9 +67,9 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
         var currentInfo = await GetCurrentSkillInfo(context);
         var lastInfo = currentInfo;
         var position = await context.Game.From(context.CharacterName).GetPosition();
-        var dropInfo = await GetNearestSkillLevellingInfo(context, gatherSkill, currentInfo, position);
+        var (item, location) = await GetNearestSkillLevellingInfo(context, gatherSkill, currentInfo, position);
 
-        if (dropInfo.location is not { X: { } x, Y: { } y })
+        if (location is not { X: { } x, Y: { } y })
             throw new Exception("No location to level the skill found");
 
         if (position.x != x || position.y != y)
@@ -72,7 +79,7 @@ public class ReachLevelInSkill(string skill, int level) : BaseRequirement
 
         do
         {
-            yield return new GatherItemAction(dropInfo.item.Code!);
+            yield return new GatherItemAction(item.Code!);
 
             currentInfo = await GetCurrentSkillInfo(context);
             if (currentInfo.Level == lastInfo.Level)

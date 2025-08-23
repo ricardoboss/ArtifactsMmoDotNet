@@ -1,8 +1,9 @@
 ﻿using ArtifactsMmoDotNet.Api.Exceptions.Map;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation;
+using ArtifactsMmoDotNet.Automation.Interfaces;
+using ArtifactsMmoDotNet.Automation.Models;
 using ArtifactsMmoDotNet.Automation.Requirements;
-using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
@@ -151,13 +152,12 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
                 rootRequirement = new HaveItemInInventory(itemCode, quantity);
                 break;
             case "Reach level in skill":
-                var skill = AnsiConsole.Prompt(new SelectionPrompt<string>
+                var skill = AnsiConsole.Prompt(new SelectionPrompt<LevelableSkill>
                 {
                     Title = "[yellow]What skill to automate?[/]",
                     SearchEnabled = true,
                     WrapAround = true,
-                }.AddChoices("mining", "woodcutting", "fishing", "weaponcrafting", "gearcrafting", "jewelrycrafting",
-                    "cooking"));
+                }.AddChoices(Enum.GetValues<LevelableSkill>()));
 
                 var level = AnsiConsole.Ask<int>("[yellow]Which level?[/]");
 
@@ -430,6 +430,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             skin = AnsiConsole.Prompt(new SelectionPrompt<CharacterSkin>
             {
                 Title = "Available skins:",
+                SearchEnabled = true,
                 WrapAround = true,
             }.AddChoices(Enum.GetValues<CharacterSkin>()));
         }

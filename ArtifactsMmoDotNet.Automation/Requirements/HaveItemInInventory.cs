@@ -1,5 +1,5 @@
 using ArtifactsMmoDotNet.Automation.Actions;
-using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
+using ArtifactsMmoDotNet.Automation.Interfaces;
 
 namespace ArtifactsMmoDotNet.Automation.Requirements;
 

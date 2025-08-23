@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
+﻿using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 

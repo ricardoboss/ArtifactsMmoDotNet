@@ -1,6 +1,6 @@
 using ArtifactsMmoDotNet.Api.Generated.Models;
+using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Requirements;
-using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;
 
