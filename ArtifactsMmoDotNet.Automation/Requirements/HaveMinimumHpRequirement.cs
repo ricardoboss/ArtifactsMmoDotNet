@@ -3,7 +3,7 @@ using ArtifactsMmoDotNet.Automation.Interfaces;
 
 namespace ArtifactsMmoDotNet.Automation.Requirements;
 
-public class HaveMinimumHp(double percent) : BaseRequirement
+public class HaveMinimumHpRequirement(double percent) : BaseRequirement
 {
     public override string Name => $"Have at least {percent:P} HP";
 

@@ -158,7 +158,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
                     WrapAround = true,
                 }.AddChoices(Enum.GetValues<ItemSlot>()));
 
-                rootRequirement = new HaveItemEquippedInSlot(itemCode, slot);
+                rootRequirement = new HaveItemEquippedInSlotRequirement(itemCode, slot);
                 break;
             case "Have item in inventory":
                 itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to automate?[/]");

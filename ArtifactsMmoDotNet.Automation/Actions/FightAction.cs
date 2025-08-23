@@ -5,13 +5,14 @@ using ArtifactsMmoDotNet.Automation.Requirements;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;
 
-public class FightAction() : BaseAction
+public class FightAction : BaseAction
 {
     public override string Name => "Fight";
 
     public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
     {
-        yield return new HaveMinimumHp(0.5);
+        yield return new HaveItemEquippedInSlotRequirement("wooden_staff", ItemSlot.Weapon);
+        yield return new HaveMinimumHpRequirement(0.5);
         yield return new HaveSpaceInInventoryRequirement(); // TODO: ensure we have enough space for drops
     }
 

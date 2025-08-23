@@ -4,7 +4,7 @@ using ArtifactsMmoDotNet.Automation.Interfaces;
 
 namespace ArtifactsMmoDotNet.Automation.Requirements;
 
-public class HaveItemEquippedInSlot(string itemCode, ItemSlot slot) : BaseRequirement
+public class HaveItemEquippedInSlotRequirement(string itemCode, ItemSlot slot) : BaseRequirement
 {
     public override string Name => $"Have item {itemCode} equipped in slot {slot}";
 
