@@ -46,13 +46,13 @@ public interface IGame
 
     Task WaitForCooldown();
 
-    IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, string? contentType = null);
+    IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null);
 
     Task<MapSchema> GetMap(int x, int y);
 
     IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
-        GetCraft_skillQueryParameterType? craftSkill = null, int? minLevel = null, int? maxLevel = null,
-        GetTypeQueryParameterType? type = null);
+        CraftSkill? craftSkill = null, int? minLevel = null, int? maxLevel = null,
+        ItemType? type = null);
 
     Task<ItemSchema> GetItem(string itemCode);
 

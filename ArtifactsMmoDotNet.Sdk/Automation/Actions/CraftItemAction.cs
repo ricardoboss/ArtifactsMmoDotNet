@@ -1,4 +1,3 @@
-using ArtifactsMmoDotNet.Api.Generated.Maps;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Automation.Requirements;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
@@ -61,7 +60,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
     {
         var requiredSkill = craft.Skill!.Value.ToString();
         var workshopLocations = await context.Game
-            .GetMaps(contentType: "workshop")
+            .GetMaps(contentType: MapContentType.Workshop)
             .Where(m => string.Equals(m.Content!.Code, requiredSkill, StringComparison.InvariantCultureIgnoreCase))
             .ToListAsync();
 

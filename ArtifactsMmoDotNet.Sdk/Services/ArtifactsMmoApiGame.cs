@@ -1,6 +1,4 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
-using ArtifactsMmoDotNet.Api.Generated.Items;
-using ArtifactsMmoDotNet.Api.Generated.Maps;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
@@ -49,7 +47,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     public Task WaitForCooldown() =>
         OnAwaitCooldown?.Invoke(_lastCooldownEnd) ?? Task.Delay(RemainingCooldown);
 
-    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, string? contentType = null)
+    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null)
     {
         var useCache = contentCode is null && contentType is null;
 
@@ -98,8 +96,8 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     private readonly List<ItemSchema> cachedItems = [];
 
     public async IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
-        GetCraft_skillQueryParameterType? craftSkill = null, int? minLevel = null, int? maxLevel = null,
-        GetTypeQueryParameterType? type = null)
+        CraftSkill? craftSkill = null, int? minLevel = null, int? maxLevel = null,
+        ItemType? type = null)
     {
         var useCache = craftMaterial is null && craftSkill is null && minLevel is null && maxLevel is null &&
                        type is null;

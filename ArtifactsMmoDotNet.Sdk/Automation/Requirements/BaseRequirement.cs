@@ -12,10 +12,11 @@ public abstract class BaseRequirement : IRequirement
 
     public abstract IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context);
 
-    protected static async Task<MapSchema?> GetNearestLocationForResource(IAutomationContext context, string itemCode, int x, int y)
+    protected static async Task<MapSchema?> GetNearestLocationForResource(IAutomationContext context, string itemCode,
+        int x, int y)
     {
         var maps = await context.Game.GetResources(drop: itemCode).SelectMany(r =>
-                context.Game.GetMaps(contentCode: r.Code!, contentType: "resource"))
+                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Resource))
             .ToListAsync();
 
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
