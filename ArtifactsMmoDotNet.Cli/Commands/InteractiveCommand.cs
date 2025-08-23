@@ -328,7 +328,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         }
     }
 
-    private void PrintSkillDataResult(SkillDataSchema result)
+    private static void PrintSkillDataResult(SkillDataSchema result)
     {
         var xp = result.Details!.Xp!.Value;
         var inventory = result.Character!.Inventory!;
