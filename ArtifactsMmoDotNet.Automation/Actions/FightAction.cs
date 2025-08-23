@@ -12,6 +12,7 @@ public class FightAction() : BaseAction
     public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
     {
         yield return new HaveMinimumHp(0.5);
+        yield return new HaveSpaceInInventoryRequirement(); // TODO: ensure we have enough space for drops
     }
 
     public override async Task<ActionExecutionResult> Execute(IAutomationContext context)

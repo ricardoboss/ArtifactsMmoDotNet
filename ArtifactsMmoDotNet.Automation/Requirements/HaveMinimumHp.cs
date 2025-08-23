@@ -14,10 +14,7 @@ public class HaveMinimumHp(double percent) : BaseRequirement
 
     public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
     {
-        do
-        {
-            yield return new RestAction();
-        } while (await GetHpPercent(context) < percent);
+        yield return new RestAction();
     }
 
     private static async Task<double> GetHpPercent(IAutomationContext context)

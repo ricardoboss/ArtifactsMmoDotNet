@@ -31,5 +31,8 @@ public interface IGame
     Task<ItemSchema> GetItem(string itemCode);
 
     IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null, int? maxLevel = null, GatheringSkill? skill = null);
+
     IAsyncEnumerable<MonsterSchema> GetMonsters(string? drop = null, int? minLevel = null, int? maxLevel = null, string? name = null);
+
+    IAsyncEnumerable<NPCItem> GetNpcItems(string? itemCode = null, string? currency = null, string? npc = null);
 }

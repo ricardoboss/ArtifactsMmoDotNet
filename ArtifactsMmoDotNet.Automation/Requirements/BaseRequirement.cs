@@ -31,6 +31,15 @@ public abstract class BaseRequirement : IRequirement
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
     }
 
+    protected async Task<MapSchema?> GetNearestNpcForSelling(IAutomationContext context, string itemCode, int x, int y)
+    {
+        var maps = await context.Game.GetNpcItems(itemCode).SelectMany(r =>
+                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Npc))
+            .ToListAsync();
+
+        return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
+    }
+
     protected static double EuclideanDistanceFrom(MapSchema map, int x, int y) =>
         Math.Sqrt(Math.Pow(map.X!.Value - x, 2) + Math.Pow(map.Y!.Value - y, 2));
 
@@ -64,6 +73,6 @@ public abstract class BaseRequirement : IRequirement
             .FromCharacter(context.CharacterName)
             .GetEquipment();
 
-        return equipment[slot];
+        return string.IsNullOrWhiteSpace(equipment[slot]) ? null : equipment[slot];
     }
 }

@@ -14,7 +14,12 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
         // gather all items
         foreach (var item in craft.Items ?? [])
             if (item is { Code: { } ingredientCode, Quantity: { } ingredientQuantity })
+            {
+                yield return new HaveSpaceInInventoryRequirement(ingredientCode, quantity * ingredientQuantity);
                 yield return new HaveItemInInventoryRequirement(ingredientCode, quantity * ingredientQuantity);
+            }
+
+        yield return new HaveSpaceInInventoryRequirement(itemCode, quantity);
 
         // make sure we have the required level
         if (craft is { Skill: { } skill, Level: { } skillLevel })

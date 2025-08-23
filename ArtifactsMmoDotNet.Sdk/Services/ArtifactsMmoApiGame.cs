@@ -247,6 +247,48 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             pages = monsters.Pages!.Integer!.Value;
         } while (page <= pages);
     }
+
+    private readonly List<NPCItem> cachedNPCItems = [];
+
+    public async IAsyncEnumerable<NPCItem> GetNpcItems(string? itemCode = null, string? currency = null, string? npc = null)
+    {
+        var useCache = itemCode is null && currency is null && npc is null;
+
+        if (useCache && cachedNPCItems.Count != 0)
+        {
+            foreach (var NPCItem in cachedNPCItems)
+                yield return NPCItem;
+
+            yield break;
+        }
+
+        const int size = 100;
+        var page = 1;
+        int pages;
+
+        do
+        {
+            var NPCItems = await apiClient.Npcs.Items!.GetAsync(c =>
+            {
+                c.QueryParameters.Code = itemCode;
+                c.QueryParameters.Currency = currency;
+                c.QueryParameters.Page = page;
+                c.QueryParameters.Size = size;
+                c.QueryParameters.Npc = npc;
+            });
+
+            foreach (var NPCItem in NPCItems!.Data!)
+            {
+                if (useCache)
+                    cachedNPCItems.Add(NPCItem);
+
+                yield return NPCItem;
+            }
+
+            page++;
+            pages = NPCItems.Pages!.Integer!.Value;
+        } while (page <= pages);
+    }
 }
 
 file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
@@ -326,6 +368,36 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
     public async Task<CharacterRestDataSchema> Rest()
     {
         var result = (await apiClient.My[characterName].Action.Rest.PostAsync())!.Data!;
+
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+
+        return result;
+    }
+
+    public async Task<NpcMerchantTransactionSchema> SellToNpc(string itemCode, int quantity)
+    {
+        var body = new NpcMerchantBuySchema
+        {
+            Code = itemCode,
+            Quantity = quantity,
+        };
+
+        var result = (await apiClient.My[characterName].Action.Npc.Sell.PostAsync(body))!.Data!;
+
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+
+        return result;
+    }
+
+    public async Task<BankItemTransactionSchema> StoreInBank(string itemCode, int quantity)
+    {
+        var result = (await apiClient.My[characterName].Action.Bank.Deposit.Item.PostAsync([
+            new()
+            {
+                Code = itemCode,
+                Quantity = quantity,
+            },
+        ]))!.Data!;
 
         await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 

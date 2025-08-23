@@ -17,4 +17,8 @@ public interface IGameCharacterActions
     Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode);
 
     Task<CharacterRestDataSchema> Rest();
+
+    Task<NpcMerchantTransactionSchema> SellToNpc(string itemCode, int quantity);
+
+    Task<BankItemTransactionSchema> StoreInBank(string itemCode, int quantity);
 }

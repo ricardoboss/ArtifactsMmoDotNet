@@ -1,6 +1,7 @@
 using ArtifactsMmoDotNet.Api.Exceptions.Map;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation;
+using ArtifactsMmoDotNet.Automation.Exceptions;
 using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Models;
 using ArtifactsMmoDotNet.Automation.Requirements;
@@ -149,6 +150,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         {
             case "Equip item in slot":
                 itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to equip?[/]");
+                if (string.IsNullOrEmpty(itemCode)) return;
                 var slot = await AnsiConsole.PromptAsync(new SelectionPrompt<ItemSlot>
                 {
                     Title = "[yellow]Which slot?[/]",
@@ -160,6 +162,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
                 break;
             case "Have item in inventory":
                 itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to automate?[/]");
+                if (string.IsNullOrEmpty(itemCode)) return;
                 var quantity = await AnsiConsole.AskAsync<int>("[yellow]How many of that item?[/]");
 
                 rootRequirement = new HaveItemInInventoryRequirement(itemCode, quantity);
@@ -185,61 +188,24 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private static async Task<bool> FulfilRequirement(IAutomationContext context, IRequirement requirement)
     {
-        if (await requirement.IsFulfilled(context))
-        {
-            AnsiConsole.MarkupLine($"[yellow]Requirement [green]{requirement.Name}[/] fulfilled![/]");
-
-            return true;
-        }
-
-        AnsiConsole.MarkupLine($"[yellow]Fulfilling requirement [green]{requirement.Name}[/][/]");
-
+        const int maxAttempts = 3;
         var retryCount = 0;
-startRequirementActions:
-        await foreach (var action in requirement.GetFulfillingActions(context))
+        while (!await requirement.IsFulfilled(context))
         {
-            var subRequirementEnumerator = action.GetRequirements(context).GetAsyncEnumerator();
-            if (await subRequirementEnumerator.MoveNextAsync())
-            {
-                AnsiConsole.MarkupLine($"[yellow]Preparing action [green]{action.Name}[/][/]");
+            AnsiConsole.MarkupLine($"[yellow]Fulfilling requirement [green]{requirement.Name}[/][/]");
 
-                do
+            await foreach (var action in requirement.GetFulfillingActions(context))
+            {
+                var result = await RunFulfillingAction(action);
+                if (result.Success)
                 {
-                    var subRequirement = subRequirementEnumerator.Current;
-                    var fulfilled = await FulfilRequirement(context, subRequirement);
-                    if (!fulfilled)
-                    {
-                        AnsiConsole.MarkupLine(
-                            $"[red]Could not fulfil requirement [green]{subRequirement.Name}[/]![/]");
+                    retryCount = 0;
 
-                        return false;
-                    }
-                } while (await subRequirementEnumerator.MoveNextAsync());
-            }
+                    continue;
+                }
 
-            AnsiConsole.MarkupLine($"[yellow]Executing action [green]{action.Name}[/][/]");
-
-            ActionExecutionResult result;
-            try
-            {
-                result = await action.Execute(context);
-            }
-            catch (ApiException e)
-            {
-                AnsiConsole.MarkupLine($"[red]Couldn't execute action: {e.Message}[/]");
-
-                return false;
-            }
-            finally
-            {
-                await context.Game.WaitForCooldown();
-            }
-
-            if (!result.Success)
-            {
                 AnsiConsole.MarkupLine($"[red]Attempt to [green]{action.Name}[/] failed:[/] {result.Message}");
 
-                const int maxAttempts = 3;
                 if (retryCount >= maxAttempts)
                 {
                     AnsiConsole.MarkupLine($"[red bold]Giving up.[/] [red]{maxAttempts} retries failed.[/]");
@@ -247,16 +213,67 @@ startRequirementActions:
                     return false;
                 }
 
+                if (!result.Retryable)
+                {
+                    AnsiConsole.MarkupLine("[red bold]Giving up.[/] [red]Retrying won't help.[/]");
+
+                    return false;
+                }
+
                 AnsiConsole.MarkupLine("[grey]Retrying...[/]");
 
                 retryCount++;
-                goto startRequirementActions;
             }
         }
 
         AnsiConsole.MarkupLine($"[yellow]Requirement [green]{requirement.Name}[/] fulfilled![/]");
 
         return true;
+
+        async Task<ActionExecutionResult> RunFulfillingAction(IAction action)
+        {
+            if (!await FulfilActionRequirements(action))
+                return ActionExecutionResult.Failed("Failed to fulfill requirements for action", false);
+
+            AnsiConsole.MarkupLine($"[yellow]Executing action [green]{action.Name}[/][/]");
+
+            try
+            {
+                return await action.Execute(context);
+            }
+            catch (ActionException e)
+            {
+                return ActionExecutionResult.Failed($"Couldn't execute action: {e.Message}", false);
+            }
+            finally
+            {
+                await context.Game.WaitForCooldown();
+            }
+        }
+
+        async Task<bool> FulfilActionRequirements(IAction action)
+        {
+            var subRequirementEnumerator = action.GetRequirements(context).GetAsyncEnumerator();
+            if (!await subRequirementEnumerator.MoveNextAsync())
+                return true;
+
+            AnsiConsole.MarkupLine($"[yellow]Preparing action [green]{action.Name}[/][/]");
+
+            do
+            {
+                var subRequirement = subRequirementEnumerator.Current;
+                var fulfilled = await FulfilRequirement(context, subRequirement);
+                if (!fulfilled)
+                {
+                    AnsiConsole.MarkupLine(
+                        $"[red]Could not fulfil requirement [green]{subRequirement.Name}[/]![/]");
+
+                    return false;
+                }
+            } while (await subRequirementEnumerator.MoveNextAsync());
+
+            return true;
+        }
     }
 
     private async Task Go(string characterName)

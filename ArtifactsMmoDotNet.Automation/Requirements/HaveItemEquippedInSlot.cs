@@ -17,8 +17,12 @@ public class HaveItemEquippedInSlot(string itemCode, ItemSlot slot) : BaseRequir
 
     public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
     {
-        if (await TryGetItemInSlot(context, slot) != null)
+        if (await TryGetItemInSlot(context, slot) is { } itemInSlot)
+        {
+            await context.Output.LogInfoAsync($"Slot {slot} is occupied by {itemInSlot}");
+
             yield return new UnequipItemInSlotAction(slot);
+        }
 
         yield return new EquipItemFromInventoryInSlotAction(itemCode, slot);
     }

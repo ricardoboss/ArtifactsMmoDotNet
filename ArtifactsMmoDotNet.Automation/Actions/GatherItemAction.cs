@@ -1,11 +1,17 @@
 using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Models;
+using ArtifactsMmoDotNet.Automation.Requirements;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;
 
 public class GatherItemAction(string itemCode) : BaseAction
 {
     public override string Name => $"Gather {itemCode}";
+
+    public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
+    {
+        yield return new HaveSpaceInInventoryRequirement(itemCode: itemCode);
+    }
 
     public override async Task<ActionExecutionResult> Execute(IAutomationContext context)
     {
