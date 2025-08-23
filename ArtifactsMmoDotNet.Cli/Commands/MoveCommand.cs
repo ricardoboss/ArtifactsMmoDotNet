@@ -1,13 +1,16 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
+using JetBrains.Annotations;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace ArtifactsMmoDotNet.Cli.Commands;
 
+[UsedImplicitly]
 internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService loginService) : AsyncCommand<MoveCommand.Settings>
 {
+    [UsedImplicitly]
     public sealed class Settings : CommandSettings;
 
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)

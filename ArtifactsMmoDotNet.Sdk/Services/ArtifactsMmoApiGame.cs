@@ -167,7 +167,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     {
         var useCache = drop is null && minLevel is null && maxLevel is null;
 
-        if (useCache && cachedResources.Any())
+        if (useCache && cachedResources.Count != 0)
         {
             foreach (var resource in cachedResources)
                 yield return resource;

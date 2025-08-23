@@ -6,14 +6,17 @@ using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
+using JetBrains.Annotations;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 namespace ArtifactsMmoDotNet.Cli.Commands;
 
+[UsedImplicitly]
 internal sealed class InteractiveCommand(IGame game, ILoginService loginService, IOutput output)
     : AsyncCommand<InteractiveCommand.Settings>
 {
+    [UsedImplicitly]
     public sealed class Settings : CommandSettings;
 
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
