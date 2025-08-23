@@ -11,6 +11,6 @@
 
     <PropertyGroup>
         <AnalysisMode>All</AnalysisMode>
-        <AnalysisLevel>latest</AnalysisLevel>
+        <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     </PropertyGroup>
 </Project>
