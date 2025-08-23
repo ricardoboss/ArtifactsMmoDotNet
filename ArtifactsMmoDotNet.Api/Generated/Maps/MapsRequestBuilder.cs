@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Maps
     /// <summary>
     /// Builds and executes requests for operations under \maps
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MapsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.maps.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Maps
         /// <summary>
         /// Fetch maps details.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MapsRequestBuilderGetQueryParameters 
         {
             /// <summary>Content code on the map.</summary>

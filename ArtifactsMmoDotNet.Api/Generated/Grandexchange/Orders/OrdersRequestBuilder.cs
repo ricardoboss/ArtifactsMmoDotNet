@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
     /// <summary>
     /// Builds and executes requests for operations under \grandexchange\orders
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class OrdersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.grandexchange.orders.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
         /// <summary>
         /// Fetch all sell orders.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class OrdersRequestBuilderGetQueryParameters 
         {
             /// <summary>The code of the item.</summary>

@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Withdraw
     /// <summary>
     /// Builds and executes requests for operations under \my\{name}\action\bank\withdraw
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithdrawRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The gold property</summary>

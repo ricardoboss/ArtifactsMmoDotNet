@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.Rewards
     /// <summary>
     /// Builds and executes requests for operations under \tasks\rewards
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class RewardsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.tasks.rewards.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.Rewards
         /// <summary>
         /// Fetch the list of all tasks rewards. To obtain these rewards, you must exchange 6 task coins with a tasks master.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class RewardsRequestBuilderGetQueryParameters 
         {
             /// <summary>Page number</summary>

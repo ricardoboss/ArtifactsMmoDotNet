@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
     /// <summary>
     /// Builds and executes requests for operations under \monsters
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class MonstersRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.monsters.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
         /// <summary>
         /// Fetch monsters details.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class MonstersRequestBuilderGetQueryParameters 
         {
             /// <summary>Item code of the drop.</summary>

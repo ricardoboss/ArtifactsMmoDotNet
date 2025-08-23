@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.List
     /// <summary>
     /// Builds and executes requests for operations under \tasks\list
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ListRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.tasks.list.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.List
         /// <summary>
         /// Fetch the list of all tasks.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ListRequestBuilderGetQueryParameters 
         {
             /// <summary>Maximum level.</summary>

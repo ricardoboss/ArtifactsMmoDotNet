@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Item.Achievements
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account}\achievements
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AchievementsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Item.Achievements
         /// <summary>
         /// Retrieve the achievements of a account.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AchievementsRequestBuilderGetQueryParameters 
         {
             /// <summary>Filter by completed achievements.</summary>

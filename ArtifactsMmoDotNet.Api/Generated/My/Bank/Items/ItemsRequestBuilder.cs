@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Bank.Items
     /// <summary>
     /// Builds and executes requests for operations under \my\bank\items
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Bank.Items
         /// <summary>
         /// Fetch all items in your bank.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ItemsRequestBuilderGetQueryParameters 
         {
             /// <summary>Item to search in your bank.</summary>

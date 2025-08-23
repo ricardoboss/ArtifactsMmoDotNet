@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Characters.Item
     /// <summary>
     /// Builds and executes requests for operations under \characters\{name}
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithNameItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>

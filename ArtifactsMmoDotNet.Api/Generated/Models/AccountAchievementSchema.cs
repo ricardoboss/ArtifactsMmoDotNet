@@ -8,7 +8,7 @@ using System.IO;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class AccountAchievementSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
@@ -193,7 +193,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>
         /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="Null"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountAchievementSchema_completed_at : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>

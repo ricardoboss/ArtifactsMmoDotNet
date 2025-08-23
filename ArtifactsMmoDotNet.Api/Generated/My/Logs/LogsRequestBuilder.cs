@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Logs
     /// <summary>
     /// Builds and executes requests for operations under \my\logs
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class LogsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Logs
         /// <summary>
         /// History of the last 100 actions of all your characters.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LogsRequestBuilderGetQueryParameters 
         {
             /// <summary>Page number</summary>

@@ -12,7 +12,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.History
     /// <summary>
     /// Builds and executes requests for operations under \grandexchange\history
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HistoryRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.grandexchange.history.item collection</summary>

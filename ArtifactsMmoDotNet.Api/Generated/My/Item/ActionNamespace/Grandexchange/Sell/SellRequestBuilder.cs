@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange
     /// <summary>
     /// Builds and executes requests for operations under \my\{name}\action\grandexchange\sell
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class SellRequestBuilder : BaseRequestBuilder
     {
         /// <summary>

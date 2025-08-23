@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Bank
     /// <summary>
     /// Builds and executes requests for operations under \my\bank
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class BankRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The items property</summary>

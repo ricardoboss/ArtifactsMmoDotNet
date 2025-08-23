@@ -8,7 +8,7 @@ using System.IO;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
     public partial class DataPage_SimpleItemSchema_ : IBackedModel, IParsable
     #pragma warning restore CS1591
@@ -143,7 +143,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>
         /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_SimpleItemSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
@@ -224,7 +224,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>
         /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_SimpleItemSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>

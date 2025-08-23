@@ -12,7 +12,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Maps.Item
     /// <summary>
     /// Builds and executes requests for operations under \maps\{x}
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithXItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.maps.item.item collection</summary>

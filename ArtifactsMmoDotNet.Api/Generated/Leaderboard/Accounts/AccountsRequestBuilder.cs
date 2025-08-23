@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Accounts
     /// <summary>
     /// Builds and executes requests for operations under \leaderboard\accounts
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class AccountsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Accounts
         /// <summary>
         /// Fetch leaderboard details.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountsRequestBuilderGetQueryParameters 
         {
             /// <summary>Page number</summary>

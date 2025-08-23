@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Events.Active
     /// <summary>
     /// Builds and executes requests for operations under \events\active
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ActiveRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Events.Active
         /// <summary>
         /// Fetch active events details.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ActiveRequestBuilderGetQueryParameters 
         {
             /// <summary>Page number</summary>

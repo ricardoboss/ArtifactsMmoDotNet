@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Change_password
     /// <summary>
     /// Builds and executes requests for operations under \my\change_password
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class Change_passwordRequestBuilder : BaseRequestBuilder
     {
         /// <summary>

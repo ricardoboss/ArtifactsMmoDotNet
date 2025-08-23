@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Resources
     /// <summary>
     /// Builds and executes requests for operations under \resources
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ResourcesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.resources.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Resources
         /// <summary>
         /// Fetch resources details.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ResourcesRequestBuilderGetQueryParameters 
         {
             /// <summary>Item code of the drop.</summary>

@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.History
     /// <summary>
     /// Builds and executes requests for operations under \my\grandexchange\history
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class HistoryRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
@@ -82,7 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.History
         /// <summary>
         /// Fetch your sales history of the last 7 days.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class HistoryRequestBuilderGetQueryParameters 
         {
             /// <summary>Item to search in your history.</summary>

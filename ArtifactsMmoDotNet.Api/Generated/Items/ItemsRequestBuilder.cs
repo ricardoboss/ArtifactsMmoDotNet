@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
     /// <summary>
     /// Builds and executes requests for operations under \items
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ItemsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.items.item collection</summary>
@@ -95,7 +95,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
         /// <summary>
         /// Fetch items details.
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ItemsRequestBuilderGetQueryParameters 
         {
             /// <summary>Item code of items used as material for crafting.</summary>

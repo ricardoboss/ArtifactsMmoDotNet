@@ -11,12 +11,11 @@
   <PropertyGroup>
     <ApiSpecUrl>https://api.artifactsmmo.com/openapi.json</ApiSpecUrl>
     <ApiSpecFilename>openapi-3.1.json</ApiSpecFilename>
-    <ApiSpecDownconvertedFilename>openapi-3.0.json</ApiSpecDownconvertedFilename>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(UseTestApi)' == 'true'">
-    <ApiSpecUrl>https://api-test.artifactsmmo.com/openapi.json</ApiSpecUrl>
-  </PropertyGroup>
+<!--  <PropertyGroup Condition="'$(UseTestApi)' == 'true'">-->
+<!--    <ApiSpecUrl>https://sandbox-api.artifactsmmo.com/openapi.json</ApiSpecUrl>-->
+<!--  </PropertyGroup>-->
 
   <Target Name="DownloadOpenApiSpec" Inputs="$(ApiSpecUrl)" Outputs="$(ApiSpecFilename)">
     <DownloadFile
@@ -27,40 +26,37 @@
   </Target>
 
   <Target
-    Name="ConvertOpenApiSpecToOAS3"
-    DependsOnTargets="DownloadOpenApiSpec"
-    Inputs="$(ApiSpecFilename)"
-    Outputs="$(ApiSpecDownconvertedFilename)"
-  >
-    <Exec
-      Command="openapi-down-convert --input .\$(ApiSpecFilename) --output .\$(ApiSpecDownconvertedFilename)"
-      WorkingDirectory="$(MSBuildProjectDirectory)"
-    />
-  </Target>
-
-  <Target
     Name="ApplyPatches"
-    DependsOnTargets="ConvertOpenApiSpecToOAS3"
+    BeforeTargets="UpdateGeneratedCode;CreateGeneratedCode"
+    DependsOnTargets="DownloadOpenApiSpec"
   >
     <ItemGroup>
       <PatchFile Include="_patches\*.patch"/>
     </ItemGroup>
 
-    <Message Text="Applying patches..."/>
-    <Exec
-      Command="git apply %(PatchFile.Identity)"
-      WorkingDirectory="$(MSBuildProjectDirectory)"
-    />
+    <Message Text="Applying patches..." Importance="high"/>
+<!--    <Exec-->
+<!--      Command="git apply %(PatchFile.Identity)"-->
+<!--      WorkingDirectory="$(MSBuildProjectDirectory)"-->
+<!--    />-->
+  </Target>
+
+  <Target
+    Name="RestoreTools"
+    BeforeTargets="UpdateGeneratedCode;CreateGeneratedCode"
+  >
+    <Exec Command="dotnet tool restore" WorkingDirectory="$(MSBuildThisFileDirectory)" />
   </Target>
 
   <Target
     Name="UpdateGeneratedCode"
     Condition="Exists('Generated')"
-    DependsOnTargets="ApplyPatches"
     BeforeTargets="BeforeBuild"
-    Inputs="$(ApiSpecDownconvertedFilename)"
+    Inputs="$(ApiSpecFilename)"
     Outputs="Generated"
   >
+    <Message Text="Updating generated code..." Importance="high"/>
+
     <Exec
       Command="dotnet kiota update --output Generated --clean-output"
       WorkingDirectory="$(MSBuildProjectDirectory)"
@@ -75,13 +71,14 @@
   <Target
     Name="CreateGeneratedCode"
     Condition="!Exists('Generated')"
-    DependsOnTargets="ApplyPatches"
     BeforeTargets="BeforeBuild"
-    Inputs="$(ApiSpecDownconvertedFilename)"
+    Inputs="$(ApiSpecFilename)"
     Outputs="Generated"
   >
+    <Message Text="Generating code..." Importance="high"/>
+
     <Exec
-      Command="dotnet kiota generate --openapi $(ApiSpecDownconvertedFilename) --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --backing-store --exclude-backward-compatible --deserializer Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory --serializer Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory --structured-mime-types application/json --additional-data=False"
+      Command="dotnet kiota generate --openapi $(ApiSpecFilename) --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --backing-store --exclude-backward-compatible --deserializer Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory --serializer Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory --structured-mime-types application/json --additional-data=False"
       WorkingDirectory="$(MSBuildProjectDirectory)"
       EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
     />
@@ -97,6 +94,6 @@
     BeforeTargets="Clean"
   >
     <RemoveDir Directories="Generated" />
-    <Delete Files="$(ApiSpecDownconvertedFilename)" />
+    <Delete Files="$(ApiSpecFilename)" />
   </Target>
 </Project>

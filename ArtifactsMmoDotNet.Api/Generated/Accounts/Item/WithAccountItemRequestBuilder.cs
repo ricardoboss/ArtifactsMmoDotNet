@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Item
     /// <summary>
     /// Builds and executes requests for operations under \accounts\{account}
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class WithAccountItemRequestBuilder : BaseRequestBuilder
     {
         /// <summary>The achievements property</summary>

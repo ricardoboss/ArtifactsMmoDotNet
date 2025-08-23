@@ -14,7 +14,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Details
     /// <summary>
     /// Builds and executes requests for operations under \my\details
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DetailsRequestBuilder : BaseRequestBuilder
     {
         /// <summary>
