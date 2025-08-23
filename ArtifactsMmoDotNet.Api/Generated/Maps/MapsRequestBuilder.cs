@@ -109,15 +109,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Maps
             public string ContentCode { get; set; }
 #endif
             /// <summary>Type of content on the map.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("content_type")]
-            public string? ContentType { get; set; }
-#nullable restore
-#else
-            [QueryParameter("content_type")]
-            public string ContentType { get; set; }
-#endif
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentType? ContentType { get; set; }
             /// <summary>Page number</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }

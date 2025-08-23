@@ -98,15 +98,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Events
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>Type of event.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("type")]
-            public string Type { get; set; }
-#endif
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentType? Type { get; set; }
         }
     }
 }

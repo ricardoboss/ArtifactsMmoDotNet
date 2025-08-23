@@ -69,7 +69,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("name", value); }
         }
 #endif
-        /// <summary>The skill required to gather this resource.</summary>
+        /// <summary>The skill property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill? Skill
         {
             get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill?>("skill"); }

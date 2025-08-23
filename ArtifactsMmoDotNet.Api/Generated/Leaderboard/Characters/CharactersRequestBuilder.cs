@@ -102,15 +102,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Characters
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>Default sort by combat total XP.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("sort")]
-            public string? Sort { get; set; }
-#nullable restore
-#else
-            [QueryParameter("sort")]
-            public string Sort { get; set; }
-#endif
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardType? Sort { get; set; }
         }
     }
 }

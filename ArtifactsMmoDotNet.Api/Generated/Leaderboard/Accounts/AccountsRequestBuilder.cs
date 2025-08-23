@@ -102,15 +102,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Accounts
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>Default sort by achievements points.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("sort")]
-            public string? Sort { get; set; }
-#nullable restore
-#else
-            [QueryParameter("sort")]
-            public string Sort { get; set; }
-#endif
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountLeaderboardType? Sort { get; set; }
         }
     }
 }

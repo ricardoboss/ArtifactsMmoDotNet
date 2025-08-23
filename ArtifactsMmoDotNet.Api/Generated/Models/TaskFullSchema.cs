@@ -81,7 +81,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("skill", value); }
         }
 #endif
-        /// <summary>The type of task.</summary>
+        /// <summary>The type property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType? Type
         {
             get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType?>("type"); }

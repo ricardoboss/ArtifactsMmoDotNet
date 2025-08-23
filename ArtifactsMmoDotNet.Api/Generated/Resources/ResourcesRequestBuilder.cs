@@ -121,15 +121,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Resources
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>The code of the skill.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("skill")]
-            public string? Skill { get; set; }
-#nullable restore
-#else
-            [QueryParameter("skill")]
-            public string Skill { get; set; }
-#endif
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill? Skill { get; set; }
         }
     }
 }

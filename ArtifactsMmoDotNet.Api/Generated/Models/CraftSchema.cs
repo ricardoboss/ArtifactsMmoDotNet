@@ -43,7 +43,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("quantity"); }
             set { BackingStore?.Set("quantity", value); }
         }
-        /// <summary>Skill required to craft the item.</summary>
+        /// <summary>The skill property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill? Skill
         {
             get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill?>("skill"); }

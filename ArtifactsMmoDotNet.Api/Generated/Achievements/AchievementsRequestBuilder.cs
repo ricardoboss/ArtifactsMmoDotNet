@@ -105,15 +105,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Achievements
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>Type of achievements.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
             [QueryParameter("type")]
-            public string? Type { get; set; }
-#nullable restore
-#else
-            [QueryParameter("type")]
-            public string Type { get; set; }
-#endif
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementType? Type { get; set; }
         }
     }
 }
