@@ -1,5 +1,6 @@
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Interfaces;
+using ArtifactsMmoDotNet.Automation.Models;
 using ArtifactsMmoDotNet.Automation.Requirements;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;
@@ -11,11 +12,23 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
     public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
     {
         // gather all items
-        foreach (var requirement in craft.Items ?? [])
-            yield return new HaveItemInInventory(requirement.Code!, quantity * requirement.Quantity!.Value);
+        foreach (var item in craft.Items ?? [])
+            if (item is { Code: { } ingredientCode, Quantity: { } ingredientQuantity })
+                yield return new HaveItemInInventory(ingredientCode, quantity * ingredientQuantity);
 
         // make sure we have the required level
-        // TODO: add requirement for skill level
+        if (craft is { Skill: { } skill, Level: { } skillLevel })
+            yield return new ReachLevelInSkill(skill switch
+            {
+                CraftSkill.Weaponcrafting => LevelableSkill.Weaponcrafting,
+                CraftSkill.Gearcrafting => LevelableSkill.Gearcrafting,
+                CraftSkill.Jewelrycrafting => LevelableSkill.Jewelrycrafting,
+                CraftSkill.Cooking => LevelableSkill.Cooking,
+                CraftSkill.Woodcutting => LevelableSkill.Woodcutting,
+                CraftSkill.Mining => LevelableSkill.Mining,
+                CraftSkill.Alchemy => LevelableSkill.Alchemy,
+                _ => throw new NotImplementedException($"Unknown craft skill: {skill}"),
+            }, skillLevel);
     }
 
     public override async Task Execute(IAutomationContext context)
