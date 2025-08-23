@@ -6,10 +6,8 @@ public abstract class BaseAction : IAction
 {
     public abstract string Name { get; }
 
-    public virtual async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
-    {
-        yield break;
-    }
+    public virtual IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context) =>
+        AsyncEnumerable.Empty<IRequirement>();
 
     public abstract Task Execute(IAutomationContext context);
 }
