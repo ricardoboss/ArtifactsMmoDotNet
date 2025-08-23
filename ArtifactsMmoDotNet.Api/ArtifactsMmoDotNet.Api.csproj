@@ -35,10 +35,11 @@
     </ItemGroup>
 
     <Message Text="Applying patches..." Importance="high"/>
-<!--    <Exec-->
-<!--      Command="git apply %(PatchFile.Identity)"-->
-<!--      WorkingDirectory="$(MSBuildProjectDirectory)"-->
-<!--    />-->
+    <Exec
+      Command="git apply %(PatchFile.Identity)"
+      WorkingDirectory="$(MSBuildProjectDirectory)"
+      Condition=" '%(PatchFile.Identity)' != '' "
+    />
   </Target>
 
   <Target
