@@ -8,8 +8,8 @@ public class DefaultInteractiveLoginService(IInputRequester inputRequester, ILog
 {
     public async Task<bool> LoginWithUsernameAndPasswordAsync(string? username = null, string? password = null)
     {
-        username ??= await inputRequester.AskAsync("Username: ");
-        password ??= await inputRequester.AskAsync("Password: ", concealed: true);
+        username ??= await inputRequester.PromptAsync("Username: ");
+        password ??= await inputRequester.PromptAsync("Password: ", concealed: true);
 
         await loginService.LoginAsync(username, password);
 

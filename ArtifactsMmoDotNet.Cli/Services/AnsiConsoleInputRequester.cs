@@ -5,9 +5,9 @@ namespace ArtifactsMmoDotNet.Cli.Services;
 
 public class AnsiConsoleInputRequester : IInputRequester
 {
-    public Task<string> AskAsync(string message, bool concealed = false)
+    public Task<string> PromptAsync(string text, bool concealed = false)
     {
-        var prompt = new TextPrompt<string>(message);
+        var prompt = new TextPrompt<string>(text);
         if (concealed)
             prompt.Secret();
 
