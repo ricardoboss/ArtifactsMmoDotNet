@@ -24,6 +24,6 @@ public class CharacterTaskNotCompletedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterTaskNotCompletedException();
+        return new();
     }
 }

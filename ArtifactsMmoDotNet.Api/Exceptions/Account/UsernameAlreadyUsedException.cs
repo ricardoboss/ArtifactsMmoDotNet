@@ -24,6 +24,6 @@ public class UsernameAlreadyUsedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new UsernameAlreadyUsedException();
+        return new();
     }
 }

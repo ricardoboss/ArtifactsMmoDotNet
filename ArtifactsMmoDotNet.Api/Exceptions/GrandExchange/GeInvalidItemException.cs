@@ -24,6 +24,6 @@ public class GeInvalidItemException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeInvalidItemException();
+        return new();
     }
 }

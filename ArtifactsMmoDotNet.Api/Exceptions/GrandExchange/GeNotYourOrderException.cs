@@ -24,6 +24,6 @@ public class GeNotYourOrderException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeNotYourOrderException();
+        return new();
     }
 }

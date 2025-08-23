@@ -25,6 +25,6 @@ public class ItemInsufficientQuantityException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new ItemInsufficientQuantityException();
+        return new();
     }
 }

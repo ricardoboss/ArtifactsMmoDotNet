@@ -24,6 +24,6 @@ public class SamePasswordException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new SamePasswordException();
+        return new();
     }
 }

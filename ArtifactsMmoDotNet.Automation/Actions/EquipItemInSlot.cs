@@ -15,6 +15,6 @@ public class EquipItemInSlot(ItemSlot slot, string itemCode) : BaseAction
 
     public override async Task Execute(IAutomationContext context)
     {
-        _ = await context.Game.With(context.CharacterName).Equip(slot, itemCode);
+        _ = await context.Game.AsCharacter(context.CharacterName).Equip(slot, itemCode);
     }
 }

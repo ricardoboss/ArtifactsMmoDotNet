@@ -25,6 +25,6 @@ public class CharacterNotLevelRequiredException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterNotLevelRequiredException();
+        return new();
     }
 }

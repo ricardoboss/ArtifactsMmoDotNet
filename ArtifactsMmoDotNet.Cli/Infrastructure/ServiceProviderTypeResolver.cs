@@ -2,7 +2,7 @@
 
 namespace ArtifactsMmoDotNet.Cli.Infrastructure;
 
-public sealed class ServiceProviderTypeResolver(IServiceProvider provider) : ITypeResolver, IServiceProvider, IDisposable
+internal sealed class ServiceProviderTypeResolver(IServiceProvider provider) : ITypeResolver, IServiceProvider, IDisposable
 {
     public object? GetService(Type serviceType) => Resolve(serviceType);
 

@@ -25,6 +25,6 @@ public class GeTransactionInProgressException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeTransactionInProgressException();
+        return new();
     }
 }

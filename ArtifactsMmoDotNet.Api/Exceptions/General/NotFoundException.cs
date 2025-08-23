@@ -24,6 +24,6 @@ public class NotFoundException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new NotFoundException();
+        return new();
     }
 }

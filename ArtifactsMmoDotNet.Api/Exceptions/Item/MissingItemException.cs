@@ -24,6 +24,6 @@ public class MissingItemException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new MissingItemException();
+        return new();
     }
 }

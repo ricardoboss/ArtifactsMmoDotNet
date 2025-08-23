@@ -24,6 +24,6 @@ public class CharacterAlreadyMapException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterAlreadyMapException();
+        return new();
     }
 }

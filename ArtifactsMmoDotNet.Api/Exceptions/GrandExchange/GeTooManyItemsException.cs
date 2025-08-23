@@ -24,6 +24,6 @@ public class GeTooManyItemsException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeTooManyItemsException();
+        return new();
     }
 }

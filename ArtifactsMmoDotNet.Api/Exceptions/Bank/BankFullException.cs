@@ -24,6 +24,6 @@ public class BankFullException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new BankFullException();
+        return new();
     }
 }

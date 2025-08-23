@@ -12,40 +12,40 @@ using Microsoft.Kiota.Abstractions.Store;
 
 namespace ArtifactsMmoDotNet.Api.Exceptions;
 
-public class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerHandler) : IRequestAdapter
+public sealed class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerHandler) : IRequestAdapter, IDisposable
 {
     public void EnableBackingStore(IBackingStoreFactory backingStoreFactory) =>
         innerHandler.EnableBackingStore(backingStoreFactory);
 
-    public async Task<ModelType?> SendAsync<ModelType>(RequestInformation requestInfo,
-        ParsableFactory<ModelType> factory, Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
-        CancellationToken cancellationToken = default) where ModelType : IParsable
+    public async Task<TModelType?> SendAsync<TModelType>(RequestInformation requestInfo,
+        ParsableFactory<TModelType> factory, Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
+        CancellationToken cancellationToken = default) where TModelType : IParsable
         => await innerHandler.SendAsync(requestInfo, factory, InjectCustomErrorMappings(errorMapping),
             cancellationToken);
 
-    public async Task<IEnumerable<ModelType>?> SendCollectionAsync<ModelType>(RequestInformation requestInfo,
-        ParsableFactory<ModelType> factory,
+    public async Task<IEnumerable<TModelType>?> SendCollectionAsync<TModelType>(RequestInformation requestInfo,
+        ParsableFactory<TModelType> factory,
         Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
-        CancellationToken cancellationToken = default) where ModelType : IParsable
+        CancellationToken cancellationToken = default) where TModelType : IParsable
         => await innerHandler.SendCollectionAsync(requestInfo, factory,
             InjectCustomErrorMappings(errorMapping), cancellationToken);
 
-    public async Task<ModelType?> SendPrimitiveAsync<
+    public async Task<TModelType?> SendPrimitiveAsync<
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
-        ModelType>(
+        TModelType>(
         RequestInformation requestInfo,
         Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
         CancellationToken cancellationToken = default)
-        => await innerHandler.SendPrimitiveAsync<ModelType>(requestInfo, InjectCustomErrorMappings(errorMapping),
+        => await innerHandler.SendPrimitiveAsync<TModelType>(requestInfo, InjectCustomErrorMappings(errorMapping),
             cancellationToken);
 
-    public async Task<IEnumerable<ModelType>?> SendPrimitiveCollectionAsync<
+    public async Task<IEnumerable<TModelType>?> SendPrimitiveCollectionAsync<
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicFields)]
-        ModelType>(
+        TModelType>(
         RequestInformation requestInfo,
         Dictionary<string, ParsableFactory<IParsable>>? errorMapping = null,
         CancellationToken cancellationToken = default)
-        => await innerHandler.SendPrimitiveCollectionAsync<ModelType>(requestInfo,
+        => await innerHandler.SendPrimitiveCollectionAsync<TModelType>(requestInfo,
             InjectCustomErrorMappings(errorMapping), cancellationToken);
 
     public async Task SendNoContentAsync(RequestInformation requestInfo,
@@ -69,7 +69,7 @@ public class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerHandler)
     private static Dictionary<string, ParsableFactory<IParsable>> InjectCustomErrorMappings(
         Dictionary<string, ParsableFactory<IParsable>>? errorMapping)
     {
-        errorMapping ??= new Dictionary<string, ParsableFactory<IParsable>>();
+        errorMapping ??= [];
 
         foreach (var errorMappingEntry in CustomErrorMappings)
             errorMapping.Add(errorMappingEntry.Key, errorMappingEntry.Value);
@@ -202,4 +202,10 @@ public class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerHandler)
             { MapNotFoundException.CustomCodeIntStr, MapNotFoundException.CreateFromDiscriminatorValue },
             { MapContentNotFoundException.CustomCodeIntStr, MapContentNotFoundException.CreateFromDiscriminatorValue },
         };
+
+    public void Dispose()
+    {
+        if (innerHandler is IDisposable d)
+            d.Dispose();
+    }
 }

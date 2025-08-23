@@ -25,6 +25,6 @@ public class CharacterNameAlreadyUsedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterNameAlreadyUsedException();
+        return new();
     }
 }

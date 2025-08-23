@@ -24,6 +24,6 @@ public class TokenInvalidException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new TokenInvalidException();
+        return new();
     }
 }

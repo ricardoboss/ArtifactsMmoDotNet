@@ -24,6 +24,6 @@ public class GeNotInStockException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeNotInStockException();
+        return new();
     }
 }

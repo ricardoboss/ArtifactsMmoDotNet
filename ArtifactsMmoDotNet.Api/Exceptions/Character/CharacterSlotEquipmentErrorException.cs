@@ -25,6 +25,6 @@ public class CharacterSlotEquipmentErrorException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterSlotEquipmentErrorException();
+        return new();
     }
 }

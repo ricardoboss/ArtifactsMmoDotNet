@@ -24,6 +24,6 @@ public class FatalErrorException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new FatalErrorException();
+        return new();
     }
 }

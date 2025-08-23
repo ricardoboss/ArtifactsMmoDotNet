@@ -11,7 +11,7 @@ namespace ArtifactsMmoDotNet.Cli.Commands;
 internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService loginService) : AsyncCommand<MoveCommand.Settings>
 {
     [UsedImplicitly]
-    public sealed class Settings : CommandSettings;
+    internal sealed class Settings : CommandSettings;
 
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
     {
@@ -22,7 +22,7 @@ internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService
             return 1;
         }
 
-        var name = AnsiConsole.Ask<string>("Character name: ");
+        var name = await AnsiConsole.AskAsync<string>("Character name: ");
 
         var character = await apiClient.Characters![name]!.GetAsync();
         var currentX = character!.Data!.X!;
@@ -31,8 +31,8 @@ internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService
         AnsiConsole.MarkupLine($"[yellow]Current position:[/] ({currentX}, {currentY})");
 
         AnsiConsole.MarkupLine("[yellow]Move to:[/]");
-        var x = AnsiConsole.Ask<int>("X: ");
-        var y = AnsiConsole.Ask<int>("Y: ");
+        var x = await AnsiConsole.AskAsync<int>("X: ");
+        var y = await AnsiConsole.AskAsync<int>("Y: ");
 
         var destination = new DestinationSchema
         {
@@ -41,6 +41,8 @@ internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService
         };
 
         var movement = await apiClient.My![name]!.Action!.Move!.PostAsync(destination);
+
+        AnsiConsole.MarkupLine($"Moved to ({movement!.Data!.Character!.X}, {movement.Data.Character.Y})");
 
         return 0;
     }

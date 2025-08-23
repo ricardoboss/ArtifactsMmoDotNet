@@ -1,4 +1,5 @@
-﻿using ArtifactsMmoDotNet.Api.Exceptions;
+﻿using ArtifactsMmoDotNet.Api;
+using ArtifactsMmoDotNet.Api.Exceptions;
 using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Factories;
 using Microsoft.Extensions.Options;
@@ -39,20 +40,22 @@ public class DefaultArtifactsMmoApiClientFactory(
         return CreateWith(authProvider);
     }
 
-    private ArtifactsMmoApiClient CreateWith(IAuthenticationProvider authProvider)
+    private DisposableArtifactsMmoApiClient CreateWith(IAuthenticationProvider authProvider)
     {
+#pragma warning disable CA2000
         var client = CreateHttpClient();
         var httpAdapter = new HttpClientRequestAdapter(authProvider, httpClient: client);
         var errorHandlerAdapter = new CustomErrorCodeHandlingRequestAdapter(httpAdapter);
+#pragma warning restore CA2000
 
-        return new ArtifactsMmoApiClient(errorHandlerAdapter);
+        return new(errorHandlerAdapter);
     }
 
     private HttpClient CreateHttpClient()
     {
         var client = httpClientFactory.CreateClient(ArtifactsMmoApiClientName);
 
-        client.BaseAddress = new Uri(options.Value.BaseAddress ?? DefaultBaseAddress);
+        client.BaseAddress = new(options.Value.BaseAddress ?? DefaultBaseAddress);
         client.DefaultRequestHeaders.Add("User-Agent",
             "ArtifactsMmoDotNet/1.0.0 (+https://github.com/ricardoboss/ArtifactsMmoDotNet)");
         client.Timeout = options.Value.Timeout ?? DefaultTimeout;

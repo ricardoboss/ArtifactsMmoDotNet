@@ -12,7 +12,7 @@ public class GatherItemAction(string itemCode) : BaseAction
         do
         {
             context.Game.AutoWaitForCooldown = false;
-            var result = await context.Game.With(context.CharacterName).Gather();
+            var result = await context.Game.AsCharacter(context.CharacterName).Gather();
             amountGathered = result.Details!.Items!.FirstOrDefault(i => i.Code == itemCode)?.Quantity!.Value ?? 0;
 
             if (result.Details.Xp is { } xp)

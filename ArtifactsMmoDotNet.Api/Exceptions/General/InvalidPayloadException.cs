@@ -24,6 +24,6 @@ public class InvalidPayloadException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new InvalidPayloadException();
+        return new();
     }
 }

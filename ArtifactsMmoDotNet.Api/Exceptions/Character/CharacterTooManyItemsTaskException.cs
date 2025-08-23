@@ -24,6 +24,6 @@ public class CharacterTooManyItemsTaskException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterTooManyItemsTaskException();
+        return new();
     }
 }

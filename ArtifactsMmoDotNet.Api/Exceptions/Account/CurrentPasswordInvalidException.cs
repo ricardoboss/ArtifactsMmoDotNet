@@ -24,6 +24,6 @@ public class CurrentPasswordInvalidException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CurrentPasswordInvalidException();
+        return new();
     }
 }

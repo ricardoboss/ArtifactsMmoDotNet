@@ -1,0 +1,3 @@
+[*]
+# CA1812 : 'Foo' is an internal class that is apparently never instantiated
+dotnet_diagnostic.CA1812.severity = suggestion

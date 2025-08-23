@@ -24,6 +24,6 @@ public class CharacterMaximumUtilitiesEquippedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterMaximumUtilitiesEquippedException();
+        return new();
     }
 }

@@ -24,6 +24,6 @@ public class MapNotFoundException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new MapNotFoundException();
+        return new();
     }
 }

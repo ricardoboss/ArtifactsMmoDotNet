@@ -1,4 +1,5 @@
 using ArtifactsMmoDotNet.Automation.Actions;
+using ArtifactsMmoDotNet.Automation.Exceptions;
 using ArtifactsMmoDotNet.Automation.Interfaces;
 
 namespace ArtifactsMmoDotNet.Automation.Requirements;
@@ -9,13 +10,13 @@ public class HaveItemInInventory(string itemCode, int quantity = 1) : BaseRequir
 
     public override async Task<bool> IsFulfilled(IAutomationContext context)
     {
-        return await context.Game.From(context.CharacterName).GetInventory()
+        return await context.Game.FromCharacter(context.CharacterName).GetInventory()
             .AnyAsync(i => i.Code == itemCode && i.Quantity >= quantity);
     }
 
     public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
     {
-        var alreadyInInventory = await context.Game.From(context.CharacterName).GetInventory()
+        var alreadyInInventory = await context.Game.FromCharacter(context.CharacterName).GetInventory()
             .Where(i => i.Code == itemCode).SumAsync(i => i!.Quantity!.Value);
         var missing = quantity - alreadyInInventory;
 
@@ -31,10 +32,13 @@ public class HaveItemInInventory(string itemCode, int quantity = 1) : BaseRequir
         }
         else if (item.Type == "resource")
         {
-            var position = await context.Game.From(context.CharacterName).GetPosition();
+            var position = await context.Game.FromCharacter(context.CharacterName).GetPosition();
             var nearest = await GetNearestLocationForResource(context, itemCode, position.x, position.y);
             if (nearest is null)
-                throw new Exception($"No location to gather {itemCode} found");
+                throw new UnknownGatherLocationException($"No location to gather {itemCode} found")
+                {
+                    ItemCode = itemCode,
+                };
 
             if (position.x != nearest.X!.Value || position.y != nearest.Y!.Value)
                 yield return new GoToLocationAction(nearest.X!.Value, nearest.Y!.Value);

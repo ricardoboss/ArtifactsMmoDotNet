@@ -24,6 +24,6 @@ public class GeSameAccountException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeSameAccountException();
+        return new();
     }
 }

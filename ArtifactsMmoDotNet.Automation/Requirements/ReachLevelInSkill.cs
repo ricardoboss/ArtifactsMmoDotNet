@@ -1,5 +1,6 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
+using ArtifactsMmoDotNet.Automation.Exceptions;
 using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Models;
 
@@ -18,28 +19,28 @@ public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequiremen
 
     private async Task<SkillInfo> GetCurrentSkillInfo(IAutomationContext context)
     {
-        var character = await context.Game.From(context.CharacterName).GetEverything();
+        var character = await context.Game.FromCharacter(context.CharacterName).GetEverything();
 
         return skill switch
         {
-            LevelableSkill.Mining => new SkillInfo(character.MiningLevel!.Value, character.MiningXp!.Value,
+            LevelableSkill.Mining => new(character.MiningLevel!.Value, character.MiningXp!.Value,
                 character.MiningMaxXp!.Value),
-            LevelableSkill.Woodcutting => new SkillInfo(character.WoodcuttingLevel!.Value,
+            LevelableSkill.Woodcutting => new(character.WoodcuttingLevel!.Value,
                 character.WoodcuttingXp!.Value,
                 character.WoodcuttingMaxXp!.Value),
-            LevelableSkill.Fishing => new SkillInfo(character.FishingLevel!.Value, character.FishingXp!.Value,
+            LevelableSkill.Fishing => new(character.FishingLevel!.Value, character.FishingXp!.Value,
                 character.FishingMaxXp!.Value),
-            LevelableSkill.Weaponcrafting => new SkillInfo(character.WeaponcraftingLevel!.Value,
+            LevelableSkill.Weaponcrafting => new(character.WeaponcraftingLevel!.Value,
                 character.WeaponcraftingXp!.Value,
                 character.WeaponcraftingMaxXp!.Value),
-            LevelableSkill.Gearcrafting => new SkillInfo(character.GearcraftingLevel!.Value,
+            LevelableSkill.Gearcrafting => new(character.GearcraftingLevel!.Value,
                 character.GearcraftingXp!.Value,
                 character.GearcraftingMaxXp!.Value),
-            LevelableSkill.Jewelrycrafting => new SkillInfo(character.JewelrycraftingLevel!.Value,
+            LevelableSkill.Jewelrycrafting => new(character.JewelrycraftingLevel!.Value,
                 character.JewelrycraftingXp!.Value, character.JewelrycraftingMaxXp!.Value),
-            LevelableSkill.Cooking => new SkillInfo(character.CookingLevel!.Value, character.CookingXp!.Value,
+            LevelableSkill.Cooking => new(character.CookingLevel!.Value, character.CookingXp!.Value,
                 character.CookingMaxXp!.Value),
-            LevelableSkill.Alchemy => new SkillInfo(character.AlchemyLevel!.Value, character.AlchemyXp!.Value,
+            LevelableSkill.Alchemy => new(character.AlchemyLevel!.Value, character.AlchemyXp!.Value,
                 character.AlchemyMaxXp!.Value),
             _ => throw new NotImplementedException($"Unknown skill: {skill}"),
         };
@@ -66,11 +67,14 @@ public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequiremen
     {
         var currentInfo = await GetCurrentSkillInfo(context);
         var lastInfo = currentInfo;
-        var position = await context.Game.From(context.CharacterName).GetPosition();
+        var position = await context.Game.FromCharacter(context.CharacterName).GetPosition();
         var (item, location) = await GetNearestSkillLevellingInfo(context, gatherSkill, currentInfo, position);
 
         if (location is not { X: { } x, Y: { } y })
-            throw new Exception("No location to level the skill found");
+            throw new UnknownGatherLocationException("No location to level the skill found")
+            {
+                Skill = gatherSkill,
+            };
 
         if (position.x != x || position.y != y)
             yield return new GoToLocationAction(x, y);
@@ -153,7 +157,7 @@ public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequiremen
     }
 }
 
-internal record SkillInfo(int Level, int Xp, int MaxXp)
+internal sealed record SkillInfo(int Level, int Xp, int MaxXp)
 {
     internal int XpToNextLevel => MaxXp - Xp;
 }

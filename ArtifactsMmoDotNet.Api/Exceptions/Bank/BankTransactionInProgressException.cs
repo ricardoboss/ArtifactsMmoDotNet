@@ -25,6 +25,6 @@ public class BankTransactionInProgressException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new BankTransactionInProgressException();
+        return new();
     }
 }

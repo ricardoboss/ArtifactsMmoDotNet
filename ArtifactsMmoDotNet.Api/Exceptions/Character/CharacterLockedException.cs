@@ -24,6 +24,6 @@ public class CharacterLockedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterLockedException();
+        return new();
     }
 }

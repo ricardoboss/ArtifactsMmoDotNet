@@ -25,6 +25,6 @@ public class CharacterNotSkillLevelRequiredException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterNotSkillLevelRequiredException();
+        return new();
     }
 }

@@ -24,6 +24,6 @@ public class TokenGenerationFailException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new TokenGenerationFailException();
+        return new();
     }
 }

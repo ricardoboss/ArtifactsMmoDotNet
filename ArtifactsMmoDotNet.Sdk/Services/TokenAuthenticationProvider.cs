@@ -16,7 +16,7 @@ public class TokenStorageAccessTokenProvider(ITokenStorage tokenStorage) : IAcce
         return token ?? string.Empty;
     }
 
-    public AllowedHostsValidator AllowedHostsValidator { get; } = new AllowedHostsValidator([
+    public AllowedHostsValidator AllowedHostsValidator { get; } = new([
         "api.artifactsmmo.com",
     ]);
 }

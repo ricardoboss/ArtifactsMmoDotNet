@@ -3,18 +3,18 @@ using Spectre.Console;
 
 namespace ArtifactsMmoDotNet.Cli.Services;
 
-public class AnsiConsoleOutput : IOutput
+internal sealed class AnsiConsoleOutput(IAnsiConsole console) : IOutput
 {
     public Task ShowConfirmationAsync(string message)
     {
-        AnsiConsole.MarkupLine($"[green]{message}[/]");
+        console.MarkupLine($"[green]{message}[/]");
 
         return Task.CompletedTask;
     }
 
     public Task LogInfoAsync(string message)
     {
-        AnsiConsole.MarkupLine($"[grey]{message}[/]");
+        console.MarkupLine($"[grey]{message}[/]");
 
         return Task.CompletedTask;
     }

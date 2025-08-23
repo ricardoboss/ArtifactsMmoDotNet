@@ -24,6 +24,6 @@ public class TokenExpiredException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new TokenExpiredException();
+        return new();
     }
 }

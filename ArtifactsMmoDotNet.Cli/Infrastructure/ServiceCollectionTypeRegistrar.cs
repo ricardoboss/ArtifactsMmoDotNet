@@ -4,8 +4,8 @@ using Spectre.Console.Cli;
 
 namespace ArtifactsMmoDotNet.Cli.Infrastructure;
 
-[SuppressMessage("Trimming", "IL2092"), SuppressMessage("Trimming", "IL2095")]
-public class ServiceCollectionTypeRegistrar(IServiceCollection builder) : ITypeRegistrar, ITypeRegistrarFrontend
+internal sealed class ServiceCollectionTypeRegistrar(IServiceCollection builder)
+    : ITypeRegistrar, ITypeRegistrarFrontend
 {
     public void Register(Type service,
         [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)]
@@ -42,5 +42,5 @@ public class ServiceCollectionTypeRegistrar(IServiceCollection builder) : ITypeR
         RegisterInstance(typeof(TImplementation), instance);
 
     public void RegisterInstance<TService, TImplementation>(TImplementation instance)
-        where TImplementation : TService => RegisterInstance(typeof(TService), instance);
+        where TImplementation : TService => RegisterInstance<TService>(instance);
 }

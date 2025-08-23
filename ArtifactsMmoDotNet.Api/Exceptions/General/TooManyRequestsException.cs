@@ -24,6 +24,6 @@ public class TooManyRequestsException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new TooManyRequestsException();
+        return new();
     }
 }

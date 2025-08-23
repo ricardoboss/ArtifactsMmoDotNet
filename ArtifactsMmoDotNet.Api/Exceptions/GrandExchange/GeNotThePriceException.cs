@@ -24,6 +24,6 @@ public class GeNotThePriceException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeNotThePriceException();
+        return new();
     }
 }

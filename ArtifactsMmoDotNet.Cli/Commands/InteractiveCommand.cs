@@ -18,7 +18,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
     : AsyncCommand<InteractiveCommand.Settings>
 {
     [UsedImplicitly]
-    public sealed class Settings : CommandSettings;
+    internal sealed class Settings : CommandSettings;
 
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
     {
@@ -60,7 +60,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
                     return 0;
                 case "position":
                     AnsiConsole.MarkupLine(
-                        $"[yellow]Current position:[/] {await game.From(characterName).GetPosition()}");
+                        $"[yellow]Current position:[/] {await game.FromCharacter(characterName).GetPosition()}");
 
                     continue;
                 case "move":
@@ -146,8 +146,8 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         switch (requirementType)
         {
             case "Have item in inventory":
-                var itemCode = AnsiConsole.Ask<string>("[yellow]What item to automate?[/]");
-                var quantity = AnsiConsole.Ask<int>("[yellow]How many of that item?[/]");
+                var itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to automate?[/]");
+                var quantity = await AnsiConsole.AskAsync<int>("[yellow]How many of that item?[/]");
 
                 rootRequirement = new HaveItemInInventory(itemCode, quantity);
                 break;
@@ -159,7 +159,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
                     WrapAround = true,
                 }.AddChoices(Enum.GetValues<LevelableSkill>()));
 
-                var level = AnsiConsole.Ask<int>("[yellow]Which level?[/]");
+                var level = await AnsiConsole.AskAsync<int>("[yellow]Which level?[/]");
 
                 rootRequirement = new ReachLevelInSkill(skill, level);
                 break;
@@ -213,8 +213,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             .Select(l => new KnownLocationOrCancel(l))
             .ToListAsync();
 
-        prompt.AddChoices(locations)
-            .AddChoice(new KnownLocationOrCancel(null));
+        prompt.AddChoices(locations).AddChoice(new(null));
 
         var selection = AnsiConsole.Prompt(prompt);
         if (selection.Location is null)
@@ -256,19 +255,19 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
         var itemCode = AnsiConsole.Prompt(itemCodePrompt);
 
-        var result = await game.With(characterName).Equip(slot, itemCode);
+        var result = await game.AsCharacter(characterName).Equip(slot, itemCode);
 
         AnsiConsole.MarkupLine($"[yellow]Equipped item [green]{result.Item!.Code}[/][/]");
     }
 
     private async Task<IEnumerable<InventorySlot>> GetInventory(string characterName)
     {
-        return await game.From(characterName).GetInventory().ToListAsync();
+        return await game.FromCharacter(characterName).GetInventory().ToListAsync();
     }
 
     private async Task<IDictionary<ItemSlot, string?>> GetEquipment(string characterName)
     {
-        return await game.From(characterName).GetEquipment();
+        return await game.FromCharacter(characterName).GetEquipment();
     }
 
     private async Task PrintInventory(string characterName)
@@ -277,7 +276,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
         AnsiConsole.MarkupLine("[yellow]Inventory:[/]");
 
-        if (!inventorySlots.Any())
+        if (inventorySlots.Count == 0)
         {
             AnsiConsole.MarkupLine("[yellow]Your inventory is empty.[/]");
 
@@ -290,10 +289,10 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Craft(string characterName)
     {
-        var itemCode = AnsiConsole.Ask<string>("[yellow]What to craft?[/]");
+        var itemCode = await AnsiConsole.AskAsync<string>("[yellow]What to craft?[/]");
 
         var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync($"Crafting {itemCode}...", async _ => await game.With(characterName).Craft(itemCode));
+            .StartAsync($"Crafting {itemCode}...", async _ => await game.AsCharacter(characterName).Craft(itemCode));
 
         PrintSkillDataResult(result);
     }
@@ -311,7 +310,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         var slot = AnsiConsole.Prompt(slotPrompt);
 
         var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-            .StartAsync("Unequipping...", async _ => await game.With(characterName).Unequip(slot));
+            .StartAsync("Unequipping...", async _ => await game.AsCharacter(characterName).Unequip(slot));
 
         AnsiConsole.MarkupLine($"[yellow]Unequipped item [green]{result.Item!.Code}[/][/]");
     }
@@ -321,7 +320,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         try
         {
             var result = await AnsiConsole.Status().Spinner(Spinner.Known.Dots!)
-                .StartAsync("Gathering...", async _ => await game.With(characterName).Gather());
+                .StartAsync("Gathering...", async _ => await game.AsCharacter(characterName).Gather());
 
             PrintSkillDataResult(result);
         }
@@ -345,18 +344,18 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         if (xp > 0)
             AnsiConsole.MarkupLine($"[yellow]Gained [green]+{xp} XP[/][/]");
 
-        if (items.Any())
-        {
-            AnsiConsole.MarkupLine("[yellow]Received Items:[/]");
+        if (items.Count == 0)
+            return;
 
-            foreach (var item in items)
-                AnsiConsole.MarkupLine($"    {item}");
-        }
+        AnsiConsole.MarkupLine("[yellow]Received Items:[/]");
+
+        foreach (var item in items)
+            AnsiConsole.MarkupLine($"    {item}");
     }
 
     private async Task Fight(string characterName)
     {
-        var result = await game.With(characterName).Attack();
+        var result = await game.AsCharacter(characterName).Attack();
 
         AnsiConsole.MarkupLine("[yellow]Fight Log:[/]");
 
@@ -366,7 +365,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Move(string characterName)
     {
-        var position = await game.From(characterName).GetPosition();
+        var position = await game.FromCharacter(characterName).GetPosition();
 
         AnsiConsole.MarkupLine($"[yellow]Current position:[/] ({position.x}, {position.y})");
 
@@ -374,7 +373,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         int x, y;
         do
         {
-            var coordinates = AnsiConsole.Ask<string>("[yellow]Move to:[/]");
+            var coordinates = await AnsiConsole.AskAsync<string>("[yellow]Move to:[/]");
 
             parts = coordinates.Split(',', 2);
         } while (parts is not [var xStr, var yStr] || !int.TryParse(xStr, out x) ||
@@ -385,7 +384,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task MoveTo(string characterName, int x, int y)
     {
-        var result = await game.With(characterName).MoveTo(x, y);
+        var result = await game.AsCharacter(characterName).MoveTo(x, y);
 
         var destX = result.Destination!.X!.Value;
         var destY = result.Destination!.Y!.Value;
@@ -421,10 +420,10 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task<CharacterSchema> CreateCharacter()
     {
-        var name = AnsiConsole.Ask<string>("Character name:");
+        var name = await AnsiConsole.AskAsync<string>("Character name:");
 
         CharacterSkin? skin = null;
-        var wantsSkin = AnsiConsole.Confirm("Choose a skin?");
+        var wantsSkin = await AnsiConsole.ConfirmAsync("Choose a skin?");
         if (wantsSkin)
         {
             skin = AnsiConsole.Prompt(new SelectionPrompt<CharacterSkin>
@@ -439,4 +438,4 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
     }
 }
 
-file record KnownLocationOrCancel(MapSchema? Location);
+file sealed record KnownLocationOrCancel(MapSchema? Location);

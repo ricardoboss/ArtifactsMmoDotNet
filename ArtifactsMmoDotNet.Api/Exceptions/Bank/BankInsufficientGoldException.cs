@@ -25,6 +25,6 @@ public class BankInsufficientGoldException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new BankInsufficientGoldException();
+        return new();
     }
 }

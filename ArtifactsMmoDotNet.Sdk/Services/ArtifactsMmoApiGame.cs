@@ -6,9 +6,9 @@ namespace ArtifactsMmoDotNet.Sdk.Services;
 
 public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 {
-    public IGame.IActions With(string characterName) => new Actions(this, characterName, apiClient);
+    public IGameCharacterActions AsCharacter(string characterName) => new CharacterActions(this, characterName, apiClient);
 
-    public IGame.ICharacters From(string characterName) => new Characters(this, characterName, apiClient);
+    public IGameCharacters FromCharacter(string characterName) => new Characters(this, characterName, apiClient);
 
     public async IAsyncEnumerable<CharacterSchema> GetCharacters()
     {
@@ -64,7 +64,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     {
         var useCache = contentCode is null && contentType is null;
 
-        if (useCache && cachedLocations.Any())
+        if (useCache && cachedLocations.Count != 0)
         {
             foreach (var location in cachedLocations)
                 yield return location;
@@ -115,7 +115,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
         var useCache = craftMaterial is null && craftSkill is null && minLevel is null && maxLevel is null &&
                        type is null;
 
-        if (useCache && cachedItems.Any())
+        if (useCache && cachedItems.Count != 0)
         {
             foreach (var item in cachedItems)
                 yield return item;
@@ -204,7 +204,8 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     }
 }
 
-file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient) : IGame.IActions
+file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
+    : IGameCharacterActions
 {
     public async Task<CharacterFightDataSchema> Attack()
     {
@@ -241,7 +242,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
 
     public async Task<EquipRequestSchema> Unequip(ItemSlot slot)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Unequip!.PostAsync(new UnequipSchema
+        var result = (await apiClient.My![characterName]!.Action!.Unequip!.PostAsync(new()
         {
             Slot = slot,
         }))!.Data!;
@@ -253,7 +254,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
 
     public async Task<SkillDataSchema> Craft(string itemCode, int quantity = 1)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Crafting!.PostAsync(new CraftingSchema
+        var result = (await apiClient.My![characterName]!.Action!.Crafting!.PostAsync(new()
         {
             Code = itemCode,
             Quantity = quantity,
@@ -266,7 +267,7 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
 
     public async Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Equip!.PostAsync(new EquipSchema
+        var result = (await apiClient.My![characterName]!.Action!.Equip!.PostAsync(new()
         {
             Slot = slot,
             Code = itemCode,
@@ -278,8 +279,8 @@ file class Actions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoA
     }
 }
 
-file class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
-    : IGame.ICharacters
+file sealed class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
+    : IGameCharacters
 {
     public async Task<CharacterSchema> GetEverything()
     {

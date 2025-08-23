@@ -24,6 +24,6 @@ public class CharacterInCooldownException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterInCooldownException();
+        return new();
     }
 }

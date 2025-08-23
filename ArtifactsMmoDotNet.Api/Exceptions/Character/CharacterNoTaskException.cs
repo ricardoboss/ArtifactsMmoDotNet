@@ -24,6 +24,6 @@ public class CharacterNoTaskException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterNoTaskException();
+        return new();
     }
 }

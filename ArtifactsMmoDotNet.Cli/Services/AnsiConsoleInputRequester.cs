@@ -3,7 +3,7 @@ using Spectre.Console;
 
 namespace ArtifactsMmoDotNet.Cli.Services;
 
-public class AnsiConsoleInputRequester : IInputRequester
+internal sealed class AnsiConsoleInputRequester(IAnsiConsole console) : IInputRequester
 {
     public Task<string> PromptAsync(string text, bool concealed = false)
     {
@@ -11,7 +11,7 @@ public class AnsiConsoleInputRequester : IInputRequester
         if (concealed)
             prompt.Secret();
 
-        var response = AnsiConsole.Prompt(prompt);
+        var response = console.Prompt(prompt);
 
         return Task.FromResult(response);
     }

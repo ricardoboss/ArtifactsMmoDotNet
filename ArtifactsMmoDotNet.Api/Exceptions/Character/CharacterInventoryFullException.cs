@@ -25,6 +25,6 @@ public class CharacterInventoryFullException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterInventoryFullException();
+        return new();
     }
 }

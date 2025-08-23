@@ -6,6 +6,11 @@ namespace ArtifactsMmoDotNet.Api.Exceptions;
 public abstract class CustomApiException : ApiException, IParsable
 {
     /// <inheritdoc/>
+    protected CustomApiException()
+    {
+    }
+
+    /// <inheritdoc/>
     protected CustomApiException(string message) : base(message)
     {
     }
@@ -55,6 +60,6 @@ public class ErrorContent : IParsable
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new ErrorContent();
+        return new();
     }
 }

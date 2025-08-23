@@ -24,6 +24,6 @@ public class CharacterGoldInsufficientException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterGoldInsufficientException();
+        return new();
     }
 }

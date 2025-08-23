@@ -24,6 +24,6 @@ public class CharacterItemAlreadyEquippedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterItemAlreadyEquippedException();
+        return new();
     }
 }

@@ -6,14 +6,14 @@ namespace ArtifactsMmoDotNet.Sdk.Services;
 
 public sealed class BasicAuthenticationProvider(string username, string password) : IAuthenticationProvider
 {
-    private readonly Lazy<string> lazyBasicAuthCredentials = new Lazy<string>(() =>
+    private readonly Lazy<string> lazyBasicAuthCredentials = new(() =>
     {
         var bytes = Encoding.UTF8.GetBytes($"{username}:{password}");
 
         return Convert.ToBase64String(bytes);
     });
 
-    private string basicAuthCredentials => lazyBasicAuthCredentials.Value;
+    private string BasicAuthCredentials => lazyBasicAuthCredentials.Value;
 
     public Task AuthenticateRequestAsync(
         RequestInformation request,
@@ -21,7 +21,9 @@ public sealed class BasicAuthenticationProvider(string username, string password
         CancellationToken cancellationToken = default
     )
     {
-        request.Headers.Add("Authorization", $"Basic {basicAuthCredentials}");
+        ArgumentNullException.ThrowIfNull(request);
+
+        request.Headers.Add("Authorization", $"Basic {BasicAuthCredentials}");
 
         return Task.CompletedTask;
     }

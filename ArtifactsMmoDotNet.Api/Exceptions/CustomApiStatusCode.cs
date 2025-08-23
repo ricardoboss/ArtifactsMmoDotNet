@@ -2,6 +2,8 @@
 
 public enum CustomApiStatusCode
 {
+    None = 0,
+
     InvalidPayload = 422,
     TooManyRequests = 429,
     NotFound = 404,

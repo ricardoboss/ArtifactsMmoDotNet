@@ -24,6 +24,6 @@ public class TokenMissingException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new TokenMissingException();
+        return new();
     }
 }

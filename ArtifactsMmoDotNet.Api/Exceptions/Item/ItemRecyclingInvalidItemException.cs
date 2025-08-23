@@ -25,6 +25,6 @@ public class ItemRecyclingInvalidItemException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new ItemRecyclingInvalidItemException();
+        return new();
     }
 }

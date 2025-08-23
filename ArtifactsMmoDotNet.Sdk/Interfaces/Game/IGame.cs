@@ -4,35 +4,9 @@ namespace ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
 public interface IGame
 {
-    public interface IActions
-    {
-        Task<CharacterFightDataSchema> Attack();
+    IGameCharacterActions AsCharacter(string characterName);
 
-        Task<CharacterMovementDataSchema> MoveTo(int x, int y);
-
-        Task<SkillDataSchema> Gather();
-
-        Task<EquipRequestSchema> Unequip(ItemSlot slot);
-
-        Task<SkillDataSchema> Craft(string itemCode, int quantity = 1);
-
-        Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode);
-    }
-
-    IActions With(string characterName);
-
-    public interface ICharacters
-    {
-        Task<CharacterSchema> GetEverything();
-
-        Task<(int x, int y)> GetPosition();
-
-        IAsyncEnumerable<InventorySlot> GetInventory();
-
-        Task<IDictionary<ItemSlot, string?>> GetEquipment();
-    }
-
-    ICharacters From(string characterName);
+    IGameCharacters FromCharacter(string characterName);
 
     IAsyncEnumerable<CharacterSchema> GetCharacters();
 

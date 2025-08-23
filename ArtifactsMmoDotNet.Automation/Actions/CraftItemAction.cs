@@ -26,7 +26,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
         {
             await context.Output.LogInfoAsync($"Crafting {itemCode}");
 
-            var result = await context.Game.With(context.CharacterName).Craft(itemCode);
+            var result = await context.Game.AsCharacter(context.CharacterName).Craft(itemCode);
 
             if (result.Details!.Xp is { } xp)
                 await context.Output.LogInfoAsync($"Gained {xp} xp");
@@ -64,8 +64,8 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
             .Where(m => string.Equals(m.Content!.Code, requiredSkill, StringComparison.InvariantCultureIgnoreCase))
             .ToListAsync();
 
-        var position = await context.Game.From(context.CharacterName).GetPosition();
-        if (workshopLocations.Any(m => m.X!.Value == position.x && m.Y!.Value == position.y))
+        var (x, y) = await context.Game.FromCharacter(context.CharacterName).GetPosition();
+        if (workshopLocations.Any(m => m.X!.Value == x && m.Y!.Value == y))
         {
             await context.Output.LogInfoAsync($"Already at {requiredSkill} workshop");
 
@@ -77,9 +77,10 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
             nearestWorkshop = workshopLocations.Single();
         else
             nearestWorkshop = workshopLocations.OrderBy(m =>
-                Math.Sqrt(Math.Pow(m.X!.Value - position.x, 2) + Math.Pow(m.Y!.Value - position.y, 2))).First();
+                Math.Sqrt(Math.Pow(m.X!.Value - x, 2) + Math.Pow(m.Y!.Value - y, 2))).First();
 
-        await context.Game.With(context.CharacterName).MoveTo(nearestWorkshop.X!.Value, nearestWorkshop.Y!.Value);
+        await context.Game.AsCharacter(context.CharacterName)
+            .MoveTo(nearestWorkshop.X!.Value, nearestWorkshop.Y!.Value);
 
         await context.Output.LogInfoAsync(
             $"Moved to {nearestWorkshop.Content!.Code} workshop at {nearestWorkshop.X!.Value}, {nearestWorkshop.Y!.Value}");

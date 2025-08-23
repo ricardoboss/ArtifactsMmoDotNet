@@ -9,6 +9,6 @@ public class UnequipItemInSlot(ItemSlot slot) : BaseAction
 
     public override async Task Execute(IAutomationContext context)
     {
-        _ = await context.Game.With(context.CharacterName).Unequip(slot);
+        _ = await context.Game.AsCharacter(context.CharacterName).Unequip(slot);
     }
 }

@@ -24,6 +24,6 @@ public class EmailAlreadyUsedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new EmailAlreadyUsedException();
+        return new();
     }
 }

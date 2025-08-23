@@ -25,6 +25,6 @@ public class ItemInvalidConsumableException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new ItemInvalidConsumableException();
+        return new();
     }
 }

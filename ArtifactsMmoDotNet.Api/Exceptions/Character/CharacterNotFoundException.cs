@@ -24,6 +24,6 @@ public class CharacterNotFoundException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterNotFoundException();
+        return new();
     }
 }

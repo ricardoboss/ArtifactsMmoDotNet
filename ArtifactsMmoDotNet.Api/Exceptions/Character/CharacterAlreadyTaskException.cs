@@ -24,6 +24,6 @@ public class CharacterAlreadyTaskException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterAlreadyTaskException();
+        return new();
     }
 }

@@ -24,6 +24,6 @@ public class CharacterNotThisTaskException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new CharacterNotThisTaskException();
+        return new();
     }
 }

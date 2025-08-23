@@ -25,6 +25,6 @@ public class MaxCharactersReachedException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new MaxCharactersReachedException();
+        return new();
     }
 }

@@ -24,6 +24,6 @@ public class GeMaxQuantityException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeMaxQuantityException();
+        return new();
     }
 }

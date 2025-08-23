@@ -25,6 +25,6 @@ public class ItemInvalidEquipmentException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new ItemInvalidEquipmentException();
+        return new();
     }
 }

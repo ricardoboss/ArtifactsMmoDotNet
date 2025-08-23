@@ -24,6 +24,6 @@ public class GeMaxOrdersException : CustomApiException
     {
         ArgumentNullException.ThrowIfNull(parseNode);
 
-        return new GeMaxOrdersException();
+        return new();
     }
 }
