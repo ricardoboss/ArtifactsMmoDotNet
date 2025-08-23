@@ -35,7 +35,7 @@ void ConfigureServices(IServiceCollection s)
     s.AddDefaultLoginServiceFactory();
     s.AddDefaultInteractiveLoginService();
 
-    s.AddArtifactsMmoApiClient(o => o.BaseAddress = "https://api-test.artifactsmmo.com/");
+    s.AddArtifactsMmoApiClient(o => o.BaseAddress = "https://api.artifactsmmo.com/");
     s.AddApiLoginTokenGenerator();
 
     s.AddArtifactsMmoApiGame();
