@@ -11,11 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Packages.props = Directory.Packages.props
 		nuget.config = nuget.config
 		.editorconfig = .editorconfig
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMmoDotNet.Sdk", "ArtifactsMmoDotNet.Sdk\ArtifactsMmoDotNet.Sdk.csproj", "{48A331E5-84E5-4D7E-9115-DE6D0E025ED7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArtifactsMmoDotNet.Automation", "ArtifactsMmoDotNet.Automation\ArtifactsMmoDotNet.Automation.csproj", "{B2F7B212-D7EF-423C-8799-B7969267DCC6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{FF3B490D-15D8-42C1-A4F5-2ABE4672BB52}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet.yaml = .github\workflows\dotnet.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,5 +45,8 @@ Global
 		{B2F7B212-D7EF-423C-8799-B7969267DCC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2F7B212-D7EF-423C-8799-B7969267DCC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2F7B212-D7EF-423C-8799-B7969267DCC6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FF3B490D-15D8-42C1-A4F5-2ABE4672BB52} = {5A0FED6E-5292-4BD0-813D-6C509DE27F25}
 	EndGlobalSection
 EndGlobal
