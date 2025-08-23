@@ -54,9 +54,10 @@ void HandleException(Exception ex, ITypeResolver? resolver)
         default:
 #if DEBUG
             throw ex;
-#endif
+#else
             AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
             return;
+#endif
     }
 
 #if DEBUG
