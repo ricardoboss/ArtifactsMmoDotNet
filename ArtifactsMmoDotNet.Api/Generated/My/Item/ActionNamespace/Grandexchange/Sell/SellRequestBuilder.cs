@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange
         {
         }
         /// <summary>
-        /// Create a sell order at the Grand Exchange on the character&apos;s map. Please note that a 5% sales tax is charged.
+        /// Create a sell order at the Grand Exchange on the character&apos;s map. Please note there is a 3% listing tax, charged at the time of posting, on the total price.
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GECreateOrderTransactionResponseSchema"/></returns>
         /// <param name="body">The request body</param>
@@ -54,7 +54,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.GECreateOrderTransactionResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.GECreateOrderTransactionResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Create a sell order at the Grand Exchange on the character&apos;s map. Please note that a 5% sales tax is charged.
+        /// Create a sell order at the Grand Exchange on the character&apos;s map. Please note there is a 3% listing tax, charged at the time of posting, on the total price.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="body">The request body</param>

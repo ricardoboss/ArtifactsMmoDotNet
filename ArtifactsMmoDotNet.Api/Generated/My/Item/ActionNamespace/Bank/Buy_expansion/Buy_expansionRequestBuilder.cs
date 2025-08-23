@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Buy_expa
         {
         }
         /// <summary>
-        /// Buy a 20 slots bank expansion.
+        /// Buy a 25 slots bank expansion.
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BankExtensionTransactionResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Buy_expa
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.BankExtensionTransactionResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.BankExtensionTransactionResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Buy a 20 slots bank expansion.
+        /// Buy a 25 slots bank expansion.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -64,5 +64,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Utility2,
         #pragma warning restore CS1591
+        [EnumMember(Value = "bag")]
+        #pragma warning disable CS1591
+        Bag,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "rune")]
+        #pragma warning disable CS1591
+        Rune,
+        #pragma warning restore CS1591
     }
 }

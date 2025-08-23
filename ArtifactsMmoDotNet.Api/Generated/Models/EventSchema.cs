@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Code of the event. This is the event&apos;s unique identifier (ID).</summary>
+        /// <summary>Code of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code
@@ -91,22 +91,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("rate"); }
             set { BackingStore?.Set("rate", value); }
         }
-        /// <summary>Map skin of the event.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Skin
-        {
-            get { return BackingStore?.Get<string?>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
-#nullable restore
-#else
-        public string Skin
-        {
-            get { return BackingStore?.Get<string>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.EventSchema"/> and sets the default values.
         /// </summary>
@@ -138,7 +122,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "maps", n => { Maps = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.EventMapSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.EventMapSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "rate", n => { Rate = n.GetIntValue(); } },
-                { "skin", n => { Skin = n.GetStringValue(); } },
             };
         }
         /// <summary>
@@ -154,7 +137,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.EventMapSchema>("maps", Maps);
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("rate", Rate);
-            writer.WriteStringValue("skin", Skin);
         }
     }
 }

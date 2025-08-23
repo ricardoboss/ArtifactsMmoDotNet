@@ -40,5 +40,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Other,
         #pragma warning restore CS1591
+        [EnumMember(Value = "use")]
+        #pragma warning disable CS1591
+        Use,
+        #pragma warning restore CS1591
     }
 }

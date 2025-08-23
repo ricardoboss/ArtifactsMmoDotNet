@@ -137,6 +137,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
+        /// <summary>Bag slot.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? BagSlot
+        {
+            get { return BackingStore?.Get<string?>("bag_slot"); }
+            set { BackingStore?.Set("bag_slot", value); }
+        }
+#nullable restore
+#else
+        public string BagSlot
+        {
+            get { return BackingStore?.Get<string>("bag_slot"); }
+            set { BackingStore?.Set("bag_slot", value); }
+        }
+#endif
         /// <summary>Body armor slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -199,31 +215,37 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<DateTimeOffset?>("cooldown_expiration"); }
             set { BackingStore?.Set("cooldown_expiration", value); }
         }
-        /// <summary>*Not available, on the roadmap. Character Critical   Strike. Critical strikes increase the attack&apos;s damage.</summary>
+        /// <summary>% Critical strike. Critical strikes adds 50% extra damage to an attack (1.5x).</summary>
         public int? CriticalStrike
         {
             get { return BackingStore?.Get<int?>("critical_strike"); }
             set { BackingStore?.Set("critical_strike", value); }
         }
-        /// <summary>% Air damage.</summary>
+        /// <summary>% Damage. Damage increases your attack in all elements.</summary>
+        public int? Dmg
+        {
+            get { return BackingStore?.Get<int?>("dmg"); }
+            set { BackingStore?.Set("dmg", value); }
+        }
+        /// <summary>% Air damage. Damage increases your air attack.</summary>
         public int? DmgAir
         {
             get { return BackingStore?.Get<int?>("dmg_air"); }
             set { BackingStore?.Set("dmg_air", value); }
         }
-        /// <summary>% Earth damage.</summary>
+        /// <summary>% Earth damage. Damage increases your earth attack.</summary>
         public int? DmgEarth
         {
             get { return BackingStore?.Get<int?>("dmg_earth"); }
             set { BackingStore?.Set("dmg_earth", value); }
         }
-        /// <summary>% Fire damage.</summary>
+        /// <summary>% Fire damage. Damage increases your fire attack.</summary>
         public int? DmgFire
         {
             get { return BackingStore?.Get<int?>("dmg_fire"); }
             set { BackingStore?.Set("dmg_fire", value); }
         }
-        /// <summary>% Water damage.</summary>
+        /// <summary>% Water damage. Damage increases your water attack.</summary>
         public int? DmgWater
         {
             get { return BackingStore?.Get<int?>("dmg_water"); }
@@ -271,7 +293,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("gold"); }
             set { BackingStore?.Set("gold", value); }
         }
-        /// <summary>*Character Haste. Increase speed attack (reduce fight cooldown)</summary>
+        /// <summary>*Increase speed attack (reduce fight cooldown)</summary>
         public int? Haste
         {
             get { return BackingStore?.Get<int?>("haste"); }
@@ -407,25 +429,31 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("name", value); }
         }
 #endif
-        /// <summary>% Air resistance.</summary>
+        /// <summary>Prospecting increases the chances of getting drops from fights and skills (1% extra per 10 PP).</summary>
+        public int? Prospecting
+        {
+            get { return BackingStore?.Get<int?>("prospecting"); }
+            set { BackingStore?.Set("prospecting", value); }
+        }
+        /// <summary>% Air resistance. Reduces air attack.</summary>
         public int? ResAir
         {
             get { return BackingStore?.Get<int?>("res_air"); }
             set { BackingStore?.Set("res_air", value); }
         }
-        /// <summary>% Earth resistance.</summary>
+        /// <summary>% Earth resistance. Reduces earth attack.</summary>
         public int? ResEarth
         {
             get { return BackingStore?.Get<int?>("res_earth"); }
             set { BackingStore?.Set("res_earth", value); }
         }
-        /// <summary>% Fire resistance.</summary>
+        /// <summary>% Fire resistance. Reduces fire attack.</summary>
         public int? ResFire
         {
             get { return BackingStore?.Get<int?>("res_fire"); }
             set { BackingStore?.Set("res_fire", value); }
         }
-        /// <summary>% Water resistance.</summary>
+        /// <summary>% Water resistance. Reduces water attack.</summary>
         public int? ResWater
         {
             get { return BackingStore?.Get<int?>("res_water"); }
@@ -463,6 +491,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("ring2_slot", value); }
         }
 #endif
+        /// <summary>Rune slot.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? RuneSlot
+        {
+            get { return BackingStore?.Get<string?>("rune_slot"); }
+            set { BackingStore?.Set("rune_slot", value); }
+        }
+#nullable restore
+#else
+        public string RuneSlot
+        {
+            get { return BackingStore?.Get<string>("rune_slot"); }
+            set { BackingStore?.Set("rune_slot", value); }
+        }
+#endif
         /// <summary>Shield slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -490,12 +534,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             get { return BackingStore?.Get<int?>("speed"); }
             set { BackingStore?.Set("speed", value); }
-        }
-        /// <summary>*Not available, on the roadmap. Regenerates life at the start of each turn.</summary>
-        public int? Stamina
-        {
-            get { return BackingStore?.Get<int?>("stamina"); }
-            set { BackingStore?.Set("stamina", value); }
         }
         /// <summary>Task in progress.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -619,6 +657,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("weapon_slot", value); }
         }
 #endif
+        /// <summary>Wisdom increases the amount of XP gained from fights and skills (1% extra per 10 wisdom).</summary>
+        public int? Wisdom
+        {
+            get { return BackingStore?.Get<int?>("wisdom"); }
+            set { BackingStore?.Set("wisdom", value); }
+        }
         /// <summary>Woodcutting level.</summary>
         public int? WoodcuttingLevel
         {
@@ -692,6 +736,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "attack_earth", n => { AttackEarth = n.GetIntValue(); } },
                 { "attack_fire", n => { AttackFire = n.GetIntValue(); } },
                 { "attack_water", n => { AttackWater = n.GetIntValue(); } },
+                { "bag_slot", n => { BagSlot = n.GetStringValue(); } },
                 { "body_armor_slot", n => { BodyArmorSlot = n.GetStringValue(); } },
                 { "boots_slot", n => { BootsSlot = n.GetStringValue(); } },
                 { "cooking_level", n => { CookingLevel = n.GetIntValue(); } },
@@ -700,6 +745,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "cooldown", n => { Cooldown = n.GetIntValue(); } },
                 { "cooldown_expiration", n => { CooldownExpiration = n.GetDateTimeOffsetValue(); } },
                 { "critical_strike", n => { CriticalStrike = n.GetIntValue(); } },
+                { "dmg", n => { Dmg = n.GetIntValue(); } },
                 { "dmg_air", n => { DmgAir = n.GetIntValue(); } },
                 { "dmg_earth", n => { DmgEarth = n.GetIntValue(); } },
                 { "dmg_fire", n => { DmgFire = n.GetIntValue(); } },
@@ -727,16 +773,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "mining_max_xp", n => { MiningMaxXp = n.GetIntValue(); } },
                 { "mining_xp", n => { MiningXp = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "prospecting", n => { Prospecting = n.GetIntValue(); } },
                 { "res_air", n => { ResAir = n.GetIntValue(); } },
                 { "res_earth", n => { ResEarth = n.GetIntValue(); } },
                 { "res_fire", n => { ResFire = n.GetIntValue(); } },
                 { "res_water", n => { ResWater = n.GetIntValue(); } },
                 { "ring1_slot", n => { Ring1Slot = n.GetStringValue(); } },
                 { "ring2_slot", n => { Ring2Slot = n.GetStringValue(); } },
+                { "rune_slot", n => { RuneSlot = n.GetStringValue(); } },
                 { "shield_slot", n => { ShieldSlot = n.GetStringValue(); } },
                 { "skin", n => { Skin = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin>(); } },
                 { "speed", n => { Speed = n.GetIntValue(); } },
-                { "stamina", n => { Stamina = n.GetIntValue(); } },
                 { "task", n => { Task = n.GetStringValue(); } },
                 { "task_progress", n => { TaskProgress = n.GetIntValue(); } },
                 { "task_total", n => { TaskTotal = n.GetIntValue(); } },
@@ -749,6 +796,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "weaponcrafting_level", n => { WeaponcraftingLevel = n.GetIntValue(); } },
                 { "weaponcrafting_max_xp", n => { WeaponcraftingMaxXp = n.GetIntValue(); } },
                 { "weaponcrafting_xp", n => { WeaponcraftingXp = n.GetIntValue(); } },
+                { "wisdom", n => { Wisdom = n.GetIntValue(); } },
                 { "woodcutting_level", n => { WoodcuttingLevel = n.GetIntValue(); } },
                 { "woodcutting_max_xp", n => { WoodcuttingMaxXp = n.GetIntValue(); } },
                 { "woodcutting_xp", n => { WoodcuttingXp = n.GetIntValue(); } },
@@ -776,6 +824,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("attack_earth", AttackEarth);
             writer.WriteIntValue("attack_fire", AttackFire);
             writer.WriteIntValue("attack_water", AttackWater);
+            writer.WriteStringValue("bag_slot", BagSlot);
             writer.WriteStringValue("body_armor_slot", BodyArmorSlot);
             writer.WriteStringValue("boots_slot", BootsSlot);
             writer.WriteIntValue("cooking_level", CookingLevel);
@@ -784,6 +833,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("cooldown", Cooldown);
             writer.WriteDateTimeOffsetValue("cooldown_expiration", CooldownExpiration);
             writer.WriteIntValue("critical_strike", CriticalStrike);
+            writer.WriteIntValue("dmg", Dmg);
             writer.WriteIntValue("dmg_air", DmgAir);
             writer.WriteIntValue("dmg_earth", DmgEarth);
             writer.WriteIntValue("dmg_fire", DmgFire);
@@ -811,16 +861,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("mining_max_xp", MiningMaxXp);
             writer.WriteIntValue("mining_xp", MiningXp);
             writer.WriteStringValue("name", Name);
+            writer.WriteIntValue("prospecting", Prospecting);
             writer.WriteIntValue("res_air", ResAir);
             writer.WriteIntValue("res_earth", ResEarth);
             writer.WriteIntValue("res_fire", ResFire);
             writer.WriteIntValue("res_water", ResWater);
             writer.WriteStringValue("ring1_slot", Ring1Slot);
             writer.WriteStringValue("ring2_slot", Ring2Slot);
+            writer.WriteStringValue("rune_slot", RuneSlot);
             writer.WriteStringValue("shield_slot", ShieldSlot);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin>("skin", Skin);
             writer.WriteIntValue("speed", Speed);
-            writer.WriteIntValue("stamina", Stamina);
             writer.WriteStringValue("task", Task);
             writer.WriteIntValue("task_progress", TaskProgress);
             writer.WriteIntValue("task_total", TaskTotal);
@@ -833,6 +884,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("weaponcrafting_max_xp", WeaponcraftingMaxXp);
             writer.WriteIntValue("weaponcrafting_xp", WeaponcraftingXp);
             writer.WriteStringValue("weapon_slot", WeaponSlot);
+            writer.WriteIntValue("wisdom", Wisdom);
             writer.WriteIntValue("woodcutting_level", WoodcuttingLevel);
             writer.WriteIntValue("woodcutting_max_xp", WoodcuttingMaxXp);
             writer.WriteIntValue("woodcutting_xp", WoodcuttingXp);

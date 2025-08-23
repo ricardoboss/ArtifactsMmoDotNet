@@ -31,7 +31,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
-        /// <summary>Item quantity. Applicable to utilitys only.</summary>
+        /// <summary>Item quantity. Applicable to utilities only.</summary>
         public int? Quantity
         {
             get { return BackingStore?.Get<int?>("quantity"); }

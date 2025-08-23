@@ -37,42 +37,48 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("characters_online"); }
             set { BackingStore?.Set("characters_online", value); }
         }
-        /// <summary>Last server wipe.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? LastWipe
-        {
-            get { return BackingStore?.Get<string?>("last_wipe"); }
-            set { BackingStore?.Set("last_wipe", value); }
-        }
-#nullable restore
-#else
-        public string LastWipe
-        {
-            get { return BackingStore?.Get<string>("last_wipe"); }
-            set { BackingStore?.Set("last_wipe", value); }
-        }
-#endif
         /// <summary>Maximum level.</summary>
         public int? MaxLevel
         {
             get { return BackingStore?.Get<int?>("max_level"); }
             set { BackingStore?.Set("max_level", value); }
         }
-        /// <summary>Next server wipe.</summary>
+        /// <summary>Maximum skill level.</summary>
+        public int? MaxSkillLevel
+        {
+            get { return BackingStore?.Get<int?>("max_skill_level"); }
+            set { BackingStore?.Set("max_skill_level", value); }
+        }
+        /// <summary>Rate limits.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NextWipe
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>? RateLimits
         {
-            get { return BackingStore?.Get<string?>("next_wipe"); }
-            set { BackingStore?.Set("next_wipe", value); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>?>("rate_limits"); }
+            set { BackingStore?.Set("rate_limits", value); }
         }
 #nullable restore
 #else
-        public string NextWipe
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema> RateLimits
         {
-            get { return BackingStore?.Get<string>("next_wipe"); }
-            set { BackingStore?.Set("next_wipe", value); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>>("rate_limits"); }
+            set { BackingStore?.Set("rate_limits", value); }
+        }
+#endif
+        /// <summary>Current season details.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema? Season
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema?>("season"); }
+            set { BackingStore?.Set("season", value); }
+        }
+#nullable restore
+#else
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema Season
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema>("season"); }
+            set { BackingStore?.Set("season", value); }
         }
 #endif
         /// <summary>Server time.</summary>
@@ -81,22 +87,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<DateTimeOffset?>("server_time"); }
             set { BackingStore?.Set("server_time", value); }
         }
-        /// <summary>Server status</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Status
-        {
-            get { return BackingStore?.Get<string?>("status"); }
-            set { BackingStore?.Set("status", value); }
-        }
-#nullable restore
-#else
-        public string Status
-        {
-            get { return BackingStore?.Get<string>("status"); }
-            set { BackingStore?.Set("status", value); }
-        }
-#endif
         /// <summary>Game version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -140,11 +130,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "announcements", n => { Announcements = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "characters_online", n => { CharactersOnline = n.GetIntValue(); } },
-                { "last_wipe", n => { LastWipe = n.GetStringValue(); } },
                 { "max_level", n => { MaxLevel = n.GetIntValue(); } },
-                { "next_wipe", n => { NextWipe = n.GetStringValue(); } },
+                { "max_skill_level", n => { MaxSkillLevel = n.GetIntValue(); } },
+                { "rate_limits", n => { RateLimits = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "season", n => { Season = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema.CreateFromDiscriminatorValue); } },
                 { "server_time", n => { ServerTime = n.GetDateTimeOffsetValue(); } },
-                { "status", n => { Status = n.GetStringValue(); } },
                 { "version", n => { Version = n.GetStringValue(); } },
             };
         }
@@ -157,11 +147,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>("announcements", Announcements);
             writer.WriteIntValue("characters_online", CharactersOnline);
-            writer.WriteStringValue("last_wipe", LastWipe);
             writer.WriteIntValue("max_level", MaxLevel);
-            writer.WriteStringValue("next_wipe", NextWipe);
+            writer.WriteIntValue("max_skill_level", MaxSkillLevel);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>("rate_limits", RateLimits);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema>("season", Season);
             writer.WriteDateTimeOffsetValue("server_time", ServerTime);
-            writer.WriteStringValue("status", Status);
             writer.WriteStringValue("version", Version);
         }
     }

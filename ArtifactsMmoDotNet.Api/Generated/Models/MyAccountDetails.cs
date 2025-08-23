@@ -24,16 +24,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Account badges.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges? Badges
+        public UntypedNode? Badges
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges?>("badges"); }
+            get { return BackingStore?.Get<UntypedNode?>("badges"); }
             set { BackingStore?.Set("badges", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges Badges
+        public UntypedNode Badges
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges>("badges"); }
+            get { return BackingStore?.Get<UntypedNode>("badges"); }
             set { BackingStore?.Set("badges", value); }
         }
 #endif
@@ -82,16 +82,48 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("gems", value); }
         }
         /// <summary>Member status.</summary>
+        public bool? Member
+        {
+            get { return BackingStore?.Get<bool?>("member"); }
+            set { BackingStore?.Set("member", value); }
+        }
+        /// <summary>Member expiration date.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration? MemberExpiration
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration?>("member_expiration"); }
+            set { BackingStore?.Set("member_expiration", value); }
+        }
+#nullable restore
+#else
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration MemberExpiration
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration>("member_expiration"); }
+            set { BackingStore?.Set("member_expiration", value); }
+        }
+#endif
+        /// <summary>Skins owned.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public UntypedNode? Skins
+        {
+            get { return BackingStore?.Get<UntypedNode?>("skins"); }
+            set { BackingStore?.Set("skins", value); }
+        }
+#nullable restore
+#else
+        public UntypedNode Skins
+        {
+            get { return BackingStore?.Get<UntypedNode>("skins"); }
+            set { BackingStore?.Set("skins", value); }
+        }
+#endif
+        /// <summary>Account status.</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
         {
             get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
             set { BackingStore?.Set("status", value); }
-        }
-        /// <summary>Subscribed for the current season.</summary>
-        public bool? Subscribed
-        {
-            get { return BackingStore?.Get<bool?>("subscribed"); }
-            set { BackingStore?.Set("subscribed", value); }
         }
         /// <summary>Username.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -135,13 +167,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
-                { "badges", n => { Badges = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges>(global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges.CreateFromDiscriminatorValue); } },
+                { "badges", n => { Badges = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "ban_reason", n => { BanReason = n.GetStringValue(); } },
                 { "banned", n => { Banned = n.GetBoolValue(); } },
                 { "email", n => { Email = n.GetStringValue(); } },
                 { "gems", n => { Gems = n.GetIntValue(); } },
+                { "member", n => { Member = n.GetBoolValue(); } },
+                { "member_expiration", n => { MemberExpiration = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration>(global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration.CreateFromDiscriminatorValue); } },
+                { "skins", n => { Skins = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
-                { "subscribed", n => { Subscribed = n.GetBoolValue(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
             };
         }
@@ -153,77 +187,69 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("achievements_points", AchievementsPoints);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges>("badges", Badges);
+            writer.WriteObjectValue<UntypedNode>("badges", Badges);
             writer.WriteBoolValue("banned", Banned);
             writer.WriteStringValue("ban_reason", BanReason);
             writer.WriteStringValue("email", Email);
             writer.WriteIntValue("gems", Gems);
+            writer.WriteBoolValue("member", Member);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration>("member_expiration", MemberExpiration);
+            writer.WriteObjectValue<UntypedNode>("skins", Skins);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
-            writer.WriteBoolValue("subscribed", Subscribed);
             writer.WriteStringValue("username", Username);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
-        public partial class MyAccountDetails_badges : IBackedModel, IComposedTypeWrapper, IParsable
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
+        public partial class MyAccountDetails_member_expiration : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1"/></summary>
+            /// <summary>Composed type representation for type <see cref="DateTimeOffset"/></summary>
+            public DateTimeOffset? DateTimeOffset
+            {
+                get { return BackingStore?.Get<DateTimeOffset?>("DateTimeOffset"); }
+                set { BackingStore?.Set("DateTimeOffset", value); }
+            }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1? MyAccountDetailsBadgesMember1
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1? MyAccountDetailsMemberExpirationMember1
             {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1?>("MyAccountDetails_badgesMember1"); }
-                set { BackingStore?.Set("MyAccountDetails_badgesMember1", value); }
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1?>("MyAccountDetails_member_expirationMember1"); }
+                set { BackingStore?.Set("MyAccountDetails_member_expirationMember1", value); }
             }
 #nullable restore
 #else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1 MyAccountDetailsBadgesMember1
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1 MyAccountDetailsMemberExpirationMember1
             {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1>("MyAccountDetails_badgesMember1"); }
-                set { BackingStore?.Set("MyAccountDetails_badgesMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1>("MyAccountDetails_member_expirationMember1"); }
+                set { BackingStore?.Set("MyAccountDetails_member_expirationMember1", value); }
             }
 #endif
             /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges"/> and sets the default values.
+            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration"/> and sets the default values.
             /// </summary>
-            public MyAccountDetails_badges()
+            public MyAccountDetails_member_expiration()
             {
                 BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
             }
             /// <summary>
             /// Creates a new instance of the appropriate class based on discriminator value
             /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges"/></returns>
+            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration"/></returns>
             /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges CreateFromDiscriminatorValue(IParseNode parseNode)
+            public static global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration CreateFromDiscriminatorValue(IParseNode parseNode)
             {
                 _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_badges();
-                if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
+                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails.MyAccountDetails_member_expiration();
+                if(parseNode.GetDateTimeOffsetValue() is DateTimeOffset dateTimeOffsetValue)
                 {
-                    result.Null = nullValue;
+                    result.DateTimeOffset = dateTimeOffsetValue;
                 }
                 else {
-                    result.MyAccountDetailsBadgesMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1();
+                    result.MyAccountDetailsMemberExpirationMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1();
                 }
                 return result;
             }
@@ -233,9 +259,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
-                if(MyAccountDetailsBadgesMember1 != null)
+                if(MyAccountDetailsMemberExpirationMember1 != null)
                 {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MyAccountDetailsBadgesMember1);
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(MyAccountDetailsMemberExpirationMember1);
                 }
                 return new Dictionary<string, Action<IParseNode>>();
             }
@@ -246,12 +272,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Null != null)
+                if(DateTimeOffset != null)
                 {
-                    writer.WriteObjectValue<Null>(null, Null);
+                    writer.WriteDateTimeOffsetValue(null, DateTimeOffset);
                 }
                 else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1>(null, MyAccountDetailsBadgesMember1);
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_member_expirationMember1>(null, MyAccountDetailsMemberExpirationMember1);
                 }
             }
         }

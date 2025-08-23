@@ -65,7 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("quantity"); }
             set { BackingStore?.Set("quantity", value); }
         }
-        /// <summary>Order creation tax (5%, minimum 1)</summary>
+        /// <summary>Listing tax (3%, minimum 1)</summary>
         public int? Tax
         {
             get { return BackingStore?.Get<int?>("tax"); }

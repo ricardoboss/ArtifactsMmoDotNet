@@ -2,7 +2,9 @@
 #pragma warning disable CS0618
 using ArtifactsMmoDotNet.Api.Generated.Accounts;
 using ArtifactsMmoDotNet.Api.Generated.Achievements;
+using ArtifactsMmoDotNet.Api.Generated.Badges;
 using ArtifactsMmoDotNet.Api.Generated.Characters;
+using ArtifactsMmoDotNet.Api.Generated.Effects;
 using ArtifactsMmoDotNet.Api.Generated.Events;
 using ArtifactsMmoDotNet.Api.Generated.Grandexchange;
 using ArtifactsMmoDotNet.Api.Generated.Items;
@@ -11,6 +13,7 @@ using ArtifactsMmoDotNet.Api.Generated.Maps;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Api.Generated.Monsters;
 using ArtifactsMmoDotNet.Api.Generated.My;
+using ArtifactsMmoDotNet.Api.Generated.Npcs;
 using ArtifactsMmoDotNet.Api.Generated.Resources;
 using ArtifactsMmoDotNet.Api.Generated.Tasks;
 using ArtifactsMmoDotNet.Api.Generated.Token;
@@ -29,7 +32,7 @@ namespace ArtifactsMmoDotNet.Api.Generated
     /// <summary>
     /// The main entry point of the SDK, exposes the configuration and the fluent API.
     /// </summary>
-    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+    [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class ArtifactsMmoApiClient : BaseRequestBuilder
     {
         /// <summary>The accounts property</summary>
@@ -42,10 +45,20 @@ namespace ArtifactsMmoDotNet.Api.Generated
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.Achievements.AchievementsRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The badges property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Badges.BadgesRequestBuilder Badges
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.Badges.BadgesRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The characters property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Characters.CharactersRequestBuilder Characters
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.Characters.CharactersRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The effects property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Effects.EffectsRequestBuilder Effects
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.Effects.EffectsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The events property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Events.EventsRequestBuilder Events
@@ -81,6 +94,11 @@ namespace ArtifactsMmoDotNet.Api.Generated
         public global::ArtifactsMmoDotNet.Api.Generated.My.MyRequestBuilder My
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.MyRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The npcs property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Npcs.NpcsRequestBuilder Npcs
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.Npcs.NpcsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The resources property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder Resources

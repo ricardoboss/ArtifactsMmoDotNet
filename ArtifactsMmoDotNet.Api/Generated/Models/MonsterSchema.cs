@@ -55,6 +55,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
+        /// <summary>Monster % critical strike.</summary>
+        public int? CriticalStrike
+        {
+            get { return BackingStore?.Get<int?>("critical_strike"); }
+            set { BackingStore?.Set("critical_strike", value); }
+        }
         /// <summary>Monster drops. This is a list of items that the monster drops after killing the monster. </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -69,6 +75,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>>("drops"); }
             set { BackingStore?.Set("drops", value); }
+        }
+#endif
+        /// <summary>List of effects.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>? Effects
+        {
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>?>("effects"); }
+            set { BackingStore?.Set("effects", value); }
+        }
+#nullable restore
+#else
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema> Effects
+        {
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>>("effects"); }
+            set { BackingStore?.Set("effects", value); }
         }
 #endif
         /// <summary>Monster hit points.</summary>
@@ -165,7 +187,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "attack_fire", n => { AttackFire = n.GetIntValue(); } },
                 { "attack_water", n => { AttackWater = n.GetIntValue(); } },
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "critical_strike", n => { CriticalStrike = n.GetIntValue(); } },
                 { "drops", n => { Drops = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "effects", n => { Effects = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hp", n => { Hp = n.GetIntValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "max_gold", n => { MaxGold = n.GetIntValue(); } },
@@ -189,7 +213,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("attack_fire", AttackFire);
             writer.WriteIntValue("attack_water", AttackWater);
             writer.WriteStringValue("code", Code);
+            writer.WriteIntValue("critical_strike", CriticalStrike);
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>("drops", Drops);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>("effects", Effects);
             writer.WriteIntValue("hp", Hp);
             writer.WriteIntValue("level", Level);
             writer.WriteIntValue("max_gold", MaxGold);

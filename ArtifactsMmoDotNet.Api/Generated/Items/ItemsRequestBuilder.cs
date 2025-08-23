@@ -109,8 +109,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
             public string CraftMaterial { get; set; }
 #endif
             /// <summary>Skill to craft items.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("craft_skill")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Items.GetCraft_skillQueryParameterType? CraftSkill { get; set; }
+            public string? CraftSkill { get; set; }
+#nullable restore
+#else
+            [QueryParameter("craft_skill")]
+            public string CraftSkill { get; set; }
+#endif
             /// <summary>Maximum level items.</summary>
             [QueryParameter("max_level")]
             public int? MaxLevel { get; set; }
@@ -134,8 +141,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>Type of items.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Items.GetTypeQueryParameterType? Type { get; set; }
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

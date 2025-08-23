@@ -52,16 +52,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Rewards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema? Rewards
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema? Rewards
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema?>("rewards"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema?>("rewards"); }
             set { BackingStore?.Set("rewards", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema Rewards
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema Rewards
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>("rewards"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema>("rewards"); }
             set { BackingStore?.Set("rewards", value); }
         }
 #endif
@@ -116,7 +116,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "max_quantity", n => { MaxQuantity = n.GetIntValue(); } },
                 { "min_quantity", n => { MinQuantity = n.GetIntValue(); } },
-                { "rewards", n => { Rewards = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema.CreateFromDiscriminatorValue); } },
+                { "rewards", n => { Rewards = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema.CreateFromDiscriminatorValue); } },
                 { "skill", n => { Skill = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType>(); } },
             };
@@ -132,34 +132,18 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("level", Level);
             writer.WriteIntValue("max_quantity", MaxQuantity);
             writer.WriteIntValue("min_quantity", MinQuantity);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>("rewards", Rewards);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema>("rewards", Rewards);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill>("skill", Skill);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType>("type", Type);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="Null"/>, <see cref="string"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1"/>, <see cref="string"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class TaskFullSchema_skill : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>Composed type representation for type <see cref="string"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -174,6 +158,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 get { return BackingStore?.Get<string>("string"); }
                 set { BackingStore?.Set("string", value); }
+            }
+#endif
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1? TaskFullSchemaSkillMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1?>("TaskFullSchema_skillMember1"); }
+                set { BackingStore?.Set("TaskFullSchema_skillMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1 TaskFullSchemaSkillMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1>("TaskFullSchema_skillMember1"); }
+                set { BackingStore?.Set("TaskFullSchema_skillMember1", value); }
             }
 #endif
             /// <summary>
@@ -192,13 +192,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
                 var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema.TaskFullSchema_skill();
-                if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
-                }
-                else if(parseNode.GetStringValue() is string stringValue)
+                if(parseNode.GetStringValue() is string stringValue)
                 {
                     result.String = stringValue;
+                }
+                else {
+                    result.TaskFullSchemaSkillMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1();
                 }
                 return result;
             }
@@ -208,6 +207,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(TaskFullSchemaSkillMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(TaskFullSchemaSkillMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -217,13 +220,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             public virtual void Serialize(ISerializationWriter writer)
             {
                 _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
-                }
-                else if(String != null)
+                if(String != null)
                 {
                     writer.WriteStringValue(null, String);
+                }
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskFullSchema_skillMember1>(null, TaskFullSchemaSkillMember1);
                 }
             }
         }

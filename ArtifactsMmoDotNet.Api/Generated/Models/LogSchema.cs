@@ -165,7 +165,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType>("type", Type);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LogSchema_cooldown_expiration : IBackedModel, IComposedTypeWrapper, IParsable
@@ -178,20 +178,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 get { return BackingStore?.Get<DateTimeOffset?>("DateTimeOffset"); }
                 set { BackingStore?.Set("DateTimeOffset", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            public Null? Null
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1? LogSchemaCooldownExpirationMember1
             {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1?>("LogSchema_cooldown_expirationMember1"); }
+                set { BackingStore?.Set("LogSchema_cooldown_expirationMember1", value); }
             }
 #nullable restore
 #else
-            public Null Null
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1 LogSchemaCooldownExpirationMember1
             {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1>("LogSchema_cooldown_expirationMember1"); }
+                set { BackingStore?.Set("LogSchema_cooldown_expirationMember1", value); }
             }
 #endif
             /// <summary>
@@ -214,9 +214,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.DateTimeOffset = dateTimeOffsetValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.LogSchemaCooldownExpirationMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1();
                 }
                 return result;
             }
@@ -226,6 +225,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(LogSchemaCooldownExpirationMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(LogSchemaCooldownExpirationMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -239,9 +242,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteDateTimeOffsetValue(null, DateTimeOffset);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1>(null, LogSchemaCooldownExpirationMember1);
                 }
             }
         }

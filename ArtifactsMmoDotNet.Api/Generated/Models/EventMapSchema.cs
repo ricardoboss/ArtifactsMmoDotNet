@@ -15,6 +15,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
+        /// <summary>Map skin of the map</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Skin
+        {
+            get { return BackingStore?.Get<string?>("skin"); }
+            set { BackingStore?.Set("skin", value); }
+        }
+#nullable restore
+#else
+        public string Skin
+        {
+            get { return BackingStore?.Get<string>("skin"); }
+            set { BackingStore?.Set("skin", value); }
+        }
+#endif
         /// <summary>Position X of the map.</summary>
         public int? X
         {
@@ -52,6 +68,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "skin", n => { Skin = n.GetStringValue(); } },
                 { "x", n => { X = n.GetIntValue(); } },
                 { "y", n => { Y = n.GetIntValue(); } },
             };
@@ -63,6 +80,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            writer.WriteStringValue("skin", Skin);
             writer.WriteIntValue("x", X);
             writer.WriteIntValue("y", Y);
         }

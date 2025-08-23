@@ -141,35 +141,35 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total>("total", Total);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1"/>, <see cref="int"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_CharacterLeaderboardSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1? DataPageCharacterLeaderboardSchemaPageMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1?>("DataPage_CharacterLeaderboardSchema__pageMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pageMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1 DataPageCharacterLeaderboardSchemaPageMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1>("DataPage_CharacterLeaderboardSchema__pageMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pageMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page"/> and sets the default values.
             /// </summary>
@@ -190,9 +190,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageCharacterLeaderboardSchemaPageMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1();
                 }
                 return result;
             }
@@ -202,6 +201,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageCharacterLeaderboardSchemaPageMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaPageMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -215,42 +218,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1>(null, DataPageCharacterLeaderboardSchemaPageMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1"/>, <see cref="int"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_CharacterLeaderboardSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1? DataPageCharacterLeaderboardSchemaPagesMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1?>("DataPage_CharacterLeaderboardSchema__pagesMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pagesMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1 DataPageCharacterLeaderboardSchemaPagesMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1>("DataPage_CharacterLeaderboardSchema__pagesMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pagesMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages"/> and sets the default values.
             /// </summary>
@@ -271,9 +273,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageCharacterLeaderboardSchemaPagesMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1();
                 }
                 return result;
             }
@@ -283,6 +284,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageCharacterLeaderboardSchemaPagesMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaPagesMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -296,42 +301,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1>(null, DataPageCharacterLeaderboardSchemaPagesMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1"/>, <see cref="int"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_CharacterLeaderboardSchema__size : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1? DataPageCharacterLeaderboardSchemaSizeMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1?>("DataPage_CharacterLeaderboardSchema__sizeMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__sizeMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1 DataPageCharacterLeaderboardSchemaSizeMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1>("DataPage_CharacterLeaderboardSchema__sizeMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__sizeMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size"/> and sets the default values.
             /// </summary>
@@ -352,9 +356,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageCharacterLeaderboardSchemaSizeMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1();
                 }
                 return result;
             }
@@ -364,6 +367,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageCharacterLeaderboardSchemaSizeMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaSizeMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -377,42 +384,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1>(null, DataPageCharacterLeaderboardSchemaSizeMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1"/>, <see cref="int"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_CharacterLeaderboardSchema__total : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1? DataPageCharacterLeaderboardSchemaTotalMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1?>("DataPage_CharacterLeaderboardSchema__totalMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__totalMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1 DataPageCharacterLeaderboardSchemaTotalMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1>("DataPage_CharacterLeaderboardSchema__totalMember1"); }
+                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__totalMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total"/> and sets the default values.
             /// </summary>
@@ -433,9 +439,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageCharacterLeaderboardSchemaTotalMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1();
                 }
                 return result;
             }
@@ -445,6 +450,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageCharacterLeaderboardSchemaTotalMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaTotalMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -458,9 +467,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1>(null, DataPageCharacterLeaderboardSchemaTotalMember1);
                 }
             }
         }

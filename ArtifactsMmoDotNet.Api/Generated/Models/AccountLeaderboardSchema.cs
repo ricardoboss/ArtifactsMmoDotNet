@@ -37,6 +37,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
+        /// <summary>Gold in the account.</summary>
+        public int? Gold
+        {
+            get { return BackingStore?.Get<int?>("gold"); }
+            set { BackingStore?.Set("gold", value); }
+        }
         /// <summary>Position in the leaderboard.</summary>
         public int? Position
         {
@@ -76,6 +82,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             {
                 { "account", n => { Account = n.GetStringValue(); } },
                 { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
+                { "gold", n => { Gold = n.GetIntValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
             };
@@ -89,6 +96,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteIntValue("achievements_points", AchievementsPoints);
+            writer.WriteIntValue("gold", Gold);
             writer.WriteIntValue("position", Position);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
         }

@@ -153,6 +153,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("skin", value); }
         }
 #endif
+        /// <summary>Member status.</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
+        {
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
+            set { BackingStore?.Set("status", value); }
+        }
         /// <summary>Total XP of your character.</summary>
         public int? TotalXp
         {
@@ -226,6 +232,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "position", n => { Position = n.GetIntValue(); } },
                 { "skin", n => { Skin = n.GetStringValue(); } },
+                { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
                 { "total_xp", n => { TotalXp = n.GetIntValue(); } },
                 { "weaponcrafting_level", n => { WeaponcraftingLevel = n.GetIntValue(); } },
                 { "weaponcrafting_total_xp", n => { WeaponcraftingTotalXp = n.GetIntValue(); } },
@@ -258,6 +265,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteStringValue("name", Name);
             writer.WriteIntValue("position", Position);
             writer.WriteStringValue("skin", Skin);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
             writer.WriteIntValue("total_xp", TotalXp);
             writer.WriteIntValue("weaponcrafting_level", WeaponcraftingLevel);
             writer.WriteIntValue("weaponcrafting_total_xp", WeaponcraftingTotalXp);

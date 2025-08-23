@@ -35,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MonstersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/monsters{?drop*,max_level*,min_level*,page*,size*}", pathParameters)
+        public MonstersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/monsters{?drop*,max_level*,min_level*,name*,page*,size*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public MonstersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/monsters{?drop*,max_level*,min_level*,page*,size*}", rawUrl)
+        public MonstersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/monsters{?drop*,max_level*,min_level*,name*,page*,size*}", rawUrl)
         {
         }
         /// <summary>
@@ -114,6 +114,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
             /// <summary>Monster minimum level.</summary>
             [QueryParameter("min_level")]
             public int? MinLevel { get; set; }
+            /// <summary>Name of the monster.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("name")]
+            public string? Name { get; set; }
+#nullable restore
+#else
+            [QueryParameter("name")]
+            public string Name { get; set; }
+#endif
             /// <summary>Page number</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }

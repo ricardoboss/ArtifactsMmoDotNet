@@ -28,7 +28,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Events
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events{?page*,size*}", pathParameters)
+        public EventsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events{?page*,size*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -36,7 +36,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Events
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events{?page*,size*}", rawUrl)
+        public EventsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/events{?page*,size*,type*}", rawUrl)
         {
         }
         /// <summary>
@@ -97,6 +97,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Events
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
+            /// <summary>Type of event.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type")]
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

@@ -31,7 +31,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("name", value); }
         }
 #endif
-        /// <summary>Your desired skin.</summary>
+        /// <summary>Your desired skin. Skins unlocked by default: &apos;men1&apos;, &apos;men2&apos;, &apos;men3&apos;, &apos;women1&apos;, &apos;women2&apos;, &apos;women3&apos;.</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin? Skin
         {
             get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin?>("skin"); }

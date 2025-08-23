@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>Code of the event. This is the event&apos;s unique identifier (ID).</summary>
+        /// <summary>Code of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public string? Code
@@ -84,17 +84,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Previous map skin.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousSkin
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? PreviousMap
         {
-            get { return BackingStore?.Get<string?>("previous_skin"); }
-            set { BackingStore?.Set("previous_skin", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema?>("previous_map"); }
+            set { BackingStore?.Set("previous_map", value); }
         }
 #nullable restore
 #else
-        public string PreviousSkin
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema PreviousMap
         {
-            get { return BackingStore?.Get<string>("previous_skin"); }
-            set { BackingStore?.Set("previous_skin", value); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("previous_map"); }
+            set { BackingStore?.Set("previous_map", value); }
         }
 #endif
         /// <summary>
@@ -128,7 +128,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "expiration", n => { Expiration = n.GetDateTimeOffsetValue(); } },
                 { "map", n => { Map = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.CreateFromDiscriminatorValue); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "previous_skin", n => { PreviousSkin = n.GetStringValue(); } },
+                { "previous_map", n => { PreviousMap = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -144,7 +144,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteDateTimeOffsetValue("expiration", Expiration);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("map", Map);
             writer.WriteStringValue("name", Name);
-            writer.WriteStringValue("previous_skin", PreviousSkin);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("previous_map", PreviousMap);
         }
     }
 }

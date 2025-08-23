@@ -10,27 +10,27 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class MyAccountDetails_badgesMember1 : IBackedModel, IParsable
+    public partial class DataPage_NPCItem__pagesMember1 : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem__pagesMember1"/> and sets the default values.
         /// </summary>
-        public MyAccountDetails_badgesMember1()
+        public DataPage_NPCItem__pagesMember1()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem__pagesMember1"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem__pagesMember1 CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.MyAccountDetails_badgesMember1();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem__pagesMember1();
         }
         /// <summary>
         /// The deserialization information for the current model

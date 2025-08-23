@@ -141,35 +141,35 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema_.DataPage_DropRateSchema__total>("total", Total);
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1"/>, <see cref="int"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_DropRateSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1? DataPageDropRateSchemaPageMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1?>("DataPage_DropRateSchema__pageMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__pageMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1 DataPageDropRateSchemaPageMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1>("DataPage_DropRateSchema__pageMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__pageMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema_.DataPage_DropRateSchema__page"/> and sets the default values.
             /// </summary>
@@ -190,9 +190,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageDropRateSchemaPageMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1();
                 }
                 return result;
             }
@@ -202,6 +201,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageDropRateSchemaPageMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageDropRateSchemaPageMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -215,42 +218,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pageMember1>(null, DataPageDropRateSchemaPageMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1"/>, <see cref="int"/>
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_DropRateSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1? DataPageDropRateSchemaPagesMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1?>("DataPage_DropRateSchema__pagesMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__pagesMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1 DataPageDropRateSchemaPagesMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1>("DataPage_DropRateSchema__pagesMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__pagesMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema_.DataPage_DropRateSchema__pages"/> and sets the default values.
             /// </summary>
@@ -271,9 +273,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageDropRateSchemaPagesMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1();
                 }
                 return result;
             }
@@ -283,6 +284,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageDropRateSchemaPagesMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageDropRateSchemaPagesMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -296,42 +301,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__pagesMember1>(null, DataPageDropRateSchemaPagesMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1"/>, <see cref="int"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_DropRateSchema__size : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1? DataPageDropRateSchemaSizeMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1?>("DataPage_DropRateSchema__sizeMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__sizeMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1 DataPageDropRateSchemaSizeMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1>("DataPage_DropRateSchema__sizeMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__sizeMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema_.DataPage_DropRateSchema__size"/> and sets the default values.
             /// </summary>
@@ -352,9 +356,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageDropRateSchemaSizeMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1();
                 }
                 return result;
             }
@@ -364,6 +367,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageDropRateSchemaSizeMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageDropRateSchemaSizeMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -377,42 +384,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__sizeMember1>(null, DataPageDropRateSchemaSizeMember1);
                 }
             }
         }
         /// <summary>
-        /// Composed type wrapper for classes <see cref="int"/>, <see cref="Null"/>
+        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1"/>, <see cref="int"/>
         /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.18.0")]
+        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DataPage_DropRateSchema__total : IBackedModel, IComposedTypeWrapper, IParsable
         {
             /// <summary>Stores model information.</summary>
             public IBackingStore BackingStore { get; private set; }
+            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1"/></summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1? DataPageDropRateSchemaTotalMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1?>("DataPage_DropRateSchema__totalMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__totalMember1", value); }
+            }
+#nullable restore
+#else
+            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1 DataPageDropRateSchemaTotalMember1
+            {
+                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1>("DataPage_DropRateSchema__totalMember1"); }
+                set { BackingStore?.Set("DataPage_DropRateSchema__totalMember1", value); }
+            }
+#endif
             /// <summary>Composed type representation for type <see cref="int"/></summary>
             public int? Integer
             {
                 get { return BackingStore?.Get<int?>("integer"); }
                 set { BackingStore?.Set("integer", value); }
             }
-            /// <summary>Composed type representation for type <see cref="Null"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public Null? Null
-            {
-                get { return BackingStore?.Get<Null?>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#nullable restore
-#else
-            public Null Null
-            {
-                get { return BackingStore?.Get<Null>("null"); }
-                set { BackingStore?.Set("null", value); }
-            }
-#endif
             /// <summary>
             /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema_.DataPage_DropRateSchema__total"/> and sets the default values.
             /// </summary>
@@ -433,9 +439,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     result.Integer = integerValue;
                 }
-                else if(parseNode.GetObjectValue<Null>(Null.CreateFromDiscriminatorValue) is Null nullValue)
-                {
-                    result.Null = nullValue;
+                else {
+                    result.DataPageDropRateSchemaTotalMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1();
                 }
                 return result;
             }
@@ -445,6 +450,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
             public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
             {
+                if(DataPageDropRateSchemaTotalMember1 != null)
+                {
+                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageDropRateSchemaTotalMember1);
+                }
                 return new Dictionary<string, Action<IParseNode>>();
             }
             /// <summary>
@@ -458,9 +467,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 {
                     writer.WriteIntValue(null, Integer);
                 }
-                else if(Null != null)
-                {
-                    writer.WriteObjectValue<Null>(null, Null);
+                else {
+                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_DropRateSchema__totalMember1>(null, DataPageDropRateSchemaTotalMember1);
                 }
             }
         }

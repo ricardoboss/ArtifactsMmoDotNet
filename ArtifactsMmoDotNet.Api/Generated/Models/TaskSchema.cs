@@ -34,16 +34,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>Rewards for completing the task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema? Rewards
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema? Rewards
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema?>("rewards"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema?>("rewards"); }
             set { BackingStore?.Set("rewards", value); }
         }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema Rewards
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema Rewards
         {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>("rewards"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema>("rewards"); }
             set { BackingStore?.Set("rewards", value); }
         }
 #endif
@@ -85,7 +85,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "rewards", n => { Rewards = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema.CreateFromDiscriminatorValue); } },
+                { "rewards", n => { Rewards = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema.CreateFromDiscriminatorValue); } },
                 { "total", n => { Total = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType>(); } },
             };
@@ -98,7 +98,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskRewardsSchema>("rewards", Rewards);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.RewardsSchema>("rewards", Rewards);
             writer.WriteIntValue("total", Total);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType>("type", Type);
         }

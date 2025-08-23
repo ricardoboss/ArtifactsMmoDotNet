@@ -31,6 +31,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("code", value); }
         }
 #endif
+        /// <summary>Item conditions. If applicable. Conditions for using or equipping the item.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>? Conditions
+        {
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>?>("conditions"); }
+            set { BackingStore?.Set("conditions", value); }
+        }
+#nullable restore
+#else
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema> Conditions
+        {
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>>("conditions"); }
+            set { BackingStore?.Set("conditions", value); }
+        }
+#endif
         /// <summary>Craft information. If applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -66,16 +82,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <summary>List of object effects. For equipment, it will include item stats.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>? Effects
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>? Effects
         {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>?>("effects"); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>?>("effects"); }
             set { BackingStore?.Set("effects", value); }
         }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema> Effects
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema> Effects
         {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>>("effects"); }
+            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>>("effects"); }
             set { BackingStore?.Set("effects", value); }
         }
 #endif
@@ -165,9 +181,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
+                { "conditions", n => { Conditions = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "craft", n => { Craft = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
-                { "effects", n => { Effects = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema.CreateFromDiscriminatorValue)?.AsList(); } },
+                { "effects", n => { Effects = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "subtype", n => { Subtype = n.GetStringValue(); } },
@@ -183,9 +200,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>("conditions", Conditions);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>("craft", Craft);
             writer.WriteStringValue("description", Description);
-            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemEffectSchema>("effects", Effects);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>("effects", Effects);
             writer.WriteIntValue("level", Level);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("subtype", Subtype);

@@ -32,6 +32,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Sell_ge,
         #pragma warning restore CS1591
+        [EnumMember(Value = "buy_npc")]
+        #pragma warning disable CS1591
+        Buy_npc,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sell_npc")]
+        #pragma warning disable CS1591
+        Sell_npc,
+        #pragma warning restore CS1591
         [EnumMember(Value = "cancel_ge")]
         #pragma warning disable CS1591
         Cancel_ge,
@@ -40,13 +48,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Delete_item,
         #pragma warning restore CS1591
-        [EnumMember(Value = "deposit")]
+        [EnumMember(Value = "deposit_item")]
         #pragma warning disable CS1591
-        Deposit,
+        Deposit_item,
         #pragma warning restore CS1591
-        [EnumMember(Value = "withdraw")]
+        [EnumMember(Value = "withdraw_item")]
         #pragma warning disable CS1591
-        Withdraw,
+        Withdraw_item,
         #pragma warning restore CS1591
         [EnumMember(Value = "deposit_gold")]
         #pragma warning disable CS1591
@@ -68,6 +76,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Task,
         #pragma warning restore CS1591
+        [EnumMember(Value = "christmas_exchange")]
+        #pragma warning disable CS1591
+        Christmas_exchange,
+        #pragma warning restore CS1591
         [EnumMember(Value = "recycling")]
         #pragma warning disable CS1591
         Recycling,
@@ -83,6 +95,22 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         [EnumMember(Value = "buy_bank_expansion")]
         #pragma warning disable CS1591
         Buy_bank_expansion,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "give_item")]
+        #pragma warning disable CS1591
+        Give_item,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "give_gold")]
+        #pragma warning disable CS1591
+        Give_gold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "change_skin")]
+        #pragma warning disable CS1591
+        Change_skin,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "rename")]
+        #pragma warning disable CS1591
+        Rename,
         #pragma warning restore CS1591
     }
 }

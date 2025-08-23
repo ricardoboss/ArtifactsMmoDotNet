@@ -15,7 +15,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
     {
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>The items dropped by the fight.</summary>
+        /// <summary>The items dropped from the fight.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropSchema>? Drops
@@ -31,7 +31,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("drops", value); }
         }
 #endif
-        /// <summary>The amount of gold gained by the fight.</summary>
+        /// <summary>The amount of gold gained from the fight.</summary>
         public int? Gold
         {
             get { return BackingStore?.Get<int?>("gold"); }
@@ -53,38 +53,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             set { BackingStore?.Set("logs", value); }
         }
 #endif
-        /// <summary>The amount of blocked hits by the monster.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema? MonsterBlockedHits
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema?>("monster_blocked_hits"); }
-            set { BackingStore?.Set("monster_blocked_hits", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema MonsterBlockedHits
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>("monster_blocked_hits"); }
-            set { BackingStore?.Set("monster_blocked_hits", value); }
-        }
-#endif
-        /// <summary>The amount of blocked hits by the player.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema? PlayerBlockedHits
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema?>("player_blocked_hits"); }
-            set { BackingStore?.Set("player_blocked_hits", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema PlayerBlockedHits
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>("player_blocked_hits"); }
-            set { BackingStore?.Set("player_blocked_hits", value); }
-        }
-#endif
         /// <summary>The result of the fight.</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult? Result
         {
@@ -97,7 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             get { return BackingStore?.Get<int?>("turns"); }
             set { BackingStore?.Set("turns", value); }
         }
-        /// <summary>The amount of xp gained by the fight.</summary>
+        /// <summary>The amount of xp gained from the fight.</summary>
         public int? Xp
         {
             get { return BackingStore?.Get<int?>("xp"); }
@@ -131,8 +99,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "drops", n => { Drops = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.DropSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "gold", n => { Gold = n.GetIntValue(); } },
                 { "logs", n => { Logs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "monster_blocked_hits", n => { MonsterBlockedHits = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema.CreateFromDiscriminatorValue); } },
-                { "player_blocked_hits", n => { PlayerBlockedHits = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema.CreateFromDiscriminatorValue); } },
                 { "result", n => { Result = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult>(); } },
                 { "turns", n => { Turns = n.GetIntValue(); } },
                 { "xp", n => { Xp = n.GetIntValue(); } },
@@ -148,8 +114,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropSchema>("drops", Drops);
             writer.WriteIntValue("gold", Gold);
             writer.WriteCollectionOfPrimitiveValues<string>("logs", Logs);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>("monster_blocked_hits", MonsterBlockedHits);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema>("player_blocked_hits", PlayerBlockedHits);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.FightResult>("result", Result);
             writer.WriteIntValue("turns", Turns);
             writer.WriteIntValue("xp", Xp);

@@ -34,7 +34,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest
         {
         }
         /// <summary>
-        /// Recovers hit points by resting. (1 second per 10 HP, minimum 3 seconds)
+        /// Recovers hit points by resting. (1 second per 5 HP, minimum 3 seconds)
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Recovers hit points by resting. (1 second per 10 HP, minimum 3 seconds)
+        /// Recovers hit points by resting. (1 second per 5 HP, minimum 3 seconds)
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

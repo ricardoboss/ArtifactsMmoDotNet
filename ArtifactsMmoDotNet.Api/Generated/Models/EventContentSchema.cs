@@ -32,21 +32,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         }
 #endif
         /// <summary>Type of the event.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public string? Type
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentType? Type
         {
-            get { return BackingStore?.Get<string?>("type"); }
+            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentType?>("type"); }
             set { BackingStore?.Set("type", value); }
         }
-#nullable restore
-#else
-        public string Type
-        {
-            get { return BackingStore?.Get<string>("type"); }
-            set { BackingStore?.Set("type", value); }
-        }
-#endif
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.EventContentSchema"/> and sets the default values.
         /// </summary>
@@ -73,7 +63,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "type", n => { Type = n.GetStringValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentType>(); } },
             };
         }
         /// <summary>
@@ -84,7 +74,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteStringValue("type", Type);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentType>("type", Type);
         }
     }
 }

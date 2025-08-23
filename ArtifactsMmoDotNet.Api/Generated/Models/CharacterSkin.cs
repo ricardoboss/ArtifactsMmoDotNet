@@ -32,5 +32,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Women3,
         #pragma warning restore CS1591
+        [EnumMember(Value = "corrupted1")]
+        #pragma warning disable CS1591
+        Corrupted1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "zombie1")]
+        #pragma warning disable CS1591
+        Zombie1,
+        #pragma warning restore CS1591
     }
 }

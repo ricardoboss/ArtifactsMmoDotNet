@@ -10,57 +10,65 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class BlockedHitsSchema : IBackedModel, IParsable
+    public partial class SeasonBadgeSchema : IBackedModel, IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>The amount of air hits blocked.</summary>
-        public int? Air
-        {
-            get { return BackingStore?.Get<int?>("air"); }
-            set { BackingStore?.Set("air", value); }
-        }
         /// <summary>Stores model information.</summary>
         public IBackingStore BackingStore { get; private set; }
-        /// <summary>The amount of earth hits blocked.</summary>
-        public int? Earth
+        /// <summary>Badge code.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Code
         {
-            get { return BackingStore?.Get<int?>("earth"); }
-            set { BackingStore?.Set("earth", value); }
+            get { return BackingStore?.Get<string?>("code"); }
+            set { BackingStore?.Set("code", value); }
         }
-        /// <summary>The amount of fire hits blocked.</summary>
-        public int? Fire
+#nullable restore
+#else
+        public string Code
         {
-            get { return BackingStore?.Get<int?>("fire"); }
-            set { BackingStore?.Set("fire", value); }
+            get { return BackingStore?.Get<string>("code"); }
+            set { BackingStore?.Set("code", value); }
         }
-        /// <summary>The amount of total hits blocked.</summary>
-        public int? Total
+#endif
+        /// <summary>Badge description.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public string? Description
         {
-            get { return BackingStore?.Get<int?>("total"); }
-            set { BackingStore?.Set("total", value); }
+            get { return BackingStore?.Get<string?>("description"); }
+            set { BackingStore?.Set("description", value); }
         }
-        /// <summary>The amount of water hits blocked.</summary>
-        public int? Water
+#nullable restore
+#else
+        public string Description
         {
-            get { return BackingStore?.Get<int?>("water"); }
-            set { BackingStore?.Set("water", value); }
+            get { return BackingStore?.Get<string>("description"); }
+            set { BackingStore?.Set("description", value); }
+        }
+#endif
+        /// <summary>Required achievement points to earn the badge.</summary>
+        public int? RequiredPoints
+        {
+            get { return BackingStore?.Get<int?>("required_points"); }
+            set { BackingStore?.Set("required_points", value); }
         }
         /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema"/> and sets the default values.
+        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonBadgeSchema"/> and sets the default values.
         /// </summary>
-        public BlockedHitsSchema()
+        public SeasonBadgeSchema()
         {
             BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
         }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonBadgeSchema"/></returns>
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-        public static global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema CreateFromDiscriminatorValue(IParseNode parseNode)
+        public static global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonBadgeSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
             _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-            return new global::ArtifactsMmoDotNet.Api.Generated.Models.BlockedHitsSchema();
+            return new global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonBadgeSchema();
         }
         /// <summary>
         /// The deserialization information for the current model
@@ -70,11 +78,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "air", n => { Air = n.GetIntValue(); } },
-                { "earth", n => { Earth = n.GetIntValue(); } },
-                { "fire", n => { Fire = n.GetIntValue(); } },
-                { "total", n => { Total = n.GetIntValue(); } },
-                { "water", n => { Water = n.GetIntValue(); } },
+                { "code", n => { Code = n.GetStringValue(); } },
+                { "description", n => { Description = n.GetStringValue(); } },
+                { "required_points", n => { RequiredPoints = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -84,11 +90,9 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteIntValue("air", Air);
-            writer.WriteIntValue("earth", Earth);
-            writer.WriteIntValue("fire", Fire);
-            writer.WriteIntValue("total", Total);
-            writer.WriteIntValue("water", Water);
+            writer.WriteStringValue("code", Code);
+            writer.WriteStringValue("description", Description);
+            writer.WriteIntValue("required_points", RequiredPoints);
         }
     }
 }
