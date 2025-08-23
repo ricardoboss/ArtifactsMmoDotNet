@@ -1,8 +1,10 @@
-﻿using ArtifactsMmoDotNet.Cli.Commands;
+﻿using ArtifactsMmoDotNet.Api.Exceptions.Account;
+using ArtifactsMmoDotNet.Cli.Commands;
 using ArtifactsMmoDotNet.Cli.Extensions;
 using ArtifactsMmoDotNet.Cli.Infrastructure;
 using ArtifactsMmoDotNet.Sdk.Extensions;
 using Microsoft.Extensions.DependencyInjection;
+using Spectre.Console;
 using Spectre.Console.Cli;
 
 var services = new ServiceCollection();
@@ -12,20 +14,20 @@ ConfigureServices(services);
 var registrar = new ServiceCollectionTypeRegistrar(services);
 var app = new CommandApp<InteractiveCommand>(registrar);
 
-app.Configure(config =>
+app.Configure(ConfigureApp);
+
+return await app.RunAsync(args);
+
+void ConfigureApp(IConfigurator config)
 {
     config.SetApplicationName("Artifacts MMO CLI");
 
-#if DEBUG
-    config.PropagateExceptions();
-#endif
+    config.SetExceptionHandler(HandleException);
 
     config.AddCommand<LoginCommand>("login");
     config.AddCommand<MoveCommand>("move");
     config.AddCommand<InteractiveCommand>("interactive");
-});
-
-return await app.RunAsync(args);
+}
 
 void ConfigureServices(IServiceCollection s)
 {
@@ -40,4 +42,24 @@ void ConfigureServices(IServiceCollection s)
 
     s.AddAnsiConsoleOutput();
     s.AddAnsiConsoleInputRequester();
+}
+
+void HandleException(Exception ex, ITypeResolver? resolver)
+{
+    switch (ex)
+    {
+        case TokenExpiredException:
+            AnsiConsole.MarkupLine("[red]Your token expired. Please log in again using the [yellow]login[/] command.[/]");
+            break;
+        default:
+#if DEBUG
+            throw ex;
+#endif
+            AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
+            return;
+    }
+
+#if DEBUG
+    AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
+#endif
 }
