@@ -14,11 +14,11 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
         // gather all items
         foreach (var item in craft.Items ?? [])
             if (item is { Code: { } ingredientCode, Quantity: { } ingredientQuantity })
-                yield return new HaveItemInInventory(ingredientCode, quantity * ingredientQuantity);
+                yield return new HaveItemInInventoryRequirement(ingredientCode, quantity * ingredientQuantity);
 
         // make sure we have the required level
         if (craft is { Skill: { } skill, Level: { } skillLevel })
-            yield return new ReachLevelInSkill(skill switch
+            yield return new ReachLevelInSkillRequirement(skill switch
             {
                 CraftSkill.Weaponcrafting => LevelableSkill.Weaponcrafting,
                 CraftSkill.Gearcrafting => LevelableSkill.Gearcrafting,
@@ -31,7 +31,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
             }, skillLevel);
     }
 
-    public override async Task Execute(IAutomationContext context)
+    public override async Task<ActionExecutionResult> Execute(IAutomationContext context)
     {
         await GoToWorkshop(context);
 
@@ -67,6 +67,8 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
 
             await context.Game.WaitForCooldown();
         }
+
+        return ActionExecutionResult.Successful();
     }
 
     private async Task GoToWorkshop(IAutomationContext context)

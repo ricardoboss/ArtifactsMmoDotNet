@@ -1,3 +1,5 @@
+using ArtifactsMmoDotNet.Automation.Models;
+
 namespace ArtifactsMmoDotNet.Automation.Interfaces;
 
 public interface IAction
@@ -6,5 +8,5 @@ public interface IAction
 
     IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context);
 
-    Task Execute(IAutomationContext context);
+    Task<ActionExecutionResult> Execute(IAutomationContext context);
 }

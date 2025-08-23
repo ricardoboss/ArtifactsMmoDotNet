@@ -21,6 +21,49 @@ public abstract class BaseRequirement : IRequirement
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
     }
 
+    protected static async Task<MapSchema?> GetNearestMonsterForDrop(IAutomationContext context, string itemCode,
+        int x, int y)
+    {
+        var maps = await context.Game.GetMonsters(drop: itemCode).SelectMany(r =>
+                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Monster))
+            .ToListAsync();
+
+        return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
+    }
+
     protected static double EuclideanDistanceFrom(MapSchema map, int x, int y) =>
         Math.Sqrt(Math.Pow(map.X!.Value - x, 2) + Math.Pow(map.Y!.Value - y, 2));
+
+    protected static async Task<int> GetAmountOfItemInInventory(IAutomationContext context, string itemCode)
+    {
+        return await context
+            .Game
+            .FromCharacter(context.CharacterName)
+            .GetInventory()
+            .Where(i => i.Code == itemCode)
+            .SumAsync(i => i!.Quantity!.Value);
+    }
+
+    protected static async Task<ItemSlot?> TryFindItemInSlot(IAutomationContext context, string itemCode)
+    {
+        var equipment = await context
+            .Game
+            .FromCharacter(context.CharacterName)
+            .GetEquipment();
+
+        if (equipment.All(kvp => kvp.Value != itemCode))
+            return null;
+
+        return equipment.First(kvp => kvp.Value == itemCode).Key;
+    }
+
+    protected static async Task<string?> TryGetItemInSlot(IAutomationContext context, ItemSlot slot)
+    {
+        var equipment = await context
+            .Game
+            .FromCharacter(context.CharacterName)
+            .GetEquipment();
+
+        return equipment[slot];
+    }
 }

@@ -22,7 +22,11 @@ void ConfigureApp(IConfigurator config)
 {
     config.SetApplicationName("Artifacts MMO CLI");
 
+#if DEBUG
+    config.PropagateExceptions();
+#else
     config.SetExceptionHandler(HandleException);
+#endif
 
     config.AddCommand<LoginCommand>("login");
     config.AddCommand<MoveCommand>("move");
@@ -44,23 +48,20 @@ void ConfigureServices(IServiceCollection s)
     s.AddAnsiConsoleInputRequester();
 }
 
+#if !DEBUG
 void HandleException(Exception ex, ITypeResolver? resolver)
 {
     switch (ex)
     {
         case TokenExpiredException:
-            AnsiConsole.MarkupLine("[red]Your token expired. Please log in again using the [yellow]login[/] command.[/]");
+            AnsiConsole.MarkupLine(
+                "[red]Your token expired. Please log in again using the [yellow]login[/] command.[/]");
             break;
         default:
-#if DEBUG
-            throw ex;
-#else
             AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
             return;
-#endif
     }
 
-#if DEBUG
     AnsiConsole.WriteException(ex, ExceptionFormats.ShortenEverything);
-#endif
 }
+#endif

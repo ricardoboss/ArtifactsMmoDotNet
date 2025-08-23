@@ -6,7 +6,7 @@ using ArtifactsMmoDotNet.Automation.Models;
 
 namespace ArtifactsMmoDotNet.Automation.Requirements;
 
-public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequirement
+public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : BaseRequirement
 {
     public override string Name => $"Reach level {level} in {skill}";
 
@@ -71,9 +71,9 @@ public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequiremen
         var (item, location) = await GetNearestSkillLevellingInfo(context, gatherSkill, currentInfo, position);
 
         if (location is not { X: { } x, Y: { } y })
-            throw new UnknownGatherLocationException("No location to level the skill found")
+            throw new NoPossibleLocationFoundException("No location to level the skill found")
             {
-                Skill = gatherSkill,
+                Requirement = this,
             };
 
         if (position.x != x || position.y != y)
@@ -110,9 +110,9 @@ public class ReachLevelInSkill(LevelableSkill skill, int level) : BaseRequiremen
             .GetResources(
                 // TODO: figure out how to get the min level as high as possible but have at least some resources
                 // minLevel: currentInfo.Level,
-                maxLevel: currentInfo.Level
+                maxLevel: currentInfo.Level,
+                skill: gatherSkill
             )
-            .Where(r => r.Skill == gatherSkill)
             .ToListAsync();
 
         var dropLocations = await resourcesForSkill

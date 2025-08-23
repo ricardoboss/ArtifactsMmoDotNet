@@ -15,4 +15,6 @@ public interface IGameCharacterActions
     Task<SkillDataSchema> Craft(string itemCode, int quantity = 1);
 
     Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode);
+
+    Task<CharacterRestDataSchema> Rest();
 }

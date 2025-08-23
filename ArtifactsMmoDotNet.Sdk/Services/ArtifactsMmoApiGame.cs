@@ -163,9 +163,9 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     private readonly List<ResourceSchema> cachedResources = [];
 
     public async IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null,
-        int? maxLevel = null)
+        int? maxLevel = null, GatheringSkill? skill = null)
     {
-        var useCache = drop is null && minLevel is null && maxLevel is null;
+        var useCache = drop is null && minLevel is null && maxLevel is null && skill is null;
 
         if (useCache && cachedResources.Count != 0)
         {
@@ -188,6 +188,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
                 c.QueryParameters.MaxLevel = maxLevel;
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
+                c.QueryParameters.Skill = skill;
             });
 
             foreach (var resource in resources!.Data!)
@@ -200,6 +201,50 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
             page++;
             pages = resources.Pages!.Integer!.Value;
+        } while (page <= pages);
+    }
+
+    private readonly List<MonsterSchema> cachedMonsters = [];
+
+    public async IAsyncEnumerable<MonsterSchema> GetMonsters(string? drop = null, int? minLevel = null,
+        int? maxLevel = null, string? name = null)
+    {
+        var useCache = drop is null && minLevel is null && maxLevel is null && name is null;
+
+        if (useCache && cachedMonsters.Count != 0)
+        {
+            foreach (var monster in cachedMonsters)
+                yield return monster;
+
+            yield break;
+        }
+
+        const int size = 100;
+        var page = 1;
+        int pages;
+
+        do
+        {
+            var monsters = await apiClient.Monsters!.GetAsync(c =>
+            {
+                c.QueryParameters.Drop = drop;
+                c.QueryParameters.MinLevel = minLevel;
+                c.QueryParameters.MaxLevel = maxLevel;
+                c.QueryParameters.Page = page;
+                c.QueryParameters.Size = size;
+                c.QueryParameters.Name = name;
+            });
+
+            foreach (var monster in monsters!.Data!)
+            {
+                if (useCache)
+                    cachedMonsters.Add(monster);
+
+                yield return monster;
+            }
+
+            page++;
+            pages = monsters.Pages!.Integer!.Value;
         } while (page <= pages);
     }
 }
@@ -267,11 +312,20 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
 
     public async Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Equip!.PostAsync(new()
+        var result = (await apiClient.My[characterName].Action.Equip.PostAsync(new()
         {
             Slot = slot,
             Code = itemCode,
         }))!.Data!;
+
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+
+        return result;
+    }
+
+    public async Task<CharacterRestDataSchema> Rest()
+    {
+        var result = (await apiClient.My[characterName].Action.Rest.PostAsync())!.Data!;
 
         await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
 
@@ -284,7 +338,7 @@ file sealed class Characters(ArtifactsMmoApiGame game, string characterName, Art
 {
     public async Task<CharacterSchema> GetEverything()
     {
-        var character = await apiClient.Characters![characterName]!.GetAsync();
+        var character = await apiClient.Characters[characterName].GetAsync();
 
         await game.UpdateCooldownEnd(character!.Data!.CooldownExpiration!.Value);
 

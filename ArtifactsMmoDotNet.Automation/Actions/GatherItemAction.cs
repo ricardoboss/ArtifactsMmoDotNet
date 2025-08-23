@@ -1,4 +1,5 @@
 using ArtifactsMmoDotNet.Automation.Interfaces;
+using ArtifactsMmoDotNet.Automation.Models;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;
 
@@ -6,7 +7,7 @@ public class GatherItemAction(string itemCode) : BaseAction
 {
     public override string Name => $"Gather {itemCode}";
 
-    public override async Task Execute(IAutomationContext context)
+    public override async Task<ActionExecutionResult> Execute(IAutomationContext context)
     {
         int amountGathered;
         do
@@ -32,5 +33,7 @@ public class GatherItemAction(string itemCode) : BaseAction
             await context.Game.WaitForCooldown();
             context.Game.AutoWaitForCooldown = true;
         } while (amountGathered < 1);
+
+        return ActionExecutionResult.Successful();
     }
 }

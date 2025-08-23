@@ -8,6 +8,7 @@ using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using JetBrains.Annotations;
+using Microsoft.Kiota.Abstractions;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
@@ -140,19 +141,31 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             Title = "What do you want to automate?",
             SearchEnabled = true,
             WrapAround = true,
-        }.AddChoices("Have item in inventory", "Reach level in skill"));
+        }.AddChoices("Equip item in slot", "Have item in inventory", "Reach level in skill"));
 
         IRequirement rootRequirement;
+        string itemCode;
         switch (requirementType)
         {
+            case "Equip item in slot":
+                itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to equip?[/]");
+                var slot = await AnsiConsole.PromptAsync(new SelectionPrompt<ItemSlot>
+                {
+                    Title = "[yellow]Which slot?[/]",
+                    SearchEnabled = true,
+                    WrapAround = true,
+                }.AddChoices(Enum.GetValues<ItemSlot>()));
+
+                rootRequirement = new HaveItemEquippedInSlot(itemCode, slot);
+                break;
             case "Have item in inventory":
-                var itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to automate?[/]");
+                itemCode = await AnsiConsole.AskAsync<string>("[yellow]What item to automate?[/]");
                 var quantity = await AnsiConsole.AskAsync<int>("[yellow]How many of that item?[/]");
 
-                rootRequirement = new HaveItemInInventory(itemCode, quantity);
+                rootRequirement = new HaveItemInInventoryRequirement(itemCode, quantity);
                 break;
             case "Reach level in skill":
-                var skill = AnsiConsole.Prompt(new SelectionPrompt<LevelableSkill>
+                var skill = await AnsiConsole.PromptAsync(new SelectionPrompt<LevelableSkill>
                 {
                     Title = "[yellow]What skill to automate?[/]",
                     SearchEnabled = true,
@@ -161,7 +174,7 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
                 var level = await AnsiConsole.AskAsync<int>("[yellow]Which level?[/]");
 
-                rootRequirement = new ReachLevelInSkill(skill, level);
+                rootRequirement = new ReachLevelInSkillRequirement(skill, level);
                 break;
             default:
                 throw new NotImplementedException($"Don't know how to automate {requirementType}");
@@ -170,30 +183,80 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
         await FulfilRequirement(context, rootRequirement);
     }
 
-    private static async Task FulfilRequirement(IAutomationContext context, IRequirement requirement)
+    private static async Task<bool> FulfilRequirement(IAutomationContext context, IRequirement requirement)
     {
         if (await requirement.IsFulfilled(context))
         {
             AnsiConsole.MarkupLine($"[yellow]Requirement [green]{requirement.Name}[/] fulfilled![/]");
 
-            return;
+            return true;
         }
 
         AnsiConsole.MarkupLine($"[yellow]Fulfilling requirement [green]{requirement.Name}[/][/]");
 
+        var retryCount = 0;
+startRequirementActions:
         await foreach (var action in requirement.GetFulfillingActions(context))
         {
-            await foreach (var subRequirement in action.GetRequirements(context))
+            var subRequirementEnumerator = action.GetRequirements(context).GetAsyncEnumerator();
+            if (await subRequirementEnumerator.MoveNextAsync())
             {
-                await FulfilRequirement(context, subRequirement);
+                AnsiConsole.MarkupLine($"[yellow]Preparing action [green]{action.Name}[/][/]");
+
+                do
+                {
+                    var subRequirement = subRequirementEnumerator.Current;
+                    var fulfilled = await FulfilRequirement(context, subRequirement);
+                    if (!fulfilled)
+                    {
+                        AnsiConsole.MarkupLine(
+                            $"[red]Could not fulfil requirement [green]{subRequirement.Name}[/]![/]");
+
+                        return false;
+                    }
+                } while (await subRequirementEnumerator.MoveNextAsync());
             }
 
             AnsiConsole.MarkupLine($"[yellow]Executing action [green]{action.Name}[/][/]");
 
-            await action.Execute(context);
+            ActionExecutionResult result;
+            try
+            {
+                result = await action.Execute(context);
+            }
+            catch (ApiException e)
+            {
+                AnsiConsole.MarkupLine($"[red]Couldn't execute action: {e.Message}[/]");
 
-            await context.Game.WaitForCooldown();
+                return false;
+            }
+            finally
+            {
+                await context.Game.WaitForCooldown();
+            }
+
+            if (!result.Success)
+            {
+                AnsiConsole.MarkupLine($"[red]Attempt to [green]{action.Name}[/] failed:[/] {result.Message}");
+
+                const int maxAttempts = 3;
+                if (retryCount >= maxAttempts)
+                {
+                    AnsiConsole.MarkupLine($"[red bold]Giving up.[/] [red]{maxAttempts} retries failed.[/]");
+
+                    return false;
+                }
+
+                AnsiConsole.MarkupLine("[grey]Retrying...[/]");
+
+                retryCount++;
+                goto startRequirementActions;
+            }
         }
+
+        AnsiConsole.MarkupLine($"[yellow]Requirement [green]{requirement.Name}[/] fulfilled![/]");
+
+        return true;
     }
 
     private async Task Go(string characterName)
