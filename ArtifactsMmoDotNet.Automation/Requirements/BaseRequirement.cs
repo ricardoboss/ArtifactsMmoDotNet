@@ -1,8 +1,7 @@
-﻿using ArtifactsMmoDotNet.Api.Generated.Maps;
-using ArtifactsMmoDotNet.Api.Generated.Models;
+﻿using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
-namespace ArtifactsMmoDotNet.Sdk.Automation.Requirements;
+namespace ArtifactsMmoDotNet.Automation.Requirements;
 
 public abstract class BaseRequirement : IRequirement
 {

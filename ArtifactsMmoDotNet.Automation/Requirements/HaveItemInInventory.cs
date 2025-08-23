@@ -1,7 +1,7 @@
-using ArtifactsMmoDotNet.Sdk.Automation.Actions;
+using ArtifactsMmoDotNet.Automation.Actions;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
-namespace ArtifactsMmoDotNet.Sdk.Automation.Requirements;
+namespace ArtifactsMmoDotNet.Automation.Requirements;
 
 public class HaveItemInInventory(string itemCode, int quantity = 1) : BaseRequirement
 {

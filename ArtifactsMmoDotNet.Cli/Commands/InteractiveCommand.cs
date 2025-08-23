@@ -1,7 +1,7 @@
 ﻿using ArtifactsMmoDotNet.Api.Exceptions.Map;
 using ArtifactsMmoDotNet.Api.Generated.Models;
-using ArtifactsMmoDotNet.Sdk.Automation;
-using ArtifactsMmoDotNet.Sdk.Automation.Requirements;
+using ArtifactsMmoDotNet.Automation;
+using ArtifactsMmoDotNet.Automation.Requirements;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;

@@ -1,8 +1,8 @@
 ﻿using ArtifactsMmoDotNet.Api.Generated.Models;
-using ArtifactsMmoDotNet.Sdk.Automation.Actions;
+using ArtifactsMmoDotNet.Automation.Actions;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Automation;
 
-namespace ArtifactsMmoDotNet.Sdk.Automation.Requirements;
+namespace ArtifactsMmoDotNet.Automation.Requirements;
 
 public class ReachLevelInSkill(string skill, int level) : BaseRequirement
 {

@@ -11,6 +11,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\ArtifactsMmoDotNet.Automation\ArtifactsMmoDotNet.Automation.csproj" />
       <ProjectReference Include="..\ArtifactsMmoDotNet.Sdk\ArtifactsMmoDotNet.Sdk.csproj" />
     </ItemGroup>
 
