@@ -1,3 +1,5 @@
+using ArtifactsMmoDotNet.Api.Exceptions.General;
+using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
 using ArtifactsMmoDotNet.Automation.Exceptions;
 using ArtifactsMmoDotNet.Automation.Interfaces;
@@ -24,7 +26,22 @@ public class HaveItemInInventoryRequirement(string itemCode, int quantity = 1) :
 
         await context.Output.LogInfoAsync($"Need {missing} more {itemCode}");
 
-        var item = await context.Game.GetItem(itemCode);
+        ItemSchema? item;
+        try
+        {
+            item = await context.Game.GetItem(itemCode);
+        }
+        catch (NotFoundException)
+        {
+            item = null;
+        }
+
+        if (item == null)
+        {
+            yield return new FailureAction(this, $"Item not found: {itemCode}");
+            yield break;
+        }
+
         if (item.Craft is { } craftInfo)
         {
             yield return new CraftItemAction(itemCode, craftInfo, missing);
