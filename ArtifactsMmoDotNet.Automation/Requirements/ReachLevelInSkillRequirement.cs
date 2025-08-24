@@ -136,24 +136,24 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
         return dropInfo;
     }
 
-    private IAsyncEnumerable<IAction> GetWeaponcraftingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetWeaponcraftingActions(IAutomationContext context)
     {
-        throw new NotImplementedException();
+        yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 
-    private IAsyncEnumerable<IAction> GetGearcraftingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetGearcraftingActions(IAutomationContext context)
     {
-        throw new NotImplementedException();
+        yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 
-    private IAsyncEnumerable<IAction> GetJewelrycraftingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetJewelrycraftingActions(IAutomationContext context)
     {
-        throw new NotImplementedException();
+        yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 
-    private IAsyncEnumerable<IAction> GetCookingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetCookingActions(IAutomationContext context)
     {
-        throw new NotImplementedException();
+        yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 }
 
