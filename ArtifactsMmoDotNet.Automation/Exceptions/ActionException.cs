@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Automation.Exceptions;
+namespace ArtifactsMmoDotNet.Automation.Exceptions;
 
 public class ActionException : Exception
 {

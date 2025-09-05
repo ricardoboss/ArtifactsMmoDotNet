@@ -1,4 +1,4 @@
-﻿using ArtifactsMmoDotNet.Automation.Interfaces;
+using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Models;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;

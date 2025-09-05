@@ -1,4 +1,4 @@
-﻿namespace ArtifactsMmoDotNet.Automation.Models;
+namespace ArtifactsMmoDotNet.Automation.Models;
 
 public class ActionExecutionResult
 {
