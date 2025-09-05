@@ -63,7 +63,8 @@ public class HaveSpaceInInventoryRequirement(string? itemCode = null, int total 
         var valueOrderedItems = (await OrderItemsByValueAscending(requirementContext)).ToList();
 
         if (allowSellingItems)
-            await foreach (var p in SellToNpc(requirementContext, valueOrderedItems, x, y, itemQuantityToFreeUp))
+            await foreach (var p in SellToNpc(requirementContext, valueOrderedItems, x, y, itemQuantityToFreeUp,
+                               cancellationToken))
                 yield return p;
         else
             await requirementContext.Output.LogInfoAsync("Storing some items in bank", cancellationToken);

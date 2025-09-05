@@ -11,7 +11,7 @@ public class TokenStorageAccessTokenProvider(ITokenStorage tokenStorage) : IAcce
         CancellationToken cancellationToken = default
     )
     {
-        var token = await tokenStorage.GetTokenAsync();
+        var token = await tokenStorage.GetTokenAsync(cancellationToken);
 
         return token ?? string.Empty;
     }

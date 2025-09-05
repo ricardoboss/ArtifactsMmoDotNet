@@ -44,21 +44,21 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
 
         for (var i = 0; i < quantity; i++)
         {
-            await context.Output.LogInfoAsync($"Crafting {itemCode}");
+            await context.Output.LogInfoAsync($"Crafting {itemCode}", cancellationToken);
 
-            var result = await context.Game.AsCharacter(context.CharacterName).Craft(itemCode);
+            var result = await context.Game.AsCharacter(context.CharacterName).Craft(itemCode, cancellationToken: cancellationToken);
 
             if (result.Details!.Xp is { } xp)
-                await context.Output.LogInfoAsync($"Gained {xp} xp");
+                await context.Output.LogInfoAsync($"Gained {xp} xp", cancellationToken);
 
             switch (result.Details!.Items!.Count)
             {
                 case > 1:
                     {
-                        await context.Output.LogInfoAsync("Crafted:");
+                        await context.Output.LogInfoAsync("Crafted:", cancellationToken);
                         foreach (var log in result.Details!.Items!)
                         {
-                            await context.Output.LogInfoAsync($"    - {log.Quantity} {log.Code}");
+                            await context.Output.LogInfoAsync($"    - {log.Quantity} {log.Code}", cancellationToken);
                         }
 
                         break;
@@ -67,7 +67,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
                     {
                         var log = result.Details!.Items!.First();
 
-                        await context.Output.LogInfoAsync($"Crafted {log.Quantity} {log.Code}");
+                        await context.Output.LogInfoAsync($"Crafted {log.Quantity} {log.Code}", cancellationToken);
                         break;
                     }
             }

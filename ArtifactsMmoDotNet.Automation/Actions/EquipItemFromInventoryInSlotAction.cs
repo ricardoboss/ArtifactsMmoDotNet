@@ -19,7 +19,7 @@ public class EquipItemFromInventoryInSlotAction(string itemCode, ItemSlot slot) 
     public override async Task<ActionExecutionResult> Execute(IAutomationContext context,
         CancellationToken cancellationToken = default)
     {
-        _ = await context.Game.AsCharacter(context.CharacterName).Equip(slot, itemCode);
+        _ = await context.Game.AsCharacter(context.CharacterName).Equip(slot, itemCode, cancellationToken);
 
         return ActionExecutionResult.Successful();
     }
