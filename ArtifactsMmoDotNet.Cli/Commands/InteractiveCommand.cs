@@ -51,9 +51,9 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
         do
         {
-            await game.WaitForCooldown();
-
             var subcommand = AnsiConsole.Prompt(subCommandPrompt);
+
+            await game.WaitForCooldown();
 
             switch (subcommand)
             {
@@ -133,8 +133,6 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
 
     private async Task Automation(string characterName)
     {
-        game.AutoWaitForCooldown = true;
-
         var context = new AutomationContext(game, characterName, output);
 
         var requirementType = AnsiConsole.Prompt(new SelectionPrompt<string>
