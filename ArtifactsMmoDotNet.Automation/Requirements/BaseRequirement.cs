@@ -7,35 +7,41 @@ public abstract class BaseRequirement : IRequirement
 {
     public abstract string Name { get; }
 
-    public abstract Task<bool> IsFulfilled(IAutomationContext context);
+    public abstract Task<bool> IsFulfilled(IAutomationContext context, CancellationToken cancellationToken = default);
 
-    public abstract IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context);
+    public abstract IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context,
+        CancellationToken cancellationToken = default);
 
     protected static async Task<MapSchema?> GetNearestLocationForResource(IAutomationContext context, string itemCode,
-        int x, int y)
+        int x, int y, CancellationToken cancellationToken = default)
     {
-        var maps = await context.Game.GetResources(drop: itemCode).SelectMany(r =>
-                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Resource))
-            .ToListAsync();
+        var maps = await context.Game.GetResources(drop: itemCode, cancellationToken: cancellationToken).SelectMany(r =>
+                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Resource,
+                    cancellationToken: cancellationToken))
+            .ToListAsync(cancellationToken: cancellationToken);
 
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
     }
 
     protected static async Task<MapSchema?> GetNearestMonsterForDrop(IAutomationContext context, string itemCode,
-        int x, int y)
+        int x, int y, CancellationToken cancellationToken = default)
     {
-        var maps = await context.Game.GetMonsters(drop: itemCode).SelectMany(r =>
-                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Monster))
-            .ToListAsync();
+        var maps = await context.Game.GetMonsters(drop: itemCode, cancellationToken: cancellationToken).SelectMany(r =>
+                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Monster,
+                    cancellationToken: cancellationToken))
+            .ToListAsync(cancellationToken: cancellationToken);
 
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
     }
 
-    protected async Task<MapSchema?> GetNearestNpcForSelling(IAutomationContext context, string itemCode, int x, int y)
+    protected static async Task<MapSchema?> GetNearestNpcForSelling(IAutomationContext context, string itemCode, int x,
+        int y,
+        CancellationToken cancellationToken = default)
     {
-        var maps = await context.Game.GetNpcItems(itemCode).SelectMany(r =>
-                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Npc))
-            .ToListAsync();
+        var maps = await context.Game.GetNpcItems(itemCode, cancellationToken: cancellationToken).SelectMany(r =>
+                context.Game.GetMaps(contentCode: r.Code!, contentType: MapContentType.Npc,
+                    cancellationToken: cancellationToken))
+            .ToListAsync(cancellationToken: cancellationToken);
 
         return maps.MinBy(m => EuclideanDistanceFrom(m, x, y));
     }

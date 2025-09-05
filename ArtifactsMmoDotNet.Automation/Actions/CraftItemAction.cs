@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Models;
@@ -9,7 +10,8 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
 {
     public override string Name => $"Craft {quantity} {itemCode}";
 
-    public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
+    public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         // gather all items
         foreach (var item in craft.Items ?? [])
@@ -36,7 +38,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
             }, skillLevel);
     }
 
-    public override async Task<ActionExecutionResult> Execute(IAutomationContext context)
+    public override async Task<ActionExecutionResult> Execute(IAutomationContext context, CancellationToken cancellationToken = default)
     {
         await GoToWorkshop(context);
 
@@ -70,7 +72,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
                     }
             }
 
-            await context.Game.WaitForCooldown();
+            await context.Game.WaitForCooldown(cancellationToken);
         }
 
         return ActionExecutionResult.Successful();

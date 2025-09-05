@@ -1,4 +1,5 @@
-﻿using ArtifactsMmoDotNet.Api.Generated.Models;
+﻿using System.Runtime.CompilerServices;
+using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
 using ArtifactsMmoDotNet.Automation.Interfaces;
 
@@ -8,18 +9,20 @@ public class HaveItemEquippedInSlotRequirement(string itemCode, ItemSlot slot) :
 {
     public override string Name => $"Have item {itemCode} equipped in slot {slot}";
 
-    public override async Task<bool> IsFulfilled(IAutomationContext context)
+    public override async Task<bool> IsFulfilled(IAutomationContext context,
+        CancellationToken cancellationToken = default)
     {
         var maybeEquippedSlot = await TryFindItemInSlot(context, itemCode);
 
         return maybeEquippedSlot == slot;
     }
 
-    public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
+    public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         if (await TryGetItemInSlot(context, slot) is { } itemInSlot)
         {
-            await context.Output.LogInfoAsync($"Slot {slot} is occupied by {itemInSlot}");
+            await context.Output.LogInfoAsync($"Slot {slot} is occupied by {itemInSlot}", cancellationToken);
 
             yield return new UnequipItemInSlotAction(slot);
         }

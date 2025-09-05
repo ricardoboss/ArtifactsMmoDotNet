@@ -8,9 +8,10 @@ public interface IGame
 
     IGameCharacters FromCharacter(string characterName);
 
-    IAsyncEnumerable<CharacterSchema> GetCharacters();
+    IAsyncEnumerable<CharacterSchema> GetCharacters(CancellationToken cancellationToken = default);
 
-    Task<CharacterSchema> CreateCharacter(string name, CharacterSkin? skin = null);
+    Task<CharacterSchema> CreateCharacter(string name, CharacterSkin? skin = null,
+        CancellationToken cancellationToken = default);
 
     TimeSpan RemainingCooldown { get; }
 
@@ -18,21 +19,29 @@ public interface IGame
 
     Func<DateTimeOffset, Task>? OnAwaitCooldown { get; set; }
 
-    Task WaitForCooldown();
+    Task WaitForCooldown(CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null);
+    IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null,
+        CancellationToken cancellationToken = default);
 
-    Task<MapSchema> GetMap(int x, int y);
+    Task<MapSchema> GetMap(int x, int y, CancellationToken cancellationToken = default);
 
     IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
         CraftSkill? craftSkill = null, int? minLevel = null, int? maxLevel = null,
-        ItemType? type = null);
+        ItemType? type = null, CancellationToken cancellationToken = default);
 
-    Task<ItemSchema> GetItem(string itemCode);
+    Task<ItemSchema> GetItem(string itemCode, CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null, int? maxLevel = null, GatheringSkill? skill = null);
+    IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null, int? maxLevel = null,
+        GatheringSkill? skill = null, CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<MonsterSchema> GetMonsters(string? drop = null, int? minLevel = null, int? maxLevel = null, string? name = null);
+    IAsyncEnumerable<MonsterSchema> GetMonsters(string? drop = null, int? minLevel = null, int? maxLevel = null,
+        string? name = null, CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<NPCItem> GetNpcItems(string? itemCode = null, string? currency = null, string? npc = null);
+    IAsyncEnumerable<NPCItem> GetNpcItems(string? itemCode = null, string? currency = null, string? npc = null,
+        CancellationToken cancellationToken = default);
+
+    IDisposable SuspendAutoWaitForCooldown();
+
+    IAsyncDisposable SuspendAutoWaitForCooldownAsync(CancellationToken cancellationToken = default);
 }

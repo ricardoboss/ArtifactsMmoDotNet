@@ -7,11 +7,12 @@ public class GoToLocationAction(int x, int y) : BaseAction
 {
     public override string Name => $"Go to ({x},{y})";
 
-    public override async Task<ActionExecutionResult> Execute(IAutomationContext context)
+    public override async Task<ActionExecutionResult> Execute(IAutomationContext context,
+        CancellationToken cancellationToken = default)
     {
-        await context.Game.AsCharacter(context.CharacterName).MoveTo(x, y);
+        await context.Game.AsCharacter(context.CharacterName).MoveTo(x, y, cancellationToken);
 
-        await context.Game.WaitForCooldown();
+        await context.Game.WaitForCooldown(cancellationToken);
 
         return ActionExecutionResult.Successful();
     }

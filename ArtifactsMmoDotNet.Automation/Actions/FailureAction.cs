@@ -7,6 +7,6 @@ public class FailureAction(IRequirement requirement, string message) : BaseActio
 {
     public override string Name => $"Fulfil {requirement.Name}";
 
-    public override async Task<ActionExecutionResult> Execute(IAutomationContext context) =>
+    public override async Task<ActionExecutionResult> Execute(IAutomationContext context, CancellationToken cancellationToken = default) =>
         ActionExecutionResult.Failed(message, false);
 }

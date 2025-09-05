@@ -6,7 +6,7 @@ public interface IAction
 {
     string Name { get; }
 
-    IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context);
+    IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context, CancellationToken cancellationToken = default);
 
-    Task<ActionExecutionResult> Execute(IAutomationContext context);
+    Task<ActionExecutionResult> Execute(IAutomationContext context, CancellationToken cancellationToken = default);
 }

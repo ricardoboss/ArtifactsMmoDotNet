@@ -2,9 +2,9 @@ namespace ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 
 public interface ITokenStorage
 {
-    Task<string?> GetTokenAsync();
+    Task<string?> GetTokenAsync(CancellationToken cancellationToken = default);
 
-    Task SetTokenAsync(string token);
+    Task SetTokenAsync(string token, CancellationToken cancellationToken = default);
 
-    Task ClearTokenAsync();
+    Task ClearTokenAsync(CancellationToken cancellationToken = default);
 }

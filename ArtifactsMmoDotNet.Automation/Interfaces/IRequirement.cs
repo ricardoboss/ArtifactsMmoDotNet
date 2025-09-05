@@ -4,7 +4,7 @@ public interface IRequirement
 {
     string Name { get; }
 
-    Task<bool> IsFulfilled(IAutomationContext context);
+    Task<bool> IsFulfilled(IAutomationContext context, CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context);
+    IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context, CancellationToken cancellationToken = default);
 }

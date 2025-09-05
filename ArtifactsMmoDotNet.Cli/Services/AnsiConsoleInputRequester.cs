@@ -5,14 +5,15 @@ namespace ArtifactsMmoDotNet.Cli.Services;
 
 internal sealed class AnsiConsoleInputRequester(IAnsiConsole console) : IInputRequester
 {
-    public Task<string> PromptAsync(string text, bool concealed = false)
+    public async Task<string> PromptAsync(string text, bool concealed = false,
+        CancellationToken cancellationToken = default)
     {
         var prompt = new TextPrompt<string>(text);
         if (concealed)
             prompt.Secret();
 
-        var response = console.Prompt(prompt);
+        var response = await console.PromptAsync(prompt, cancellationToken: cancellationToken);
 
-        return Task.FromResult(response);
+        return response;
     }
 }

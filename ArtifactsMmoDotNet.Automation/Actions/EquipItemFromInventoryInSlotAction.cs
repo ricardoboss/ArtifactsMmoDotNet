@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Interfaces;
 using ArtifactsMmoDotNet.Automation.Models;
@@ -9,12 +10,14 @@ public class EquipItemFromInventoryInSlotAction(string itemCode, ItemSlot slot) 
 {
     public override string Name { get; } = $"Equip item in slot {slot}";
 
-    public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context)
+    public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         yield return new HaveItemInInventoryRequirement(itemCode);
     }
 
-    public override async Task<ActionExecutionResult> Execute(IAutomationContext context)
+    public override async Task<ActionExecutionResult> Execute(IAutomationContext context,
+        CancellationToken cancellationToken = default)
     {
         _ = await context.Game.AsCharacter(context.CharacterName).Equip(slot, itemCode);
 

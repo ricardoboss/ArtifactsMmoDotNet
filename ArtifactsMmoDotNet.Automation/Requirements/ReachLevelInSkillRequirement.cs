@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
 using ArtifactsMmoDotNet.Automation.Exceptions;
@@ -10,16 +11,17 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
 {
     public override string Name => $"Reach level {level} in {skill}";
 
-    public override async Task<bool> IsFulfilled(IAutomationContext context)
+    public override async Task<bool> IsFulfilled(IAutomationContext context,
+        CancellationToken cancellationToken = default)
     {
-        var currentSkill = await GetCurrentSkillInfo(context);
+        var currentSkill = await GetCurrentSkillInfo(context, cancellationToken);
 
         return currentSkill.Level >= level;
     }
 
-    private async Task<SkillInfo> GetCurrentSkillInfo(IAutomationContext context)
+    private async Task<SkillInfo> GetCurrentSkillInfo(IAutomationContext context, CancellationToken cancellationToken)
     {
-        var character = await context.Game.FromCharacter(context.CharacterName).GetEverything();
+        var character = await context.Game.FromCharacter(context.CharacterName).GetEverything(cancellationToken);
 
         return skill switch
         {
@@ -46,28 +48,29 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
         };
     }
 
-    public override IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
+    public override IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context,
+        CancellationToken cancellationToken = default)
     {
         return skill switch
         {
-            LevelableSkill.Mining => GatherItems(context, GatheringSkill.Mining),
-            LevelableSkill.Woodcutting => GatherItems(context, GatheringSkill.Woodcutting),
-            LevelableSkill.Fishing => GatherItems(context, GatheringSkill.Fishing),
-            LevelableSkill.Weaponcrafting => GetWeaponcraftingActions(context),
-            LevelableSkill.Gearcrafting => GetGearcraftingActions(context),
-            LevelableSkill.Jewelrycrafting => GetJewelrycraftingActions(context),
-            LevelableSkill.Cooking => GetCookingActions(context),
-            LevelableSkill.Alchemy => GatherItems(context, GatheringSkill.Alchemy),
+            LevelableSkill.Mining => GatherItems(context, GatheringSkill.Mining, cancellationToken),
+            LevelableSkill.Woodcutting => GatherItems(context, GatheringSkill.Woodcutting, cancellationToken),
+            LevelableSkill.Fishing => GatherItems(context, GatheringSkill.Fishing, cancellationToken),
+            LevelableSkill.Weaponcrafting => GetWeaponcraftingActions(context, cancellationToken),
+            LevelableSkill.Gearcrafting => GetGearcraftingActions(context, cancellationToken),
+            LevelableSkill.Jewelrycrafting => GetJewelrycraftingActions(context, cancellationToken),
+            LevelableSkill.Cooking => GetCookingActions(context, cancellationToken),
+            LevelableSkill.Alchemy => GatherItems(context, GatheringSkill.Alchemy, cancellationToken),
             _ => throw new NotImplementedException($"Don't know how to gain levels in {skill}"),
         };
     }
 
     private async IAsyncEnumerable<IAction> GatherItems(IAutomationContext context,
-        GatheringSkill gatherSkill)
+        GatheringSkill gatherSkill, [EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        var currentInfo = await GetCurrentSkillInfo(context);
+        var currentInfo = await GetCurrentSkillInfo(context, cancellationToken);
         var lastInfo = currentInfo;
-        var position = await context.Game.FromCharacter(context.CharacterName).GetPosition();
+        var position = await context.Game.FromCharacter(context.CharacterName).GetPosition(cancellationToken);
         var (item, location) = await GetNearestSkillLevellingInfo(context, gatherSkill, currentInfo, position);
 
         if (location is not { X: { } x, Y: { } y })
@@ -79,24 +82,26 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
         if (position.x != x || position.y != y)
             yield return new GoToLocationAction(x, y);
 
-        await context.Output.LogInfoAsync($"Need {currentInfo.XpToNextLevel} xp to level up");
+        await context.Output.LogInfoAsync($"Need {currentInfo.XpToNextLevel} xp to level up", cancellationToken);
 
         do
         {
             yield return new GatherItemAction(item.Code!);
 
-            currentInfo = await GetCurrentSkillInfo(context);
+            currentInfo = await GetCurrentSkillInfo(context, cancellationToken);
             if (currentInfo.Level == lastInfo.Level)
                 continue;
 
             lastInfo = currentInfo;
 
-            await context.Output.LogInfoAsync($"Levelled up to level {currentInfo.Level} in {skill}");
+            await context.Output.LogInfoAsync($"Levelled up to level {currentInfo.Level} in {skill}",
+                cancellationToken);
 
             if (currentInfo.Level >= level)
                 break;
 
-            await context.Output.LogInfoAsync($"Need {currentInfo.XpToNextLevel} xp to level up again");
+            await context.Output.LogInfoAsync($"Need {currentInfo.XpToNextLevel} xp to level up again",
+                cancellationToken);
 
             // TODO: recheck if there is a better spot to level up
         } while (currentInfo.Level < level);
@@ -136,22 +141,26 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
         return dropInfo;
     }
 
-    private async IAsyncEnumerable<IAction> GetWeaponcraftingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetWeaponcraftingActions(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 
-    private async IAsyncEnumerable<IAction> GetGearcraftingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetGearcraftingActions(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 
-    private async IAsyncEnumerable<IAction> GetJewelrycraftingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetJewelrycraftingActions(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }
 
-    private async IAsyncEnumerable<IAction> GetCookingActions(IAutomationContext context)
+    private async IAsyncEnumerable<IAction> GetCookingActions(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken)
     {
         yield return new FailureAction(this, $"Level not high enough: {skill} needs to be level {level}");
     }

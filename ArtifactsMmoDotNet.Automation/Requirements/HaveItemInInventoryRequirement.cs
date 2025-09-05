@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using ArtifactsMmoDotNet.Api.Exceptions.General;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Automation.Actions;
@@ -10,26 +11,29 @@ public class HaveItemInInventoryRequirement(string itemCode, int quantity = 1) :
 {
     public override string Name => $"Have {quantity} {itemCode} in inventory";
 
-    public override async Task<bool> IsFulfilled(IAutomationContext context)
+    public override async Task<bool> IsFulfilled(IAutomationContext context,
+        CancellationToken cancellationToken = default)
     {
-        return await context.Game.FromCharacter(context.CharacterName).GetInventory()
-            .AnyAsync(i => i.Code == itemCode && i.Quantity >= quantity);
+        return await context.Game.FromCharacter(context.CharacterName).GetInventory(cancellationToken)
+            .AnyAsync(i => i.Code == itemCode && i.Quantity >= quantity, cancellationToken: cancellationToken);
     }
 
-    public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context)
+    public override async IAsyncEnumerable<IAction> GetFulfillingActions(IAutomationContext context,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var alreadyInInventory = await GetAmountOfItemInInventory(context, itemCode);
         var missing = quantity - alreadyInInventory;
 
         if (alreadyInInventory > 0)
-            await context.Output.LogInfoAsync($"Already have {alreadyInInventory} {itemCode} in inventory");
+            await context.Output.LogInfoAsync($"Already have {alreadyInInventory} {itemCode} in inventory",
+                cancellationToken);
 
-        await context.Output.LogInfoAsync($"Need {missing} more {itemCode}");
+        await context.Output.LogInfoAsync($"Need {missing} more {itemCode}", cancellationToken);
 
         ItemSchema? item;
         try
         {
-            item = await context.Game.GetItem(itemCode);
+            item = await context.Game.GetItem(itemCode, cancellationToken);
         }
         catch (NotFoundException)
         {
@@ -48,8 +52,8 @@ public class HaveItemInInventoryRequirement(string itemCode, int quantity = 1) :
         }
         else if (item.Type == "resource")
         {
-            var (x, y) = await context.Game.FromCharacter(context.CharacterName).GetPosition();
-            var nearestGatherLocation = await GetNearestLocationForResource(context, itemCode, x, y);
+            var (x, y) = await context.Game.FromCharacter(context.CharacterName).GetPosition(cancellationToken);
+            var nearestGatherLocation = await GetNearestLocationForResource(context, itemCode, x, y, cancellationToken);
             if (nearestGatherLocation is not null)
             {
                 if (x != nearestGatherLocation.X!.Value || y != nearestGatherLocation.Y!.Value)
@@ -61,7 +65,7 @@ public class HaveItemInInventoryRequirement(string itemCode, int quantity = 1) :
                 yield break;
             }
 
-            var nearestMonsterLocation = await GetNearestMonsterForDrop(context, itemCode, x, y);
+            var nearestMonsterLocation = await GetNearestMonsterForDrop(context, itemCode, x, y, cancellationToken);
             if (nearestMonsterLocation is not null)
             {
                 if (x != nearestMonsterLocation.X!.Value || y != nearestMonsterLocation.Y!.Value)

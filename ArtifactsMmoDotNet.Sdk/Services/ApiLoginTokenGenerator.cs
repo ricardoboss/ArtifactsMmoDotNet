@@ -7,13 +7,13 @@ namespace ArtifactsMmoDotNet.Sdk.Services;
 
 public class ApiLoginTokenGenerator(IArtifactsMmoApiClientFactory apiClientFactory) : ILoginTokenGenerator
 {
-    public async Task<string> GetTokenAsync(string username, string password)
+    public async Task<string> GetTokenAsync(string username, string password, CancellationToken cancellationToken = default)
     {
         var apiClient = apiClientFactory.CreateWithBasicAuth(username, password);
 
         try
         {
-            var response = await apiClient.Token!.PostAsync();
+            var response = await apiClient.Token!.PostAsync(cancellationToken: cancellationToken);
 
             if (response is not { Token: { } token })
                 throw new LoginFailureException("Invalid response from Artifacts MMO API");

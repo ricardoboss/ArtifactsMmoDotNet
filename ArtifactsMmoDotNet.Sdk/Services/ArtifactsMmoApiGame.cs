@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using ArtifactsMmoDotNet.Api.Generated;
 using ArtifactsMmoDotNet.Api.Generated.Models;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
@@ -6,19 +7,22 @@ namespace ArtifactsMmoDotNet.Sdk.Services;
 
 public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 {
-    public IGameCharacterActions AsCharacter(string characterName) => new CharacterActions(this, characterName, apiClient);
+    public IGameCharacterActions AsCharacter(string characterName) =>
+        new CharacterActions(this, characterName, apiClient);
 
     public IGameCharacters FromCharacter(string characterName) => new Characters(this, characterName, apiClient);
 
-    public async IAsyncEnumerable<CharacterSchema> GetCharacters()
+    public async IAsyncEnumerable<CharacterSchema> GetCharacters(
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        var response = await apiClient.My!.Characters!.GetAsync();
+        var response = await apiClient.My.Characters.GetAsync(cancellationToken: cancellationToken);
 
         foreach (var character in response!.Data!)
             yield return character;
     }
 
-    public async Task<CharacterSchema> CreateCharacter(string name, CharacterSkin? skin = null)
+    public async Task<CharacterSchema> CreateCharacter(string name, CharacterSkin? skin = null,
+        CancellationToken cancellationToken = default)
     {
         var body = new AddCharacterSchema
         {
@@ -26,18 +30,18 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             Skin = skin,
         };
 
-        var response = await apiClient.Characters.Create.PostAsync(body);
+        var response = await apiClient.Characters.Create.PostAsync(body, cancellationToken: cancellationToken);
 
         return response!.Data!;
     }
 
     private DateTimeOffset _lastCooldownEnd = DateTimeOffset.MinValue;
 
-    internal Task UpdateCooldownEnd(DateTimeOffset end)
+    internal Task UpdateCooldownEnd(DateTimeOffset end, CancellationToken cancellationToken = default)
     {
         _lastCooldownEnd = end;
 
-        return AutoWaitForCooldown ? WaitForCooldown() : Task.CompletedTask;
+        return AutoWaitForCooldown ? WaitForCooldown(cancellationToken) : Task.CompletedTask;
     }
 
     public TimeSpan RemainingCooldown
@@ -57,10 +61,11 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
     private readonly List<MapSchema> cachedLocations = [];
 
-    public Task WaitForCooldown() =>
-        OnAwaitCooldown?.Invoke(_lastCooldownEnd) ?? Task.Delay(RemainingCooldown);
+    public Task WaitForCooldown(CancellationToken cancellationToken = default) =>
+        OnAwaitCooldown?.Invoke(_lastCooldownEnd) ?? Task.Delay(RemainingCooldown, cancellationToken);
 
-    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null)
+    public async IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var useCache = contentCode is null && contentType is null;
 
@@ -78,13 +83,13 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
         do
         {
-            var maps = await apiClient.Maps!.GetAsync(c =>
+            var maps = await apiClient.Maps.GetAsync(c =>
             {
                 c.QueryParameters.ContentCode = contentCode;
                 c.QueryParameters.ContentType = contentType;
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
-            });
+            }, cancellationToken);
 
             foreach (var map in maps!.Data!)
             {
@@ -99,9 +104,9 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
         } while (page <= pages);
     }
 
-    public async Task<MapSchema> GetMap(int x, int y)
+    public async Task<MapSchema> GetMap(int x, int y, CancellationToken cancellationToken = default)
     {
-        var map = await apiClient.Maps![x]![y]!.GetAsync();
+        var map = await apiClient.Maps[x][y].GetAsync(cancellationToken: cancellationToken);
 
         return map!.Data!;
     }
@@ -110,7 +115,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
     public async IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
         CraftSkill? craftSkill = null, int? minLevel = null, int? maxLevel = null,
-        ItemType? type = null)
+        ItemType? type = null, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var useCache = craftMaterial is null && craftSkill is null && minLevel is null && maxLevel is null &&
                        type is null;
@@ -129,7 +134,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
         do
         {
-            var items = await apiClient.Items!.GetAsync(c =>
+            var items = await apiClient.Items.GetAsync(c =>
             {
                 c.QueryParameters.CraftMaterial = craftMaterial;
                 c.QueryParameters.CraftSkill = craftSkill;
@@ -138,7 +143,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
                 c.QueryParameters.Type = type;
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
-            });
+            }, cancellationToken);
 
             foreach (var item in items!.Data!)
             {
@@ -153,9 +158,9 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
         } while (page <= pages);
     }
 
-    public async Task<ItemSchema> GetItem(string itemCode)
+    public async Task<ItemSchema> GetItem(string itemCode, CancellationToken cancellationToken = default)
     {
-        var item = await apiClient.Items![itemCode]!.GetAsync();
+        var item = await apiClient.Items[itemCode].GetAsync(cancellationToken: cancellationToken);
 
         return item!.Data!;
     }
@@ -163,7 +168,8 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     private readonly List<ResourceSchema> cachedResources = [];
 
     public async IAsyncEnumerable<ResourceSchema> GetResources(string? drop = null, int? minLevel = null,
-        int? maxLevel = null, GatheringSkill? skill = null)
+        int? maxLevel = null, GatheringSkill? skill = null,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var useCache = drop is null && minLevel is null && maxLevel is null && skill is null;
 
@@ -181,7 +187,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
         do
         {
-            var resources = await apiClient.Resources!.GetAsync(c =>
+            var resources = await apiClient.Resources.GetAsync(c =>
             {
                 c.QueryParameters.Drop = drop;
                 c.QueryParameters.MinLevel = minLevel;
@@ -189,7 +195,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
                 c.QueryParameters.Skill = skill;
-            });
+            }, cancellationToken);
 
             foreach (var resource in resources!.Data!)
             {
@@ -207,7 +213,8 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
     private readonly List<MonsterSchema> cachedMonsters = [];
 
     public async IAsyncEnumerable<MonsterSchema> GetMonsters(string? drop = null, int? minLevel = null,
-        int? maxLevel = null, string? name = null)
+        int? maxLevel = null, string? name = null,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var useCache = drop is null && minLevel is null && maxLevel is null && name is null;
 
@@ -225,7 +232,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
         do
         {
-            var monsters = await apiClient.Monsters!.GetAsync(c =>
+            var monsters = await apiClient.Monsters.GetAsync(c =>
             {
                 c.QueryParameters.Drop = drop;
                 c.QueryParameters.MinLevel = minLevel;
@@ -233,7 +240,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
                 c.QueryParameters.Name = name;
-            });
+            }, cancellationToken);
 
             foreach (var monster in monsters!.Data!)
             {
@@ -250,7 +257,8 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
     private readonly List<NPCItem> cachedNPCItems = [];
 
-    public async IAsyncEnumerable<NPCItem> GetNpcItems(string? itemCode = null, string? currency = null, string? npc = null)
+    public async IAsyncEnumerable<NPCItem> GetNpcItems(string? itemCode = null, string? currency = null,
+        string? npc = null, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var useCache = itemCode is null && currency is null && npc is null;
 
@@ -268,14 +276,14 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
 
         do
         {
-            var NPCItems = await apiClient.Npcs.Items!.GetAsync(c =>
+            var NPCItems = await apiClient.Npcs.Items.GetAsync(c =>
             {
                 c.QueryParameters.Code = itemCode;
                 c.QueryParameters.Currency = currency;
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
                 c.QueryParameters.Npc = npc;
-            });
+            }, cancellationToken);
 
             foreach (var NPCItem in NPCItems!.Data!)
             {
@@ -289,21 +297,54 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             pages = NPCItems.Pages!.Integer!.Value;
         } while (page <= pages);
     }
+
+    public IDisposable SuspendAutoWaitForCooldown() =>
+        new SuspendedAutoWaitForCooldownDisposable(this, CancellationToken.None);
+
+    public IAsyncDisposable SuspendAutoWaitForCooldownAsync(CancellationToken cancellationToken = default) =>
+        new SuspendedAutoWaitForCooldownDisposable(this, cancellationToken);
+}
+
+file sealed class SuspendedAutoWaitForCooldownDisposable : IDisposable, IAsyncDisposable
+{
+    private readonly IGame game;
+    private readonly CancellationToken cancellationToken;
+
+    public SuspendedAutoWaitForCooldownDisposable(IGame game, CancellationToken cancellationToken)
+    {
+        this.game = game;
+        this.cancellationToken = cancellationToken;
+
+        game.AutoWaitForCooldown = false;
+    }
+
+    public void Dispose()
+    {
+        game.AutoWaitForCooldown = true;
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        Dispose();
+
+        await game.WaitForCooldown(cancellationToken);
+    }
 }
 
 file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
     : IGameCharacterActions
 {
-    public async Task<CharacterFightDataSchema> Attack()
+    public async Task<CharacterFightDataSchema> Attack(CancellationToken cancellationToken = default)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Fight!.PostAsync())!.Data!;
+        var result =
+            (await apiClient.My[characterName].Action.Fight.PostAsync(cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<CharacterMovementDataSchema> MoveTo(int x, int y)
+    public async Task<CharacterMovementDataSchema> MoveTo(int x, int y, CancellationToken cancellationToken = default)
     {
         var destination = new DestinationSchema
         {
@@ -311,70 +352,77 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
             Y = y,
         };
 
-        var result = (await apiClient.My![characterName]!.Action!.Move!.PostAsync(destination))!.Data!;
+        var result =
+            (await apiClient.My[characterName].Action.Move.PostAsync(destination,
+                cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
-
-        return result;
-    }
-
-    public async Task<SkillDataSchema> Gather()
-    {
-        var result = (await apiClient.My![characterName]!.Action!.Gathering!.PostAsync())!.Data!;
-
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<EquipRequestSchema> Unequip(ItemSlot slot)
+    public async Task<SkillDataSchema> Gather(CancellationToken cancellationToken = default)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Unequip!.PostAsync(new()
+        var result =
+            (await apiClient.My[characterName].Action.Gathering.PostAsync(cancellationToken: cancellationToken))!.Data!;
+
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
+
+        return result;
+    }
+
+    public async Task<EquipRequestSchema> Unequip(ItemSlot slot, CancellationToken cancellationToken = default)
+    {
+        var result = (await apiClient.My[characterName].Action.Unequip.PostAsync(new()
         {
             Slot = slot,
-        }))!.Data!;
+        }, cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<SkillDataSchema> Craft(string itemCode, int quantity = 1)
+    public async Task<SkillDataSchema> Craft(string itemCode, int quantity = 1,
+        CancellationToken cancellationToken = default)
     {
-        var result = (await apiClient.My![characterName]!.Action!.Crafting!.PostAsync(new()
+        var result = (await apiClient.My[characterName].Action.Crafting.PostAsync(new()
         {
             Code = itemCode,
             Quantity = quantity,
-        }))!.Data!;
+        }, cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode)
+    public async Task<EquipRequestSchema> Equip(ItemSlot slot, string itemCode,
+        CancellationToken cancellationToken = default)
     {
         var result = (await apiClient.My[characterName].Action.Equip.PostAsync(new()
         {
             Slot = slot,
             Code = itemCode,
-        }))!.Data!;
+        }, cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<CharacterRestDataSchema> Rest()
+    public async Task<CharacterRestDataSchema> Rest(CancellationToken cancellationToken = default)
     {
-        var result = (await apiClient.My[characterName].Action.Rest.PostAsync())!.Data!;
+        var result = (await apiClient.My[characterName].Action.Rest.PostAsync(cancellationToken: cancellationToken))!
+            .Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<NpcMerchantTransactionSchema> SellToNpc(string itemCode, int quantity)
+    public async Task<NpcMerchantTransactionSchema> SellToNpc(string itemCode, int quantity,
+        CancellationToken cancellationToken = default)
     {
         var body = new NpcMerchantBuySchema
         {
@@ -382,14 +430,16 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
             Quantity = quantity,
         };
 
-        var result = (await apiClient.My[characterName].Action.Npc.Sell.PostAsync(body))!.Data!;
+        var result = (await apiClient.My[characterName].Action.Npc.Sell
+            .PostAsync(body, cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
 
-    public async Task<BankItemTransactionSchema> StoreInBank(string itemCode, int quantity)
+    public async Task<BankItemTransactionSchema> StoreInBank(string itemCode, int quantity,
+        CancellationToken cancellationToken = default)
     {
         var result = (await apiClient.My[characterName].Action.Bank.Deposit.Item.PostAsync([
             new()
@@ -397,9 +447,9 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
                 Code = itemCode,
                 Quantity = quantity,
             },
-        ]))!.Data!;
+        ], cancellationToken: cancellationToken))!.Data!;
 
-        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value);
+        await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 
         return result;
     }
@@ -408,25 +458,26 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
 file sealed class Characters(ArtifactsMmoApiGame game, string characterName, ArtifactsMmoApiClient apiClient)
     : IGameCharacters
 {
-    public async Task<CharacterSchema> GetEverything()
+    public async Task<CharacterSchema> GetEverything(CancellationToken cancellationToken = default)
     {
-        var character = await apiClient.Characters[characterName].GetAsync();
+        var character = await apiClient.Characters[characterName].GetAsync(cancellationToken: cancellationToken);
 
-        await game.UpdateCooldownEnd(character!.Data!.CooldownExpiration!.Value);
+        await game.UpdateCooldownEnd(character!.Data!.CooldownExpiration!.Value, cancellationToken);
 
         return character.Data!;
     }
 
-    public async Task<(int x, int y)> GetPosition()
+    public async Task<(int x, int y)> GetPosition(CancellationToken cancellationToken = default)
     {
-        var character = await GetEverything();
+        var character = await GetEverything(cancellationToken);
 
         return (character.X!.Value, character.Y!.Value);
     }
 
-    public async IAsyncEnumerable<InventorySlot> GetInventory()
+    public async IAsyncEnumerable<InventorySlot> GetInventory(
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        var character = await GetEverything();
+        var character = await GetEverything(cancellationToken);
 
         foreach (var inventorySlot in character.Inventory!)
         {
@@ -437,9 +488,9 @@ file sealed class Characters(ArtifactsMmoApiGame game, string characterName, Art
         }
     }
 
-    public async Task<IDictionary<ItemSlot, string?>> GetEquipment()
+    public async Task<IDictionary<ItemSlot, string?>> GetEquipment(CancellationToken cancellationToken = default)
     {
-        var character = await GetEverything();
+        var character = await GetEverything(cancellationToken);
 
         return new Dictionary<ItemSlot, string?>
         {
@@ -457,6 +508,8 @@ file sealed class Characters(ArtifactsMmoApiGame game, string characterName, Art
             { ItemSlot.Artifact3, character.Artifact3Slot },
             { ItemSlot.Utility1, character.Utility1Slot },
             { ItemSlot.Utility2, character.Utility2Slot },
+            { ItemSlot.Bag, character.BagSlot },
+            { ItemSlot.Rune, character.RuneSlot },
         };
     }
 }

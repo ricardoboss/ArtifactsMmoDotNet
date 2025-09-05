@@ -4,11 +4,11 @@ namespace ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 
 public interface IGameCharacters
 {
-    Task<CharacterSchema> GetEverything();
+    Task<CharacterSchema> GetEverything(CancellationToken cancellationToken = default);
 
-    Task<(int x, int y)> GetPosition();
+    Task<(int x, int y)> GetPosition(CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<InventorySlot> GetInventory();
+    IAsyncEnumerable<InventorySlot> GetInventory(CancellationToken cancellationToken = default);
 
-    Task<IDictionary<ItemSlot, string?>> GetEquipment();
+    Task<IDictionary<ItemSlot, string?>> GetEquipment(CancellationToken cancellationToken = default);
 }
