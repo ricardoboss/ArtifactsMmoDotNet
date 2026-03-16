@@ -56,7 +56,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Withdraw
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.BankGoldTransactionResponseSchema> PostAsync(global::ArtifactsMmoDotNet.Api.Generated.Models.DepositWithdrawGoldSchema body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
             var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
             {
@@ -85,7 +85,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank.Withdraw
         public RequestInformation ToPostRequestInformation(global::ArtifactsMmoDotNet.Api.Generated.Models.DepositWithdrawGoldSchema body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
+            _ = body ?? throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

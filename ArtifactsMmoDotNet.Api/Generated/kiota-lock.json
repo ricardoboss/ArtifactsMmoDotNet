@@ -1,8 +1,8 @@
 {
-  "descriptionHash": "FF49493D8942C2095F03BD1E446F01C2317887D7BF7E72384D00818367E83B8C23027994AF83BAF77907AA45EB95D8E4E5987149DD4520E7019F7C337DC68D10",
+  "descriptionHash": "10280F48A15B3AFDBFAFD24CFD38F2E856B04718B68E7A4BD46ACE8E0BB1DD59CFF325B64B72B255FE37AAA7A5BFAD16C4C0B4B25FDE8D83236AE6E9CF037512",
   "descriptionLocation": "../openapi-3.1.json",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.30.0",
+  "kiotaVersion": "1.28.0",
   "clientClassName": "ArtifactsMmoApiClient",
   "typeAccessModifier": "Public",
   "clientNamespaceName": "ArtifactsMmoDotNet.Api.Generated",
