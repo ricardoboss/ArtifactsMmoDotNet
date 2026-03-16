@@ -72,7 +72,7 @@ public sealed class CustomErrorCodeHandlingRequestAdapter(IRequestAdapter innerH
         errorMapping ??= [];
 
         foreach (var errorMappingEntry in CustomErrorMappings)
-            errorMapping.Add(errorMappingEntry.Key, errorMappingEntry.Value);
+            errorMapping[errorMappingEntry.Key] = errorMappingEntry.Value;
 
         return errorMapping;
     }
