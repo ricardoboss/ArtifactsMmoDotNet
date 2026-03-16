@@ -39,6 +39,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Token
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.TokenResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 422 status code</exception>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 455 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.TokenResponseSchema?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +51,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Token
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.TokenResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.TokenResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+                { "455", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.TokenResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.TokenResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Use your account as HTTPBasic Auth to generate your token to use the API. You can also generate your token directly on the website.

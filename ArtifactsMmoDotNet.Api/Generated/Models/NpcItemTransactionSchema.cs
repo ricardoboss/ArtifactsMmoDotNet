@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,68 +9,31 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class NpcItemTransactionSchema : IBackedModel, IParsable
+    public partial class NpcItemTransactionSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Item code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
         /// <summary>Currency used for the transaction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Currency
-        {
-            get { return BackingStore?.Get<string?>("currency"); }
-            set { BackingStore?.Set("currency", value); }
-        }
+        public string? Currency { get; set; }
 #nullable restore
 #else
-        public string Currency
-        {
-            get { return BackingStore?.Get<string>("currency"); }
-            set { BackingStore?.Set("currency", value); }
-        }
+        public string Currency { get; set; }
 #endif
         /// <summary>Item price.</summary>
-        public int? Price
-        {
-            get { return BackingStore?.Get<int?>("price"); }
-            set { BackingStore?.Set("price", value); }
-        }
+        public int? Price { get; set; }
         /// <summary>Item quantity.</summary>
-        public int? Quantity
-        {
-            get { return BackingStore?.Get<int?>("quantity"); }
-            set { BackingStore?.Set("quantity", value); }
-        }
+        public int? Quantity { get; set; }
         /// <summary>Total price of the transaction.</summary>
-        public int? TotalPrice
-        {
-            get { return BackingStore?.Get<int?>("total_price"); }
-            set { BackingStore?.Set("total_price", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.NpcItemTransactionSchema"/> and sets the default values.
-        /// </summary>
-        public NpcItemTransactionSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? TotalPrice { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -79,7 +41,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.NpcItemTransactionSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.NpcItemTransactionSchema();
         }
         /// <summary>
@@ -103,7 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("currency", Currency);
             writer.WriteIntValue("price", Price);

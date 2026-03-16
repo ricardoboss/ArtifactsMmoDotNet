@@ -34,25 +34,30 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders.Item
         {
         }
         /// <summary>
-        /// Retrieve the sell order of a item.
+        /// Retrieve a specific order by ID.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderReponseSchema"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderReponseSchema?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderResponseSchema?> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderReponseSchema> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderResponseSchema> GetAsync(Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderReponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderReponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Retrieve the sell order of a item.
+        /// Retrieve a specific order by ID.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>

@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,30 +9,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DestinationSchema : IBackedModel, IParsable
+    public partial class DestinationSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
+        /// <summary>The map ID of the destination.</summary>
+        public int? MapId { get; set; }
         /// <summary>The x coordinate of the destination.</summary>
-        public int? X
-        {
-            get { return BackingStore?.Get<int?>("x"); }
-            set { BackingStore?.Set("x", value); }
-        }
+        public int? X { get; set; }
         /// <summary>The y coordinate of the destination.</summary>
-        public int? Y
-        {
-            get { return BackingStore?.Get<int?>("y"); }
-            set { BackingStore?.Set("y", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationSchema"/> and sets the default values.
-        /// </summary>
-        public DestinationSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? Y { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -41,7 +25,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.DestinationSchema();
         }
         /// <summary>
@@ -52,6 +36,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "map_id", n => { MapId = n.GetIntValue(); } },
                 { "x", n => { X = n.GetIntValue(); } },
                 { "y", n => { Y = n.GetIntValue(); } },
             };
@@ -62,7 +47,8 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteIntValue("map_id", MapId);
             writer.WriteIntValue("x", X);
             writer.WriteIntValue("y", Y);
         }

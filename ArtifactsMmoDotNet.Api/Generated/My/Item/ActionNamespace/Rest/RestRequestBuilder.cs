@@ -39,6 +39,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 422 status code</exception>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 486 status code</exception>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 498 status code</exception>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 499 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema?> PostAsync(Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,7 +53,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest
         {
 #endif
             var requestInfo = ToPostRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+                { "486", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+                { "498", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+                { "499", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Recovers hit points by resting. (1 second per 5 HP, minimum 3 seconds)

@@ -4,10 +4,8 @@ using Microsoft.Kiota.Abstractions.Store;
 
 namespace ArtifactsMmoDotNet.Api;
 
-public sealed class DisposableArtifactsMmoApiClient(
-    IRequestAdapter requestAdapter,
-    IBackingStoreFactory? backingStore = null)
-    : ArtifactsMmoApiClient(requestAdapter, backingStore), IDisposable
+public sealed class DisposableArtifactsMmoApiClient(IRequestAdapter requestAdapter)
+    : ArtifactsMmoApiClient(requestAdapter), IDisposable
 {
     public void Dispose()
     {

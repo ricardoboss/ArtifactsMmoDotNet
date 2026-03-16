@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,98 +9,25 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DataPage_CharacterLeaderboardSchema_ : IBackedModel, IParsable
+    public partial class DataPage_CharacterLeaderboardSchema_ : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema>? Data
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema>?>("data"); }
-            set { BackingStore?.Set("data", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema> Data
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema>>("data"); }
-            set { BackingStore?.Set("data", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema> Data { get; set; }
 #endif
         /// <summary>The page property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page? Page
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page?>("page"); }
-            set { BackingStore?.Set("page", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page Page
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page>("page"); }
-            set { BackingStore?.Set("page", value); }
-        }
-#endif
+        public int? Page { get; set; }
         /// <summary>The pages property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages? Pages
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages?>("pages"); }
-            set { BackingStore?.Set("pages", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages Pages
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages>("pages"); }
-            set { BackingStore?.Set("pages", value); }
-        }
-#endif
+        public int? Pages { get; set; }
         /// <summary>The size property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size? Size
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size?>("size"); }
-            set { BackingStore?.Set("size", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size Size
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size>("size"); }
-            set { BackingStore?.Set("size", value); }
-        }
-#endif
+        public int? Size { get; set; }
         /// <summary>The total property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total? Total
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total?>("total"); }
-            set { BackingStore?.Set("total", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total Total
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total>("total"); }
-            set { BackingStore?.Set("total", value); }
-        }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_"/> and sets the default values.
-        /// </summary>
-        public DataPage_CharacterLeaderboardSchema_()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? Total { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -109,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_ CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_();
         }
         /// <summary>
@@ -121,10 +47,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "page", n => { Page = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page.CreateFromDiscriminatorValue); } },
-                { "pages", n => { Pages = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages.CreateFromDiscriminatorValue); } },
-                { "size", n => { Size = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size.CreateFromDiscriminatorValue); } },
-                { "total", n => { Total = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total.CreateFromDiscriminatorValue); } },
+                { "page", n => { Page = n.GetIntValue(); } },
+                { "pages", n => { Pages = n.GetIntValue(); } },
+                { "size", n => { Size = n.GetIntValue(); } },
+                { "total", n => { Total = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -133,344 +59,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema>("data", Data);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page>("page", Page);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages>("pages", Pages);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size>("size", Size);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total>("total", Total);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_CharacterLeaderboardSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1? DataPageCharacterLeaderboardSchemaPageMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1?>("DataPage_CharacterLeaderboardSchema__pageMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pageMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1 DataPageCharacterLeaderboardSchemaPageMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1>("DataPage_CharacterLeaderboardSchema__pageMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pageMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page"/> and sets the default values.
-            /// </summary>
-            public DataPage_CharacterLeaderboardSchema__page()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__page();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageCharacterLeaderboardSchemaPageMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageCharacterLeaderboardSchemaPageMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaPageMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pageMember1>(null, DataPageCharacterLeaderboardSchemaPageMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_CharacterLeaderboardSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1? DataPageCharacterLeaderboardSchemaPagesMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1?>("DataPage_CharacterLeaderboardSchema__pagesMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pagesMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1 DataPageCharacterLeaderboardSchemaPagesMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1>("DataPage_CharacterLeaderboardSchema__pagesMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__pagesMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages"/> and sets the default values.
-            /// </summary>
-            public DataPage_CharacterLeaderboardSchema__pages()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__pages();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageCharacterLeaderboardSchemaPagesMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageCharacterLeaderboardSchemaPagesMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaPagesMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__pagesMember1>(null, DataPageCharacterLeaderboardSchemaPagesMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_CharacterLeaderboardSchema__size : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1? DataPageCharacterLeaderboardSchemaSizeMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1?>("DataPage_CharacterLeaderboardSchema__sizeMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__sizeMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1 DataPageCharacterLeaderboardSchemaSizeMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1>("DataPage_CharacterLeaderboardSchema__sizeMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__sizeMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size"/> and sets the default values.
-            /// </summary>
-            public DataPage_CharacterLeaderboardSchema__size()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__size();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageCharacterLeaderboardSchemaSizeMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageCharacterLeaderboardSchemaSizeMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaSizeMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__sizeMember1>(null, DataPageCharacterLeaderboardSchemaSizeMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_CharacterLeaderboardSchema__total : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1? DataPageCharacterLeaderboardSchemaTotalMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1?>("DataPage_CharacterLeaderboardSchema__totalMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__totalMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1 DataPageCharacterLeaderboardSchemaTotalMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1>("DataPage_CharacterLeaderboardSchema__totalMember1"); }
-                set { BackingStore?.Set("DataPage_CharacterLeaderboardSchema__totalMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total"/> and sets the default values.
-            /// </summary>
-            public DataPage_CharacterLeaderboardSchema__total()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema_.DataPage_CharacterLeaderboardSchema__total();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageCharacterLeaderboardSchemaTotalMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageCharacterLeaderboardSchemaTotalMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageCharacterLeaderboardSchemaTotalMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_CharacterLeaderboardSchema__totalMember1>(null, DataPageCharacterLeaderboardSchemaTotalMember1);
-                }
-            }
+            writer.WriteIntValue("page", Page);
+            writer.WriteIntValue("pages", Pages);
+            writer.WriteIntValue("size", Size);
+            writer.WriteIntValue("total", Total);
         }
     }
 }

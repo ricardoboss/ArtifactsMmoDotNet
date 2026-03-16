@@ -49,20 +49,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.List
         /// <summary>
         /// Fetch the list of all tasks.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_TaskFullSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_TaskFullSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_TaskFullSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Tasks.List.ListRequestBuilder.ListRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_TaskFullSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Tasks.List.ListRequestBuilder.ListRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_TaskFullSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Tasks.List.ListRequestBuilder.ListRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_TaskFullSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Tasks.List.ListRequestBuilder.ListRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_TaskFullSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_TaskFullSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_TaskFullSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_TaskFullSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch the list of all tasks.
@@ -110,12 +110,26 @@ namespace ArtifactsMmoDotNet.Api.Generated.Tasks.List
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
-            /// <summary>The code of the skill.</summary>
+            /// <summary>Skill of tasks.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("skill")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.Skill? Skill { get; set; }
-            /// <summary>The type of tasks.</summary>
+            public string? Skill { get; set; }
+#nullable restore
+#else
+            [QueryParameter("skill")]
+            public string Skill { get; set; }
+#endif
+            /// <summary>Type of tasks.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.TaskType? Type { get; set; }
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

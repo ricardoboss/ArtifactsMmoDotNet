@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,98 +9,25 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class DataPage_LogSchema_ : IBackedModel, IParsable
+    public partial class DataPage_LogSchema_ : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>The data property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema>? Data
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema>?>("data"); }
-            set { BackingStore?.Set("data", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema>? Data { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema> Data
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema>>("data"); }
-            set { BackingStore?.Set("data", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema> Data { get; set; }
 #endif
         /// <summary>The page property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page? Page
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page?>("page"); }
-            set { BackingStore?.Set("page", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page Page
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page>("page"); }
-            set { BackingStore?.Set("page", value); }
-        }
-#endif
+        public int? Page { get; set; }
         /// <summary>The pages property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages? Pages
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages?>("pages"); }
-            set { BackingStore?.Set("pages", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages Pages
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages>("pages"); }
-            set { BackingStore?.Set("pages", value); }
-        }
-#endif
+        public int? Pages { get; set; }
         /// <summary>The size property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size? Size
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size?>("size"); }
-            set { BackingStore?.Set("size", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size Size
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size>("size"); }
-            set { BackingStore?.Set("size", value); }
-        }
-#endif
+        public int? Size { get; set; }
         /// <summary>The total property</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total? Total
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total?>("total"); }
-            set { BackingStore?.Set("total", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total Total
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total>("total"); }
-            set { BackingStore?.Set("total", value); }
-        }
-#endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_"/> and sets the default values.
-        /// </summary>
-        public DataPage_LogSchema_()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? Total { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -109,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_ CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_();
         }
         /// <summary>
@@ -121,10 +47,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "data", n => { Data = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "page", n => { Page = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page.CreateFromDiscriminatorValue); } },
-                { "pages", n => { Pages = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages.CreateFromDiscriminatorValue); } },
-                { "size", n => { Size = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size.CreateFromDiscriminatorValue); } },
-                { "total", n => { Total = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total>(global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total.CreateFromDiscriminatorValue); } },
+                { "page", n => { Page = n.GetIntValue(); } },
+                { "pages", n => { Pages = n.GetIntValue(); } },
+                { "size", n => { Size = n.GetIntValue(); } },
+                { "total", n => { Total = n.GetIntValue(); } },
             };
         }
         /// <summary>
@@ -133,344 +59,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema>("data", Data);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page>("page", Page);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages>("pages", Pages);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size>("size", Size);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total>("total", Total);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_LogSchema__page : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1? DataPageLogSchemaPageMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1?>("DataPage_LogSchema__pageMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__pageMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1 DataPageLogSchemaPageMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1>("DataPage_LogSchema__pageMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__pageMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page"/> and sets the default values.
-            /// </summary>
-            public DataPage_LogSchema__page()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__page();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageLogSchemaPageMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageLogSchemaPageMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageLogSchemaPageMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pageMember1>(null, DataPageLogSchemaPageMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_LogSchema__pages : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1? DataPageLogSchemaPagesMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1?>("DataPage_LogSchema__pagesMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__pagesMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1 DataPageLogSchemaPagesMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1>("DataPage_LogSchema__pagesMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__pagesMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages"/> and sets the default values.
-            /// </summary>
-            public DataPage_LogSchema__pages()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__pages();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageLogSchemaPagesMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageLogSchemaPagesMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageLogSchemaPagesMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__pagesMember1>(null, DataPageLogSchemaPagesMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_LogSchema__size : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1? DataPageLogSchemaSizeMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1?>("DataPage_LogSchema__sizeMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__sizeMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1 DataPageLogSchemaSizeMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1>("DataPage_LogSchema__sizeMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__sizeMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size"/> and sets the default values.
-            /// </summary>
-            public DataPage_LogSchema__size()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__size();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageLogSchemaSizeMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageLogSchemaSizeMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageLogSchemaSizeMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__sizeMember1>(null, DataPageLogSchemaSizeMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1"/>, <see cref="int"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class DataPage_LogSchema__total : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1? DataPageLogSchemaTotalMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1?>("DataPage_LogSchema__totalMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__totalMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1 DataPageLogSchemaTotalMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1>("DataPage_LogSchema__totalMember1"); }
-                set { BackingStore?.Set("DataPage_LogSchema__totalMember1", value); }
-            }
-#endif
-            /// <summary>Composed type representation for type <see cref="int"/></summary>
-            public int? Integer
-            {
-                get { return BackingStore?.Get<int?>("integer"); }
-                set { BackingStore?.Set("integer", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total"/> and sets the default values.
-            /// </summary>
-            public DataPage_LogSchema__total()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.DataPage_LogSchema__total();
-                if(parseNode.GetIntValue() is int integerValue)
-                {
-                    result.Integer = integerValue;
-                }
-                else {
-                    result.DataPageLogSchemaTotalMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(DataPageLogSchemaTotalMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataPageLogSchemaTotalMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(Integer != null)
-                {
-                    writer.WriteIntValue(null, Integer);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema__totalMember1>(null, DataPageLogSchemaTotalMember1);
-                }
-            }
+            writer.WriteIntValue("page", Page);
+            writer.WriteIntValue("pages", Pages);
+            writer.WriteIntValue("size", Size);
+            writer.WriteIntValue("total", Total);
         }
     }
 }

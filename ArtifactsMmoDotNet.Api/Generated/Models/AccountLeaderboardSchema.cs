@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,58 +9,25 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AccountLeaderboardSchema : IBackedModel, IParsable
+    public partial class AccountLeaderboardSchema : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Account
-        {
-            get { return BackingStore?.Get<string?>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string? Account { get; set; }
 #nullable restore
 #else
-        public string Account
-        {
-            get { return BackingStore?.Get<string>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string Account { get; set; }
 #endif
         /// <summary>Achievements points.</summary>
-        public int? AchievementsPoints
-        {
-            get { return BackingStore?.Get<int?>("achievements_points"); }
-            set { BackingStore?.Set("achievements_points", value); }
-        }
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
+        public int? AchievementsPoints { get; set; }
         /// <summary>Gold in the account.</summary>
-        public int? Gold
-        {
-            get { return BackingStore?.Get<int?>("gold"); }
-            set { BackingStore?.Set("gold", value); }
-        }
+        public int? Gold { get; set; }
         /// <summary>Position in the leaderboard.</summary>
-        public int? Position
-        {
-            get { return BackingStore?.Get<int?>("position"); }
-            set { BackingStore?.Set("position", value); }
-        }
+        public int? Position { get; set; }
         /// <summary>Member status.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
-            set { BackingStore?.Set("status", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountLeaderboardSchema"/> and sets the default values.
-        /// </summary>
-        public AccountLeaderboardSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -69,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.AccountLeaderboardSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountLeaderboardSchema();
         }
         /// <summary>
@@ -93,7 +59,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteIntValue("achievements_points", AchievementsPoints);
             writer.WriteIntValue("gold", Gold);

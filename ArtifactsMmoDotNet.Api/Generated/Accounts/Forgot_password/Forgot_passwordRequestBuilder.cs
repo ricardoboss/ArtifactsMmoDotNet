@@ -40,6 +40,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Forgot_password
         /// <param name="body">The request body</param>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 422 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetResponseSchema?> PostAsync(global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetRequestSchema body, Action<RequestConfiguration<DefaultQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,9 +50,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Forgot_password
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetResponseSchema> PostAsync(global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetRequestSchema body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = ToPostRequestInformation(body, requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetResponseSchema.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "422", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetResponseSchema>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetResponseSchema.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Request a password reset.
@@ -68,7 +73,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Accounts.Forgot_password
         public RequestInformation ToPostRequestInformation(global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetRequestSchema body, Action<RequestConfiguration<DefaultQueryParameters>> requestConfiguration = default)
         {
 #endif
-            _ = body ?? throw new ArgumentNullException(nameof(body));
+            if(ReferenceEquals(body, null)) throw new ArgumentNullException(nameof(body));
             var requestInfo = new RequestInformation(Method.POST, UrlTemplate, PathParameters);
             requestInfo.Configure(requestConfiguration);
             requestInfo.Headers.TryAdd("Accept", "application/json");

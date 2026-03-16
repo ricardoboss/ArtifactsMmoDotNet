@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,158 +9,77 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ItemSchema : IBackedModel, IParsable
+    public partial class ItemSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Item code. This is the item&apos;s unique identifier (ID).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
         /// <summary>Item conditions. If applicable. Conditions for using or equipping the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>? Conditions
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>?>("conditions"); }
-            set { BackingStore?.Set("conditions", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>? Conditions { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema> Conditions
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>>("conditions"); }
-            set { BackingStore?.Set("conditions", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema> Conditions { get; set; }
 #endif
         /// <summary>Craft information. If applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema? Craft
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema?>("craft"); }
-            set { BackingStore?.Set("craft", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema? Craft { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema Craft
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>("craft"); }
-            set { BackingStore?.Set("craft", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema Craft { get; set; }
 #endif
         /// <summary>Item description.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description
-        {
-            get { return BackingStore?.Get<string?>("description"); }
-            set { BackingStore?.Set("description", value); }
-        }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Description
-        {
-            get { return BackingStore?.Get<string>("description"); }
-            set { BackingStore?.Set("description", value); }
-        }
+        public string Description { get; set; }
 #endif
         /// <summary>List of object effects. For equipment, it will include item stats.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>? Effects
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>?>("effects"); }
-            set { BackingStore?.Set("effects", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>? Effects { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema> Effects
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>>("effects"); }
-            set { BackingStore?.Set("effects", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema> Effects { get; set; }
 #endif
         /// <summary>Item level.</summary>
-        public int? Level
-        {
-            get { return BackingStore?.Get<int?>("level"); }
-            set { BackingStore?.Set("level", value); }
-        }
+        public int? Level { get; set; }
         /// <summary>Item name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
 #endif
         /// <summary>Item subtype.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Subtype
-        {
-            get { return BackingStore?.Get<string?>("subtype"); }
-            set { BackingStore?.Set("subtype", value); }
-        }
+        public string? Subtype { get; set; }
 #nullable restore
 #else
-        public string Subtype
-        {
-            get { return BackingStore?.Get<string>("subtype"); }
-            set { BackingStore?.Set("subtype", value); }
-        }
+        public string Subtype { get; set; }
 #endif
         /// <summary>Item tradeable status. A non-tradeable item cannot be exchanged or sold.</summary>
-        public bool? Tradeable
-        {
-            get { return BackingStore?.Get<bool?>("tradeable"); }
-            set { BackingStore?.Set("tradeable", value); }
-        }
+        public bool? Tradeable { get; set; }
         /// <summary>Item type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type
-        {
-            get { return BackingStore?.Get<string?>("type"); }
-            set { BackingStore?.Set("type", value); }
-        }
+        public string? Type { get; set; }
 #nullable restore
 #else
-        public string Type
-        {
-            get { return BackingStore?.Get<string>("type"); }
-            set { BackingStore?.Set("type", value); }
-        }
+        public string Type { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema"/> and sets the default values.
-        /// </summary>
-        public ItemSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -169,7 +87,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSchema();
         }
         /// <summary>
@@ -198,7 +116,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.ConditionSchema>("conditions", Conditions);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSchema>("craft", Craft);

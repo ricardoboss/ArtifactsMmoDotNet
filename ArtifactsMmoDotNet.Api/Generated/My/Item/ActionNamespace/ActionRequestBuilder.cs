@@ -2,6 +2,7 @@
 #pragma warning disable CS0618
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Bank;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Change_skin;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Claim_item;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Crafting;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Delete;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Equip;
@@ -14,6 +15,7 @@ using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Npc;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Recycling;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Rest;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Transition;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Unequip;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Use;
 using Microsoft.Kiota.Abstractions.Extensions;
@@ -39,6 +41,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Change_skin.Change_skinRequestBuilder Change_skin
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Change_skin.Change_skinRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The claim_item property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Claim_item.Claim_itemRequestBuilder Claim_item
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Claim_item.Claim_itemRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The crafting property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Crafting.CraftingRequestBuilder Crafting
@@ -99,6 +106,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.TaskRequestBuilder Task
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.TaskNamespace.TaskRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The transition property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Transition.TransitionRequestBuilder Transition
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Transition.TransitionRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The unequip property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Unequip.UnequipRequestBuilder Unequip

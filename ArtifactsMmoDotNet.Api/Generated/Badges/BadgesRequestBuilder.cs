@@ -19,7 +19,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Badges
     public partial class BadgesRequestBuilder : BaseRequestBuilder
     {
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.badges.item collection</summary>
-        /// <param name="position">The code of the achievement.</param>
+        /// <param name="position">The code of the badge.</param>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Badges.Item.WithCodeItemRequestBuilder"/></returns>
         public global::ArtifactsMmoDotNet.Api.Generated.Badges.Item.WithCodeItemRequestBuilder this[string position]
         {
@@ -49,20 +49,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Badges
         /// <summary>
         /// List of all badges.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_BadgeSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_BadgeSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_BadgeSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Badges.BadgesRequestBuilder.BadgesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_BadgeSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Badges.BadgesRequestBuilder.BadgesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_BadgeSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Badges.BadgesRequestBuilder.BadgesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_BadgeSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Badges.BadgesRequestBuilder.BadgesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_BadgeSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_BadgeSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_BadgeSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_BadgeSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// List of all badges.

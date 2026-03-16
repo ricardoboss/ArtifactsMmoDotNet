@@ -22,7 +22,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.History.Item
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCodeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/history/{code}{?buyer*,page*,seller*,size*}", pathParameters)
+        public WithCodeItemRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/history/{code}{?account*,page*,size*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,15 +30,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.History.Item
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public WithCodeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/history/{code}{?buyer*,page*,seller*,size*}", rawUrl)
+        public WithCodeItemRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/history/{code}{?account*,page*,size*}", rawUrl)
         {
         }
         /// <summary>
-        /// Fetch the sales history of the item for the last 7 days.
+        /// Fetch the transaction history of the item for the last 7 days (buy and sell orders).
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 404 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Grandexchange.History.Item.WithCodeItemRequestBuilder.WithCodeItemRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -49,10 +50,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.History.Item
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GeOrderHistorySchema_.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch the sales history of the item for the last 7 days.
+        /// Fetch the transaction history of the item for the last 7 days (buy and sell orders).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,34 +85,24 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.History.Item
             return new global::ArtifactsMmoDotNet.Api.Generated.Grandexchange.History.Item.WithCodeItemRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch the sales history of the item for the last 7 days.
+        /// Fetch the transaction history of the item for the last 7 days (buy and sell orders).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class WithCodeItemRequestBuilderGetQueryParameters 
         {
-            /// <summary>The buyer (account name) of the item.</summary>
+            /// <summary>Account involved in the transaction (matches either seller or buyer).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-            [QueryParameter("buyer")]
-            public string? Buyer { get; set; }
+            [QueryParameter("account")]
+            public string? Account { get; set; }
 #nullable restore
 #else
-            [QueryParameter("buyer")]
-            public string Buyer { get; set; }
+            [QueryParameter("account")]
+            public string Account { get; set; }
 #endif
             /// <summary>Page number</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>The seller (account name) of the item.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("seller")]
-            public string? Seller { get; set; }
-#nullable restore
-#else
-            [QueryParameter("seller")]
-            public string Seller { get; set; }
-#endif
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }

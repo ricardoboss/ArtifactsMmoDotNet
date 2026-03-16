@@ -15,11 +15,11 @@ using ArtifactsMmoDotNet.Api.Generated.Monsters;
 using ArtifactsMmoDotNet.Api.Generated.My;
 using ArtifactsMmoDotNet.Api.Generated.Npcs;
 using ArtifactsMmoDotNet.Api.Generated.Resources;
+using ArtifactsMmoDotNet.Api.Generated.Simulation;
 using ArtifactsMmoDotNet.Api.Generated.Tasks;
 using ArtifactsMmoDotNet.Api.Generated.Token;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using Microsoft.Kiota.Abstractions;
 using Microsoft.Kiota.Serialization.Json;
 using System.Collections.Generic;
@@ -105,6 +105,11 @@ namespace ArtifactsMmoDotNet.Api.Generated
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder(PathParameters, RequestAdapter);
         }
+        /// <summary>The simulation property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Simulation.SimulationRequestBuilder Simulation
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.Simulation.SimulationRequestBuilder(PathParameters, RequestAdapter);
+        }
         /// <summary>The tasks property</summary>
         public global::ArtifactsMmoDotNet.Api.Generated.Tasks.TasksRequestBuilder Tasks
         {
@@ -118,13 +123,11 @@ namespace ArtifactsMmoDotNet.Api.Generated
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.ArtifactsMmoApiClient"/> and sets the default values.
         /// </summary>
-        /// <param name="backingStore">The backing store to use for the models.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public ArtifactsMmoApiClient(IRequestAdapter requestAdapter, IBackingStoreFactory backingStore = default) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
+        public ArtifactsMmoApiClient(IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}", new Dictionary<string, object>())
         {
             ApiClientBuilder.RegisterDefaultSerializer<JsonSerializationWriterFactory>();
             ApiClientBuilder.RegisterDefaultDeserializer<JsonParseNodeFactory>();
-            RequestAdapter.EnableBackingStore(backingStore);
         }
         /// <summary>
         /// Return the status of the game server.

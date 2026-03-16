@@ -16,6 +16,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Fight,
         #pragma warning restore CS1591
+        [EnumMember(Value = "multi_fight")]
+        #pragma warning disable CS1591
+        Multi_fight,
+        #pragma warning restore CS1591
         [EnumMember(Value = "crafting")]
         #pragma warning disable CS1591
         Crafting,
@@ -31,6 +35,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         [EnumMember(Value = "sell_ge")]
         #pragma warning disable CS1591
         Sell_ge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "create_buy_order_ge")]
+        #pragma warning disable CS1591
+        Create_buy_order_ge,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "fill_buy_order_ge")]
+        #pragma warning disable CS1591
+        Fill_buy_order_ge,
         #pragma warning restore CS1591
         [EnumMember(Value = "buy_npc")]
         #pragma warning disable CS1591
@@ -76,10 +88,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Task,
         #pragma warning restore CS1591
-        [EnumMember(Value = "christmas_exchange")]
-        #pragma warning disable CS1591
-        Christmas_exchange,
-        #pragma warning restore CS1591
         [EnumMember(Value = "recycling")]
         #pragma warning disable CS1591
         Recycling,
@@ -111,6 +119,26 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         [EnumMember(Value = "rename")]
         #pragma warning disable CS1591
         Rename,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "transition")]
+        #pragma warning disable CS1591
+        Transition,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "claim_item")]
+        #pragma warning disable CS1591
+        Claim_item,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sandbox_give_gold")]
+        #pragma warning disable CS1591
+        Sandbox_give_gold,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sandbox_give_item")]
+        #pragma warning disable CS1591
+        Sandbox_give_item,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "sandbox_give_xp")]
+        #pragma warning disable CS1591
+        Sandbox_give_xp,
         #pragma warning restore CS1591
     }
 }

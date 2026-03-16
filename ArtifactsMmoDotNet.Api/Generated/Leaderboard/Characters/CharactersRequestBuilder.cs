@@ -85,7 +85,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Characters
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class CharactersRequestBuilderGetQueryParameters 
         {
-            /// <summary>Find a character by name.</summary>
+            /// <summary>Character name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("name")]
@@ -101,9 +101,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Characters
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
-            /// <summary>Default sort by combat total XP.</summary>
+            /// <summary>Sort of character leaderboards.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("sort")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardType? Sort { get; set; }
+            public string? Sort { get; set; }
+#nullable restore
+#else
+            [QueryParameter("sort")]
+            public string Sort { get; set; }
+#endif
         }
     }
 }

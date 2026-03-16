@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,30 +9,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class UnequipSchema : IBackedModel, IParsable
+    public partial class UnequipSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Item quantity. Applicable to utilities only.</summary>
-        public int? Quantity
-        {
-            get { return BackingStore?.Get<int?>("quantity"); }
-            set { BackingStore?.Set("quantity", value); }
-        }
+        public int? Quantity { get; set; }
         /// <summary>Item slot.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot? Slot
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot?>("slot"); }
-            set { BackingStore?.Set("slot", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema"/> and sets the default values.
-        /// </summary>
-        public UnequipSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot? Slot { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -41,7 +23,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.UnequipSchema();
         }
         /// <summary>
@@ -62,7 +44,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("quantity", Quantity);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ItemSlot>("slot", Slot);
         }

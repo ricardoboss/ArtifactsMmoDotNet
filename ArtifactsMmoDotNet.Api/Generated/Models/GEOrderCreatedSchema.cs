@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,80 +9,33 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class GEOrderCreatedSchema : IBackedModel, IParsable
+    public partial class GEOrderCreatedSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Item code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
         /// <summary>Order created at.</summary>
-        public DateTimeOffset? CreatedAt
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("created_at"); }
-            set { BackingStore?.Set("created_at", value); }
-        }
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>Order id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id
-        {
-            get { return BackingStore?.Get<string?>("id"); }
-            set { BackingStore?.Set("id", value); }
-        }
+        public string? Id { get; set; }
 #nullable restore
 #else
-        public string Id
-        {
-            get { return BackingStore?.Get<string>("id"); }
-            set { BackingStore?.Set("id", value); }
-        }
+        public string Id { get; set; }
 #endif
         /// <summary>Item price per unit.</summary>
-        public int? Price
-        {
-            get { return BackingStore?.Get<int?>("price"); }
-            set { BackingStore?.Set("price", value); }
-        }
+        public int? Price { get; set; }
         /// <summary>Item quantity.</summary>
-        public int? Quantity
-        {
-            get { return BackingStore?.Get<int?>("quantity"); }
-            set { BackingStore?.Set("quantity", value); }
-        }
-        /// <summary>Listing tax (3%, minimum 1)</summary>
-        public int? Tax
-        {
-            get { return BackingStore?.Get<int?>("tax"); }
-            set { BackingStore?.Set("tax", value); }
-        }
+        public int? Quantity { get; set; }
         /// <summary>Total price.</summary>
-        public int? TotalPrice
-        {
-            get { return BackingStore?.Get<int?>("total_price"); }
-            set { BackingStore?.Set("total_price", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderCreatedSchema"/> and sets the default values.
-        /// </summary>
-        public GEOrderCreatedSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? TotalPrice { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -91,7 +43,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderCreatedSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.GEOrderCreatedSchema();
         }
         /// <summary>
@@ -107,7 +59,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "id", n => { Id = n.GetStringValue(); } },
                 { "price", n => { Price = n.GetIntValue(); } },
                 { "quantity", n => { Quantity = n.GetIntValue(); } },
-                { "tax", n => { Tax = n.GetIntValue(); } },
                 { "total_price", n => { TotalPrice = n.GetIntValue(); } },
             };
         }
@@ -117,13 +68,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("id", Id);
             writer.WriteIntValue("price", Price);
             writer.WriteIntValue("quantity", Quantity);
-            writer.WriteIntValue("tax", Tax);
             writer.WriteIntValue("total_price", TotalPrice);
         }
     }

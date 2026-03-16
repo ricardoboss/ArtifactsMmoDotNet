@@ -40,5 +40,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Zombie1,
         #pragma warning restore CS1591
+        [EnumMember(Value = "marauder1")]
+        #pragma warning disable CS1591
+        Marauder1,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "goblin1")]
+        #pragma warning disable CS1591
+        Goblin1,
+        #pragma warning restore CS1591
     }
 }

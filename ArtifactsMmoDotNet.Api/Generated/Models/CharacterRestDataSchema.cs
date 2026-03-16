@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,56 +9,27 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CharacterRestDataSchema : IBackedModel, IParsable
+    public partial class CharacterRestDataSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Character details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema? Character
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema?>("character"); }
-            set { BackingStore?.Set("character", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema? Character { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema Character
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character"); }
-            set { BackingStore?.Set("character", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema Character { get; set; }
 #endif
         /// <summary>Cooldown details</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema? Cooldown
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema?>("cooldown"); }
-            set { BackingStore?.Set("cooldown", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema? Cooldown { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema Cooldown
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown"); }
-            set { BackingStore?.Set("cooldown", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema Cooldown { get; set; }
 #endif
         /// <summary>The amount of HP restored.</summary>
-        public int? HpRestored
-        {
-            get { return BackingStore?.Get<int?>("hp_restored"); }
-            set { BackingStore?.Set("hp_restored", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestDataSchema"/> and sets the default values.
-        /// </summary>
-        public CharacterRestDataSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? HpRestored { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -67,7 +37,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestDataSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterRestDataSchema();
         }
         /// <summary>
@@ -89,7 +59,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
             writer.WriteIntValue("hp_restored", HpRestored);

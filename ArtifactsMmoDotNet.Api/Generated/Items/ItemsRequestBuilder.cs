@@ -49,20 +49,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
         /// <summary>
         /// Fetch items details.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ItemSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ItemSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ItemSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ItemSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ItemSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ItemSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ItemSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ItemSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ItemSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ItemSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch items details.
@@ -109,12 +109,19 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
             public string CraftMaterial { get; set; }
 #endif
             /// <summary>Skill to craft items.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("craft_skill")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.CraftSkill? CraftSkill { get; set; }
-            /// <summary>Maximum level items.</summary>
+            public string? CraftSkill { get; set; }
+#nullable restore
+#else
+            [QueryParameter("craft_skill")]
+            public string CraftSkill { get; set; }
+#endif
+            /// <summary>Maximum level.</summary>
             [QueryParameter("max_level")]
             public int? MaxLevel { get; set; }
-            /// <summary>Minimum level items.</summary>
+            /// <summary>Minimum level.</summary>
             [QueryParameter("min_level")]
             public int? MinLevel { get; set; }
             /// <summary>Name of the item.</summary>
@@ -134,8 +141,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.Items
             [QueryParameter("size")]
             public int? Size { get; set; }
             /// <summary>Type of items.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.ItemType? Type { get; set; }
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

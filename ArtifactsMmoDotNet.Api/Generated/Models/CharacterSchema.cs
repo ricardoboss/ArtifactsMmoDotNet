@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,702 +9,309 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CharacterSchema : IBackedModel, IParsable
+    public partial class CharacterSchema : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Account
-        {
-            get { return BackingStore?.Get<string?>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string? Account { get; set; }
 #nullable restore
 #else
-        public string Account
-        {
-            get { return BackingStore?.Get<string>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string Account { get; set; }
 #endif
         /// <summary>Alchemy level.</summary>
-        public int? AlchemyLevel
-        {
-            get { return BackingStore?.Get<int?>("alchemy_level"); }
-            set { BackingStore?.Set("alchemy_level", value); }
-        }
+        public int? AlchemyLevel { get; set; }
         /// <summary>Alchemy XP required to level up the skill.</summary>
-        public int? AlchemyMaxXp
-        {
-            get { return BackingStore?.Get<int?>("alchemy_max_xp"); }
-            set { BackingStore?.Set("alchemy_max_xp", value); }
-        }
+        public int? AlchemyMaxXp { get; set; }
         /// <summary>Alchemy XP.</summary>
-        public int? AlchemyXp
-        {
-            get { return BackingStore?.Get<int?>("alchemy_xp"); }
-            set { BackingStore?.Set("alchemy_xp", value); }
-        }
+        public int? AlchemyXp { get; set; }
         /// <summary>Amulet slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AmuletSlot
-        {
-            get { return BackingStore?.Get<string?>("amulet_slot"); }
-            set { BackingStore?.Set("amulet_slot", value); }
-        }
+        public string? AmuletSlot { get; set; }
 #nullable restore
 #else
-        public string AmuletSlot
-        {
-            get { return BackingStore?.Get<string>("amulet_slot"); }
-            set { BackingStore?.Set("amulet_slot", value); }
-        }
+        public string AmuletSlot { get; set; }
 #endif
         /// <summary>Artifact 1 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Artifact1Slot
-        {
-            get { return BackingStore?.Get<string?>("artifact1_slot"); }
-            set { BackingStore?.Set("artifact1_slot", value); }
-        }
+        public string? Artifact1Slot { get; set; }
 #nullable restore
 #else
-        public string Artifact1Slot
-        {
-            get { return BackingStore?.Get<string>("artifact1_slot"); }
-            set { BackingStore?.Set("artifact1_slot", value); }
-        }
+        public string Artifact1Slot { get; set; }
 #endif
         /// <summary>Artifact 2 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Artifact2Slot
-        {
-            get { return BackingStore?.Get<string?>("artifact2_slot"); }
-            set { BackingStore?.Set("artifact2_slot", value); }
-        }
+        public string? Artifact2Slot { get; set; }
 #nullable restore
 #else
-        public string Artifact2Slot
-        {
-            get { return BackingStore?.Get<string>("artifact2_slot"); }
-            set { BackingStore?.Set("artifact2_slot", value); }
-        }
+        public string Artifact2Slot { get; set; }
 #endif
         /// <summary>Artifact 3 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Artifact3Slot
-        {
-            get { return BackingStore?.Get<string?>("artifact3_slot"); }
-            set { BackingStore?.Set("artifact3_slot", value); }
-        }
+        public string? Artifact3Slot { get; set; }
 #nullable restore
 #else
-        public string Artifact3Slot
-        {
-            get { return BackingStore?.Get<string>("artifact3_slot"); }
-            set { BackingStore?.Set("artifact3_slot", value); }
-        }
+        public string Artifact3Slot { get; set; }
 #endif
         /// <summary>Air attack.</summary>
-        public int? AttackAir
-        {
-            get { return BackingStore?.Get<int?>("attack_air"); }
-            set { BackingStore?.Set("attack_air", value); }
-        }
+        public int? AttackAir { get; set; }
         /// <summary>Earth attack.</summary>
-        public int? AttackEarth
-        {
-            get { return BackingStore?.Get<int?>("attack_earth"); }
-            set { BackingStore?.Set("attack_earth", value); }
-        }
+        public int? AttackEarth { get; set; }
         /// <summary>Fire attack.</summary>
-        public int? AttackFire
-        {
-            get { return BackingStore?.Get<int?>("attack_fire"); }
-            set { BackingStore?.Set("attack_fire", value); }
-        }
+        public int? AttackFire { get; set; }
         /// <summary>Water attack.</summary>
-        public int? AttackWater
-        {
-            get { return BackingStore?.Get<int?>("attack_water"); }
-            set { BackingStore?.Set("attack_water", value); }
-        }
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
+        public int? AttackWater { get; set; }
         /// <summary>Bag slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BagSlot
-        {
-            get { return BackingStore?.Get<string?>("bag_slot"); }
-            set { BackingStore?.Set("bag_slot", value); }
-        }
+        public string? BagSlot { get; set; }
 #nullable restore
 #else
-        public string BagSlot
-        {
-            get { return BackingStore?.Get<string>("bag_slot"); }
-            set { BackingStore?.Set("bag_slot", value); }
-        }
+        public string BagSlot { get; set; }
 #endif
         /// <summary>Body armor slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BodyArmorSlot
-        {
-            get { return BackingStore?.Get<string?>("body_armor_slot"); }
-            set { BackingStore?.Set("body_armor_slot", value); }
-        }
+        public string? BodyArmorSlot { get; set; }
 #nullable restore
 #else
-        public string BodyArmorSlot
-        {
-            get { return BackingStore?.Get<string>("body_armor_slot"); }
-            set { BackingStore?.Set("body_armor_slot", value); }
-        }
+        public string BodyArmorSlot { get; set; }
 #endif
         /// <summary>Boots slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BootsSlot
-        {
-            get { return BackingStore?.Get<string?>("boots_slot"); }
-            set { BackingStore?.Set("boots_slot", value); }
-        }
+        public string? BootsSlot { get; set; }
 #nullable restore
 #else
-        public string BootsSlot
-        {
-            get { return BackingStore?.Get<string>("boots_slot"); }
-            set { BackingStore?.Set("boots_slot", value); }
-        }
+        public string BootsSlot { get; set; }
 #endif
         /// <summary>The current xp level of the Cooking skill.</summary>
-        public int? CookingLevel
-        {
-            get { return BackingStore?.Get<int?>("cooking_level"); }
-            set { BackingStore?.Set("cooking_level", value); }
-        }
+        public int? CookingLevel { get; set; }
         /// <summary>Cooking XP required to level up the skill.</summary>
-        public int? CookingMaxXp
-        {
-            get { return BackingStore?.Get<int?>("cooking_max_xp"); }
-            set { BackingStore?.Set("cooking_max_xp", value); }
-        }
+        public int? CookingMaxXp { get; set; }
         /// <summary>Cooking XP.</summary>
-        public int? CookingXp
-        {
-            get { return BackingStore?.Get<int?>("cooking_xp"); }
-            set { BackingStore?.Set("cooking_xp", value); }
-        }
+        public int? CookingXp { get; set; }
         /// <summary>Cooldown in seconds.</summary>
-        public int? Cooldown
-        {
-            get { return BackingStore?.Get<int?>("cooldown"); }
-            set { BackingStore?.Set("cooldown", value); }
-        }
+        public int? Cooldown { get; set; }
         /// <summary>Datetime Cooldown expiration.</summary>
-        public DateTimeOffset? CooldownExpiration
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("cooldown_expiration"); }
-            set { BackingStore?.Set("cooldown_expiration", value); }
-        }
+        public DateTimeOffset? CooldownExpiration { get; set; }
         /// <summary>% Critical strike. Critical strikes adds 50% extra damage to an attack (1.5x).</summary>
-        public int? CriticalStrike
-        {
-            get { return BackingStore?.Get<int?>("critical_strike"); }
-            set { BackingStore?.Set("critical_strike", value); }
-        }
+        public int? CriticalStrike { get; set; }
         /// <summary>% Damage. Damage increases your attack in all elements.</summary>
-        public int? Dmg
-        {
-            get { return BackingStore?.Get<int?>("dmg"); }
-            set { BackingStore?.Set("dmg", value); }
-        }
+        public int? Dmg { get; set; }
         /// <summary>% Air damage. Damage increases your air attack.</summary>
-        public int? DmgAir
-        {
-            get { return BackingStore?.Get<int?>("dmg_air"); }
-            set { BackingStore?.Set("dmg_air", value); }
-        }
+        public int? DmgAir { get; set; }
         /// <summary>% Earth damage. Damage increases your earth attack.</summary>
-        public int? DmgEarth
-        {
-            get { return BackingStore?.Get<int?>("dmg_earth"); }
-            set { BackingStore?.Set("dmg_earth", value); }
-        }
+        public int? DmgEarth { get; set; }
         /// <summary>% Fire damage. Damage increases your fire attack.</summary>
-        public int? DmgFire
-        {
-            get { return BackingStore?.Get<int?>("dmg_fire"); }
-            set { BackingStore?.Set("dmg_fire", value); }
-        }
+        public int? DmgFire { get; set; }
         /// <summary>% Water damage. Damage increases your water attack.</summary>
-        public int? DmgWater
-        {
-            get { return BackingStore?.Get<int?>("dmg_water"); }
-            set { BackingStore?.Set("dmg_water", value); }
-        }
+        public int? DmgWater { get; set; }
+        /// <summary>List of active effects on the character.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.StorageEffectSchema>? Effects { get; set; }
+#nullable restore
+#else
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.StorageEffectSchema> Effects { get; set; }
+#endif
         /// <summary>Fishing level.</summary>
-        public int? FishingLevel
-        {
-            get { return BackingStore?.Get<int?>("fishing_level"); }
-            set { BackingStore?.Set("fishing_level", value); }
-        }
+        public int? FishingLevel { get; set; }
         /// <summary>Fishing XP required to level up the skill.</summary>
-        public int? FishingMaxXp
-        {
-            get { return BackingStore?.Get<int?>("fishing_max_xp"); }
-            set { BackingStore?.Set("fishing_max_xp", value); }
-        }
+        public int? FishingMaxXp { get; set; }
         /// <summary>The current xp level of the Fishing skill.</summary>
-        public int? FishingXp
-        {
-            get { return BackingStore?.Get<int?>("fishing_xp"); }
-            set { BackingStore?.Set("fishing_xp", value); }
-        }
+        public int? FishingXp { get; set; }
         /// <summary>Gearcrafting level.</summary>
-        public int? GearcraftingLevel
-        {
-            get { return BackingStore?.Get<int?>("gearcrafting_level"); }
-            set { BackingStore?.Set("gearcrafting_level", value); }
-        }
+        public int? GearcraftingLevel { get; set; }
         /// <summary>Gearcrafting XP required to level up the skill.</summary>
-        public int? GearcraftingMaxXp
-        {
-            get { return BackingStore?.Get<int?>("gearcrafting_max_xp"); }
-            set { BackingStore?.Set("gearcrafting_max_xp", value); }
-        }
+        public int? GearcraftingMaxXp { get; set; }
         /// <summary>The current xp level of the Gearcrafting skill.</summary>
-        public int? GearcraftingXp
-        {
-            get { return BackingStore?.Get<int?>("gearcrafting_xp"); }
-            set { BackingStore?.Set("gearcrafting_xp", value); }
-        }
+        public int? GearcraftingXp { get; set; }
         /// <summary>The numbers of gold on this character.</summary>
-        public int? Gold
-        {
-            get { return BackingStore?.Get<int?>("gold"); }
-            set { BackingStore?.Set("gold", value); }
-        }
+        public int? Gold { get; set; }
         /// <summary>*Increase speed attack (reduce fight cooldown)</summary>
-        public int? Haste
-        {
-            get { return BackingStore?.Get<int?>("haste"); }
-            set { BackingStore?.Set("haste", value); }
-        }
+        public int? Haste { get; set; }
         /// <summary>Helmet slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HelmetSlot
-        {
-            get { return BackingStore?.Get<string?>("helmet_slot"); }
-            set { BackingStore?.Set("helmet_slot", value); }
-        }
+        public string? HelmetSlot { get; set; }
 #nullable restore
 #else
-        public string HelmetSlot
-        {
-            get { return BackingStore?.Get<string>("helmet_slot"); }
-            set { BackingStore?.Set("helmet_slot", value); }
-        }
+        public string HelmetSlot { get; set; }
 #endif
         /// <summary>Character actual HP.</summary>
-        public int? Hp
-        {
-            get { return BackingStore?.Get<int?>("hp"); }
-            set { BackingStore?.Set("hp", value); }
-        }
+        public int? Hp { get; set; }
+        /// <summary>Initiative determines turn order in combat. Higher initiative goes first.</summary>
+        public int? Initiative { get; set; }
         /// <summary>List of inventory slots.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot>? Inventory
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot>?>("inventory"); }
-            set { BackingStore?.Set("inventory", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot>? Inventory { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot> Inventory
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot>>("inventory"); }
-            set { BackingStore?.Set("inventory", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot> Inventory { get; set; }
 #endif
         /// <summary>Inventory max items.</summary>
-        public int? InventoryMaxItems
-        {
-            get { return BackingStore?.Get<int?>("inventory_max_items"); }
-            set { BackingStore?.Set("inventory_max_items", value); }
-        }
+        public int? InventoryMaxItems { get; set; }
         /// <summary>Jewelrycrafting level.</summary>
-        public int? JewelrycraftingLevel
-        {
-            get { return BackingStore?.Get<int?>("jewelrycrafting_level"); }
-            set { BackingStore?.Set("jewelrycrafting_level", value); }
-        }
+        public int? JewelrycraftingLevel { get; set; }
         /// <summary>Jewelrycrafting XP required to level up the skill.</summary>
-        public int? JewelrycraftingMaxXp
-        {
-            get { return BackingStore?.Get<int?>("jewelrycrafting_max_xp"); }
-            set { BackingStore?.Set("jewelrycrafting_max_xp", value); }
-        }
+        public int? JewelrycraftingMaxXp { get; set; }
         /// <summary>The current xp level of the Jewelrycrafting skill.</summary>
-        public int? JewelrycraftingXp
-        {
-            get { return BackingStore?.Get<int?>("jewelrycrafting_xp"); }
-            set { BackingStore?.Set("jewelrycrafting_xp", value); }
-        }
+        public int? JewelrycraftingXp { get; set; }
+        /// <summary>Character current layer.</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapLayer? Layer { get; set; }
         /// <summary>Leg armor slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegArmorSlot
-        {
-            get { return BackingStore?.Get<string?>("leg_armor_slot"); }
-            set { BackingStore?.Set("leg_armor_slot", value); }
-        }
+        public string? LegArmorSlot { get; set; }
 #nullable restore
 #else
-        public string LegArmorSlot
-        {
-            get { return BackingStore?.Get<string>("leg_armor_slot"); }
-            set { BackingStore?.Set("leg_armor_slot", value); }
-        }
+        public string LegArmorSlot { get; set; }
 #endif
         /// <summary>Combat level.</summary>
-        public int? Level
-        {
-            get { return BackingStore?.Get<int?>("level"); }
-            set { BackingStore?.Set("level", value); }
-        }
+        public int? Level { get; set; }
+        /// <summary>Character current map ID.</summary>
+        public int? MapId { get; set; }
         /// <summary>Character max HP.</summary>
-        public int? MaxHp
-        {
-            get { return BackingStore?.Get<int?>("max_hp"); }
-            set { BackingStore?.Set("max_hp", value); }
-        }
+        public int? MaxHp { get; set; }
         /// <summary>XP required to level up the character.</summary>
-        public int? MaxXp
-        {
-            get { return BackingStore?.Get<int?>("max_xp"); }
-            set { BackingStore?.Set("max_xp", value); }
-        }
+        public int? MaxXp { get; set; }
         /// <summary>Mining level.</summary>
-        public int? MiningLevel
-        {
-            get { return BackingStore?.Get<int?>("mining_level"); }
-            set { BackingStore?.Set("mining_level", value); }
-        }
+        public int? MiningLevel { get; set; }
         /// <summary>Mining XP required to level up the skill.</summary>
-        public int? MiningMaxXp
-        {
-            get { return BackingStore?.Get<int?>("mining_max_xp"); }
-            set { BackingStore?.Set("mining_max_xp", value); }
-        }
+        public int? MiningMaxXp { get; set; }
         /// <summary>The current xp level of the Mining skill.</summary>
-        public int? MiningXp
-        {
-            get { return BackingStore?.Get<int?>("mining_xp"); }
-            set { BackingStore?.Set("mining_xp", value); }
-        }
+        public int? MiningXp { get; set; }
         /// <summary>Name of the character.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
 #endif
         /// <summary>Prospecting increases the chances of getting drops from fights and skills (1% extra per 10 PP).</summary>
-        public int? Prospecting
-        {
-            get { return BackingStore?.Get<int?>("prospecting"); }
-            set { BackingStore?.Set("prospecting", value); }
-        }
+        public int? Prospecting { get; set; }
         /// <summary>% Air resistance. Reduces air attack.</summary>
-        public int? ResAir
-        {
-            get { return BackingStore?.Get<int?>("res_air"); }
-            set { BackingStore?.Set("res_air", value); }
-        }
+        public int? ResAir { get; set; }
         /// <summary>% Earth resistance. Reduces earth attack.</summary>
-        public int? ResEarth
-        {
-            get { return BackingStore?.Get<int?>("res_earth"); }
-            set { BackingStore?.Set("res_earth", value); }
-        }
+        public int? ResEarth { get; set; }
         /// <summary>% Fire resistance. Reduces fire attack.</summary>
-        public int? ResFire
-        {
-            get { return BackingStore?.Get<int?>("res_fire"); }
-            set { BackingStore?.Set("res_fire", value); }
-        }
+        public int? ResFire { get; set; }
         /// <summary>% Water resistance. Reduces water attack.</summary>
-        public int? ResWater
-        {
-            get { return BackingStore?.Get<int?>("res_water"); }
-            set { BackingStore?.Set("res_water", value); }
-        }
+        public int? ResWater { get; set; }
         /// <summary>Ring 1 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ring1Slot
-        {
-            get { return BackingStore?.Get<string?>("ring1_slot"); }
-            set { BackingStore?.Set("ring1_slot", value); }
-        }
+        public string? Ring1Slot { get; set; }
 #nullable restore
 #else
-        public string Ring1Slot
-        {
-            get { return BackingStore?.Get<string>("ring1_slot"); }
-            set { BackingStore?.Set("ring1_slot", value); }
-        }
+        public string Ring1Slot { get; set; }
 #endif
         /// <summary>Ring 2 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ring2Slot
-        {
-            get { return BackingStore?.Get<string?>("ring2_slot"); }
-            set { BackingStore?.Set("ring2_slot", value); }
-        }
+        public string? Ring2Slot { get; set; }
 #nullable restore
 #else
-        public string Ring2Slot
-        {
-            get { return BackingStore?.Get<string>("ring2_slot"); }
-            set { BackingStore?.Set("ring2_slot", value); }
-        }
+        public string Ring2Slot { get; set; }
 #endif
         /// <summary>Rune slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RuneSlot
-        {
-            get { return BackingStore?.Get<string?>("rune_slot"); }
-            set { BackingStore?.Set("rune_slot", value); }
-        }
+        public string? RuneSlot { get; set; }
 #nullable restore
 #else
-        public string RuneSlot
-        {
-            get { return BackingStore?.Get<string>("rune_slot"); }
-            set { BackingStore?.Set("rune_slot", value); }
-        }
+        public string RuneSlot { get; set; }
 #endif
         /// <summary>Shield slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ShieldSlot
-        {
-            get { return BackingStore?.Get<string?>("shield_slot"); }
-            set { BackingStore?.Set("shield_slot", value); }
-        }
+        public string? ShieldSlot { get; set; }
 #nullable restore
 #else
-        public string ShieldSlot
-        {
-            get { return BackingStore?.Get<string>("shield_slot"); }
-            set { BackingStore?.Set("shield_slot", value); }
-        }
+        public string ShieldSlot { get; set; }
 #endif
         /// <summary>Character skin code.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin? Skin
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin?>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSkin? Skin { get; set; }
         /// <summary>*Not available, on the roadmap. Character movement speed.</summary>
-        public int? Speed
-        {
-            get { return BackingStore?.Get<int?>("speed"); }
-            set { BackingStore?.Set("speed", value); }
-        }
+        public int? Speed { get; set; }
         /// <summary>Task in progress.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Task
-        {
-            get { return BackingStore?.Get<string?>("task"); }
-            set { BackingStore?.Set("task", value); }
-        }
+        public string? Task { get; set; }
 #nullable restore
 #else
-        public string Task
-        {
-            get { return BackingStore?.Get<string>("task"); }
-            set { BackingStore?.Set("task", value); }
-        }
+        public string Task { get; set; }
 #endif
         /// <summary>Task progression.</summary>
-        public int? TaskProgress
-        {
-            get { return BackingStore?.Get<int?>("task_progress"); }
-            set { BackingStore?.Set("task_progress", value); }
-        }
+        public int? TaskProgress { get; set; }
         /// <summary>Task total objective.</summary>
-        public int? TaskTotal
-        {
-            get { return BackingStore?.Get<int?>("task_total"); }
-            set { BackingStore?.Set("task_total", value); }
-        }
+        public int? TaskTotal { get; set; }
         /// <summary>Task type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TaskType
-        {
-            get { return BackingStore?.Get<string?>("task_type"); }
-            set { BackingStore?.Set("task_type", value); }
-        }
+        public string? TaskType { get; set; }
 #nullable restore
 #else
-        public string TaskType
-        {
-            get { return BackingStore?.Get<string>("task_type"); }
-            set { BackingStore?.Set("task_type", value); }
-        }
+        public string TaskType { get; set; }
 #endif
+        /// <summary>Threat level affects monster targeting in multi-character combat.</summary>
+        public int? Threat { get; set; }
         /// <summary>Utility 1 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Utility1Slot
-        {
-            get { return BackingStore?.Get<string?>("utility1_slot"); }
-            set { BackingStore?.Set("utility1_slot", value); }
-        }
+        public string? Utility1Slot { get; set; }
 #nullable restore
 #else
-        public string Utility1Slot
-        {
-            get { return BackingStore?.Get<string>("utility1_slot"); }
-            set { BackingStore?.Set("utility1_slot", value); }
-        }
+        public string Utility1Slot { get; set; }
 #endif
         /// <summary>Utility 1 quantity.</summary>
-        public int? Utility1SlotQuantity
-        {
-            get { return BackingStore?.Get<int?>("utility1_slot_quantity"); }
-            set { BackingStore?.Set("utility1_slot_quantity", value); }
-        }
+        public int? Utility1SlotQuantity { get; set; }
         /// <summary>Utility 2 slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Utility2Slot
-        {
-            get { return BackingStore?.Get<string?>("utility2_slot"); }
-            set { BackingStore?.Set("utility2_slot", value); }
-        }
+        public string? Utility2Slot { get; set; }
 #nullable restore
 #else
-        public string Utility2Slot
-        {
-            get { return BackingStore?.Get<string>("utility2_slot"); }
-            set { BackingStore?.Set("utility2_slot", value); }
-        }
+        public string Utility2Slot { get; set; }
 #endif
         /// <summary>Utility 2 quantity.</summary>
-        public int? Utility2SlotQuantity
-        {
-            get { return BackingStore?.Get<int?>("utility2_slot_quantity"); }
-            set { BackingStore?.Set("utility2_slot_quantity", value); }
-        }
+        public int? Utility2SlotQuantity { get; set; }
         /// <summary>Weaponcrafting level.</summary>
-        public int? WeaponcraftingLevel
-        {
-            get { return BackingStore?.Get<int?>("weaponcrafting_level"); }
-            set { BackingStore?.Set("weaponcrafting_level", value); }
-        }
+        public int? WeaponcraftingLevel { get; set; }
         /// <summary>Weaponcrafting XP required to level up the skill.</summary>
-        public int? WeaponcraftingMaxXp
-        {
-            get { return BackingStore?.Get<int?>("weaponcrafting_max_xp"); }
-            set { BackingStore?.Set("weaponcrafting_max_xp", value); }
-        }
+        public int? WeaponcraftingMaxXp { get; set; }
         /// <summary>The current xp level of the Weaponcrafting skill.</summary>
-        public int? WeaponcraftingXp
-        {
-            get { return BackingStore?.Get<int?>("weaponcrafting_xp"); }
-            set { BackingStore?.Set("weaponcrafting_xp", value); }
-        }
+        public int? WeaponcraftingXp { get; set; }
         /// <summary>Weapon slot.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WeaponSlot
-        {
-            get { return BackingStore?.Get<string?>("weapon_slot"); }
-            set { BackingStore?.Set("weapon_slot", value); }
-        }
+        public string? WeaponSlot { get; set; }
 #nullable restore
 #else
-        public string WeaponSlot
-        {
-            get { return BackingStore?.Get<string>("weapon_slot"); }
-            set { BackingStore?.Set("weapon_slot", value); }
-        }
+        public string WeaponSlot { get; set; }
 #endif
         /// <summary>Wisdom increases the amount of XP gained from fights and skills (1% extra per 10 wisdom).</summary>
-        public int? Wisdom
-        {
-            get { return BackingStore?.Get<int?>("wisdom"); }
-            set { BackingStore?.Set("wisdom", value); }
-        }
+        public int? Wisdom { get; set; }
         /// <summary>Woodcutting level.</summary>
-        public int? WoodcuttingLevel
-        {
-            get { return BackingStore?.Get<int?>("woodcutting_level"); }
-            set { BackingStore?.Set("woodcutting_level", value); }
-        }
+        public int? WoodcuttingLevel { get; set; }
         /// <summary>Woodcutting XP required to level up the skill.</summary>
-        public int? WoodcuttingMaxXp
-        {
-            get { return BackingStore?.Get<int?>("woodcutting_max_xp"); }
-            set { BackingStore?.Set("woodcutting_max_xp", value); }
-        }
+        public int? WoodcuttingMaxXp { get; set; }
         /// <summary>The current xp level of the Woodcutting skill.</summary>
-        public int? WoodcuttingXp
-        {
-            get { return BackingStore?.Get<int?>("woodcutting_xp"); }
-            set { BackingStore?.Set("woodcutting_xp", value); }
-        }
+        public int? WoodcuttingXp { get; set; }
         /// <summary>Character x coordinate.</summary>
-        public int? X
-        {
-            get { return BackingStore?.Get<int?>("x"); }
-            set { BackingStore?.Set("x", value); }
-        }
+        public int? X { get; set; }
         /// <summary>The current xp level of the combat level.</summary>
-        public int? Xp
-        {
-            get { return BackingStore?.Get<int?>("xp"); }
-            set { BackingStore?.Set("xp", value); }
-        }
+        public int? Xp { get; set; }
         /// <summary>Character y coordinate.</summary>
-        public int? Y
-        {
-            get { return BackingStore?.Get<int?>("y"); }
-            set { BackingStore?.Set("y", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema"/> and sets the default values.
-        /// </summary>
-        public CharacterSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? Y { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -713,7 +319,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema();
         }
         /// <summary>
@@ -750,6 +356,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "dmg_earth", n => { DmgEarth = n.GetIntValue(); } },
                 { "dmg_fire", n => { DmgFire = n.GetIntValue(); } },
                 { "dmg_water", n => { DmgWater = n.GetIntValue(); } },
+                { "effects", n => { Effects = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.StorageEffectSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.StorageEffectSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "fishing_level", n => { FishingLevel = n.GetIntValue(); } },
                 { "fishing_max_xp", n => { FishingMaxXp = n.GetIntValue(); } },
                 { "fishing_xp", n => { FishingXp = n.GetIntValue(); } },
@@ -760,13 +367,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "haste", n => { Haste = n.GetIntValue(); } },
                 { "helmet_slot", n => { HelmetSlot = n.GetStringValue(); } },
                 { "hp", n => { Hp = n.GetIntValue(); } },
+                { "initiative", n => { Initiative = n.GetIntValue(); } },
                 { "inventory", n => { Inventory = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot>(global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "inventory_max_items", n => { InventoryMaxItems = n.GetIntValue(); } },
                 { "jewelrycrafting_level", n => { JewelrycraftingLevel = n.GetIntValue(); } },
                 { "jewelrycrafting_max_xp", n => { JewelrycraftingMaxXp = n.GetIntValue(); } },
                 { "jewelrycrafting_xp", n => { JewelrycraftingXp = n.GetIntValue(); } },
+                { "layer", n => { Layer = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapLayer>(); } },
                 { "leg_armor_slot", n => { LegArmorSlot = n.GetStringValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
+                { "map_id", n => { MapId = n.GetIntValue(); } },
                 { "max_hp", n => { MaxHp = n.GetIntValue(); } },
                 { "max_xp", n => { MaxXp = n.GetIntValue(); } },
                 { "mining_level", n => { MiningLevel = n.GetIntValue(); } },
@@ -788,6 +398,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "task_progress", n => { TaskProgress = n.GetIntValue(); } },
                 { "task_total", n => { TaskTotal = n.GetIntValue(); } },
                 { "task_type", n => { TaskType = n.GetStringValue(); } },
+                { "threat", n => { Threat = n.GetIntValue(); } },
                 { "utility1_slot", n => { Utility1Slot = n.GetStringValue(); } },
                 { "utility1_slot_quantity", n => { Utility1SlotQuantity = n.GetIntValue(); } },
                 { "utility2_slot", n => { Utility2Slot = n.GetStringValue(); } },
@@ -811,7 +422,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteIntValue("alchemy_level", AlchemyLevel);
             writer.WriteIntValue("alchemy_max_xp", AlchemyMaxXp);
@@ -838,6 +449,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("dmg_earth", DmgEarth);
             writer.WriteIntValue("dmg_fire", DmgFire);
             writer.WriteIntValue("dmg_water", DmgWater);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.StorageEffectSchema>("effects", Effects);
             writer.WriteIntValue("fishing_level", FishingLevel);
             writer.WriteIntValue("fishing_max_xp", FishingMaxXp);
             writer.WriteIntValue("fishing_xp", FishingXp);
@@ -848,13 +460,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("haste", Haste);
             writer.WriteStringValue("helmet_slot", HelmetSlot);
             writer.WriteIntValue("hp", Hp);
+            writer.WriteIntValue("initiative", Initiative);
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.InventorySlot>("inventory", Inventory);
             writer.WriteIntValue("inventory_max_items", InventoryMaxItems);
             writer.WriteIntValue("jewelrycrafting_level", JewelrycraftingLevel);
             writer.WriteIntValue("jewelrycrafting_max_xp", JewelrycraftingMaxXp);
             writer.WriteIntValue("jewelrycrafting_xp", JewelrycraftingXp);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapLayer>("layer", Layer);
             writer.WriteStringValue("leg_armor_slot", LegArmorSlot);
             writer.WriteIntValue("level", Level);
+            writer.WriteIntValue("map_id", MapId);
             writer.WriteIntValue("max_hp", MaxHp);
             writer.WriteIntValue("max_xp", MaxXp);
             writer.WriteIntValue("mining_level", MiningLevel);
@@ -876,6 +491,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("task_progress", TaskProgress);
             writer.WriteIntValue("task_total", TaskTotal);
             writer.WriteStringValue("task_type", TaskType);
+            writer.WriteIntValue("threat", Threat);
             writer.WriteStringValue("utility1_slot", Utility1Slot);
             writer.WriteIntValue("utility1_slot_quantity", Utility1SlotQuantity);
             writer.WriteStringValue("utility2_slot", Utility2Slot);

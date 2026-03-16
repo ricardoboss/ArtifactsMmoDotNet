@@ -49,20 +49,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
         /// <summary>
         /// Fetch monsters details.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_MonsterSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_MonsterSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_MonsterSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Monsters.MonstersRequestBuilder.MonstersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_MonsterSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Monsters.MonstersRequestBuilder.MonstersRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_MonsterSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Monsters.MonstersRequestBuilder.MonstersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_MonsterSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Monsters.MonstersRequestBuilder.MonstersRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_MonsterSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_MonsterSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_MonsterSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_MonsterSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch monsters details.
@@ -108,10 +108,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Monsters
             [QueryParameter("drop")]
             public string Drop { get; set; }
 #endif
-            /// <summary>Monster maximum level.</summary>
+            /// <summary>Maximum level.</summary>
             [QueryParameter("max_level")]
             public int? MaxLevel { get; set; }
-            /// <summary>Monster minimum level.</summary>
+            /// <summary>Minimum level.</summary>
             [QueryParameter("min_level")]
             public int? MinLevel { get; set; }
             /// <summary>Name of the monster.</summary>

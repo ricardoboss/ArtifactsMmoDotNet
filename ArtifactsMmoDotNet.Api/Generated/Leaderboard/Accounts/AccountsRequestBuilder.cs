@@ -85,7 +85,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Accounts
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class AccountsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Find a account by name.</summary>
+            /// <summary>Account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("name")]
@@ -101,9 +101,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Leaderboard.Accounts
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
-            /// <summary>Default sort by achievements points.</summary>
+            /// <summary>Sort of account leaderboards.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("sort")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountLeaderboardType? Sort { get; set; }
+            public string? Sort { get; set; }
+#nullable restore
+#else
+            [QueryParameter("sort")]
+            public string Sort { get; set; }
+#endif
         }
     }
 }

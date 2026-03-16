@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,106 +9,49 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class AccountDetails : IBackedModel, IParsable
+    public partial class AccountDetails : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Achievement points.</summary>
-        public int? AchievementsPoints
-        {
-            get { return BackingStore?.Get<int?>("achievements_points"); }
-            set { BackingStore?.Set("achievements_points", value); }
-        }
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
+        public int? AchievementsPoints { get; set; }
         /// <summary>Account badges.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Badges
-        {
-            get { return BackingStore?.Get<UntypedNode?>("badges"); }
-            set { BackingStore?.Set("badges", value); }
-        }
+        public List<string>? Badges { get; set; }
 #nullable restore
 #else
-        public UntypedNode Badges
-        {
-            get { return BackingStore?.Get<UntypedNode>("badges"); }
-            set { BackingStore?.Set("badges", value); }
-        }
+        public List<string> Badges { get; set; }
 #endif
         /// <summary>Banned.</summary>
-        public bool? Banned
-        {
-            get { return BackingStore?.Get<bool?>("banned"); }
-            set { BackingStore?.Set("banned", value); }
-        }
+        public bool? Banned { get; set; }
         /// <summary>Ban reason.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BanReason
-        {
-            get { return BackingStore?.Get<string?>("ban_reason"); }
-            set { BackingStore?.Set("ban_reason", value); }
-        }
+        public string? BanReason { get; set; }
 #nullable restore
 #else
-        public string BanReason
-        {
-            get { return BackingStore?.Get<string>("ban_reason"); }
-            set { BackingStore?.Set("ban_reason", value); }
-        }
+        public string BanReason { get; set; }
 #endif
         /// <summary>Member status.</summary>
-        public bool? Member
-        {
-            get { return BackingStore?.Get<bool?>("member"); }
-            set { BackingStore?.Set("member", value); }
-        }
+        public bool? Member { get; set; }
         /// <summary>Skins owned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Skins
-        {
-            get { return BackingStore?.Get<UntypedNode?>("skins"); }
-            set { BackingStore?.Set("skins", value); }
-        }
+        public List<string>? Skins { get; set; }
 #nullable restore
 #else
-        public UntypedNode Skins
-        {
-            get { return BackingStore?.Get<UntypedNode>("skins"); }
-            set { BackingStore?.Set("skins", value); }
-        }
+        public List<string> Skins { get; set; }
 #endif
         /// <summary>Account status.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
-            set { BackingStore?.Set("status", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status { get; set; }
         /// <summary>Username.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Username
-        {
-            get { return BackingStore?.Get<string?>("username"); }
-            set { BackingStore?.Set("username", value); }
-        }
+        public string? Username { get; set; }
 #nullable restore
 #else
-        public string Username
-        {
-            get { return BackingStore?.Get<string>("username"); }
-            set { BackingStore?.Set("username", value); }
-        }
+        public string Username { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails"/> and sets the default values.
-        /// </summary>
-        public AccountDetails()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -117,7 +59,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountDetails();
         }
         /// <summary>
@@ -129,11 +71,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "achievements_points", n => { AchievementsPoints = n.GetIntValue(); } },
-                { "badges", n => { Badges = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "badges", n => { Badges = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "ban_reason", n => { BanReason = n.GetStringValue(); } },
                 { "banned", n => { Banned = n.GetBoolValue(); } },
                 { "member", n => { Member = n.GetBoolValue(); } },
-                { "skins", n => { Skins = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
+                { "skins", n => { Skins = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "status", n => { Status = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>(); } },
                 { "username", n => { Username = n.GetStringValue(); } },
             };
@@ -144,13 +86,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("achievements_points", AchievementsPoints);
-            writer.WriteObjectValue<UntypedNode>("badges", Badges);
+            writer.WriteCollectionOfPrimitiveValues<string>("badges", Badges);
             writer.WriteBoolValue("banned", Banned);
             writer.WriteStringValue("ban_reason", BanReason);
             writer.WriteBoolValue("member", Member);
-            writer.WriteObjectValue<UntypedNode>("skins", Skins);
+            writer.WriteCollectionOfPrimitiveValues<string>("skins", Skins);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus>("status", Status);
             writer.WriteStringValue("username", Username);
         }

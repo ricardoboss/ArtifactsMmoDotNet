@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,66 +9,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CharacterMovementDataSchema : IBackedModel, IParsable
+    public partial class CharacterMovementDataSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Character details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema? Character
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema?>("character"); }
-            set { BackingStore?.Set("character", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema? Character { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema Character
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character"); }
-            set { BackingStore?.Set("character", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema Character { get; set; }
 #endif
         /// <summary>Cooldown details</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema? Cooldown
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema?>("cooldown"); }
-            set { BackingStore?.Set("cooldown", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema? Cooldown { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema Cooldown
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown"); }
-            set { BackingStore?.Set("cooldown", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema Cooldown { get; set; }
 #endif
         /// <summary>Destination details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? Destination
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema?>("destination"); }
-            set { BackingStore?.Set("destination", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? Destination { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema Destination
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("destination"); }
-            set { BackingStore?.Set("destination", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema Destination { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterMovementDataSchema"/> and sets the default values.
-        /// </summary>
-        public CharacterMovementDataSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        /// <summary>Path taken from start to destination (list of coordinates)</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<UntypedNode>? Path { get; set; }
+#nullable restore
+#else
+        public List<UntypedNode> Path { get; set; }
+#endif
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -77,7 +51,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterMovementDataSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterMovementDataSchema();
         }
         /// <summary>
@@ -91,6 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "character", n => { Character = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema.CreateFromDiscriminatorValue); } },
                 { "destination", n => { Destination = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema.CreateFromDiscriminatorValue); } },
+                { "path", n => { Path = n.GetCollectionOfPrimitiveValues<UntypedNode>()?.AsList(); } },
             };
         }
         /// <summary>
@@ -99,10 +74,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterSchema>("character", Character);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema>("cooldown", Cooldown);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("destination", Destination);
+            writer.WriteCollectionOfPrimitiveValues<UntypedNode>("path", Path);
         }
     }
 }

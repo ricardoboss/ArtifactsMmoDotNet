@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,116 +9,49 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class LogSchema : IBackedModel, IParsable
+    public partial class LogSchema : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Account character.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Account
-        {
-            get { return BackingStore?.Get<string?>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string? Account { get; set; }
 #nullable restore
 #else
-        public string Account
-        {
-            get { return BackingStore?.Get<string>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string Account { get; set; }
 #endif
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Character name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Character
-        {
-            get { return BackingStore?.Get<string?>("character"); }
-            set { BackingStore?.Set("character", value); }
-        }
+        public string? Character { get; set; }
 #nullable restore
 #else
-        public string Character
-        {
-            get { return BackingStore?.Get<string>("character"); }
-            set { BackingStore?.Set("character", value); }
-        }
+        public string Character { get; set; }
 #endif
         /// <summary>Content of action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Content
-        {
-            get { return BackingStore?.Get<UntypedNode?>("content"); }
-            set { BackingStore?.Set("content", value); }
-        }
+        public UntypedNode? Content { get; set; }
 #nullable restore
 #else
-        public UntypedNode Content
-        {
-            get { return BackingStore?.Get<UntypedNode>("content"); }
-            set { BackingStore?.Set("content", value); }
-        }
+        public UntypedNode Content { get; set; }
 #endif
         /// <summary>Cooldown in seconds.</summary>
-        public int? Cooldown
-        {
-            get { return BackingStore?.Get<int?>("cooldown"); }
-            set { BackingStore?.Set("cooldown", value); }
-        }
+        public int? Cooldown { get; set; }
         /// <summary>Datetime of cooldown expiration.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration? CooldownExpiration
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration?>("cooldown_expiration"); }
-            set { BackingStore?.Set("cooldown_expiration", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration CooldownExpiration
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration>("cooldown_expiration"); }
-            set { BackingStore?.Set("cooldown_expiration", value); }
-        }
-#endif
+        public DateTimeOffset? CooldownExpiration { get; set; }
         /// <summary>Datetime of creation.</summary>
-        public DateTimeOffset? CreatedAt
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("created_at"); }
-            set { BackingStore?.Set("created_at", value); }
-        }
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>Description of action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description
-        {
-            get { return BackingStore?.Get<string?>("description"); }
-            set { BackingStore?.Set("description", value); }
-        }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Description
-        {
-            get { return BackingStore?.Get<string>("description"); }
-            set { BackingStore?.Set("description", value); }
-        }
+        public string Description { get; set; }
 #endif
         /// <summary>Type of action.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.LogType? Type
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType?>("type"); }
-            set { BackingStore?.Set("type", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema"/> and sets the default values.
-        /// </summary>
-        public LogSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.LogType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -127,7 +59,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema();
         }
         /// <summary>
@@ -142,7 +74,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "character", n => { Character = n.GetStringValue(); } },
                 { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "cooldown", n => { Cooldown = n.GetIntValue(); } },
-                { "cooldown_expiration", n => { CooldownExpiration = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration>(global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration.CreateFromDiscriminatorValue); } },
+                { "cooldown_expiration", n => { CooldownExpiration = n.GetDateTimeOffsetValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType>(); } },
@@ -154,98 +86,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteStringValue("character", Character);
             writer.WriteObjectValue<UntypedNode>("content", Content);
             writer.WriteIntValue("cooldown", Cooldown);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration>("cooldown_expiration", CooldownExpiration);
+            writer.WriteDateTimeOffsetValue("cooldown_expiration", CooldownExpiration);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteStringValue("description", Description);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogType>("type", Type);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class LogSchema_cooldown_expiration : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="DateTimeOffset"/></summary>
-            public DateTimeOffset? DateTimeOffset
-            {
-                get { return BackingStore?.Get<DateTimeOffset?>("DateTimeOffset"); }
-                set { BackingStore?.Set("DateTimeOffset", value); }
-            }
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1? LogSchemaCooldownExpirationMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1?>("LogSchema_cooldown_expirationMember1"); }
-                set { BackingStore?.Set("LogSchema_cooldown_expirationMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1 LogSchemaCooldownExpirationMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1>("LogSchema_cooldown_expirationMember1"); }
-                set { BackingStore?.Set("LogSchema_cooldown_expirationMember1", value); }
-            }
-#endif
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration"/> and sets the default values.
-            /// </summary>
-            public LogSchema_cooldown_expiration()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema.LogSchema_cooldown_expiration();
-                if(parseNode.GetDateTimeOffsetValue() is DateTimeOffset dateTimeOffsetValue)
-                {
-                    result.DateTimeOffset = dateTimeOffsetValue;
-                }
-                else {
-                    result.LogSchemaCooldownExpirationMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(LogSchemaCooldownExpirationMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(LogSchemaCooldownExpirationMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(DateTimeOffset != null)
-                {
-                    writer.WriteDateTimeOffsetValue(null, DateTimeOffset);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.LogSchema_cooldown_expirationMember1>(null, LogSchemaCooldownExpirationMember1);
-                }
-            }
         }
     }
 }

@@ -49,20 +49,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Resources
         /// <summary>
         /// Fetch resources details.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ResourceSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ResourceSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ResourceSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ResourceSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ResourceSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ResourceSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Resources.ResourcesRequestBuilder.ResourcesRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ResourceSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_ResourceSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ResourceSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_ResourceSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch resources details.
@@ -108,10 +108,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Resources
             [QueryParameter("drop")]
             public string Drop { get; set; }
 #endif
-            /// <summary>Skill maximum level.</summary>
+            /// <summary>Maximum level.</summary>
             [QueryParameter("max_level")]
             public int? MaxLevel { get; set; }
-            /// <summary>Skill minimum level.</summary>
+            /// <summary>Minimum level.</summary>
             [QueryParameter("min_level")]
             public int? MinLevel { get; set; }
             /// <summary>Page number</summary>
@@ -120,9 +120,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Resources
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
-            /// <summary>The code of the skill.</summary>
+            /// <summary>Skill of resources.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("skill")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.GatheringSkill? Skill { get; set; }
+            public string? Skill { get; set; }
+#nullable restore
+#else
+            [QueryParameter("skill")]
+            public string Skill { get; set; }
+#endif
         }
     }
 }

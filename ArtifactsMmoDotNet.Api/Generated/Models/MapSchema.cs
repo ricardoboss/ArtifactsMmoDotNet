@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,78 +9,49 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class MapSchema : IBackedModel, IParsable
+    public partial class MapSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
-        /// <summary>Content of the map.</summary>
+        /// <summary>Access information for the map</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema? Content
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema?>("content"); }
-            set { BackingStore?.Set("content", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccessSchema? Access { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema Content
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>("content"); }
-            set { BackingStore?.Set("content", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccessSchema Access { get; set; }
 #endif
+        /// <summary>Interactions available on this map.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.InteractionSchema? Interactions { get; set; }
+#nullable restore
+#else
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.InteractionSchema Interactions { get; set; }
+#endif
+        /// <summary>Layer of the map.</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapLayer? Layer { get; set; }
+        /// <summary>ID of the map.</summary>
+        public int? MapId { get; set; }
         /// <summary>Name of the map.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
 #endif
         /// <summary>Skin of the map.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Skin
-        {
-            get { return BackingStore?.Get<string?>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
+        public string? Skin { get; set; }
 #nullable restore
 #else
-        public string Skin
-        {
-            get { return BackingStore?.Get<string>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
+        public string Skin { get; set; }
 #endif
         /// <summary>Position X of the map.</summary>
-        public int? X
-        {
-            get { return BackingStore?.Get<int?>("x"); }
-            set { BackingStore?.Set("x", value); }
-        }
+        public int? X { get; set; }
         /// <summary>Position Y of the map.</summary>
-        public int? Y
-        {
-            get { return BackingStore?.Get<int?>("y"); }
-            set { BackingStore?.Set("y", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema"/> and sets the default values.
-        /// </summary>
-        public MapSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? Y { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -89,7 +59,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema();
         }
         /// <summary>
@@ -100,7 +70,10 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "content", n => { Content = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema.CreateFromDiscriminatorValue); } },
+                { "access", n => { Access = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccessSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.AccessSchema.CreateFromDiscriminatorValue); } },
+                { "interactions", n => { Interactions = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.InteractionSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.InteractionSchema.CreateFromDiscriminatorValue); } },
+                { "layer", n => { Layer = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapLayer>(); } },
+                { "map_id", n => { MapId = n.GetIntValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "skin", n => { Skin = n.GetStringValue(); } },
                 { "x", n => { X = n.GetIntValue(); } },
@@ -113,8 +86,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapContentSchema>("content", Content);
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccessSchema>("access", Access);
+            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.InteractionSchema>("interactions", Interactions);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MapLayer>("layer", Layer);
+            writer.WriteIntValue("map_id", MapId);
             writer.WriteStringValue("name", Name);
             writer.WriteStringValue("skin", Skin);
             writer.WriteIntValue("x", X);

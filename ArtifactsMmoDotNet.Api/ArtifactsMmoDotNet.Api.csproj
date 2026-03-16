@@ -79,7 +79,7 @@
     <Message Text="Generating code..." Importance="high"/>
 
     <Exec
-      Command="dotnet kiota generate --openapi $(ApiSpecFilename) --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --backing-store --exclude-backward-compatible --deserializer Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory --serializer Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory --structured-mime-types application/json --additional-data=False"
+      Command="dotnet kiota generate --openapi $(ApiSpecFilename) --output Generated --language CSharp --class-name ArtifactsMmoApiClient --namespace-name ArtifactsMmoDotNet.Api.Generated --exclude-backward-compatible --deserializer Microsoft.Kiota.Serialization.Json.JsonParseNodeFactory --serializer Microsoft.Kiota.Serialization.Json.JsonSerializationWriterFactory --structured-mime-types application/json --additional-data=False"
       WorkingDirectory="$(MSBuildProjectDirectory)"
       EnvironmentVariables="KIOTA_TUTORIAL_ENABLED=false;KIOTA_OFFLINE_ENABLED=true"
     />

@@ -2,146 +2,61 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
 namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
+    /// <summary>
+    /// Full achievement data with progress - for API responses.
+    /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-    #pragma warning disable CS1591
-    public partial class AccountAchievementSchema : IBackedModel, IParsable
-    #pragma warning restore CS1591
+    public partial class AccountAchievementSchema : IParsable
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
-        /// <summary>Code of the achievement. </summary>
+        /// <summary>Code of the achievement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
-        /// <summary>Completed at.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at? CompletedAt
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at?>("completed_at"); }
-            set { BackingStore?.Set("completed_at", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at CompletedAt
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at>("completed_at"); }
-            set { BackingStore?.Set("completed_at", value); }
-        }
-#endif
-        /// <summary>Current progress.</summary>
-        public int? Current
-        {
-            get { return BackingStore?.Get<int?>("current"); }
-            set { BackingStore?.Set("current", value); }
-        }
+        /// <summary>Completion timestamp.</summary>
+        public DateTimeOffset? CompletedAt { get; set; }
         /// <summary>Description of the achievement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description
-        {
-            get { return BackingStore?.Get<string?>("description"); }
-            set { BackingStore?.Set("description", value); }
-        }
+        public string? Description { get; set; }
 #nullable restore
 #else
-        public string Description
-        {
-            get { return BackingStore?.Get<string>("description"); }
-            set { BackingStore?.Set("description", value); }
-        }
+        public string Description { get; set; }
 #endif
         /// <summary>Name of the achievement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
+#endif
+        /// <summary>List of objectives with progress.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementObjectiveSchema>? Objectives { get; set; }
+#nullable restore
+#else
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementObjectiveSchema> Objectives { get; set; }
 #endif
         /// <summary>Points of the achievement. Used for the leaderboard.</summary>
-        public int? Points
-        {
-            get { return BackingStore?.Get<int?>("points"); }
-            set { BackingStore?.Set("points", value); }
-        }
+        public int? Points { get; set; }
         /// <summary>Rewards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema? Rewards
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema?>("rewards"); }
-            set { BackingStore?.Set("rewards", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema? Rewards { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema Rewards
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema>("rewards"); }
-            set { BackingStore?.Set("rewards", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema Rewards { get; set; }
 #endif
-        /// <summary>Target of the achievement.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target? Target
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target?>("target"); }
-            set { BackingStore?.Set("target", value); }
-        }
-#nullable restore
-#else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target Target
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target>("target"); }
-            set { BackingStore?.Set("target", value); }
-        }
-#endif
-        /// <summary>Total to do.</summary>
-        public int? Total
-        {
-            get { return BackingStore?.Get<int?>("total"); }
-            set { BackingStore?.Set("total", value); }
-        }
-        /// <summary>Type of achievement.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementType? Type
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementType?>("type"); }
-            set { BackingStore?.Set("type", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema"/> and sets the default values.
-        /// </summary>
-        public AccountAchievementSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -149,7 +64,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema();
         }
         /// <summary>
@@ -161,15 +76,12 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "code", n => { Code = n.GetStringValue(); } },
-                { "completed_at", n => { CompletedAt = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at>(global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at.CreateFromDiscriminatorValue); } },
-                { "current", n => { Current = n.GetIntValue(); } },
+                { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
+                { "objectives", n => { Objectives = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementObjectiveSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementObjectiveSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "points", n => { Points = n.GetIntValue(); } },
                 { "rewards", n => { Rewards = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema.CreateFromDiscriminatorValue); } },
-                { "target", n => { Target = n.GetObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target>(global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target.CreateFromDiscriminatorValue); } },
-                { "total", n => { Total = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementType>(); } },
             };
         }
         /// <summary>
@@ -178,193 +90,14 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at>("completed_at", CompletedAt);
-            writer.WriteIntValue("current", Current);
+            writer.WriteDateTimeOffsetValue("completed_at", CompletedAt);
             writer.WriteStringValue("description", Description);
             writer.WriteStringValue("name", Name);
+            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementObjectiveSchema>("objectives", Objectives);
             writer.WriteIntValue("points", Points);
             writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementRewardsSchema>("rewards", Rewards);
-            writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target>("target", Target);
-            writer.WriteIntValue("total", Total);
-            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AchievementType>("type", Type);
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="DateTimeOffset"/>, <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class AccountAchievementSchema_completed_at : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1? AccountAchievementSchemaCompletedAtMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1?>("AccountAchievementSchema_completed_atMember1"); }
-                set { BackingStore?.Set("AccountAchievementSchema_completed_atMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1 AccountAchievementSchemaCompletedAtMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1>("AccountAchievementSchema_completed_atMember1"); }
-                set { BackingStore?.Set("AccountAchievementSchema_completed_atMember1", value); }
-            }
-#endif
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="DateTimeOffset"/></summary>
-            public DateTimeOffset? DateTimeOffset
-            {
-                get { return BackingStore?.Get<DateTimeOffset?>("DateTimeOffset"); }
-                set { BackingStore?.Set("DateTimeOffset", value); }
-            }
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at"/> and sets the default values.
-            /// </summary>
-            public AccountAchievementSchema_completed_at()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_completed_at();
-                if(parseNode.GetDateTimeOffsetValue() is DateTimeOffset dateTimeOffsetValue)
-                {
-                    result.DateTimeOffset = dateTimeOffsetValue;
-                }
-                else {
-                    result.AccountAchievementSchemaCompletedAtMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(AccountAchievementSchemaCompletedAtMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AccountAchievementSchemaCompletedAtMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(DateTimeOffset != null)
-                {
-                    writer.WriteDateTimeOffsetValue(null, DateTimeOffset);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_completed_atMember1>(null, AccountAchievementSchemaCompletedAtMember1);
-                }
-            }
-        }
-        /// <summary>
-        /// Composed type wrapper for classes <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1"/>, <see cref="string"/>
-        /// </summary>
-        [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
-        public partial class AccountAchievementSchema_target : IBackedModel, IComposedTypeWrapper, IParsable
-        {
-            /// <summary>Composed type representation for type <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1? AccountAchievementSchemaTargetMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1?>("AccountAchievementSchema_targetMember1"); }
-                set { BackingStore?.Set("AccountAchievementSchema_targetMember1", value); }
-            }
-#nullable restore
-#else
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1 AccountAchievementSchemaTargetMember1
-            {
-                get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1>("AccountAchievementSchema_targetMember1"); }
-                set { BackingStore?.Set("AccountAchievementSchema_targetMember1", value); }
-            }
-#endif
-            /// <summary>Stores model information.</summary>
-            public IBackingStore BackingStore { get; private set; }
-            /// <summary>Composed type representation for type <see cref="string"/></summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            public string? String
-            {
-                get { return BackingStore?.Get<string?>("string"); }
-                set { BackingStore?.Set("string", value); }
-            }
-#nullable restore
-#else
-            public string String
-            {
-                get { return BackingStore?.Get<string>("string"); }
-                set { BackingStore?.Set("string", value); }
-            }
-#endif
-            /// <summary>
-            /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target"/> and sets the default values.
-            /// </summary>
-            public AccountAchievementSchema_target()
-            {
-                BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-            }
-            /// <summary>
-            /// Creates a new instance of the appropriate class based on discriminator value
-            /// </summary>
-            /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target"/></returns>
-            /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
-            public static global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target CreateFromDiscriminatorValue(IParseNode parseNode)
-            {
-                _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
-                var result = new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema.AccountAchievementSchema_target();
-                if(parseNode.GetStringValue() is string stringValue)
-                {
-                    result.String = stringValue;
-                }
-                else {
-                    result.AccountAchievementSchemaTargetMember1 = new global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1();
-                }
-                return result;
-            }
-            /// <summary>
-            /// The deserialization information for the current model
-            /// </summary>
-            /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
-            public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
-            {
-                if(AccountAchievementSchemaTargetMember1 != null)
-                {
-                    return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(AccountAchievementSchemaTargetMember1);
-                }
-                return new Dictionary<string, Action<IParseNode>>();
-            }
-            /// <summary>
-            /// Serializes information the current object
-            /// </summary>
-            /// <param name="writer">Serialization writer to use to serialize this model</param>
-            public virtual void Serialize(ISerializationWriter writer)
-            {
-                _ = writer ?? throw new ArgumentNullException(nameof(writer));
-                if(String != null)
-                {
-                    writer.WriteStringValue(null, String);
-                }
-                else {
-                    writer.WriteObjectValue<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountAchievementSchema_targetMember1>(null, AccountAchievementSchemaTargetMember1);
-                }
-            }
         }
     }
 }

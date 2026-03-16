@@ -7,6 +7,7 @@ using ArtifactsMmoDotNet.Api.Generated.My.Details;
 using ArtifactsMmoDotNet.Api.Generated.My.Grandexchange;
 using ArtifactsMmoDotNet.Api.Generated.My.Item;
 using ArtifactsMmoDotNet.Api.Generated.My.Logs;
+using ArtifactsMmoDotNet.Api.Generated.My.PendingItems;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
@@ -50,6 +51,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My
         public global::ArtifactsMmoDotNet.Api.Generated.My.Logs.LogsRequestBuilder Logs
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Logs.LogsRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The pendingItems property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.PendingItems.PendingItemsRequestBuilder PendingItems
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.PendingItems.PendingItemsRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>Gets an item from the ArtifactsMmoDotNet.Api.Generated.my.item collection</summary>
         /// <param name="position">Name of your character.</param>

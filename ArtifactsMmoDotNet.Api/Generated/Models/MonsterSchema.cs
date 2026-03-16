@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,160 +9,71 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class MonsterSchema : IBackedModel, IParsable
+    public partial class MonsterSchema : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Monster air attack.</summary>
-        public int? AttackAir
-        {
-            get { return BackingStore?.Get<int?>("attack_air"); }
-            set { BackingStore?.Set("attack_air", value); }
-        }
+        public int? AttackAir { get; set; }
         /// <summary>Monster earth attack.</summary>
-        public int? AttackEarth
-        {
-            get { return BackingStore?.Get<int?>("attack_earth"); }
-            set { BackingStore?.Set("attack_earth", value); }
-        }
+        public int? AttackEarth { get; set; }
         /// <summary>Monster fire attack.</summary>
-        public int? AttackFire
-        {
-            get { return BackingStore?.Get<int?>("attack_fire"); }
-            set { BackingStore?.Set("attack_fire", value); }
-        }
+        public int? AttackFire { get; set; }
         /// <summary>Monster water attack.</summary>
-        public int? AttackWater
-        {
-            get { return BackingStore?.Get<int?>("attack_water"); }
-            set { BackingStore?.Set("attack_water", value); }
-        }
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
+        public int? AttackWater { get; set; }
         /// <summary>The code of the monster. This is the monster&apos;s unique identifier (ID).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
         /// <summary>Monster % critical strike.</summary>
-        public int? CriticalStrike
-        {
-            get { return BackingStore?.Get<int?>("critical_strike"); }
-            set { BackingStore?.Set("critical_strike", value); }
-        }
+        public int? CriticalStrike { get; set; }
         /// <summary>Monster drops. This is a list of items that the monster drops after killing the monster. </summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>? Drops
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>?>("drops"); }
-            set { BackingStore?.Set("drops", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>? Drops { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema> Drops
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>>("drops"); }
-            set { BackingStore?.Set("drops", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema> Drops { get; set; }
 #endif
         /// <summary>List of effects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>? Effects
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>?>("effects"); }
-            set { BackingStore?.Set("effects", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>? Effects { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema> Effects
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>>("effects"); }
-            set { BackingStore?.Set("effects", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema> Effects { get; set; }
 #endif
         /// <summary>Monster hit points.</summary>
-        public int? Hp
-        {
-            get { return BackingStore?.Get<int?>("hp"); }
-            set { BackingStore?.Set("hp", value); }
-        }
+        public int? Hp { get; set; }
+        /// <summary>Monster initiative for turn order.</summary>
+        public int? Initiative { get; set; }
         /// <summary>Monster level.</summary>
-        public int? Level
-        {
-            get { return BackingStore?.Get<int?>("level"); }
-            set { BackingStore?.Set("level", value); }
-        }
+        public int? Level { get; set; }
         /// <summary>Monster maximum gold drop. </summary>
-        public int? MaxGold
-        {
-            get { return BackingStore?.Get<int?>("max_gold"); }
-            set { BackingStore?.Set("max_gold", value); }
-        }
+        public int? MaxGold { get; set; }
         /// <summary>Monster minimum gold drop. </summary>
-        public int? MinGold
-        {
-            get { return BackingStore?.Get<int?>("min_gold"); }
-            set { BackingStore?.Set("min_gold", value); }
-        }
+        public int? MinGold { get; set; }
         /// <summary>Name of the monster.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
 #endif
         /// <summary>Monster % air resistance.</summary>
-        public int? ResAir
-        {
-            get { return BackingStore?.Get<int?>("res_air"); }
-            set { BackingStore?.Set("res_air", value); }
-        }
+        public int? ResAir { get; set; }
         /// <summary>Monster % earth resistance.</summary>
-        public int? ResEarth
-        {
-            get { return BackingStore?.Get<int?>("res_earth"); }
-            set { BackingStore?.Set("res_earth", value); }
-        }
+        public int? ResEarth { get; set; }
         /// <summary>Monster % fire resistance.</summary>
-        public int? ResFire
-        {
-            get { return BackingStore?.Get<int?>("res_fire"); }
-            set { BackingStore?.Set("res_fire", value); }
-        }
+        public int? ResFire { get; set; }
         /// <summary>Monster % water resistance.</summary>
-        public int? ResWater
-        {
-            get { return BackingStore?.Get<int?>("res_water"); }
-            set { BackingStore?.Set("res_water", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.MonsterSchema"/> and sets the default values.
-        /// </summary>
-        public MonsterSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? ResWater { get; set; }
+        /// <summary>Monster type.</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MonsterType? Type { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -171,7 +81,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.MonsterSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.MonsterSchema();
         }
         /// <summary>
@@ -191,6 +101,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "drops", n => { Drops = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "effects", n => { Effects = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "hp", n => { Hp = n.GetIntValue(); } },
+                { "initiative", n => { Initiative = n.GetIntValue(); } },
                 { "level", n => { Level = n.GetIntValue(); } },
                 { "max_gold", n => { MaxGold = n.GetIntValue(); } },
                 { "min_gold", n => { MinGold = n.GetIntValue(); } },
@@ -199,6 +110,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
                 { "res_earth", n => { ResEarth = n.GetIntValue(); } },
                 { "res_fire", n => { ResFire = n.GetIntValue(); } },
                 { "res_water", n => { ResWater = n.GetIntValue(); } },
+                { "type", n => { Type = n.GetEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MonsterType>(); } },
             };
         }
         /// <summary>
@@ -207,7 +119,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("attack_air", AttackAir);
             writer.WriteIntValue("attack_earth", AttackEarth);
             writer.WriteIntValue("attack_fire", AttackFire);
@@ -217,6 +129,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.DropRateSchema>("drops", Drops);
             writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.SimpleEffectSchema>("effects", Effects);
             writer.WriteIntValue("hp", Hp);
+            writer.WriteIntValue("initiative", Initiative);
             writer.WriteIntValue("level", Level);
             writer.WriteIntValue("max_gold", MaxGold);
             writer.WriteIntValue("min_gold", MinGold);
@@ -225,6 +138,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
             writer.WriteIntValue("res_earth", ResEarth);
             writer.WriteIntValue("res_fire", ResFire);
             writer.WriteIntValue("res_water", ResWater);
+            writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.MonsterType>("type", Type);
         }
     }
 }

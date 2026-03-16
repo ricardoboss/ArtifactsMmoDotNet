@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,100 +9,47 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class ActiveEventSchema : IBackedModel, IParsable
+    public partial class ActiveEventSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Code of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
         /// <summary>Start datetime.</summary>
-        public DateTimeOffset? CreatedAt
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("created_at"); }
-            set { BackingStore?.Set("created_at", value); }
-        }
+        public DateTimeOffset? CreatedAt { get; set; }
         /// <summary>Duration in minutes.</summary>
-        public int? Duration
-        {
-            get { return BackingStore?.Get<int?>("duration"); }
-            set { BackingStore?.Set("duration", value); }
-        }
+        public int? Duration { get; set; }
         /// <summary>Expiration datetime.</summary>
-        public DateTimeOffset? Expiration
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("expiration"); }
-            set { BackingStore?.Set("expiration", value); }
-        }
+        public DateTimeOffset? Expiration { get; set; }
         /// <summary>Map of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? Map
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema?>("map"); }
-            set { BackingStore?.Set("map", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? Map { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema Map
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("map"); }
-            set { BackingStore?.Set("map", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema Map { get; set; }
 #endif
         /// <summary>Name of the event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
 #endif
         /// <summary>Previous map skin.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? PreviousMap
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema?>("previous_map"); }
-            set { BackingStore?.Set("previous_map", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema? PreviousMap { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema PreviousMap
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema>("previous_map"); }
-            set { BackingStore?.Set("previous_map", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.MapSchema PreviousMap { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema"/> and sets the default values.
-        /// </summary>
-        public ActiveEventSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -111,7 +57,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.ActiveEventSchema();
         }
         /// <summary>
@@ -137,7 +83,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("code", Code);
             writer.WriteDateTimeOffsetValue("created_at", CreatedAt);
             writer.WriteIntValue("duration", Duration);

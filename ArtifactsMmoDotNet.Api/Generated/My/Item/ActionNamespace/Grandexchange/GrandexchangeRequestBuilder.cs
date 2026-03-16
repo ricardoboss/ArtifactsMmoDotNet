@@ -2,7 +2,9 @@
 #pragma warning disable CS0618
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Buy;
 using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Cancel;
-using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Sell;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.CreateBuyOrder;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.CreateSellOrder;
+using ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Fill;
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions;
 using System.Collections.Generic;
@@ -27,10 +29,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange
         {
             get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Cancel.CancelRequestBuilder(PathParameters, RequestAdapter);
         }
-        /// <summary>The sell property</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Sell.SellRequestBuilder Sell
+        /// <summary>The createBuyOrder property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.CreateBuyOrder.CreateBuyOrderRequestBuilder CreateBuyOrder
         {
-            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Sell.SellRequestBuilder(PathParameters, RequestAdapter);
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.CreateBuyOrder.CreateBuyOrderRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The createSellOrder property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.CreateSellOrder.CreateSellOrderRequestBuilder CreateSellOrder
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.CreateSellOrder.CreateSellOrderRequestBuilder(PathParameters, RequestAdapter);
+        }
+        /// <summary>The fill property</summary>
+        public global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Fill.FillRequestBuilder Fill
+        {
+            get => new global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.Fill.FillRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>
         /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.My.Item.ActionNamespace.Grandexchange.GrandexchangeRequestBuilder"/> and sets the default values.

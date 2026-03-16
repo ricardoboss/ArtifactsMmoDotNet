@@ -47,11 +47,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Logs
         {
         }
         /// <summary>
-        /// History of the last 250 actions of all your characters.
+        /// History of the last 5000 actions of all your characters.
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 404 status code</exception>
+        /// <exception cref="global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema">When receiving a 498 status code</exception>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
         public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.My.Logs.LogsRequestBuilder.LogsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
@@ -62,10 +64,15 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Logs
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            var errorMapping = new Dictionary<string, ParsableFactory<IParsable>>
+            {
+                { "404", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+                { "498", global::ArtifactsMmoDotNet.Api.Generated.Models.ErrorResponseSchema.CreateFromDiscriminatorValue },
+            };
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_LogSchema_.CreateFromDiscriminatorValue, errorMapping, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// History of the last 250 actions of all your characters.
+        /// History of the last 5000 actions of all your characters.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,7 +100,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Logs
             return new global::ArtifactsMmoDotNet.Api.Generated.My.Logs.LogsRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// History of the last 250 actions of all your characters.
+        /// History of the last 5000 actions of all your characters.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class LogsRequestBuilderGetQueryParameters 

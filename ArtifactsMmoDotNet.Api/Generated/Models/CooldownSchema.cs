@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,48 +9,19 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CooldownSchema : IBackedModel, IParsable
+    public partial class CooldownSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>The expiration of the cooldown.</summary>
-        public DateTimeOffset? Expiration
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("expiration"); }
-            set { BackingStore?.Set("expiration", value); }
-        }
+        public DateTimeOffset? Expiration { get; set; }
         /// <summary>The reason of the cooldown.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType? Reason
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType?>("reason"); }
-            set { BackingStore?.Set("reason", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType? Reason { get; set; }
         /// <summary>The remaining seconds of the cooldown.</summary>
-        public int? RemainingSeconds
-        {
-            get { return BackingStore?.Get<int?>("remaining_seconds"); }
-            set { BackingStore?.Set("remaining_seconds", value); }
-        }
+        public int? RemainingSeconds { get; set; }
         /// <summary>The start of the cooldown.</summary>
-        public DateTimeOffset? StartedAt
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("started_at"); }
-            set { BackingStore?.Set("started_at", value); }
-        }
+        public DateTimeOffset? StartedAt { get; set; }
         /// <summary>The total seconds of the cooldown.</summary>
-        public int? TotalSeconds
-        {
-            get { return BackingStore?.Get<int?>("total_seconds"); }
-            set { BackingStore?.Set("total_seconds", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema"/> and sets the default values.
-        /// </summary>
-        public CooldownSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? TotalSeconds { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -59,7 +29,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.CooldownSchema();
         }
         /// <summary>
@@ -83,7 +53,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteDateTimeOffsetValue("expiration", Expiration);
             writer.WriteEnumValue<global::ArtifactsMmoDotNet.Api.Generated.Models.ActionType>("reason", Reason);
             writer.WriteIntValue("remaining_seconds", RemainingSeconds);

@@ -24,5 +24,17 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Lt,
         #pragma warning restore CS1591
+        [EnumMember(Value = "cost")]
+        #pragma warning disable CS1591
+        Cost,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "has_item")]
+        #pragma warning disable CS1591
+        Has_item,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "achievement_unlocked")]
+        #pragma warning disable CS1591
+        Achievement_unlocked,
+        #pragma warning restore CS1591
     }
 }

@@ -35,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OrdersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/orders{?code*,page*,seller*,size*}", pathParameters)
+        public OrdersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/orders{?account*,code*,page*,size*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,11 +43,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OrdersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/orders{?code*,page*,seller*,size*}", rawUrl)
+        public OrdersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/grandexchange/orders{?account*,code*,page*,size*,type*}", rawUrl)
         {
         }
         /// <summary>
-        /// Fetch all sell orders.
+        /// Fetch all orders (sell and buy orders).Use the `type` parameter to filter by order type; when using `account`, `type`is required to decide whether to match seller or buyer.
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GEOrderSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -65,7 +65,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GEOrderSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GEOrderSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch all sell orders.
+        /// Fetch all orders (sell and buy orders).Use the `type` parameter to filter by order type; when using `account`, `type`is required to decide whether to match seller or buyer.
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -93,11 +93,21 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
             return new global::ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders.OrdersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch all sell orders.
+        /// Fetch all orders (sell and buy orders).Use the `type` parameter to filter by order type; when using `account`, `type`is required to decide whether to match seller or buyer.
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class OrdersRequestBuilderGetQueryParameters 
         {
+            /// <summary>The account that sells or buys items.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("account")]
+            public string? Account { get; set; }
+#nullable restore
+#else
+            [QueryParameter("account")]
+            public string Account { get; set; }
+#endif
             /// <summary>The code of the item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -111,19 +121,19 @@ namespace ArtifactsMmoDotNet.Api.Generated.Grandexchange.Orders
             /// <summary>Page number</summary>
             [QueryParameter("page")]
             public int? Page { get; set; }
-            /// <summary>The seller (account name) of the item.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-            [QueryParameter("seller")]
-            public string? Seller { get; set; }
-#nullable restore
-#else
-            [QueryParameter("seller")]
-            public string Seller { get; set; }
-#endif
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
+            /// <summary>Filter by order type (sell or buy).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type")]
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

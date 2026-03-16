@@ -35,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Details
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DetailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/npcs/details{?name*,page*,size*,type*}", pathParameters)
+        public DetailsRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/npcs/details{?currency*,item*,name*,page*,size*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -43,26 +43,26 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Details
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public DetailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/npcs/details{?name*,page*,size*,type*}", rawUrl)
+        public DetailsRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/npcs/details{?currency*,item*,name*,page*,size*,type*}", rawUrl)
         {
         }
         /// <summary>
         /// Fetch NPCs details.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCSchema_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Details.DetailsRequestBuilder.DetailsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCSchema_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Details.DetailsRequestBuilder.DetailsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Details.DetailsRequestBuilder.DetailsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCSchema_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Details.DetailsRequestBuilder.DetailsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Fetch NPCs details.
@@ -98,7 +98,27 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Details
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class DetailsRequestBuilderGetQueryParameters 
         {
-            /// <summary>Name of the npc.</summary>
+            /// <summary>Currency code to filter NPCs that trade with this currency.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("currency")]
+            public string? Currency { get; set; }
+#nullable restore
+#else
+            [QueryParameter("currency")]
+            public string Currency { get; set; }
+#endif
+            /// <summary>Item code to filter NPCs that trade this item.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("item")]
+            public string? Item { get; set; }
+#nullable restore
+#else
+            [QueryParameter("item")]
+            public string Item { get; set; }
+#endif
+            /// <summary>NPC name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("name")]
@@ -114,9 +134,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Details
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
-            /// <summary>The type of the NPC.</summary>
+            /// <summary>Type of NPCs.</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
             [QueryParameter("type")]
-            public global::ArtifactsMmoDotNet.Api.Generated.Models.NPCType? Type { get; set; }
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

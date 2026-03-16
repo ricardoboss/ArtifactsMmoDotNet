@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,192 +9,75 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class CharacterLeaderboardSchema : IBackedModel, IParsable
+    public partial class CharacterLeaderboardSchema : IParsable
     #pragma warning restore CS1591
     {
         /// <summary>Account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Account
-        {
-            get { return BackingStore?.Get<string?>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string? Account { get; set; }
 #nullable restore
 #else
-        public string Account
-        {
-            get { return BackingStore?.Get<string>("account"); }
-            set { BackingStore?.Set("account", value); }
-        }
+        public string Account { get; set; }
 #endif
         /// <summary>Alchemy level.</summary>
-        public int? AlchemyLevel
-        {
-            get { return BackingStore?.Get<int?>("alchemy_level"); }
-            set { BackingStore?.Set("alchemy_level", value); }
-        }
+        public int? AlchemyLevel { get; set; }
         /// <summary>Alchemy total xp.</summary>
-        public int? AlchemyTotalXp
-        {
-            get { return BackingStore?.Get<int?>("alchemy_total_xp"); }
-            set { BackingStore?.Set("alchemy_total_xp", value); }
-        }
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
+        public int? AlchemyTotalXp { get; set; }
         /// <summary>Cooking level.</summary>
-        public int? CookingLevel
-        {
-            get { return BackingStore?.Get<int?>("cooking_level"); }
-            set { BackingStore?.Set("cooking_level", value); }
-        }
+        public int? CookingLevel { get; set; }
         /// <summary>Cooking total xp.</summary>
-        public int? CookingTotalXp
-        {
-            get { return BackingStore?.Get<int?>("cooking_total_xp"); }
-            set { BackingStore?.Set("cooking_total_xp", value); }
-        }
+        public int? CookingTotalXp { get; set; }
         /// <summary>Fishing level.</summary>
-        public int? FishingLevel
-        {
-            get { return BackingStore?.Get<int?>("fishing_level"); }
-            set { BackingStore?.Set("fishing_level", value); }
-        }
+        public int? FishingLevel { get; set; }
         /// <summary>Fishing total xp.</summary>
-        public int? FishingTotalXp
-        {
-            get { return BackingStore?.Get<int?>("fishing_total_xp"); }
-            set { BackingStore?.Set("fishing_total_xp", value); }
-        }
+        public int? FishingTotalXp { get; set; }
         /// <summary>Gearcrafting level.</summary>
-        public int? GearcraftingLevel
-        {
-            get { return BackingStore?.Get<int?>("gearcrafting_level"); }
-            set { BackingStore?.Set("gearcrafting_level", value); }
-        }
+        public int? GearcraftingLevel { get; set; }
         /// <summary>Gearcrafting total xp.</summary>
-        public int? GearcraftingTotalXp
-        {
-            get { return BackingStore?.Get<int?>("gearcrafting_total_xp"); }
-            set { BackingStore?.Set("gearcrafting_total_xp", value); }
-        }
+        public int? GearcraftingTotalXp { get; set; }
         /// <summary>The numbers of gold on this character.</summary>
-        public int? Gold
-        {
-            get { return BackingStore?.Get<int?>("gold"); }
-            set { BackingStore?.Set("gold", value); }
-        }
+        public int? Gold { get; set; }
         /// <summary>Jewelrycrafting level.</summary>
-        public int? JewelrycraftingLevel
-        {
-            get { return BackingStore?.Get<int?>("jewelrycrafting_level"); }
-            set { BackingStore?.Set("jewelrycrafting_level", value); }
-        }
+        public int? JewelrycraftingLevel { get; set; }
         /// <summary>Jewelrycrafting total xp.</summary>
-        public int? JewelrycraftingTotalXp
-        {
-            get { return BackingStore?.Get<int?>("jewelrycrafting_total_xp"); }
-            set { BackingStore?.Set("jewelrycrafting_total_xp", value); }
-        }
+        public int? JewelrycraftingTotalXp { get; set; }
         /// <summary>Combat level.</summary>
-        public int? Level
-        {
-            get { return BackingStore?.Get<int?>("level"); }
-            set { BackingStore?.Set("level", value); }
-        }
+        public int? Level { get; set; }
         /// <summary>Mining level.</summary>
-        public int? MiningLevel
-        {
-            get { return BackingStore?.Get<int?>("mining_level"); }
-            set { BackingStore?.Set("mining_level", value); }
-        }
+        public int? MiningLevel { get; set; }
         /// <summary>Mining total xp.</summary>
-        public int? MiningTotalXp
-        {
-            get { return BackingStore?.Get<int?>("mining_total_xp"); }
-            set { BackingStore?.Set("mining_total_xp", value); }
-        }
+        public int? MiningTotalXp { get; set; }
         /// <summary>Character name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name
-        {
-            get { return BackingStore?.Get<string?>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string? Name { get; set; }
 #nullable restore
 #else
-        public string Name
-        {
-            get { return BackingStore?.Get<string>("name"); }
-            set { BackingStore?.Set("name", value); }
-        }
+        public string Name { get; set; }
 #endif
         /// <summary>Position in the leaderboard.</summary>
-        public int? Position
-        {
-            get { return BackingStore?.Get<int?>("position"); }
-            set { BackingStore?.Set("position", value); }
-        }
+        public int? Position { get; set; }
         /// <summary>Character skin code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Skin
-        {
-            get { return BackingStore?.Get<string?>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
+        public string? Skin { get; set; }
 #nullable restore
 #else
-        public string Skin
-        {
-            get { return BackingStore?.Get<string>("skin"); }
-            set { BackingStore?.Set("skin", value); }
-        }
+        public string Skin { get; set; }
 #endif
         /// <summary>Member status.</summary>
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus?>("status"); }
-            set { BackingStore?.Set("status", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.AccountStatus? Status { get; set; }
         /// <summary>Total XP of your character.</summary>
-        public int? TotalXp
-        {
-            get { return BackingStore?.Get<int?>("total_xp"); }
-            set { BackingStore?.Set("total_xp", value); }
-        }
+        public int? TotalXp { get; set; }
         /// <summary>Weaponcrafting level.</summary>
-        public int? WeaponcraftingLevel
-        {
-            get { return BackingStore?.Get<int?>("weaponcrafting_level"); }
-            set { BackingStore?.Set("weaponcrafting_level", value); }
-        }
+        public int? WeaponcraftingLevel { get; set; }
         /// <summary>Weaponcrafting total xp.</summary>
-        public int? WeaponcraftingTotalXp
-        {
-            get { return BackingStore?.Get<int?>("weaponcrafting_total_xp"); }
-            set { BackingStore?.Set("weaponcrafting_total_xp", value); }
-        }
+        public int? WeaponcraftingTotalXp { get; set; }
         /// <summary>Woodcutting level.</summary>
-        public int? WoodcuttingLevel
-        {
-            get { return BackingStore?.Get<int?>("woodcutting_level"); }
-            set { BackingStore?.Set("woodcutting_level", value); }
-        }
+        public int? WoodcuttingLevel { get; set; }
         /// <summary>Woodcutting total xp.</summary>
-        public int? WoodcuttingTotalXp
-        {
-            get { return BackingStore?.Get<int?>("woodcutting_total_xp"); }
-            set { BackingStore?.Set("woodcutting_total_xp", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema"/> and sets the default values.
-        /// </summary>
-        public CharacterLeaderboardSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public int? WoodcuttingTotalXp { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -203,7 +85,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.CharacterLeaderboardSchema();
         }
         /// <summary>
@@ -246,7 +128,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("account", Account);
             writer.WriteIntValue("alchemy_level", AlchemyLevel);
             writer.WriteIntValue("alchemy_total_xp", AlchemyTotalXp);

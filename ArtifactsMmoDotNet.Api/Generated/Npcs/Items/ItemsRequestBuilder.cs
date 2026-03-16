@@ -49,20 +49,20 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Items
         /// <summary>
         /// Retrieve the list of all NPC items.
         /// </summary>
-        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem_"/></returns>
+        /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCItem_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCItem_?> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>>? requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #nullable restore
 #else
-        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
+        public async Task<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCItem_> GetAsync(Action<RequestConfiguration<global::ArtifactsMmoDotNet.Api.Generated.Npcs.Items.ItemsRequestBuilder.ItemsRequestBuilderGetQueryParameters>> requestConfiguration = default, CancellationToken cancellationToken = default)
         {
 #endif
             var requestInfo = ToGetRequestInformation(requestConfiguration);
-            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_NPCItem_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
+            return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCItem_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.StaticDataPage_NPCItem_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
         /// Retrieve the list of all NPC items.
@@ -98,7 +98,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Items
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class ItemsRequestBuilderGetQueryParameters 
         {
-            /// <summary>The code of the item.</summary>
+            /// <summary>Item code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("code")]
@@ -108,7 +108,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Items
             [QueryParameter("code")]
             public string Code { get; set; }
 #endif
-            /// <summary>The code of the currency.</summary>
+            /// <summary>Currency code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("currency")]
@@ -118,7 +118,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Npcs.Items
             [QueryParameter("currency")]
             public string Currency { get; set; }
 #endif
-            /// <summary>The code of the npc.</summary>
+            /// <summary>NPC code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
             [QueryParameter("npc")]

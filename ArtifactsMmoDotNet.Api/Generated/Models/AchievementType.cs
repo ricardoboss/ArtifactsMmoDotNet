@@ -44,5 +44,13 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         #pragma warning disable CS1591
         Use,
         #pragma warning restore CS1591
+        [EnumMember(Value = "npc_buy")]
+        #pragma warning disable CS1591
+        Npc_buy,
+        #pragma warning restore CS1591
+        [EnumMember(Value = "npc_sell")]
+        #pragma warning disable CS1591
+        Npc_sell,
+        #pragma warning restore CS1591
     }
 }

@@ -22,7 +22,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.Orders
         /// </summary>
         /// <param name="pathParameters">Path parameters for the request</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OrdersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/my/grandexchange/orders{?code*,page*,size*}", pathParameters)
+        public OrdersRequestBuilder(Dictionary<string, object> pathParameters, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/my/grandexchange/orders{?code*,page*,size*,type*}", pathParameters)
         {
         }
         /// <summary>
@@ -30,11 +30,11 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.Orders
         /// </summary>
         /// <param name="rawUrl">The raw URL to use for the request builder.</param>
         /// <param name="requestAdapter">The request adapter to use to execute the requests.</param>
-        public OrdersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/my/grandexchange/orders{?code*,page*,size*}", rawUrl)
+        public OrdersRequestBuilder(string rawUrl, IRequestAdapter requestAdapter) : base(requestAdapter, "{+baseurl}/my/grandexchange/orders{?code*,page*,size*,type*}", rawUrl)
         {
         }
         /// <summary>
-        /// Fetch your sell orders details.
+        /// Fetch your orders details (sell and buy orders).
         /// </summary>
         /// <returns>A <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GEOrderSchema_"/></returns>
         /// <param name="cancellationToken">Cancellation token to use when cancelling requests</param>
@@ -52,7 +52,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.Orders
             return await RequestAdapter.SendAsync<global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GEOrderSchema_>(requestInfo, global::ArtifactsMmoDotNet.Api.Generated.Models.DataPage_GEOrderSchema_.CreateFromDiscriminatorValue, default, cancellationToken).ConfigureAwait(false);
         }
         /// <summary>
-        /// Fetch your sell orders details.
+        /// Fetch your orders details (sell and buy orders).
         /// </summary>
         /// <returns>A <see cref="RequestInformation"/></returns>
         /// <param name="requestConfiguration">Configuration for the request such as headers, query parameters, and middleware options.</param>
@@ -80,7 +80,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.Orders
             return new global::ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.Orders.OrdersRequestBuilder(rawUrl, RequestAdapter);
         }
         /// <summary>
-        /// Fetch your sell orders details.
+        /// Fetch your orders details (sell and buy orders).
         /// </summary>
         [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
         public partial class OrdersRequestBuilderGetQueryParameters 
@@ -101,6 +101,16 @@ namespace ArtifactsMmoDotNet.Api.Generated.My.Grandexchange.Orders
             /// <summary>Page size</summary>
             [QueryParameter("size")]
             public int? Size { get; set; }
+            /// <summary>Filter by order type (sell or buy).</summary>
+#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
+#nullable enable
+            [QueryParameter("type")]
+            public string? Type { get; set; }
+#nullable restore
+#else
+            [QueryParameter("type")]
+            public string Type { get; set; }
+#endif
         }
     }
 }

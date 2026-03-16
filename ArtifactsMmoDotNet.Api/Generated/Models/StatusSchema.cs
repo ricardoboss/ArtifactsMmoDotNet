@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,106 +9,41 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class StatusSchema : IBackedModel, IParsable
+    public partial class StatusSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Server announcements.</summary>
-#if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
-#nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>? Announcements
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>?>("announcements"); }
-            set { BackingStore?.Set("announcements", value); }
-        }
-#nullable restore
-#else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema> Announcements
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>>("announcements"); }
-            set { BackingStore?.Set("announcements", value); }
-        }
-#endif
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Characters online.</summary>
-        public int? CharactersOnline
-        {
-            get { return BackingStore?.Get<int?>("characters_online"); }
-            set { BackingStore?.Set("characters_online", value); }
-        }
+        public int? CharactersOnline { get; set; }
         /// <summary>Maximum level.</summary>
-        public int? MaxLevel
-        {
-            get { return BackingStore?.Get<int?>("max_level"); }
-            set { BackingStore?.Set("max_level", value); }
-        }
+        public int? MaxLevel { get; set; }
         /// <summary>Maximum skill level.</summary>
-        public int? MaxSkillLevel
-        {
-            get { return BackingStore?.Get<int?>("max_skill_level"); }
-            set { BackingStore?.Set("max_skill_level", value); }
-        }
+        public int? MaxSkillLevel { get; set; }
         /// <summary>Rate limits.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>? RateLimits
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>?>("rate_limits"); }
-            set { BackingStore?.Set("rate_limits", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>? RateLimits { get; set; }
 #nullable restore
 #else
-        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema> RateLimits
-        {
-            get { return BackingStore?.Get<List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema>>("rate_limits"); }
-            set { BackingStore?.Set("rate_limits", value); }
-        }
+        public List<global::ArtifactsMmoDotNet.Api.Generated.Models.RateLimitSchema> RateLimits { get; set; }
 #endif
         /// <summary>Current season details.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema? Season
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema?>("season"); }
-            set { BackingStore?.Set("season", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema? Season { get; set; }
 #nullable restore
 #else
-        public global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema Season
-        {
-            get { return BackingStore?.Get<global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema>("season"); }
-            set { BackingStore?.Set("season", value); }
-        }
+        public global::ArtifactsMmoDotNet.Api.Generated.Models.SeasonSchema Season { get; set; }
 #endif
         /// <summary>Server time.</summary>
-        public DateTimeOffset? ServerTime
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("server_time"); }
-            set { BackingStore?.Set("server_time", value); }
-        }
+        public DateTimeOffset? ServerTime { get; set; }
         /// <summary>Game version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Version
-        {
-            get { return BackingStore?.Get<string?>("version"); }
-            set { BackingStore?.Set("version", value); }
-        }
+        public string? Version { get; set; }
 #nullable restore
 #else
-        public string Version
-        {
-            get { return BackingStore?.Get<string>("version"); }
-            set { BackingStore?.Set("version", value); }
-        }
+        public string Version { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.StatusSchema"/> and sets the default values.
-        /// </summary>
-        public StatusSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -117,7 +51,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.StatusSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.StatusSchema();
         }
         /// <summary>
@@ -128,7 +62,6 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "announcements", n => { Announcements = n.GetCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>(global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "characters_online", n => { CharactersOnline = n.GetIntValue(); } },
                 { "max_level", n => { MaxLevel = n.GetIntValue(); } },
                 { "max_skill_level", n => { MaxSkillLevel = n.GetIntValue(); } },
@@ -144,8 +77,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
-            writer.WriteCollectionOfObjectValues<global::ArtifactsMmoDotNet.Api.Generated.Models.AnnouncementSchema>("announcements", Announcements);
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteIntValue("characters_online", CharactersOnline);
             writer.WriteIntValue("max_level", MaxLevel);
             writer.WriteIntValue("max_skill_level", MaxSkillLevel);

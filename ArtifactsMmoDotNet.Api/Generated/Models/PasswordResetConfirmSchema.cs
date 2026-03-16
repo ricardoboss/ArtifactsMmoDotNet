@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,50 +9,25 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class PasswordResetConfirmSchema : IBackedModel, IParsable
+    public partial class PasswordResetConfirmSchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Your new password.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NewPassword
-        {
-            get { return BackingStore?.Get<string?>("new_password"); }
-            set { BackingStore?.Set("new_password", value); }
-        }
+        public string? NewPassword { get; set; }
 #nullable restore
 #else
-        public string NewPassword
-        {
-            get { return BackingStore?.Get<string>("new_password"); }
-            set { BackingStore?.Set("new_password", value); }
-        }
+        public string NewPassword { get; set; }
 #endif
         /// <summary>Password reset token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Token
-        {
-            get { return BackingStore?.Get<string?>("token"); }
-            set { BackingStore?.Set("token", value); }
-        }
+        public string? Token { get; set; }
 #nullable restore
 #else
-        public string Token
-        {
-            get { return BackingStore?.Get<string>("token"); }
-            set { BackingStore?.Set("token", value); }
-        }
+        public string Token { get; set; }
 #endif
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetConfirmSchema"/> and sets the default values.
-        /// </summary>
-        public PasswordResetConfirmSchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -61,7 +35,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetConfirmSchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.PasswordResetConfirmSchema();
         }
         /// <summary>
@@ -82,7 +56,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("new_password", NewPassword);
             writer.WriteStringValue("token", Token);
         }

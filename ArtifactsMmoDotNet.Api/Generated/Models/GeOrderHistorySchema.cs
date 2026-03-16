@@ -2,7 +2,6 @@
 #pragma warning disable CS0618
 using Microsoft.Kiota.Abstractions.Extensions;
 using Microsoft.Kiota.Abstractions.Serialization;
-using Microsoft.Kiota.Abstractions.Store;
 using System.Collections.Generic;
 using System.IO;
 using System;
@@ -10,100 +9,47 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
 {
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     #pragma warning disable CS1591
-    public partial class GeOrderHistorySchema : IBackedModel, IParsable
+    public partial class GeOrderHistorySchema : IParsable
     #pragma warning restore CS1591
     {
-        /// <summary>Stores model information.</summary>
-        public IBackingStore BackingStore { get; private set; }
         /// <summary>Buyer account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Buyer
-        {
-            get { return BackingStore?.Get<string?>("buyer"); }
-            set { BackingStore?.Set("buyer", value); }
-        }
+        public string? Buyer { get; set; }
 #nullable restore
 #else
-        public string Buyer
-        {
-            get { return BackingStore?.Get<string>("buyer"); }
-            set { BackingStore?.Set("buyer", value); }
-        }
+        public string Buyer { get; set; }
 #endif
         /// <summary>Item code.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code
-        {
-            get { return BackingStore?.Get<string?>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string? Code { get; set; }
 #nullable restore
 #else
-        public string Code
-        {
-            get { return BackingStore?.Get<string>("code"); }
-            set { BackingStore?.Set("code", value); }
-        }
+        public string Code { get; set; }
 #endif
         /// <summary>Order id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrderId
-        {
-            get { return BackingStore?.Get<string?>("order_id"); }
-            set { BackingStore?.Set("order_id", value); }
-        }
+        public string? OrderId { get; set; }
 #nullable restore
 #else
-        public string OrderId
-        {
-            get { return BackingStore?.Get<string>("order_id"); }
-            set { BackingStore?.Set("order_id", value); }
-        }
+        public string OrderId { get; set; }
 #endif
         /// <summary>Item price per unit.</summary>
-        public int? Price
-        {
-            get { return BackingStore?.Get<int?>("price"); }
-            set { BackingStore?.Set("price", value); }
-        }
+        public int? Price { get; set; }
         /// <summary>Item quantity.</summary>
-        public int? Quantity
-        {
-            get { return BackingStore?.Get<int?>("quantity"); }
-            set { BackingStore?.Set("quantity", value); }
-        }
+        public int? Quantity { get; set; }
         /// <summary>Seller account name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Seller
-        {
-            get { return BackingStore?.Get<string?>("seller"); }
-            set { BackingStore?.Set("seller", value); }
-        }
+        public string? Seller { get; set; }
 #nullable restore
 #else
-        public string Seller
-        {
-            get { return BackingStore?.Get<string>("seller"); }
-            set { BackingStore?.Set("seller", value); }
-        }
+        public string Seller { get; set; }
 #endif
         /// <summary>Sale datetime.</summary>
-        public DateTimeOffset? SoldAt
-        {
-            get { return BackingStore?.Get<DateTimeOffset?>("sold_at"); }
-            set { BackingStore?.Set("sold_at", value); }
-        }
-        /// <summary>
-        /// Instantiates a new <see cref="global::ArtifactsMmoDotNet.Api.Generated.Models.GeOrderHistorySchema"/> and sets the default values.
-        /// </summary>
-        public GeOrderHistorySchema()
-        {
-            BackingStore = BackingStoreFactorySingleton.Instance.CreateBackingStore();
-        }
+        public DateTimeOffset? SoldAt { get; set; }
         /// <summary>
         /// Creates a new instance of the appropriate class based on discriminator value
         /// </summary>
@@ -111,7 +57,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="parseNode">The parse node to use to read the discriminator value and create the object</param>
         public static global::ArtifactsMmoDotNet.Api.Generated.Models.GeOrderHistorySchema CreateFromDiscriminatorValue(IParseNode parseNode)
         {
-            _ = parseNode ?? throw new ArgumentNullException(nameof(parseNode));
+            if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             return new global::ArtifactsMmoDotNet.Api.Generated.Models.GeOrderHistorySchema();
         }
         /// <summary>
@@ -137,7 +83,7 @@ namespace ArtifactsMmoDotNet.Api.Generated.Models
         /// <param name="writer">Serialization writer to use to serialize this model</param>
         public virtual void Serialize(ISerializationWriter writer)
         {
-            _ = writer ?? throw new ArgumentNullException(nameof(writer));
+            if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteStringValue("buyer", Buyer);
             writer.WriteStringValue("code", Code);
             writer.WriteStringValue("order_id", OrderId);
