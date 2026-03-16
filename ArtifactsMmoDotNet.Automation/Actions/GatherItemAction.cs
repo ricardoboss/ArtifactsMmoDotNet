@@ -5,14 +5,14 @@ using ArtifactsMmoDotNet.Automation.Requirements;
 
 namespace ArtifactsMmoDotNet.Automation.Actions;
 
-public class GatherItemAction(string itemCode) : BaseAction
+public class GatherItemAction(string itemCode, bool allowSellingItems = false) : BaseAction
 {
     public override string Name => $"Gather {itemCode}";
 
     public override async IAsyncEnumerable<IRequirement> GetRequirements(IAutomationContext context,
         [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
-        yield return new HaveSpaceInInventoryRequirement(itemCode: itemCode);
+        yield return new HaveSpaceInInventoryRequirement(itemCode: itemCode, allowSellingItems: allowSellingItems);
     }
 
     public override async Task<ActionExecutionResult> Execute(IAutomationContext context,

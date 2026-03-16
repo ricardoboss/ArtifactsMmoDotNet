@@ -86,7 +86,7 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
 
         do
         {
-            yield return new GatherItemAction(item.Code!);
+            yield return new GatherItemAction(item.Code!, allowSellingItems: true);
 
             currentInfo = await GetCurrentSkillInfo(context, cancellationToken);
             if (currentInfo.Level < level && currentInfo.Level == lastInfo.Level)
