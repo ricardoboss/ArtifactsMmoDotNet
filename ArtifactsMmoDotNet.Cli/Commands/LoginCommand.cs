@@ -10,9 +10,10 @@ internal sealed class LoginCommand(IInteractiveLoginService interactiveLoginServ
     [UsedImplicitly]
     internal sealed class Settings : CommandSettings;
 
-    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
+    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings,
+        CancellationToken cancellationToken)
     {
-        var success = await interactiveLoginService.LoginWithUsernameAndPasswordAsync();
+        var success = await interactiveLoginService.LoginWithUsernameAndPasswordAsync(cancellationToken: cancellationToken);
 
         return success ? 0 : 1;
     }

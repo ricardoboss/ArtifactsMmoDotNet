@@ -8,14 +8,16 @@ using Spectre.Console.Cli;
 namespace ArtifactsMmoDotNet.Cli.Commands;
 
 [UsedImplicitly]
-internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService loginService) : AsyncCommand<MoveCommand.Settings>
+internal sealed class MoveCommand(ArtifactsMmoApiClient apiClient, ILoginService loginService)
+    : AsyncCommand<MoveCommand.Settings>
 {
     [UsedImplicitly]
     internal sealed class Settings : CommandSettings;
 
-    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
+    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings,
+        CancellationToken cancellationToken)
     {
-        if (!await loginService.IsLoggedInAsync())
+        if (!await loginService.IsLoggedInAsync(cancellationToken))
         {
             AnsiConsole.MarkupLine("[red]You are not logged in. Please run the [yellow]login[/] command first.[/]");
 

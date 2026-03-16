@@ -86,7 +86,18 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             var maps = await apiClient.Maps.GetAsync(c =>
             {
                 c.QueryParameters.ContentCode = contentCode;
-                c.QueryParameters.ContentType = contentType;
+                c.QueryParameters.ContentType = contentType switch
+                {
+                    MapContentType.Monster => "monster",
+                    MapContentType.Resource => "resource",
+                    MapContentType.Workshop => "workshop",
+                    MapContentType.Bank => "bank",
+                    MapContentType.Grand_exchange => "ge",
+                    MapContentType.Tasks_master => "tasks_master",
+                    MapContentType.Npc => "npc",
+                    null => null,
+                    _ => throw new NotImplementedException("Map content type not implemented: " + contentType),
+                };
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
             }, cancellationToken);
@@ -100,22 +111,30 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             }
 
             page++;
-            pages = maps.Pages!.Integer!.Value;
+            pages = maps.Pages!.Value;
         } while (page <= pages);
     }
 
-    public async Task<MapSchema> GetMap(int x, int y, CancellationToken cancellationToken = default)
+    public async Task<MapSchema> GetMap(MapLayer layer, int x, int y, CancellationToken cancellationToken = default)
     {
-        var map = await apiClient.Maps[x][y].GetAsync(cancellationToken: cancellationToken);
+        var layerName = layer switch
+        {
+            MapLayer.Interior => "interior",
+            MapLayer.Overworld => "overworld",
+            MapLayer.Underground => "underground",
+            _ => throw new NotImplementedException("Unimplemented layer: " + layer),
+        };
+
+        var map = await apiClient.Maps[layerName][x][y].GetAsync(cancellationToken: cancellationToken);
 
         return map!.Data!;
     }
 
     private readonly List<ItemSchema> cachedItems = [];
 
-    public async IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
-        CraftSkill? craftSkill = null, int? minLevel = null, int? maxLevel = null,
-        ItemType? type = null, [EnumeratorCancellation] CancellationToken cancellationToken = default)
+    public async IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null, CraftSkill? craftSkill = null,
+        int? minLevel = null, int? maxLevel = null, string? type = null,
+        [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
         var useCache = craftMaterial is null && craftSkill is null && minLevel is null && maxLevel is null &&
                        type is null;
@@ -137,7 +156,18 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             var items = await apiClient.Items.GetAsync(c =>
             {
                 c.QueryParameters.CraftMaterial = craftMaterial;
-                c.QueryParameters.CraftSkill = craftSkill;
+                c.QueryParameters.CraftSkill = craftSkill switch
+                {
+                    CraftSkill.Weaponcrafting => "weaponcrafting",
+                    CraftSkill.Gearcrafting => "gearcrafting",
+                    CraftSkill.Jewelrycrafting => "jewelrycrafting",
+                    CraftSkill.Cooking => "cooking",
+                    CraftSkill.Woodcutting => "woodcutting",
+                    CraftSkill.Mining => "mining",
+                    CraftSkill.Alchemy => "alchemy",
+                    null => null,
+                    _ => throw new NotImplementedException("Craft skill not implemented: " + craftSkill),
+                };
                 c.QueryParameters.MaxLevel = maxLevel;
                 c.QueryParameters.MinLevel = minLevel;
                 c.QueryParameters.Type = type;
@@ -154,7 +184,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             }
 
             page++;
-            pages = items.Pages!.Integer!.Value;
+            pages = items.Pages!.Value;
         } while (page <= pages);
     }
 
@@ -194,7 +224,15 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
                 c.QueryParameters.MaxLevel = maxLevel;
                 c.QueryParameters.Page = page;
                 c.QueryParameters.Size = size;
-                c.QueryParameters.Skill = skill;
+                c.QueryParameters.Skill = skill switch
+                {
+                    GatheringSkill.Mining => "mining",
+                    GatheringSkill.Woodcutting => "woodcutting",
+                    GatheringSkill.Fishing => "fishing",
+                    GatheringSkill.Alchemy => "alchemy",
+                    null => null,
+                    _ => throw new NotImplementedException("Gathering skill not implemented: " + skill),
+                };
             }, cancellationToken);
 
             foreach (var resource in resources!.Data!)
@@ -206,7 +244,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             }
 
             page++;
-            pages = resources.Pages!.Integer!.Value;
+            pages = resources.Pages!.Value;
         } while (page <= pages);
     }
 
@@ -251,7 +289,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             }
 
             page++;
-            pages = monsters.Pages!.Integer!.Value;
+            pages = monsters.Pages!.Value;
         } while (page <= pages);
     }
 
@@ -294,7 +332,7 @@ public class ArtifactsMmoApiGame(ArtifactsMmoApiClient apiClient) : IGame
             }
 
             page++;
-            pages = NPCItems.Pages!.Integer!.Value;
+            pages = NPCItems.Pages!.Value;
         } while (page <= pages);
     }
 
@@ -336,8 +374,13 @@ file sealed class CharacterActions(ArtifactsMmoApiGame game, string characterNam
 {
     public async Task<CharacterFightDataSchema> Attack(CancellationToken cancellationToken = default)
     {
-        var result =
-            (await apiClient.My[characterName].Action.Fight.PostAsync(cancellationToken: cancellationToken))!.Data!;
+        var fightRequest = new FightRequestSchema
+        {
+            Participants = [characterName],
+        };
+
+        var result = (await apiClient.My[characterName].Action.Fight
+            .PostAsync(fightRequest, cancellationToken: cancellationToken))!.Data!;
 
         await game.UpdateCooldownEnd(result.Cooldown!.Expiration!.Value, cancellationToken);
 

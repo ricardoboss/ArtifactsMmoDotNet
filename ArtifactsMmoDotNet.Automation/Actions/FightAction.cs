@@ -29,24 +29,30 @@ public class FightAction : BaseAction
 
         if (result.Fight.Result is not FightResult.Loss)
         {
-            if (result.Fight.Xp is { } xp)
-                await context.Output.LogInfoAsync($"Gained {xp} xp", cancellationToken);
-
-            if (result.Fight.Gold is { } gold)
-                await context.Output.LogInfoAsync($"Received {gold} gold", cancellationToken);
-
-            if (result.Fight.Drops is { Count: > 1 })
+            foreach (var characterResult in result.Fight.Characters ?? [])
             {
-                await context.Output.LogInfoAsync("Gathered:", cancellationToken);
-                foreach (var log in result.Fight.Drops)
+                await context.Output.LogInfoAsync($"Character {characterResult.CharacterName}:", cancellationToken);
+                await context.Output.LogInfoAsync($"    Has {characterResult.FinalHp} HP left", cancellationToken);
+
+                if (characterResult.Xp is { } xp)
+                    await context.Output.LogInfoAsync($"    Gained {xp} xp", cancellationToken);
+
+                if (characterResult.Gold is { } gold)
+                    await context.Output.LogInfoAsync($"    Received {gold} gold", cancellationToken);
+
+                if (characterResult.Drops is { Count: > 1 })
                 {
-                    await context.Output.LogInfoAsync($"    - {log.Quantity} {log.Code}", cancellationToken);
+                    await context.Output.LogInfoAsync("    Gathered:", cancellationToken);
+                    foreach (var log in characterResult.Drops)
+                    {
+                        await context.Output.LogInfoAsync($"        - {log.Quantity} {log.Code}", cancellationToken);
+                    }
                 }
+                else if (characterResult.Drops is { Count: > 0 })
+                    await context.Output.LogInfoAsync(
+                        $"Gathered {characterResult.Drops.First().Quantity} {characterResult.Drops.First().Code}",
+                        cancellationToken);
             }
-            else if (result.Fight.Drops is { Count: > 0 })
-                await context.Output.LogInfoAsync(
-                    $"Gathered {result.Fight.Drops.First().Quantity} {result.Fight.Drops.First().Code}",
-                    cancellationToken);
         }
 
         await context.Game.WaitForCooldown(cancellationToken);

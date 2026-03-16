@@ -51,12 +51,14 @@ public abstract class BaseRequirement : IRequirement
 
     protected static async Task<int> GetAmountOfItemInInventory(IAutomationContext context, string itemCode)
     {
-        return await context
+        var slots = await context
             .Game
             .FromCharacter(context.CharacterName)
             .GetInventory()
             .Where(i => i.Code == itemCode)
-            .SumAsync(i => i!.Quantity!.Value);
+            .ToListAsync();
+
+        return slots.Sum(i => i.Quantity!.Value);
     }
 
     protected static async Task<ItemSlot?> TryFindItemInSlot(IAutomationContext context, string itemCode)

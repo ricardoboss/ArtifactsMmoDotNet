@@ -24,11 +24,10 @@ public interface IGame
     IAsyncEnumerable<MapSchema> GetMaps(string? contentCode = null, MapContentType? contentType = null,
         CancellationToken cancellationToken = default);
 
-    Task<MapSchema> GetMap(int x, int y, CancellationToken cancellationToken = default);
+    Task<MapSchema> GetMap(MapLayer layer, int x, int y, CancellationToken cancellationToken = default);
 
-    IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null,
-        CraftSkill? craftSkill = null, int? minLevel = null, int? maxLevel = null,
-        ItemType? type = null, CancellationToken cancellationToken = default);
+    IAsyncEnumerable<ItemSchema> GetItems(string? craftMaterial = null, CraftSkill? craftSkill = null,
+        int? minLevel = null, int? maxLevel = null, string? type = null, CancellationToken cancellationToken = default);
 
     Task<ItemSchema> GetItem(string itemCode, CancellationToken cancellationToken = default);
 

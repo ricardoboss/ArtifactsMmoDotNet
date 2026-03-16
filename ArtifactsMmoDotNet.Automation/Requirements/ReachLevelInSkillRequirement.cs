@@ -89,7 +89,7 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
             yield return new GatherItemAction(item.Code!);
 
             currentInfo = await GetCurrentSkillInfo(context, cancellationToken);
-            if (currentInfo.Level == lastInfo.Level)
+            if (currentInfo.Level < level && currentInfo.Level == lastInfo.Level)
                 continue;
 
             lastInfo = currentInfo;
@@ -120,19 +120,18 @@ public class ReachLevelInSkillRequirement(LevelableSkill skill, int level) : Bas
             )
             .ToListAsync();
 
-        var dropLocations = await resourcesForSkill
-            .ToAsyncEnumerable()
-            .SelectAwait(async resource =>
-            {
-                var mostCommonDrop = resource.Drops!.OrderBy(d => d.Rate).First();
+        List<(DropRateSchema item, MapSchema location)> dropLocations = [];
+        foreach (var resource in resourcesForSkill)
+        {
+            var mostCommonDrop = resource.Drops!.OrderBy(d => d.Rate).First();
 
-                var location =
-                    await GetNearestLocationForResource(context, mostCommonDrop.Code!, position.x, position.y);
+            var location =
+                await GetNearestLocationForResource(context, mostCommonDrop.Code!, position.x, position.y);
+            if (location is null)
+                continue;
 
-                return (item: mostCommonDrop, location);
-            })
-            .Where(t => t.location is not null)
-            .ToListAsync();
+            dropLocations.Add((item: mostCommonDrop, location));
+        }
 
         var dropInfo = dropLocations
             .OrderBy(t => EuclideanDistanceFrom(t.location!, position.x, position.y) / t.item.Rate)

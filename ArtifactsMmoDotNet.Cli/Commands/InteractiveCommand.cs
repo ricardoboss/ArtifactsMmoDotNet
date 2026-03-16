@@ -9,7 +9,6 @@ using ArtifactsMmoDotNet.Sdk.Interfaces.Game;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Interactivity;
 using ArtifactsMmoDotNet.Sdk.Interfaces.Services;
 using JetBrains.Annotations;
-using Microsoft.Kiota.Abstractions;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
@@ -22,9 +21,9 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
     [UsedImplicitly]
     internal sealed class Settings : CommandSettings;
 
-    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings)
+    public override async Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken)
     {
-        if (!await loginService.IsLoggedInAsync())
+        if (!await loginService.IsLoggedInAsync(cancellationToken))
         {
             AnsiConsole.MarkupLine("[red]You are not logged in. Please run the [yellow]login[/] command first.[/]");
 
@@ -285,11 +284,11 @@ internal sealed class InteractiveCommand(IGame game, ILoginService loginService,
             WrapAround = true,
             Converter = l => l.Location is null
                 ? "Cancel"
-                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - contains {l.Location.Content!.Type} ({l.Location.Content!.Code})",
+                : $"{l.Location.Name} ({l.Location.X}, {l.Location.Y}) - contains {l.Location.Interactions!.Content!.Type} ({l.Location.Interactions!.Content!.Code})",
         };
 
         var locations = await game.GetMaps()
-            .Where(m => m.Content is not null)
+            .Where(m => m.Interactions?.Content is not null)
             .Select(l => new KnownLocationOrCancel(l))
             .ToListAsync();
 

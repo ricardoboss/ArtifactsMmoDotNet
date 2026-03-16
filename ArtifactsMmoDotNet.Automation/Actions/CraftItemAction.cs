@@ -82,8 +82,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
     {
         var requiredSkill = craft.Skill!.Value.ToString();
         var workshopLocations = await context.Game
-            .GetMaps(contentType: MapContentType.Workshop)
-            .Where(m => string.Equals(m.Content!.Code, requiredSkill, StringComparison.InvariantCultureIgnoreCase))
+            .GetMaps(contentType: MapContentType.Workshop, contentCode: requiredSkill)
             .ToListAsync();
 
         var (x, y) = await context.Game.FromCharacter(context.CharacterName).GetPosition();
@@ -105,7 +104,7 @@ public class CraftItemAction(string itemCode, CraftSchema craft, int quantity = 
             .MoveTo(nearestWorkshop.X!.Value, nearestWorkshop.Y!.Value);
 
         await context.Output.LogInfoAsync(
-            $"Moved to {nearestWorkshop.Content!.Code} workshop at {nearestWorkshop.X!.Value}, {nearestWorkshop.Y!.Value}");
+            $"Moved to {requiredSkill} workshop at {nearestWorkshop.X!.Value}, {nearestWorkshop.Y!.Value}");
 
         await context.Game.WaitForCooldown();
     }
